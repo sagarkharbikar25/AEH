@@ -87,8 +87,8 @@ export class DeciderClient {
         [String(categoryAnswer.answer)]: categoryAnswer.confidence || 0.92
       };
 
-      const sortedCategories = Object.entries(categoryProbs)
-        .sort(([, a], [, b]) => b - a)
+      const sortedCategories: [string, number][] = (Object.entries(categoryProbs) as [string, number][])
+        .sort(([, a], [, b]) => Number(b) - Number(a))
         .slice(0, 2);
 
       // -------------------------------------------------------------
@@ -129,9 +129,9 @@ export class DeciderClient {
             scoredCandidates.push({
               toolId,
               category: cat,
-              categoryScore: catScore,
-              inCategoryScore: inCatScore,
-              combinedScore: combineScores(catScore, inCatScore)
+              categoryScore: Number(catScore),
+              inCategoryScore: Number(inCatScore),
+              combinedScore: combineScores(Number(catScore), Number(inCatScore))
             });
           }
         }
@@ -165,22 +165,61 @@ export class DeciderClient {
     let targetTool = 'calendar.create_event';
     let inCatScore = 0.96;
 
-    if (lower.includes('urgent') || lower.includes('escalat') || lower.includes('pager') || lower.includes('latency')) {
-      // Ambiguous multi-system query
+    if (lower.includes('urgent') || lower.includes('escalat') || lower.includes('pager') || lower.includes('alarm')) {
       topCategory = 'telemetry';
       catConfidence = 0.62;
       targetTool = 'telemetry.query_metric_series';
       inCatScore = 0.70;
+    } else if (lower.includes('ec2') || lower.includes('instance') || lower.includes('compute') || lower.includes('server') || lower.includes('vm')) {
+      topCategory = 'compute';
+      catConfidence = 0.93;
+      targetTool = 'compute.launch_instance';
+      inCatScore = 0.95;
     } else if (lower.includes('s3') || lower.includes('bucket') || lower.includes('upload') || lower.includes('storage')) {
       topCategory = 'storage';
       catConfidence = 0.92;
       targetTool = 'storage.upload_object';
       inCatScore = 0.95;
-    } else if (lower.includes('sql') || lower.includes('query') || lower.includes('database') || lower.includes('postgres')) {
+    } else if (lower.includes('sql') || lower.includes('query') || lower.includes('database') || lower.includes('postgres') || lower.includes('rds')) {
       topCategory = 'database';
       catConfidence = 0.91;
       targetTool = 'database.execute_sql';
       inCatScore = 0.94;
+    } else if (lower.includes('slack') || lower.includes('email') || lower.includes('notify') || lower.includes('message') || lower.includes('channel')) {
+      topCategory = 'messaging';
+      catConfidence = 0.92;
+      targetTool = 'messaging.send_channel_message';
+      inCatScore = 0.94;
+    } else if (lower.includes('iam') || lower.includes('role') || lower.includes('policy') || lower.includes('security') || lower.includes('kms')) {
+      topCategory = 'security';
+      catConfidence = 0.90;
+      targetTool = 'security.evaluate_iam_policy';
+      inCatScore = 0.93;
+    } else if (lower.includes('deploy') || lower.includes('pipeline') || lower.includes('ci') || lower.includes('build') || lower.includes('release')) {
+      topCategory = 'devops';
+      catConfidence = 0.92;
+      targetTool = 'devops.trigger_ci_build';
+      inCatScore = 0.94;
+    } else if (lower.includes('cost') || lower.includes('spend') || lower.includes('billing') || lower.includes('invoice') || lower.includes('budget')) {
+      topCategory = 'billing';
+      catConfidence = 0.94;
+      targetTool = 'billing.get_projected_spend';
+      inCatScore = 0.95;
+    } else if (lower.includes('ticket') || lower.includes('jira') || lower.includes('issue') || lower.includes('incident') || lower.includes('bug')) {
+      topCategory = 'tickets';
+      catConfidence = 0.93;
+      targetTool = 'tickets.create_incident_ticket';
+      inCatScore = 0.95;
+    } else if (lower.includes('workflow') || lower.includes('step') || lower.includes('orchestrat') || lower.includes('pipeline_run')) {
+      topCategory = 'workflows';
+      catConfidence = 0.89;
+      targetTool = 'workflows.start_execution';
+      inCatScore = 0.92;
+    } else if (lower.includes('vpc') || lower.includes('dns') || lower.includes('subnet') || lower.includes('network') || lower.includes('route53')) {
+      topCategory = 'network';
+      catConfidence = 0.91;
+      targetTool = 'network.allocate_elastic_ip';
+      inCatScore = 0.93;
     }
 
     const scoredCandidates: ScoredCandidate[] = [

@@ -2,6 +2,7 @@
   "name": "@polaris/router",
   "version": "1.0.0",
   "description": "Drop-in confidence-adaptive tool router with Strands Decider 2B in front of Amazon Bedrock",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

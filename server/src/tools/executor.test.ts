@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { executeSimulatedTool } from './executor.js';
-import catalog from './catalog.json';
+import catalog from './catalog.json' with { type: 'json' };
 
 describe('Server Tool Catalog & Executor', () => {
   it('catalog contains exactly 240 tools across 12 categories', () => {
