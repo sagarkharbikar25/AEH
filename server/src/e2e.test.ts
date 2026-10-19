@@ -71,5 +71,21 @@ describe('Polaris API Server E2E', () => {
     expect(data.laneB.inputTokens).toBeLessThan(1000);
     expect(data.savings.tokenReductionPercent).toBeGreaterThan(90);
     expect(data.savings.savingsPercent).toBeGreaterThan(85);
+
+    // Verify GET /api/runs/:id returns the completed run
+    const runRes = await fetch(`${baseUrl}/api/runs/${data.raceId}`);
+    expect(runRes.status).toBe(200);
+    const runData = (await runRes.json()) as any;
+    expect(runData.raceId).toBe(data.raceId);
+    expect(runData.isComplete).toBe(true);
+  });
+
+  it('GET /api/bench/latest returns latest benchmark evaluation metrics', async () => {
+    const res = await fetch(`${baseUrl}/api/bench/latest`);
+    expect(res.status).toBe(200);
+    const data = (await res.json()) as any;
+    expect(data.totalQueries).toBeGreaterThan(0);
+    expect(data.accuracy).toBeDefined();
+    expect(data.latencyDistributionMs).toBeDefined();
   });
 });

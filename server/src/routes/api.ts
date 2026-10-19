@@ -103,3 +103,35 @@ apiRouter.post('/route', async (req, res, next) => {
     next(err);
   }
 });
+
+/**
+ * Latest benchmark evaluation metrics for the Almanac dashboard
+ */
+apiRouter.get('/bench/latest', (req, res) => {
+  try {
+    const resultsPath = path.resolve(__dirname, '../../../bench/results.json');
+    if (fs.existsSync(resultsPath)) {
+      const data = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
+      res.json({
+        ...data,
+        requestId: req.id,
+      });
+    } else {
+      res.status(404).json({
+        error: {
+          code: 'BENCHMARK_NOT_FOUND',
+          message: 'Benchmark results not yet generated. Run "npm run bench" to generate results.',
+          requestId: req.id,
+        },
+      });
+    }
+  } catch (err: any) {
+    res.status(500).json({
+      error: {
+        code: 'INTERNAL_ERROR',
+        message: err.message,
+        requestId: req.id,
+      },
+    });
+  }
+});

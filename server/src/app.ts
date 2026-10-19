@@ -51,6 +51,7 @@ export function createApp(): Express {
   // Mount API routers
   app.use('/api', apiRouter);
   app.use('/api/race', raceRouter);
+  app.use('/api/runs', raceRouter);
 
   // Centralized error handler
   app.use(errorHandler);
