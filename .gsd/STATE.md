@@ -14,7 +14,7 @@
 | **Phase 2** | Mock Tool Catalog & Simulated Executor (`server/src/tools`) | **COMPLETED** | Plan 2.1 Done |
 | **Phase 3** | Dual-Lane Bedrock Converse Loop (`server/src/agent`) | **COMPLETED** | Plans 3.1, 3.2 Done |
 | **Phase 4** | Express API & Real-Time SSE Streaming (`server/src`) | **COMPLETED** | Plans 4.1, 4.2 Done |
-| **Phase 5** | Benchmark Evaluation Harness (`bench/`) | **In Progress** | **Plan 5.1 (Wave 1)** |
+| **Phase 5** | Benchmark Evaluation Harness (`bench/`) | **COMPLETED** | Plan 5.1 Done |
 
 ---
 
@@ -30,16 +30,12 @@
   - [x] **Plan 3.2**: Parallel Dual-Lane Execution Engine & CLI Race Harness (`b1260b0`)
 - [x] **Phase 4: Express API & Real-Time SSE Streaming (`server/src`)**
   - [x] **Plan 4.1**: Express Server & Safety Middleware (`da30705`)
-  - [x] **Plan 4.2**: Endpoints & Real-Time SSE Streaming Engine
+  - [x] **Plan 4.2**: Endpoints & Real-Time SSE Streaming Engine (`b45b104`)
+- [x] **Phase 5: Benchmark Evaluation Harness (`bench/`)**
+  - [x] **Plan 5.1**: Benchmark Evaluation Suite
 
 ---
 
-## Active Plan Details
-- **Phase:** 5
-- **Plan:** 5.1: Benchmark Evaluation Suite
-- **Wave:** 1
-- **Target Files:**
-  - `bench/queries.json`
-  - `bench/run.ts`
-  - `bench/results.json`
-- **Verification:** Benchmark runner processes queries and emits recall@k, latency, and Pareto frontier matching `/almanac`.
+## All Backend Plans Completed
+- **All 5 Phases Finished Successfully.**
+- **Verification:** Unit tests, E2E tests, CLI race harness, and benchmark runner all verified.

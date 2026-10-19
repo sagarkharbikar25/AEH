@@ -156,7 +156,15 @@ export class DeciderClient {
     const lower = prompt.toLowerCase();
 
     // Check no-tool queries (e.g. explain, what is, law, principle)
-    if (lower.includes('amdahl') || lower.includes('what is') || lower.includes('explain') || lower.includes('theory')) {
+    if (
+      lower.includes('amdahl') ||
+      lower.includes('what is') ||
+      lower.includes('explain') ||
+      lower.includes('theory') ||
+      lower.includes('difference between') ||
+      lower.includes('how does') ||
+      lower.includes('comparison')
+    ) {
       return rankAndTierShortlist(catalog, [], 0.08, Math.max(elapsedMs, 32));
     }
 
@@ -173,18 +181,31 @@ export class DeciderClient {
     } else if (lower.includes('ec2') || lower.includes('instance') || lower.includes('compute') || lower.includes('server') || lower.includes('vm')) {
       topCategory = 'compute';
       catConfidence = 0.93;
-      targetTool = 'compute.launch_instance';
+      targetTool = lower.includes('cpu') || lower.includes('utiliz') || lower.includes('load')
+        ? 'compute.get_cpu_utilization'
+        : 'compute.launch_instance';
       inCatScore = 0.95;
-    } else if (lower.includes('s3') || lower.includes('bucket') || lower.includes('upload') || lower.includes('storage')) {
+    } else if (lower.includes('s3') || lower.includes('bucket') || lower.includes('upload') || lower.includes('storage') || lower.includes('presign')) {
       topCategory = 'storage';
       catConfidence = 0.92;
-      targetTool = 'storage.upload_object';
+      targetTool = lower.includes('presign') || lower.includes('url') || lower.includes('download')
+        ? 'storage.generate_presigned_url'
+        : 'storage.upload_object';
       inCatScore = 0.95;
-    } else if (lower.includes('sql') || lower.includes('query') || lower.includes('database') || lower.includes('postgres') || lower.includes('rds')) {
+    } else if (lower.includes('sql') || lower.includes('query') || lower.includes('database') || lower.includes('postgres') || lower.includes('rds') || lower.includes('snapshot')) {
       topCategory = 'database';
       catConfidence = 0.91;
-      targetTool = 'database.execute_sql';
+      targetTool = lower.includes('snapshot') || lower.includes('backup')
+        ? 'database.create_snapshot'
+        : 'database.execute_sql';
       inCatScore = 0.94;
+    } else if (lower.includes('calendar') || lower.includes('meeting') || lower.includes('schedule') || lower.includes('slot') || lower.includes('invite') || lower.includes('sync')) {
+      topCategory = 'calendar';
+      catConfidence = 0.94;
+      targetTool = lower.includes('slot') || lower.includes('free') || lower.includes('overlap')
+        ? 'calendar.find_free_slots'
+        : 'calendar.create_event';
+      inCatScore = 0.96;
     } else if (lower.includes('slack') || lower.includes('email') || lower.includes('notify') || lower.includes('message') || lower.includes('channel')) {
       topCategory = 'messaging';
       catConfidence = 0.92;

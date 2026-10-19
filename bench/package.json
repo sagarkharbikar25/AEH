@@ -1,0 +1,19 @@
+{
+  "name": "@polaris/bench",
+  "version": "1.0.0",
+  "description": "POLARIS Benchmark Evaluation Suite - Measures Recall@k, latency distributions, and Pareto frontier",
+  "type": "module",
+  "scripts": {
+    "start": "tsx run.ts",
+    "bench": "tsx run.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@polaris/router": "file:../packages/router"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.0"
+  }
+}
