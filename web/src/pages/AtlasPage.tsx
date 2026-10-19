@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StarChart } from '../components/StarChart';
-import { RacePlates } from '../components/RacePlates';
+import { QueryPlate, RaceCockpitPlate, DecisionTracePlate } from '../components/RacePlates';
 import { RaceState, Tool } from '../types';
 import { REPLAYS } from '../replays';
 import { McpConnectionBus } from '../components/McpConnectionBus';
-import { Activity, Shield, Terminal } from 'lucide-react';
+import { Activity, Shield, Terminal, Zap } from 'lucide-react';
 
 export const AtlasPage: React.FC = () => {
   const [raceState, setRaceState] = useState<RaceState>(REPLAYS.easy.state);
@@ -67,9 +67,9 @@ export const AtlasPage: React.FC = () => {
   };
 
   return (
-    <div className="relative max-w-7xl mx-auto px-6 py-8 space-y-8">
+    <div className="relative max-w-7xl mx-auto px-6 py-8 space-y-10">
       
-      {/* MCP Connection Bus: Interconnecting Circuit Lines with Traveling Photons */}
+      {/* MCP Interconnect Bus: Circuit Fiber Conduits */}
       <McpConnectionBus />
 
       {/* Bespoke Observatory Command Deck Header */}
@@ -77,11 +77,11 @@ export const AtlasPage: React.FC = () => {
         <div>
           {/* Hardware Telemetry Tags */}
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-400 font-bold px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-400 font-bold px-2.5 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
               <Activity className="w-3 h-3 animate-pulse" />
               <span>MCP BUS INTERCONNECT // LIVE</span>
             </span>
-            <span className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold px-2 py-0.5 rounded bg-amber-950/70 border border-amber-400/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,208,97,0.15)]">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold px-2.5 py-0.5 rounded bg-amber-950/70 border border-amber-400/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,208,97,0.15)]">
               <Shield className="w-3 h-3" />
               <span>DECIDER 2B ROUTER</span>
             </span>
@@ -96,13 +96,13 @@ export const AtlasPage: React.FC = () => {
           <div className="text-xs font-mono text-slate-400 mt-1 flex items-center gap-3">
             <span>240 Tools</span>
             <span>·</span>
-            <span>12 Constellations</span>
+            <span>12 Subsystems</span>
             <span>·</span>
-            <span className="text-cyan-400">40ms Decision Gate</span>
+            <span className="text-cyan-400 font-semibold">40ms Decision Gate</span>
           </div>
         </div>
 
-        {/* Console Telemetry Readout */}
+        {/* Console Telemetry Stream */}
         <div className="p-3.5 rounded-xl border border-white/10 bg-[#050A15]/90 backdrop-blur text-xs font-mono max-w-sm w-full space-y-1.5 shadow-lg">
           <div className="flex items-center justify-between text-[11px] text-slate-400 border-b border-white/5 pb-1">
             <span className="flex items-center gap-1.5">
@@ -122,26 +122,51 @@ export const AtlasPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Grid: Star Chart + Plates */}
-      <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* SECTION 1: The Star Chart Hub (Plate 0) + The Flight Console (Plate I) */}
+      <div className="relative z-20 grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
         
-        {/* Left: Star Chart Hub (7 cols) */}
-        <div className="lg:col-span-7">
+        {/* Left: Star Chart (7 cols) */}
+        <div className="xl:col-span-7">
           <StarChart 
             raceState={raceState} 
             onSelectStar={handleSelectStar} 
           />
         </div>
 
-        {/* Right: Interactive Command Plates (5 cols) */}
-        <div className="lg:col-span-5">
-          <RacePlates 
+        {/* Right: Flight Console (Plate I) (5 cols) */}
+        <div className="xl:col-span-5 space-y-6">
+          <QueryPlate 
             raceState={raceState}
             onRunQuery={handleRunQuery}
             onSelectReplay={handleSelectReplay}
             onReset={handleReset}
           />
+
+          {/* Quick Instrument Overview Card */}
+          <div className="p-5 rounded-xl border border-white/10 bg-[#040814]/80 text-xs font-mono space-y-3">
+            <div className="flex items-center justify-between border-b border-white/5 pb-2 text-slate-400 uppercase text-[10px] tracking-wider font-bold">
+              <span className="flex items-center gap-1.5 text-cyan-400">
+                <Zap className="w-3.5 h-3.5" />
+                <span>TOPOLOGICAL ROUTING STATUS</span>
+              </span>
+              <span className="text-amber-400">ACTIVE</span>
+            </div>
+            <p className="text-slate-300 leading-relaxed font-body text-xs">
+              Requests pass through Decider 2B in two typed calls (needs_tool + category), evaluating the probability matrix and dynamically calibrating the shortlist sent to Amazon Bedrock.
+            </p>
+          </div>
         </div>
+
+      </div>
+
+      {/* SECTION 2: The Cockpit Arena - Spacious Full-Width Observatory Plates */}
+      <div className="relative z-20 space-y-8">
+        
+        {/* Plate II: The Agent Race Cockpit (Generous full screen width) */}
+        <RaceCockpitPlate raceState={raceState} />
+
+        {/* Plate III: Decider 2B Hierarchical Trace (Generous full screen width) */}
+        <DecisionTracePlate raceState={raceState} />
 
       </div>
 
