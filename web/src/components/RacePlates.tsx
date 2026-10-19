@@ -41,7 +41,11 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
     <div className="space-y-6">
 
       {/* PLATE I: QUERY & FLIGHT RECORDER */}
-      <BorderBeamFrame activeBeam={true}>
+      <BorderBeamFrame 
+        activeBeam={true}
+        terminalLabel="PLATE I // FLIGHT CONSOLE"
+        portId="PORT 8000"
+      >
         <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
           <div className="flex items-center gap-2.5">
             <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
@@ -116,7 +120,11 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
       </BorderBeamFrame>
 
       {/* PLATE II: THE AGENT RACE */}
-      <BorderBeamFrame activeBeam={true}>
+      <BorderBeamFrame 
+        activeBeam={true}
+        terminalLabel="PLATE II // THE AGENT RACE"
+        portId="DUAL LANE BUS"
+      >
         <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
           <div className="flex items-center gap-2.5">
             <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
@@ -263,7 +271,11 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
       </BorderBeamFrame>
 
       {/* PLATE III: DECISION TRACE */}
-      <BorderBeamFrame activeBeam={true}>
+      <BorderBeamFrame 
+        activeBeam={true}
+        terminalLabel="PLATE III // DECISION TRACE"
+        portId="HIERARCHICAL V21"
+      >
         <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
           <div className="flex items-center gap-2.5">
             <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
