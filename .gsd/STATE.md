@@ -13,8 +13,8 @@
 | **Phase 1** | Reusable Router Package (`packages/router`) | **COMPLETED** | Plans 1.1, 1.2, 1.3 Done |
 | **Phase 2** | Mock Tool Catalog & Simulated Executor (`server/src/tools`) | **COMPLETED** | Plan 2.1 Done |
 | **Phase 3** | Dual-Lane Bedrock Converse Loop (`server/src/agent`) | **COMPLETED** | Plans 3.1, 3.2 Done |
-| **Phase 4** | Express API & Real-Time SSE Streaming (`server/src`) | **In Progress** | **Plan 4.1 (Wave 1)** |
-| **Phase 5** | Benchmark Evaluation Harness (`bench/`) | Queued | Plan 5.1 |
+| **Phase 4** | Express API & Real-Time SSE Streaming (`server/src`) | **COMPLETED** | Plans 4.1, 4.2 Done |
+| **Phase 5** | Benchmark Evaluation Harness (`bench/`) | **In Progress** | **Plan 5.1 (Wave 1)** |
 
 ---
 
@@ -27,16 +27,19 @@
   - [x] **Plan 2.1**: Tool Catalog Seed & Execution Harness (`e1dc3c8`)
 - [x] **Phase 3: Dual-Lane Bedrock Converse Loop (`server/src/agent`)**
   - [x] **Plan 3.1**: Bedrock Client & Cost Estimator (`1f91c2e`)
-  - [x] **Plan 3.2**: Parallel Dual-Lane Execution Engine & CLI Race Harness
+  - [x] **Plan 3.2**: Parallel Dual-Lane Execution Engine & CLI Race Harness (`b1260b0`)
+- [x] **Phase 4: Express API & Real-Time SSE Streaming (`server/src`)**
+  - [x] **Plan 4.1**: Express Server & Safety Middleware (`da30705`)
+  - [x] **Plan 4.2**: Endpoints & Real-Time SSE Streaming Engine
 
 ---
 
 ## Active Plan Details
-- **Phase:** 4
-- **Plan:** 4.1: Express Server & Safety Middleware
+- **Phase:** 5
+- **Plan:** 5.1: Benchmark Evaluation Suite
 - **Wave:** 1
 - **Target Files:**
-  - `server/src/app.ts`
-  - `server/src/index.ts`
-  - `server/src/middleware/safety.ts`
-- **Verification:** Express application starts with rate-limiter, spend kill-switch, and error handler.
+  - `bench/queries.json`
+  - `bench/run.ts`
+  - `bench/results.json`
+- **Verification:** Benchmark runner processes queries and emits recall@k, latency, and Pareto frontier matching `/almanac`.

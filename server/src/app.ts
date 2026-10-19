@@ -14,6 +14,8 @@ import {
   errorHandler,
   spendBudget,
 } from './middleware/safety.js';
+import { apiRouter } from './routes/api.js';
+import { raceRouter } from './routes/race.js';
 
 export function createApp(): Express {
   const app = express();
@@ -45,6 +47,13 @@ export function createApp(): Express {
       requestId: req.id,
     });
   });
+
+  // Mount API routers
+  app.use('/api', apiRouter);
+  app.use('/api/race', raceRouter);
+
+  // Centralized error handler
+  app.use(errorHandler);
 
   return app;
 }
