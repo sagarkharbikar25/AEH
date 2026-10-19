@@ -46,20 +46,19 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         terminalLabel="PLATE I // FLIGHT CONSOLE"
         portId="PORT 8000"
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 mb-4 gap-2">
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
+            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase px-2 py-0.5 rounded bg-amber-950/50 border border-amber-400/30">
               PLATE I
             </span>
-            <span className="text-slate-500 font-mono text-xs">·</span>
-            <h2 className="font-display text-xl lg:text-2xl font-bold text-slate-100">
+            <h2 className="font-display text-xl font-bold text-slate-100">
               Query & Flight Replay
             </h2>
           </div>
           {raceState.status !== 'idle' && (
             <button 
               onClick={onReset}
-              className="flex items-center gap-1.5 px-3 py-1 text-xs font-mono border border-white/10 rounded-md hover:border-amber-400 text-slate-300 hover:text-white transition-all bg-white/5"
+              className="flex items-center gap-1.5 px-3 py-1 text-xs font-mono border border-white/10 rounded-md hover:border-amber-400 text-slate-300 hover:text-white transition-all bg-white/5 self-start sm:self-auto"
             >
               <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
               <span>Reset</span>
@@ -70,7 +69,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         {/* Flight Replay Switches */}
         <div className="mb-4">
           <div className="text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-wider flex items-center gap-2">
-            <Zap className="w-3 h-3 text-cyan-400" />
+            <Zap className="w-3.5 h-3.5 text-cyan-400" />
             <span>Preset Flight Recordings:</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -83,7 +82,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
                 }}
                 className={`p-3 text-left rounded-lg border transition-all ${
                   raceState.replayId === replay.id
-                    ? 'border-amber-400/80 bg-amber-950/20 text-amber-200 shadow-[0_0_15px_rgba(245,208,97,0.15)]'
+                    ? 'border-amber-400/80 bg-amber-950/30 text-amber-200 shadow-[0_0_15px_rgba(245,208,97,0.15)]'
                     : 'border-white/10 bg-[#050A15]/70 text-slate-300 hover:border-white/20 hover:text-white'
                 }`}
               >
@@ -100,7 +99,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         </div>
 
         {/* Query Input Box */}
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
             value={inputVal}
@@ -111,7 +110,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
           <button
             type="submit"
             disabled={raceState.status === 'racing'}
-            className="px-6 py-3 rounded-lg border border-amber-400/80 bg-gradient-to-r from-amber-500/20 to-yellow-500/10 hover:from-amber-500/30 hover:to-yellow-500/20 text-amber-300 font-mono text-xs uppercase tracking-wider font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(245,208,97,0.2)] disabled:opacity-50"
+            className="px-6 py-3 rounded-lg border border-amber-400/80 bg-gradient-to-r from-amber-500/20 to-yellow-500/10 hover:from-amber-500/30 hover:to-yellow-500/20 text-amber-300 font-mono text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(245,208,97,0.2)] disabled:opacity-50"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
             <span>Engage</span>
@@ -125,17 +124,16 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         terminalLabel="PLATE II // THE AGENT RACE"
         portId="DUAL LANE BUS"
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 mb-4 gap-2">
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
+            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase px-2 py-0.5 rounded bg-amber-950/50 border border-amber-400/30">
               PLATE II
             </span>
-            <span className="text-slate-500 font-mono text-xs">·</span>
-            <h2 className="font-display text-xl lg:text-2xl font-bold text-slate-100">
+            <h2 className="font-display text-xl font-bold text-slate-100">
               The Agent Race
             </h2>
           </div>
-          <div className="text-xs font-mono text-slate-400 hidden sm:block">
+          <div className="text-xs font-mono text-slate-400">
             All 240 Tools vs Polaris Shortlist
           </div>
         </div>
@@ -193,7 +191,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
                     Lane A · All Tools Baseline
                   </span>
                 </div>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-rose-950/60 border border-rose-500/30 text-rose-300">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-rose-950/60 border border-rose-500/30 text-rose-300 font-bold">
                   {laneA.toolsSent} Schemas
                 </span>
               </div>
@@ -214,9 +212,9 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
                 </div>
               </div>
 
-              <div className="text-xs text-slate-300 mb-2 font-mono">
-                <span className="text-slate-400">Tool Chosen: </span>
-                <span className="text-slate-100 font-bold">{laneA.chosenTool || 'None'}</span>
+              <div className="text-xs text-slate-300 mb-2 font-mono flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <span className="text-slate-400">Tool Chosen:</span>
+                <span className="text-slate-100 font-bold truncate">{laneA.chosenTool || 'None'}</span>
               </div>
             </div>
 
@@ -256,9 +254,9 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
                 </div>
               </div>
 
-              <div className="text-xs text-slate-300 mb-2 font-mono">
-                <span className="text-slate-400">Tool Chosen: </span>
-                <span className="text-amber-300 font-bold">{laneB.chosenTool || 'None'}</span>
+              <div className="text-xs text-slate-300 mb-2 font-mono flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <span className="text-slate-400">Tool Chosen:</span>
+                <span className="text-amber-300 font-bold truncate">{laneB.chosenTool || 'None'}</span>
               </div>
             </div>
 
@@ -276,18 +274,17 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         terminalLabel="PLATE III // DECISION TRACE"
         portId="HIERARCHICAL V21"
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <div className="flex flex-wrap items-center justify-between border-b border-white/10 pb-3 mb-4 gap-3">
           <div className="flex items-center gap-2.5">
-            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase">
+            <span className="font-mono text-xs tracking-widest text-amber-300 font-bold uppercase px-2 py-0.5 rounded bg-amber-950/50 border border-amber-400/30">
               PLATE III
             </span>
-            <span className="text-slate-500 font-mono text-xs">·</span>
             <h2 className="font-display text-xl lg:text-2xl font-bold text-slate-100">
               Decider 2B Hierarchical Trace
             </h2>
           </div>
           {raceState.decision && (
-            <div className="text-xs font-mono text-cyan-400">
+            <div className="text-xs font-mono text-cyan-400 font-bold px-2.5 py-1 rounded bg-cyan-950/60 border border-cyan-500/40">
               Routing Latency: {raceState.decision.latencyMs} ms
             </div>
           )}
@@ -296,51 +293,45 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
         {raceState.decision ? (
           <div className="space-y-4">
             
-            {/* Steps Row */}
+            {/* Steps Row with Stacked Value for Perfect Readability */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               
               {/* Step 1: needs_tool */}
-              <div className="p-3.5 rounded-lg border border-white/10 bg-[#02040A]">
-                <div className="text-[10px] font-mono text-slate-400 uppercase mb-1">
-                  Step 1 · Needs Tool?
+              <div className="p-3.5 rounded-xl border border-white/10 bg-[#02040A] flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1">
+                  <span>Step 1 · Needs Tool?</span>
+                  <span className="text-cyan-400 font-bold px-1.5 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/30">
+                    {(raceState.decision.needsToolScore * 100).toFixed(0)}% Conf
+                  </span>
                 </div>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-lg font-bold text-slate-100">
-                    {raceState.decision.needsToolScore > 0.5 ? 'YES' : 'NO'}
-                  </span>
-                  <span className="font-mono text-xs text-cyan-400 font-bold">
-                    {(raceState.decision.needsToolScore * 100).toFixed(0)}% Confidence
-                  </span>
+                <div className="font-display text-2xl font-bold text-slate-100 mt-1">
+                  {raceState.decision.needsToolScore > 0.5 ? 'YES' : 'NO'}
                 </div>
               </div>
 
               {/* Step 2: category */}
-              <div className="p-3.5 rounded-lg border border-white/10 bg-[#02040A]">
-                <div className="text-[10px] font-mono text-slate-400 uppercase mb-1">
-                  Step 2 · Category
+              <div className="p-3.5 rounded-xl border border-white/10 bg-[#02040A] flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1">
+                  <span>Step 2 · Category</span>
+                  <span className="text-amber-300 font-bold px-1.5 py-0.5 rounded bg-amber-950/80 border border-amber-400/30">
+                    {(raceState.decision.categoryConfidence * 100).toFixed(0)}% Pick
+                  </span>
                 </div>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-lg font-bold text-slate-100 uppercase">
-                    {raceState.decision.category}
-                  </span>
-                  <span className="font-mono text-xs text-amber-300 font-bold">
-                    {(raceState.decision.categoryConfidence * 100).toFixed(0)}% Top Pick
-                  </span>
+                <div className="font-display text-lg font-bold text-slate-100 uppercase mt-1">
+                  {raceState.decision.category}
                 </div>
               </div>
 
               {/* Step 3: Adaptive Tier */}
-              <div className="p-3.5 rounded-lg border border-amber-400/40 bg-amber-950/20">
-                <div className="text-[10px] font-mono text-amber-400 uppercase mb-1">
-                  Step 3 · Shortlist Tier
-                </div>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-lg font-bold text-amber-300 uppercase">
-                    {raceState.decision.tier}
-                  </span>
-                  <span className="font-mono text-xs font-bold text-emerald-400">
+              <div className="p-3.5 rounded-xl border border-amber-400/40 bg-amber-950/20 flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[10px] font-mono text-amber-400 uppercase tracking-wider mb-1">
+                  <span>Step 3 · Shortlist Tier</span>
+                  <span className="text-emerald-400 font-bold px-1.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/30">
                     {raceState.decision.shortlistCount} Tools
                   </span>
+                </div>
+                <div className="font-display text-xl font-bold text-amber-300 uppercase mt-1">
+                  {raceState.decision.tier}
                 </div>
               </div>
 
@@ -348,7 +339,7 @@ export const RacePlates: React.FC<RacePlatesProps> = ({
 
             {/* Shortlisted Tools */}
             {raceState.decision.shortlistedTools.length > 0 && (
-              <div>
+              <div className="pt-2 border-t border-white/5">
                 <div className="text-[11px] font-mono text-slate-400 uppercase mb-2">
                   Shortlisted Tools Sent to Amazon Bedrock:
                 </div>

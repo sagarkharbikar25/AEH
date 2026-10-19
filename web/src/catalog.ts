@@ -9,18 +9,18 @@ export interface ConstellationInfo {
 }
 
 export const CONSTELLATIONS: ConstellationInfo[] = [
-  { id: 'calendar', name: 'Lyra', domain: 'Calendar & Scheduling', cx: 180, cy: 150 },
-  { id: 'compute', name: 'Orion', domain: 'Compute & Containers', cx: 420, cy: 140 },
-  { id: 'storage', name: 'Ursa', domain: 'Storage & S3 Buckets', cx: 680, cy: 130 },
-  { id: 'telemetry', name: 'Cygnus', domain: 'Telemetry & Logs', cx: 880, cy: 180 },
-  { id: 'workflows', name: 'Pegasus', domain: 'Workflows & State', cx: 190, cy: 350 },
-  { id: 'tickets', name: 'Aquila', domain: 'Tickets & Incidents', cx: 440, cy: 340 },
-  { id: 'billing', name: 'Phoenix', domain: 'Billing & Budgets', cx: 670, cy: 350 },
-  { id: 'network', name: 'Draco', domain: 'Network & Routing', cx: 880, cy: 360 },
-  { id: 'security', name: 'Cassiopeia', domain: 'Security & IAM Roles', cx: 170, cy: 550 },
-  { id: 'messaging', name: 'Andromeda', domain: 'Messaging & Queues', cx: 400, cy: 550 },
-  { id: 'database', name: 'Centaurus', domain: 'Database & SQL', cx: 630, cy: 550 },
-  { id: 'devops', name: 'Vela', domain: 'DevOps & Releases', cx: 850, cy: 560 }
+  { id: 'calendar', name: 'Lyra', domain: 'Calendar & Scheduling', cx: 500, cy: 140 },
+  { id: 'compute', name: 'Orion', domain: 'Compute & Containers', cx: 620, cy: 175 },
+  { id: 'storage', name: 'Ursa', domain: 'Storage & S3 Buckets', cx: 710, cy: 250 },
+  { id: 'telemetry', name: 'Cygnus', domain: 'Telemetry & Logs', cx: 740, cy: 350 },
+  { id: 'workflows', name: 'Pegasus', domain: 'Workflows & State', cx: 710, cy: 450 },
+  { id: 'tickets', name: 'Aquila', domain: 'Tickets & Incidents', cx: 620, cy: 525 },
+  { id: 'billing', name: 'Phoenix', domain: 'Billing & Budgets', cx: 500, cy: 560 },
+  { id: 'network', name: 'Draco', domain: 'Network & Routing', cx: 380, cy: 525 },
+  { id: 'security', name: 'Cassiopeia', domain: 'Security & IAM Roles', cx: 290, cy: 450 },
+  { id: 'messaging', name: 'Andromeda', domain: 'Messaging & Queues', cx: 260, cy: 350 },
+  { id: 'database', name: 'Centaurus', domain: 'Database & SQL', cx: 290, cy: 250 },
+  { id: 'devops', name: 'Vela', domain: 'DevOps & Releases', cx: 380, cy: 175 }
 ];
 
 // Helper to generate jittered coords around constellation center
