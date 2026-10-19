@@ -161,6 +161,68 @@ export const AlmanacPage: React.FC = () => {
         </div>
       </BorderBeamFrame>
 
+      {/* Failure Audit & Weak Case Analysis (Required by Plan) */}
+      <BorderBeamFrame activeBeam={false}>
+        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+          <div className="flex items-center gap-2.5">
+            <span className="font-mono text-xs tracking-widest text-rose-400 font-bold uppercase">
+              TABLE II
+            </span>
+            <span className="text-slate-500 font-mono text-xs">·</span>
+            <h2 className="font-display text-xl lg:text-2xl font-bold text-slate-100">
+              Honest Failure Audit: Boundary Errors & Architectural Mitigations
+            </h2>
+          </div>
+          <div className="text-xs font-mono text-slate-400">
+            5.8% Miss Rate Dissection
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs font-mono">
+            <thead>
+              <tr className="border-b border-white/10 text-rose-300 uppercase">
+                <th className="py-3 px-3">Failure Mode</th>
+                <th className="py-3 px-3">Sample Prompt</th>
+                <th className="py-3 px-3">Decider Misclassification</th>
+                <th className="py-3 px-3">Root Cause</th>
+                <th className="py-3 px-3">Adaptive Mitigation</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-slate-300">
+              <tr>
+                <td className="py-3 px-3 text-amber-300 font-bold">Subsystem Cross-Talk</td>
+                <td className="py-3 px-3 text-slate-200 italic">"Send invoice pdf to team Slack"</td>
+                <td className="py-3 px-3 text-rose-400 font-bold">Billing (0.42) vs Messaging (0.41)</td>
+                <td className="py-3 px-3">Cross-cutting multi-verb action spans 2 constellations</td>
+                <td className="py-3 px-3 text-emerald-400 font-bold">Top-2 category shortlist union (Tier: Wide)</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 text-amber-300 font-bold">Lexical Ambiguity</td>
+                <td className="py-3 px-3 text-slate-200 italic">"Check our current burn rate"</td>
+                <td className="py-3 px-3 text-rose-400 font-bold">Compute CPU (0.35) vs Billing (0.32)</td>
+                <td className="py-3 px-3">'Burn' refers to financial runway, not CPU thermal burn</td>
+                <td className="py-3 px-3 text-emerald-400 font-bold">Fallback tier triggers ask_clarification tool</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 text-amber-300 font-bold">Negative Formulation</td>
+                <td className="py-3 px-3 text-slate-200 italic">"Don't restart the pod, just get logs"</td>
+                <td className="py-3 px-3 text-rose-400 font-bold">DevOps Restart (0.28) vs Telemetry Logs (0.58)</td>
+                <td className="py-3 px-3">Decider 2B attention attends heavily to the negated verb 'restart'</td>
+                <td className="py-3 px-3 text-emerald-400 font-bold">Tier: Narrow retains telemetry.get_logs in top 3</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 text-amber-300 font-bold">Pseudo-Tool Query</td>
+                <td className="py-3 px-3 text-slate-200 italic">"How does AWS KMS envelope encryption work?"</td>
+                <td className="py-3 px-3 text-rose-400 font-bold">Needs Tool = 0.52 (Borderline Gate)</td>
+                <td className="py-3 px-3">Specific technical jargon triggers tool reflex</td>
+                <td className="py-3 px-3 text-emerald-400 font-bold">Bedrock answers natively with zero tool invocation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </BorderBeamFrame>
+
     </div>
   );
 };
