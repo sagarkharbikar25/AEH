@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TOOLS, CONSTELLATIONS } from '../catalog';
 import { Tool, RaceState } from '../types';
+import { Sparkles, Radio } from 'lucide-react';
 
 interface StarChartProps {
   raceState: RaceState;
@@ -15,98 +17,140 @@ export const StarChart: React.FC<StarChartProps> = ({ raceState, onSelectStar })
   const chosenStarId = raceState.selectedStarId || raceState.laneB.chosenTool;
 
   return (
-    <div className="relative w-full h-[520px] md:h-[620px] rounded border border-[var(--line)] bg-[var(--ink-900)] overflow-hidden shadow-2xl flex flex-col justify-between">
+    <div className="relative w-full h-[580px] lg:h-[680px] rounded-xl border border-white/10 bg-[#02040A] overflow-hidden shadow-2xl flex flex-col justify-between group">
       
-      {/* Chart Title Overlay */}
-      <div className="absolute top-4 left-5 z-10 pointer-events-none">
-        <div className="text-[10px] font-mono tracking-widest text-[var(--brass)] uppercase">
-          PLATE 0 · CELESTIAL ATLAS
+      {/* Moving Line in Border (Perimeter Beam) */}
+      <div className="absolute inset-0 pointer-events-none rounded-xl border border-white/5 z-20">
+        <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
+      </div>
+
+      {/* Header Overlay */}
+      <div className="absolute top-5 left-6 z-10 pointer-events-none flex items-start justify-between right-6">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <span className="text-[11px] font-mono tracking-widest text-amber-300 font-bold uppercase">
+              PLATE 0 · CELESTIAL MCP OCTANT
+            </span>
+          </div>
+          <h2 className="font-display text-2xl lg:text-3xl text-slate-100 font-bold tracking-wide">
+            240-Instrument Star Atlas
+          </h2>
+          <div className="text-xs text-slate-400 font-mono mt-0.5">
+            {shortlistedIds.size > 0 
+              ? `${shortlistedIds.size} MCP stars ignited by Decider 2B` 
+              : '12 Constellations · 240 Tools in Orbit'}
+          </div>
         </div>
-        <div className="font-display text-xl text-[var(--parchment)] tracking-wide">
-          Octant of 240 Instruments
-        </div>
-        <div className="text-xs text-[var(--parchment-muted)] font-mono">
-          {shortlistedIds.size > 0 
-            ? `${shortlistedIds.size} stars ignited in focus` 
-            : '240 tools mapped across 12 constellations'}
+
+        {/* Live Decider Mode Pill */}
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded border border-white/10 bg-[#050A15]/80 backdrop-blur text-xs font-mono">
+          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <span className="text-slate-400">DECIDER:</span>
+          <span className="text-amber-300 font-semibold uppercase">
+            {raceState.decision ? `${raceState.decision.tier} TIER` : 'READY'}
+          </span>
         </div>
       </div>
 
-      {/* Star Chart SVG */}
+      {/* SVG Canvas */}
       <svg 
         viewBox="0 0 1000 700" 
         className="w-full h-full select-none"
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          {/* Radial Polaris Golden Glow Filter */}
-          <radialGradient id="polarisGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFF2B2" stopOpacity="1" />
-            <stop offset="40%" stopColor="#F0CF85" stopOpacity="0.75" />
-            <stop offset="100%" stopColor="#C9A45C" stopOpacity="0" />
+          {/* Radial Polaris Supernova Glow */}
+          <radialGradient id="polarisSupernova" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FFFBEB" stopOpacity="1" />
+            <stop offset="35%" stopColor="#FDE047" stopOpacity="0.85" />
+            <stop offset="70%" stopColor="#D97706" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#02040A" stopOpacity="0" />
           </radialGradient>
 
-          {/* Constellation field glow */}
-          <radialGradient id="constellationFocus" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#6F86C9" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#070B16" stopOpacity="0" />
+          {/* Active Constellation MCP Nebula Glow */}
+          <radialGradient id="mcpNebulaGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.25" />
+            <stop offset="60%" stopColor="#6366F1" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#02040A" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        {/* Faint Celestial Coordinate Lines */}
-        <g stroke="var(--line-dim)" strokeWidth="0.5" strokeDasharray="3,6" opacity="0.6">
+        {/* Subtle Celestial Coordinates Wireframe */}
+        <g stroke="rgba(255, 255, 255, 0.04)" strokeWidth="0.8" strokeDasharray="4,8">
           <line x1="50" y1="350" x2="950" y2="350" />
-          <line x1="500" y1="40" x2="500" y2="660" />
-          <circle cx="500" cy="350" r="280" fill="none" />
-          <circle cx="500" cy="350" r="160" fill="none" />
+          <line x1="500" y1="30" x2="500" y2="670" />
+          <circle cx="500" cy="350" r="300" fill="none" />
+          <circle cx="500" cy="350" r="170" fill="none" />
+          <circle cx="500" cy="350" r="60" fill="none" />
         </g>
 
-        {/* Constellations */}
+        {/* 12 Constellations */}
         {CONSTELLATIONS.map((c) => {
           const isCategoryActive = activeCategory === c.id;
           return (
             <g key={c.id}>
-              {/* Highlight halo when active */}
+              {/* Animated MCP Pulse Rings when Category is Active */}
               {isCategoryActive && (
-                <circle 
-                  cx={c.cx} 
-                  cy={c.cy} 
-                  r="110" 
-                  fill="url(#constellationFocus)" 
-                  className="animate-pulse-slow"
-                />
+                <>
+                  <circle 
+                    cx={c.cx} 
+                    cy={c.cy} 
+                    r="120" 
+                    fill="url(#mcpNebulaGlow)" 
+                    className="animate-pulse"
+                  />
+                  <circle 
+                    cx={c.cx} 
+                    cy={c.cy} 
+                    r="85" 
+                    fill="none" 
+                    stroke="#38BDF8" 
+                    strokeWidth="1.2"
+                    strokeDasharray="4,6"
+                    className="animate-spin-slow origin-center"
+                  />
+                  <circle 
+                    cx={c.cx} 
+                    cy={c.cy} 
+                    r="60" 
+                    fill="none" 
+                    stroke="#FDE047" 
+                    strokeWidth="0.8"
+                    opacity="0.6"
+                  />
+                </>
               )}
 
-              {/* Constellation Label */}
+              {/* Constellation Name & Domain Label */}
               <text 
                 x={c.cx} 
                 y={c.cy - 52} 
                 textAnchor="middle" 
-                fill={isCategoryActive ? 'var(--brass-bright)' : 'var(--line)'}
-                className="font-mono text-[9px] tracking-widest uppercase transition-colors duration-500"
+                fill={isCategoryActive ? '#FDE047' : 'rgba(255,255,255,0.4)'}
+                className="font-mono text-[10px] tracking-widest uppercase font-bold transition-colors duration-500"
               >
                 {c.name}
               </text>
               <text 
                 x={c.cx} 
-                y={c.cy - 40} 
+                y={c.cy - 38} 
                 textAnchor="middle" 
-                fill={isCategoryActive ? 'var(--parchment)' : 'var(--parchment-muted)'}
-                className="font-display text-[11px] italic transition-colors duration-500"
+                fill={isCategoryActive ? '#F8FAFC' : 'rgba(255,255,255,0.2)'}
+                className="font-display text-[12px] italic transition-colors duration-500"
               >
                 {c.domain.split('&')[0]}
               </text>
 
-              {/* Faint constellation boundary ring */}
+              {/* Faint Boundary Arc */}
               <circle 
                 cx={c.cx} 
                 cy={c.cy} 
                 r="70" 
                 fill="none" 
-                stroke={isCategoryActive ? 'var(--brass)' : 'var(--line)'}
-                strokeWidth={isCategoryActive ? 0.8 : 0.4}
-                strokeDasharray={isCategoryActive ? 'none' : '2,4'}
-                opacity={isCategoryActive ? 0.8 : 0.25}
+                stroke={isCategoryActive ? '#F5D061' : 'rgba(255,255,255,0.06)'}
+                strokeWidth={isCategoryActive ? 1 : 0.5}
+                strokeDasharray={isCategoryActive ? 'none' : '3,6'}
               />
             </g>
           );
@@ -119,34 +163,32 @@ export const StarChart: React.FC<StarChartProps> = ({ raceState, onSelectStar })
           const isCategoryStar = activeCategory === star.category;
           const isHovered = hoveredStar?.id === star.id;
 
-          // Determine visual styling
           let radius = 2.4;
-          let starFill = 'var(--parchment-dim)';
+          let starFill = 'rgba(226, 232, 240, 0.5)';
           let opacity = 0.55;
 
           if (raceState.status === 'idle') {
             radius = 2.2;
             opacity = 0.6;
           } else if (isChosen) {
-            radius = 6;
-            starFill = 'var(--brass-bright)';
+            radius = 7;
+            starFill = '#FDE047';
             opacity = 1;
           } else if (isShortlisted) {
-            radius = 4.2;
-            starFill = 'var(--brass-bright)';
+            radius = 4.5;
+            starFill = '#FDE047';
             opacity = 0.95;
           } else if (isCategoryStar) {
-            radius = 3;
-            starFill = 'var(--parchment)';
+            radius = 3.2;
+            starFill = '#E2E8F0';
             opacity = 0.75;
           } else {
-            // Dimmed out when another category is chosen
-            radius = 1.8;
-            opacity = 0.2;
+            radius = 1.6;
+            opacity = 0.15;
           }
 
           if (isHovered) {
-            radius += 2;
+            radius += 2.5;
             opacity = 1;
           }
 
@@ -158,92 +200,117 @@ export const StarChart: React.FC<StarChartProps> = ({ raceState, onSelectStar })
               onMouseLeave={() => setHoveredStar(null)}
               onClick={() => onSelectStar?.(star)}
             >
-              {/* Polaris Final Pick Glowing Halo */}
+              {/* Polaris Supernova Aura */}
               {isChosen && (
                 <>
                   <circle 
                     cx={star.x} 
                     cy={star.y} 
-                    r="24" 
-                    fill="url(#polarisGlow)" 
+                    r="32" 
+                    fill="url(#polarisSupernova)" 
                     className="animate-pulse"
                   />
                   <circle 
                     cx={star.x} 
                     cy={star.y} 
-                    r="14" 
+                    r="16" 
                     fill="none" 
-                    stroke="var(--brass-bright)" 
-                    strokeWidth="1.2"
+                    stroke="#FDE047" 
+                    strokeWidth="1.5"
+                    className="animate-ping opacity-60"
+                  />
+                  <line 
+                    x1={star.x - 14} y1={star.y} 
+                    x2={star.x + 14} y2={star.y} 
+                    stroke="#FFFBEB" strokeWidth="1.2" 
+                  />
+                  <line 
+                    x1={star.x} y1={star.y - 14} 
+                    x2={star.x} y2={star.y + 14} 
+                    stroke="#FFFBEB" strokeWidth="1.2" 
                   />
                 </>
               )}
 
-              {/* Shortlist expanding ring */}
+              {/* Shortlist Expanding Ring */}
               {isShortlisted && !isChosen && (
                 <circle 
                   cx={star.x} 
                   cy={star.y} 
-                  r="8" 
+                  r="10" 
                   fill="none" 
-                  stroke="var(--brass)" 
-                  strokeWidth="0.8"
-                  strokeDasharray="2,2"
+                  stroke="#38BDF8" 
+                  strokeWidth="1"
+                  strokeDasharray="2,3"
                 />
               )}
 
-              {/* Core Star Node */}
+              {/* Core Star */}
               <circle 
                 cx={star.x} 
                 cy={star.y} 
                 r={radius} 
                 fill={starFill} 
                 opacity={opacity}
+                className="transition-all duration-300"
               />
             </g>
           );
         })}
       </svg>
 
-      {/* Interactive Hover / Selection Tooltip */}
-      {hoveredStar && (
-        <div className="absolute bottom-4 left-5 right-5 md:right-auto md:w-96 p-3.5 rounded border border-[var(--brass)] bg-[var(--ink-800)]/95 shadow-xl backdrop-blur z-20">
-          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-[var(--brass)] mb-1">
-            <span>{hoveredStar.category} · {hoveredStar.id}</span>
-            {shortlistedIds.has(hoveredStar.id) && (
-              <span className="text-[var(--lichen)] font-bold">★ SHORTLISTED</span>
-            )}
-            {chosenStarId === hoveredStar.id && (
-              <span className="text-[var(--brass-bright)] font-bold">✪ POLARIS PICK</span>
-            )}
-          </div>
-          <div className="font-display font-semibold text-base text-[var(--parchment)] mb-1">
-            {hoveredStar.name.replace(/_/g, ' ')}
-          </div>
-          <p className="text-xs text-[var(--parchment-dim)] leading-relaxed">
-            {hoveredStar.descriptor}
-          </p>
-        </div>
-      )}
+      {/* Floating Tooltip with Glassmorphic Border */}
+      <AnimatePresence>
+        {hoveredStar && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 8 }}
+            transition={{ duration: 0.2 }}
+            className="absolute bottom-5 left-6 right-6 md:right-auto md:w-[420px] p-4 rounded-xl border border-amber-400/50 bg-[#050A15]/95 shadow-[0_0_24px_rgba(0,0,0,0.8)] backdrop-blur-md z-30"
+          >
+            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-amber-300 mb-1.5">
+              <span>{hoveredStar.category} · {hoveredStar.id}</span>
+              {shortlistedIds.has(hoveredStar.id) && (
+                <span className="text-emerald-400 font-bold px-1.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40">
+                  ★ SHORTLISTED
+                </span>
+              )}
+              {chosenStarId === hoveredStar.id && (
+                <span className="text-amber-300 font-bold px-1.5 py-0.5 rounded bg-amber-950/80 border border-amber-400/50">
+                  ✪ POLARIS WINNER
+                </span>
+              )}
+            </div>
+            <div className="font-display font-bold text-lg text-slate-100 mb-1">
+              {hoveredStar.name.replace(/_/g, ' ')}
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed font-body">
+              {hoveredStar.descriptor}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Legend Footer */}
-      <div className="border-t border-[var(--line)] bg-[var(--ink-900)]/80 px-4 py-2 flex flex-wrap items-center justify-between text-[11px] font-mono text-[var(--parchment-muted)]">
-        <div className="flex items-center gap-4">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[var(--parchment-dim)] opacity-40" />
+      {/* Footer Legend */}
+      <div className="border-t border-white/10 bg-[#030610]/90 px-6 py-3 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400">
+        <div className="flex items-center gap-5">
+          <span className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-slate-400 opacity-40" />
             <span>240 Tools in Sky</span>
           </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--brass)]" />
-            <span>Shortlist (1 to 6)</span>
+          <span className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#38BDF8]" />
+            <span className="text-cyan-300">Shortlisted (1 to 6)</span>
           </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-[var(--brass-bright)] shadow-[0_0_8px_var(--brass-bright)]" />
-            <span className="text-[var(--brass-bright)] font-bold">Polaris Pick</span>
+          <span className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-amber-400 shadow-[0_0_10px_#FDE047]" />
+            <span className="text-amber-300 font-bold">Polaris Pick</span>
           </span>
         </div>
-        <div className="hidden sm:block text-[10px] text-[var(--brass)]">
-          DECIDER 2B HIERARCHICAL PROJECTION
+        <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-400">
+          <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+          <span>DECIDER 2B HIERARCHICAL PROJECTION</span>
         </div>
       </div>
 

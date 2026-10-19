@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertCircle, Copy, Check, Compass, Radio, PowerOff, ShieldAlert, WifiOff } from 'lucide-react';
 import { ErrorVariant } from '../types';
+import { BorderBeamFrame } from './BorderBeamFrame';
 
 interface ErrorScreenProps {
   variant: ErrorVariant;
   requestId?: string;
-  retryAfterSeconds?: number;
   onWatchReplay?: () => void;
   onRetry?: () => void;
 }
@@ -115,69 +115,63 @@ export const ErrorScreen: React.FC<ErrorScreenProps> = ({
   };
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center p-4">
-      <div className="max-w-xl w-full plate border-[var(--ember)]/60 bg-[var(--ink-800)]/90 p-8 text-center relative overflow-hidden shadow-2xl">
-        
-        {/* Celestial background rings */}
-        <div className="absolute inset-0 pointer-events-none opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 400 400">
-            <circle cx="200" cy="200" r="140" fill="none" stroke="var(--ember)" strokeWidth="1" strokeDasharray="4,8" />
-            <circle cx="200" cy="200" r="80" fill="none" stroke="var(--ember)" strokeWidth="1" />
-          </svg>
-        </div>
+    <div className="min-h-[70vh] flex items-center justify-center p-6">
+      <div className="max-w-xl w-full">
+        <BorderBeamFrame activeBeam={true}>
+          <div className="text-center relative">
+            {/* Icon */}
+            <div className="mx-auto w-16 h-16 rounded-full border border-rose-500/50 flex items-center justify-center bg-[#02040A] mb-4 text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.2)]">
+              <Icon className="w-8 h-8" />
+            </div>
 
-        {/* Icon */}
-        <div className="relative z-10 mx-auto w-14 h-14 rounded-full border border-[var(--ember)]/80 flex items-center justify-center bg-[var(--ink-900)] mb-4 text-[var(--ember)]">
-          <Icon className="w-7 h-7" />
-        </div>
+            {/* Subtitle */}
+            <div className="text-xs font-mono tracking-widest uppercase text-rose-400 font-bold mb-1">
+              {cfg.subtitle}
+            </div>
 
-        {/* Subtitle / Tag */}
-        <div className="relative z-10 text-[11px] font-mono tracking-widest uppercase text-[var(--ember)] mb-1">
-          {cfg.subtitle}
-        </div>
+            {/* Title */}
+            <h2 className="font-display text-3xl font-bold text-slate-100 mb-3">
+              {cfg.title}
+            </h2>
 
-        {/* Title */}
-        <h2 className="relative z-10 font-display text-3xl font-bold text-[var(--parchment)] mb-3">
-          {cfg.title}
-        </h2>
+            {/* Description */}
+            <p className="text-sm font-body text-slate-300 leading-relaxed mb-6 max-w-md mx-auto">
+              {cfg.description}
+            </p>
 
-        {/* Description */}
-        <p className="relative z-10 text-sm font-body text-[var(--parchment-dim)] leading-relaxed mb-6 max-w-md mx-auto">
-          {cfg.description}
-        </p>
+            {/* Request ID Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-white/10 bg-[#02040A] text-xs font-mono text-slate-400 mb-6">
+              <span>DIAGNOSTIC ID:</span>
+              <span className="text-slate-100 font-bold">{requestId}</span>
+              <button 
+                onClick={handleCopyId} 
+                className="hover:text-amber-300 transition-colors ml-1"
+                title="Copy ID"
+              >
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              </button>
+            </div>
 
-        {/* Request ID badge */}
-        <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded border border-[var(--line)] bg-[var(--ink-900)] text-xs font-mono text-[var(--parchment-muted)] mb-6">
-          <span>REQUEST ID:</span>
-          <span className="text-[var(--parchment)] font-bold">{requestId}</span>
-          <button 
-            onClick={handleCopyId} 
-            className="hover:text-[var(--brass-bright)] transition-colors ml-1"
-            title="Copy Request ID"
-          >
-            {copied ? <Check className="w-3.5 h-3.5 text-[var(--lichen)]" /> : <Copy className="w-3.5 h-3.5" />}
-          </button>
-        </div>
-
-        {/* Actions */}
-        <div className="relative z-10 flex flex-wrap items-center justify-center gap-3">
-          <button
-            onClick={handlePrimary}
-            className="px-6 py-2.5 rounded border border-[var(--brass)] bg-[var(--brass)]/10 hover:bg-[var(--brass)]/20 text-[var(--brass-bright)] font-mono text-xs uppercase tracking-wider transition-all"
-          >
-            {cfg.actionText}
-          </button>
-          
-          {cfg.secondaryAction && (
-            <button
-              onClick={() => navigate('/')}
-              className="px-5 py-2.5 rounded border border-[var(--line)] hover:border-[var(--parchment-dim)] text-[var(--parchment-dim)] font-mono text-xs uppercase tracking-wider transition-all"
-            >
-              {cfg.secondaryAction}
-            </button>
-          )}
-        </div>
-
+            {/* Actions */}
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={handlePrimary}
+                className="px-6 py-2.5 rounded-lg border border-amber-400/80 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_15px_rgba(245,208,97,0.15)]"
+              >
+                {cfg.actionText}
+              </button>
+              
+              {cfg.secondaryAction && (
+                <button
+                  onClick={() => navigate('/')}
+                  className="px-5 py-2.5 rounded-lg border border-white/10 hover:border-white/30 text-slate-300 font-mono text-xs uppercase tracking-wider transition-all"
+                >
+                  {cfg.secondaryAction}
+                </button>
+              )}
+            </div>
+          </div>
+        </BorderBeamFrame>
       </div>
     </div>
   );

@@ -5,11 +5,9 @@ import { RaceState, Tool } from '../types';
 import { REPLAYS } from '../replays';
 
 export const AtlasPage: React.FC = () => {
-  // Start with default easy flight state so user immediately sees live metrics
   const [raceState, setRaceState] = useState<RaceState>(REPLAYS.easy.state);
 
   const handleRunQuery = (query: string) => {
-    // Check if query matches or simulate live race
     const lower = query.toLowerCase();
     let matchedReplay = REPLAYS.easy;
     if (lower.includes('amdahl') || lower.includes('law') || lower.includes('what is') || lower.includes('explain')) {
@@ -67,20 +65,25 @@ export const AtlasPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
       
       {/* Intro Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[var(--line)] pb-5 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 gap-4">
         <div>
-          <div className="text-[10px] font-mono tracking-widest uppercase text-[var(--brass)]">
-            DECIDER 2B TOOL ROUTER × AMAZON BEDROCK
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-400 font-bold px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
+              STRANDS DECIDER 2B × AMAZON BEDROCK
+            </span>
+            <span className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold px-2 py-0.5 rounded bg-amber-950/60 border border-amber-400/30">
+              MCP ARCHITECTURE
+            </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--parchment)] tracking-wide">
+          <h1 className="font-display text-4xl lg:text-5xl font-bold text-slate-100 tracking-wide">
             The Celestial Atlas
           </h1>
         </div>
-        <p className="text-sm font-body text-[var(--parchment-dim)] max-w-md">
-          A high-speed 2B parameter decider in front of the LLM. Narrows 240 tools to a calibrated shortlist of 1 to 6 in ~40ms.
+        <p className="text-sm font-body text-slate-300 max-w-lg leading-relaxed">
+          A high-speed 2B parameter decider in front of the LLM. Narrows 240 tools to a calibrated shortlist of 1 to 6 in ~40ms, saving up to 97% of prompt tokens.
         </p>
       </div>
 

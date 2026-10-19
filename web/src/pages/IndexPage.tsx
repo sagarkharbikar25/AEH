@@ -18,18 +18,18 @@ export const IndexPage: React.FC = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
       
       {/* Title */}
-      <div className="border-b border-[var(--line)] pb-5">
-        <div className="text-[10px] font-mono tracking-widest uppercase text-[var(--brass)]">
-          CATALOG REPOSITORY
+      <div className="border-b border-white/10 pb-6">
+        <div className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold mb-1">
+          MCP TOOL DIRECTORY
         </div>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--parchment)] tracking-wide">
-          Index of Stars
+        <h1 className="font-display text-4xl lg:text-5xl font-bold text-slate-100 tracking-wide">
+          Index of 240 Stars
         </h1>
-        <p className="text-sm font-body text-[var(--parchment-dim)] max-w-xl mt-2">
-          Directory of all 240 simulated tools organized across 12 celestial constellations. Each instrument features precomputed coordinates and calibrated 12-word decider descriptors.
+        <p className="text-sm font-body text-slate-300 max-w-xl mt-2 leading-relaxed">
+          Searchable catalog of 240 instruments across 12 celestial constellations, each with precomputed SVG sky coordinates and calibrated 12-word Decider descriptors.
         </p>
       </div>
 
@@ -40,10 +40,10 @@ export const IndexPage: React.FC = () => {
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none text-xs font-mono">
           <button
             onClick={() => setSelectedConstellation('all')}
-            className={`px-3 py-1.5 rounded transition-colors whitespace-nowrap ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap font-bold ${
               selectedConstellation === 'all'
-                ? 'bg-[var(--brass)] text-[var(--ink-900)] font-bold'
-                : 'border border-[var(--line)] text-[var(--parchment-dim)] hover:text-[var(--parchment)]'
+                ? 'bg-amber-400 text-slate-950 shadow-[0_0_12px_rgba(245,208,97,0.3)]'
+                : 'border border-white/10 text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             All 240
@@ -52,10 +52,10 @@ export const IndexPage: React.FC = () => {
             <button
               key={c.id}
               onClick={() => setSelectedConstellation(c.id)}
-              className={`px-3 py-1.5 rounded transition-colors whitespace-nowrap ${
+              className={`px-3.5 py-1.5 rounded-lg transition-all whitespace-nowrap ${
                 selectedConstellation === c.id
-                  ? 'bg-[var(--brass)] text-[var(--ink-900)] font-bold'
-                  : 'border border-[var(--line)] text-[var(--parchment-dim)] hover:text-[var(--parchment)]'
+                  ? 'bg-amber-400 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,208,97,0.3)]'
+                  : 'border border-white/10 text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
               {c.name}
@@ -63,15 +63,15 @@ export const IndexPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Search Input */}
+        {/* Search Box */}
         <div className="relative min-w-[280px]">
-          <Search className="w-4 h-4 text-[var(--parchment-muted)] absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search 240 tools..."
-            className="w-full pl-9 pr-4 py-1.5 rounded border border-[var(--line)] bg-[var(--ink-900)] text-xs font-mono text-[var(--parchment)] placeholder:text-[var(--parchment-muted)] focus:outline-none focus:border-[var(--brass)]"
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-white/10 bg-[#02040A] text-xs font-mono text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
           />
         </div>
 
@@ -83,73 +83,73 @@ export const IndexPage: React.FC = () => {
           <div
             key={tool.id}
             onClick={() => setActiveTool(tool)}
-            className="p-4 rounded border border-[var(--line)] bg-[var(--ink-800)]/70 hover:border-[var(--brass)] cursor-pointer transition-all flex flex-col justify-between group"
+            className="p-4 rounded-xl border border-white/10 bg-[#050A15]/80 hover:border-amber-400/60 hover:shadow-[0_0_15px_rgba(245,208,97,0.1)] cursor-pointer transition-all flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center justify-between text-[10px] font-mono text-[var(--brass)] uppercase mb-1">
+              <div className="flex items-center justify-between text-[10px] font-mono text-amber-300 uppercase mb-1">
                 <span>{tool.category}</span>
-                <span className="text-[var(--parchment-muted)] group-hover:text-[var(--brass-bright)]">
+                <span className="text-slate-500 group-hover:text-amber-200">
                   ({tool.x}, {tool.y})
                 </span>
               </div>
-              <h3 className="font-display font-semibold text-lg text-[var(--parchment)] group-hover:text-[var(--brass-bright)] transition-colors mb-1">
+              <h3 className="font-display font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors mb-1">
                 {tool.name.replace(/_/g, ' ')}
               </h3>
-              <p className="text-xs text-[var(--parchment-dim)] leading-relaxed mb-3">
+              <p className="text-xs text-slate-300 leading-relaxed mb-3">
                 {tool.descriptor}
               </p>
             </div>
 
-            <div className="text-[11px] font-mono text-[var(--parchment-muted)] border-t border-[var(--line)]/50 pt-2 flex items-center justify-between">
+            <div className="text-[11px] font-mono text-slate-400 border-t border-white/5 pt-2 flex items-center justify-between">
               <span>{tool.id}</span>
-              <span className="text-[var(--brass)] text-[10px] uppercase">Inspect</span>
+              <span className="text-amber-300 text-[10px] uppercase font-bold">Inspect</span>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Tool Detail Modal */}
+      {/* Tool Modal */}
       {activeTool && (
         <div 
           onClick={() => setActiveTool(null)}
-          className="fixed inset-0 z-50 bg-[var(--ink-900)]/80 backdrop-blur flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
         >
           <div 
             onClick={(e) => e.stopPropagation()}
-            className="max-w-xl w-full plate border-[var(--brass)] bg-[var(--ink-800)] p-6 space-y-4"
+            className="max-w-xl w-full rounded-xl border border-amber-400/50 bg-[#050A15] p-6 space-y-4 shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div>
-                <span className="plate-tag">{activeTool.category} SUBSYSTEM</span>
-                <h2 className="font-display text-2xl font-bold text-[var(--parchment)]">
+                <span className="font-mono text-xs text-amber-300 uppercase tracking-wider">{activeTool.category} SUBSYSTEM</span>
+                <h2 className="font-display text-2xl font-bold text-slate-100">
                   {activeTool.name.replace(/_/g, ' ')}
                 </h2>
               </div>
               <button 
                 onClick={() => setActiveTool(null)}
-                className="text-xs font-mono px-2 py-1 rounded border border-[var(--line)] hover:border-[var(--parchment)]"
+                className="text-xs font-mono px-3 py-1 rounded border border-white/10 hover:border-white text-slate-300"
               >
                 ✕ Close
               </button>
             </div>
 
             <div>
-              <div className="text-[10px] font-mono uppercase text-[var(--brass)] mb-1">Decider Option Descriptor (≤ 12 words)</div>
-              <div className="p-2.5 rounded bg-[var(--ink-900)] border border-[var(--line)] text-xs font-mono text-[var(--brass-bright)]">
+              <div className="text-[10px] font-mono uppercase text-amber-300 mb-1">Decider Option Descriptor (≤ 12 words)</div>
+              <div className="p-3 rounded-lg bg-[#02040A] border border-white/10 text-xs font-mono text-cyan-300">
                 "{activeTool.descriptor}"
               </div>
             </div>
 
             <div>
-              <div className="text-[10px] font-mono uppercase text-[var(--parchment-muted)] mb-1">Full Tool Description</div>
-              <p className="text-xs text-[var(--parchment-dim)] leading-relaxed">
+              <div className="text-[10px] font-mono uppercase text-slate-400 mb-1">Full Tool Description</div>
+              <p className="text-xs text-slate-300 leading-relaxed">
                 {activeTool.description}
               </p>
             </div>
 
             <div>
-              <div className="text-[10px] font-mono uppercase text-[var(--parchment-muted)] mb-1">Catalog Identifier & Coordinates</div>
-              <div className="text-xs font-mono text-[var(--parchment-dim)]">
+              <div className="text-[10px] font-mono uppercase text-slate-400 mb-1">Catalog Identifier & Coordinates</div>
+              <div className="text-xs font-mono text-slate-300">
                 <code>id: "{activeTool.id}"</code> · <code>coordinates: ({activeTool.x}, {activeTool.y})</code>
               </div>
             </div>
