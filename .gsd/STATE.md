@@ -1,8 +1,8 @@
 # GSD current state
 
 > Last updated: 2026-10-21
-> Active branch: `main`
-> Current phase: **P0 — contract commit (complete)** / next: **P1 data layer**
+> Active branch: `database`
+> Current phase: **P1 — data layer (complete)** / next: **P2 backend hardening**
 > Spec: `.gsd/SPEC.md` (FINALIZED)
 > Execution plan: `plan/execution-plan.md`
 
@@ -11,8 +11,8 @@
 | Phase | Description | Status |
 |---|---|:---:|
 | P0 | Contract commit | **COMPLETE** |
-| P1 | Data layer (`database`) | NEXT |
-| P2 | Backend hardening (`backend`) | PENDING |
+| P1 | Data layer (`database`) | **COMPLETE** |
+| P2 | Backend hardening (`backend`) | NEXT |
 | P3 | Benchmark + pattern (`backend`) | PENDING |
 | P4 | Frontend shell + design system (`frontend`) | PENDING |
 | P5 | Frontend wiring (`frontend`) | PENDING |
