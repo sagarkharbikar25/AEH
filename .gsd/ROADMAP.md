@@ -9,8 +9,8 @@
 
 | Phase | Branch | Deliverable | Status |
 |---|---|---|---|
-| **P0** | `main` | Contract commit: LICENSE, README, `.env.example`, workspaces, `packages/contracts`, `supabase/migrations/0001_init.sql`, `docs/api.md`, `docs/adr/*`, CI, tag `v0.0.1-contracts` | IN PROGRESS |
-| **P1** | `database` | Migrations, RLS, spend counter, catalog and query generators, star layout, seed | PENDING |
+| **P0** | `main` | Contract commit: LICENSE, README, `.env.example`, workspaces, `packages/contracts`, `supabase/migrations/0001_init.sql`, `docs/api.md`, `docs/adr/*`, CI, tag `v0.0.1-contracts` | **COMPLETE** |
+| **P1** | `database` | Migrations, RLS, spend counter, catalog and query generators, star layout, seed | NEXT |
 | **P2** | `backend` | Merge main; error envelope, zod validation, SSE contract alignment, timeouts, daily kill switch, router fixes, health, `runId`, Bedrock retry, persistence | PENDING |
 | **P3** | `backend` | Benchmark configs A/B/C, recall@1/3/6, p50/p95, reliability and failure tables, `PATTERN.md` rewrite | PENDING |
 | **P4** | `frontend` | Merge main; folder layout, data router + errorElement, design system, fonts, a11y | PENDING |
