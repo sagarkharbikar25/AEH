@@ -1,0 +1,36 @@
+{
+  "name": "polaris",
+  "version": "1.0.0",
+  "private": true,
+  "description": "POLARIS - a Decider 2B tool router in front of Amazon Bedrock",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "server",
+    "bench",
+    "web"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @polaris/contracts && npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspace @polaris/contracts && npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspace @polaris/contracts && npm run test --workspaces --if-present",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "npm run clean --workspaces --if-present",
+    "dev:server": "npm run dev --workspace @polaris/server",
+    "dev:web": "npm run dev --workspace polaris-web",
+    "race": "npm run race --workspace @polaris/server",
+    "bench": "npm run bench --workspace @polaris/bench",
+    "catalog": "npm run catalog --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.4.0",
+    "typescript-eslint": "^8.24.0"
+  }
+}
