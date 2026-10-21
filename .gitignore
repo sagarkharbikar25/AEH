@@ -44,3 +44,4 @@ venv/
 # Vite / Temporary
 .turbo
 .cache
+.vite

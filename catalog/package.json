@@ -1,0 +1,26 @@
+{
+  "name": "@polaris/catalog",
+  "version": "1.0.0",
+  "description": "Deterministic generator for the 240-tool catalog and the labelled evaluation queries",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "catalog": "tsx src/index.ts",
+    "seed": "tsx src/seed.ts",
+    "test": "vitest run"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@polaris/contracts": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
