@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+:root {
+  --ink-950: #010206;
+  --ink-900: #02040A;
+  --ink-850: #050A15;
+  --ink-800: #0A1124;
+  --ink-700: #101B38;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-bright: rgba(255, 255, 255, 0.2);
+  --line-gold: rgba(245, 208, 97, 0.3);
+
+  --silver-100: #F8FAFC;
+  --silver-200: #E2E8F0;
+  --silver-300: #CBD5E1;
+  --silver-muted: #94A3B8;
+
+  --brass: #F5D061;
+  --brass-bright: #FDE047;
+  --brass-dim: #9E7D28;
+  
+  --cyan-mcp: #38BDF8;
+  --cyan-glow: rgba(56, 189, 248, 0.35);
+
+  --lichen: #34D399;
+  --ember: #F87171;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: var(--ink-950);
+  color: var(--silver-200);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Cosmic Background with Radial Nebula Gloss & Starlight Dust */
+body {
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -15%, rgba(56, 189, 248, 0.12) 0%, transparent 65%),
+    radial-gradient(circle 700px at 85% 15%, rgba(245, 208, 97, 0.06) 0%, transparent 70%),
+    radial-gradient(circle 500px at 15% 45%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px;
+  background-attachment: fixed;
+}
+
+/* Glass Plate Styling */
+.plate {
+  position: relative;
+  border: 1px solid var(--line);
+  background: rgba(5, 10, 21, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plate:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.plate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.plate-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.plate-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--silver-100);
+}
+
+/* Continuous Moving Line in Border (Border Beam Effect) */
+.border-beam-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(5, 10, 21, 0.82);
+  backdrop-filter: blur(14px);
+}
+
+.border-beam-container::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg) at 50% 50%,
+    transparent 0deg,
+    transparent 280deg,
+    var(--cyan-mcp) 320deg,
+    var(--brass-bright) 350deg,
+    transparent 360deg
+  );
+  border-radius: inherit;
+  z-index: 0;
+  animation: rotateBeam 4s linear infinite;
+  pointer-events: none;
+}
+
+.border-beam-container > .border-beam-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(3, 6, 14, 0.94);
+  border-radius: 7px;
+  margin: 1px;
+}
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateBeam {
+  from { --beam-angle: 0deg; }
+  to { --beam-angle: 360deg; }
+}
+
+/* MCP Pulse Keyframes */
+@keyframes mcpPulseWave {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 0 0 0 16px rgba(56, 189, 248, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+
+.animate-mcp-pulse {
+  animation: mcpPulseWave 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Custom Typography Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Text Shimmer Effect */
+.silver-shimmer {
+  background: linear-gradient(120deg, #F8FAFC 0%, #CBD5E1 50%, #FDE047 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,135 @@
+{
+  "id": "ambiguous",
+  "title": "Flight II · Ambiguous Intent (Narrow Tier)",
+  "query": "Notify team about customer issue ticket update and schedule triage",
+  "kind": "ambiguous",
+  "events": [
+    {
+      "type": "decision",
+      "runId": "replay_flight_02",
+      "seq": 0,
+      "ts": "2026-10-22T10:05:00.000Z",
+      "stage": "tool",
+      "needsTool": true,
+      "confidence": 0.68,
+      "latencyMs": 37,
+      "topCategories": [
+        { "category": "tickets", "p": 0.52 },
+        { "category": "messaging", "p": 0.38 }
+      ]
+    },
+    {
+      "type": "shortlist",
+      "runId": "replay_flight_02",
+      "seq": 1,
+      "ts": "2026-10-22T10:05:00.039Z",
+      "tier": "narrow",
+      "tools": [
+        { "id": "tickets.create_incident_ticket", "name": "create_incident_ticket", "score": 0.65 },
+        { "id": "messaging.send_channel_message", "name": "send_channel_message", "score": 0.58 },
+        { "id": "calendar.create_event", "name": "create_event", "score": 0.52 }
+      ],
+      "totalTools": 3
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_02",
+      "seq": 2,
+      "ts": "2026-10-22T10:05:00.040Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "stage": "bedrock_converse_full_catalog"
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_02",
+      "seq": 3,
+      "ts": "2026-10-22T10:05:00.040Z",
+      "lane": "polaris",
+      "toolsSent": 3,
+      "stage": "bedrock_converse_shortlist"
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_02",
+      "seq": 4,
+      "ts": "2026-10-22T10:05:00.280Z",
+      "lane": "polaris",
+      "inputTokens": 540,
+      "outputTokens": 76,
+      "elapsedMs": 240
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_02",
+      "seq": 5,
+      "ts": "2026-10-22T10:05:00.288Z",
+      "lane": "polaris",
+      "toolsSent": 3,
+      "inputTokens": 540,
+      "outputTokens": 76,
+      "latencyMs": 248,
+      "chosenTool": "tickets.create_incident_ticket",
+      "correct": true,
+      "costUsd": 0.000251
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_02",
+      "seq": 6,
+      "ts": "2026-10-22T10:05:01.280Z",
+      "lane": "baseline",
+      "inputTokens": 20400,
+      "outputTokens": 76,
+      "elapsedMs": 1240
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_02",
+      "seq": 7,
+      "ts": "2026-10-22T10:05:01.295Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "inputTokens": 20400,
+      "outputTokens": 76,
+      "latencyMs": 1255,
+      "chosenTool": "tickets.create_incident_ticket",
+      "correct": true,
+      "costUsd": 0.005195
+    },
+    {
+      "type": "final",
+      "runId": "replay_flight_02",
+      "seq": 8,
+      "ts": "2026-10-22T10:05:01.305Z",
+      "tier": "narrow",
+      "decidedTool": "tickets.create_incident_ticket",
+      "laneA": {
+        "lane": "baseline",
+        "toolsSent": 240,
+        "inputTokens": 20400,
+        "outputTokens": 76,
+        "latencyMs": 1255,
+        "chosenTool": "tickets.create_incident_ticket",
+        "correct": true,
+        "costUsd": 0.005195
+      },
+      "laneB": {
+        "lane": "polaris",
+        "toolsSent": 3,
+        "inputTokens": 540,
+        "outputTokens": 76,
+        "latencyMs": 248,
+        "chosenTool": "tickets.create_incident_ticket",
+        "correct": true,
+        "costUsd": 0.000251
+      },
+      "savings": {
+        "inputTokens": 19860,
+        "latencyMs": 1007,
+        "costUsd": 0.004944,
+        "tokenSavingsPct": 97.4
+      }
+    }
+  ]
+}
