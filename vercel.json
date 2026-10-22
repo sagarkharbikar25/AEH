@@ -1,6 +1,6 @@
 {
   "framework": "vite",
-  "buildCommand": "npm run build --workspace polaris-web",
+  "buildCommand": "npm run build --workspace @polaris/contracts && npm run build --workspace polaris-web",
   "outputDirectory": "web/dist",
   "rewrites": [
     {
