@@ -1,0 +1,21 @@
+[Unit]
+Description=POLARIS Express Backend API & SSE Stream Service
+After=network.target decider.service
+Wants=decider.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/var/www/polaris
+ExecStart=/usr/bin/npm run dev:server
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+EnvironmentFile=-/var/www/polaris/.env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=DECIDER_URL=http://localhost:8000
+
+[Install]
+WantedBy=multi-user.target
