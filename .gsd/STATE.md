@@ -1,8 +1,8 @@
 # GSD current state
 
-> Last updated: 2026-10-21
-> Active branch: `database`
-> Current phase: **P1 — data layer (complete)** / next: **P2 backend hardening**
+> Last updated: 2026-10-22
+> Active branch: `main` (Tag: `v1.0.0`)
+> Current phase: **ALL PHASES COMPLETE (P0 - P8)**
 > Spec: `.gsd/SPEC.md` (FINALIZED)
 > Execution plan: `plan/execution-plan.md`
 
@@ -10,15 +10,15 @@
 
 | Phase | Description | Status |
 |---|---|:---:|
-| P0 | Contract commit | **COMPLETE** |
+| P0 | Contract commit (`main`) | **COMPLETE** |
 | P1 | Data layer (`database`) | **COMPLETE** |
-| P2 | Backend hardening (`backend`) | NEXT |
-| P3 | Benchmark + pattern (`backend`) | PENDING |
-| P4 | Frontend shell + design system (`frontend`) | PENDING |
-| P5 | Frontend wiring (`frontend`) | PENDING |
-| P6 | Deployment (`deployment`) | PENDING |
-| P7 | Integration dry run | PENDING |
-| P8 | Final merge | PENDING |
+| P2 | Backend hardening (`backend`) | **COMPLETE** |
+| P3 | Benchmark + pattern (`backend`) | **COMPLETE** |
+| P4 | Frontend shell + design system (`frontend`) | **COMPLETE** |
+| P5 | Frontend wiring (`frontend`) | **COMPLETE** |
+| P6 | Deployment (`deployment`) | **COMPLETE** |
+| P7 | Integration dry run (`integration`) | **COMPLETE** |
+| P8 | Final merge (`main`, tagged `v1.0.0`) | **COMPLETE** |
 
 ## Wave 1 summary (P0, branch `main`)
 
