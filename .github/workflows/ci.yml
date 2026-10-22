@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main, backend, database, frontend, deployment]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # The contracts package is the dependency of everything else, so it is
+      # built first. The router is built before the server because the server
+      # resolves it through its built entry point.
+      - name: Build contracts
+        run: npm run build --workspace @polaris/contracts
+
+      - name: Build router
+        if: ${{ hashFiles('packages/router/package.json') != '' }}
+        run: npm run build --workspace @polaris/router
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Check no secrets are committed
+        run: |
+          if git grep -nIE '(AWS_SECRET_ACCESS_KEY|SUPABASE_SERVICE_ROLE_KEY)=[^[:space:]]+' -- \
+             '.env' '*.env' '.env.*' 2>/dev/null; then
+            echo "A secret-looking value is committed. Aborting."
+            exit 1
+          fi
+          echo "no committed secrets found"
+
+  sql:
+    name: database migrations are ordered and complete
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check migration numbering is contiguous from 0001
+        run: |
+          set -euo pipefail
+          files=$(find supabase/migrations -name '*.sql' 2>/dev/null | sort || true)
+          if [ -z "$files" ]; then
+            echo "no migrations found"
+            exit 0
+          fi
+          i=1
+          for f in $files; do
+            expected=$(printf 'supabase/migrations/%04d_' "$i")
+            case "$f" in
+              "$expected"*) ;;
+              *) echo "migration $f does not match expected prefix $expected"; exit 1 ;;
+            esac
+            i=$((i + 1))
+          done
+          echo "$((i - 1)) migrations, numbering is contiguous"
