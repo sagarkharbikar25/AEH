@@ -177,118 +177,66 @@ export class DeciderClient {
   private simulateHierarchicalRoute(prompt: string, catalog: CompiledCatalog, elapsedMs: number): ShortlistResult {
     const lower = prompt.toLowerCase();
 
-    // Check no-tool queries (e.g. explain, what is, law, principle)
-    if (
+    // Check no-tool queries (e.g. explain, what is, law, principle, general knowledge)
+    const isNoTool =
       lower.includes('amdahl') ||
       lower.includes('what is') ||
       lower.includes('explain') ||
       lower.includes('theory') ||
       lower.includes('difference between') ||
       lower.includes('how does') ||
-      lower.includes('comparison')
-    ) {
+      lower.includes('comparison') ||
+      lower.includes('capital of') ||
+      lower.includes('recipe') ||
+      lower.includes('who wrote') ||
+      lower.includes('poem') ||
+      lower.includes('meaning of life');
+
+    if (isNoTool) {
       return rankAndTierShortlist(catalog, [], 0.08, Math.max(elapsedMs, 32));
     }
 
-    let topCategory = 'calendar';
-    let catConfidence = 0.94;
-    let targetTool = 'calendar.create_event';
-    let inCatScore = 0.96;
+    const words = lower.replace(/[^a-z0-9_]/g, ' ').split(/\s+/).filter((w) => w.length > 2);
 
-    if (lower.includes('urgent') || lower.includes('escalat') || lower.includes('pager') || lower.includes('alarm')) {
-      topCategory = 'telemetry';
-      catConfidence = 0.62;
-      targetTool = 'telemetry.query_metric_series';
-      inCatScore = 0.70;
-    } else if (lower.includes('ec2') || lower.includes('instance') || lower.includes('compute') || lower.includes('server') || lower.includes('vm')) {
-      topCategory = 'compute';
-      catConfidence = 0.93;
-      targetTool = lower.includes('cpu') || lower.includes('utiliz') || lower.includes('load')
-        ? 'compute.get_cpu_utilization'
-        : 'compute.launch_instance';
-      inCatScore = 0.95;
-    } else if (lower.includes('s3') || lower.includes('bucket') || lower.includes('upload') || lower.includes('storage') || lower.includes('presign')) {
-      topCategory = 'storage';
-      catConfidence = 0.92;
-      targetTool = lower.includes('presign') || lower.includes('url') || lower.includes('download')
-        ? 'storage.generate_presigned_url'
-        : 'storage.upload_object';
-      inCatScore = 0.95;
-    } else if (lower.includes('sql') || lower.includes('query') || lower.includes('database') || lower.includes('postgres') || lower.includes('rds') || lower.includes('snapshot')) {
-      topCategory = 'database';
-      catConfidence = 0.91;
-      targetTool = lower.includes('snapshot') || lower.includes('backup')
-        ? 'database.create_snapshot'
-        : 'database.execute_sql';
-      inCatScore = 0.94;
-    } else if (lower.includes('calendar') || lower.includes('meeting') || lower.includes('schedule') || lower.includes('slot') || lower.includes('invite') || lower.includes('sync')) {
-      topCategory = 'calendar';
-      catConfidence = 0.94;
-      targetTool = lower.includes('slot') || lower.includes('free') || lower.includes('overlap')
-        ? 'calendar.find_free_slots'
-        : 'calendar.create_event';
-      inCatScore = 0.96;
-    } else if (lower.includes('slack') || lower.includes('email') || lower.includes('notify') || lower.includes('message') || lower.includes('channel')) {
-      topCategory = 'messaging';
-      catConfidence = 0.92;
-      targetTool = 'messaging.send_channel_message';
-      inCatScore = 0.94;
-    } else if (lower.includes('iam') || lower.includes('role') || lower.includes('policy') || lower.includes('security') || lower.includes('kms')) {
-      topCategory = 'security';
-      catConfidence = 0.90;
-      targetTool = 'security.evaluate_iam_policy';
-      inCatScore = 0.93;
-    } else if (lower.includes('deploy') || lower.includes('pipeline') || lower.includes('ci') || lower.includes('build') || lower.includes('release')) {
-      topCategory = 'devops';
-      catConfidence = 0.92;
-      targetTool = 'devops.trigger_ci_build';
-      inCatScore = 0.94;
-    } else if (lower.includes('cost') || lower.includes('spend') || lower.includes('billing') || lower.includes('invoice') || lower.includes('budget')) {
-      topCategory = 'billing';
-      catConfidence = 0.94;
-      targetTool = 'billing.get_projected_spend';
-      inCatScore = 0.95;
-    } else if (lower.includes('ticket') || lower.includes('jira') || lower.includes('issue') || lower.includes('incident') || lower.includes('bug')) {
-      topCategory = 'tickets';
-      catConfidence = 0.93;
-      targetTool = 'tickets.create_incident_ticket';
-      inCatScore = 0.95;
-    } else if (lower.includes('workflow') || lower.includes('step') || lower.includes('orchestrat') || lower.includes('pipeline_run')) {
-      topCategory = 'workflows';
-      catConfidence = 0.89;
-      targetTool = 'workflows.start_execution';
-      inCatScore = 0.92;
-    } else if (lower.includes('vpc') || lower.includes('dns') || lower.includes('subnet') || lower.includes('network') || lower.includes('route53')) {
-      topCategory = 'network';
-      catConfidence = 0.91;
-      targetTool = 'network.allocate_elastic_ip';
-      inCatScore = 0.93;
+    // 1. Score categories based on prompt words matching category name & descriptor
+    const categoryScores: Array<{ category: string; score: number }> = [];
+    for (const [cat, desc] of Object.entries(catalog.categoryOptions)) {
+      let matches = 0;
+      const catLower = `${cat} ${desc}`.toLowerCase();
+      for (const w of words) {
+        if (catLower.includes(w)) matches++;
+      }
+      const score = matches > 0 ? Math.min(0.98, 0.40 + matches * 0.15) : 0.10;
+      categoryScores.push({ category: cat, score });
     }
 
-    const scoredCandidates: ScoredCandidate[] = [
-      {
-        toolId: targetTool,
-        category: topCategory,
-        categoryScore: catConfidence,
-        inCategoryScore: inCatScore,
-        combinedScore: combineScores(catConfidence, inCatScore)
-      }
-    ];
+    categoryScores.sort((a, b) => b.score - a.score);
+    const top2Categories = categoryScores.slice(0, 2);
 
-    // Add candidate neighbors from the category
-    const categoryTools = catalog.toolsByCategory.get(topCategory) || [];
-    for (const t of categoryTools) {
-      if (t.id !== targetTool && scoredCandidates.length < 6) {
+    // 2. Score tools in top categories
+    const scoredCandidates: ScoredCandidate[] = [];
+    for (const { category, score: catScore } of top2Categories) {
+      const tools = catalog.toolsByCategory.get(category) || [];
+      for (const tool of tools) {
+        const toolText = `${tool.name} ${tool.descriptor} ${tool.description}`.toLowerCase();
+        let toolMatches = 0;
+        for (const w of words) {
+          if (toolText.includes(w)) toolMatches++;
+        }
+        const inCatScore = toolMatches > 0 ? Math.min(0.98, 0.45 + toolMatches * 0.12) : 0.05;
+        const combinedScore = combineScores(catScore, inCatScore);
         scoredCandidates.push({
-          toolId: t.id,
-          category: topCategory,
-          categoryScore: catConfidence,
-          inCategoryScore: 0.15,
-          combinedScore: combineScores(catConfidence, 0.15)
+          toolId: tool.id,
+          category,
+          categoryScore: catScore,
+          inCategoryScore: inCatScore,
+          combinedScore,
         });
       }
     }
 
-    return rankAndTierShortlist(catalog, scoredCandidates, 0.98, Math.max(elapsedMs, 38));
+    scoredCandidates.sort((a, b) => b.combinedScore - a.combinedScore);
+
+    return rankAndTierShortlist(catalog, scoredCandidates, 0.95, Math.max(elapsedMs, 36));
   }
 }

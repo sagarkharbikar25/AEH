@@ -9,6 +9,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@polaris/contracts": "file:../packages/contracts",
     "@polaris/router": "file:../packages/router"
   },
   "devDependencies": {

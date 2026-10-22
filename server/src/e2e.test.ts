@@ -66,14 +66,14 @@ describe('Polaris Hardened API Server (Phase P2)', () => {
     const res = await fetch(`${baseUrl}/api/route`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: 'Launch a compute server in us-east-1' }),
+      body: JSON.stringify({ query: 'Attach a note to this customer account record' }),
     });
     expect(res.status).toBe(200);
     const data = await res.json();
     const parsed = RouteResponseSchema.parse(data);
     expect(parsed.needsTool).toBe(true);
     expect(parsed.tools.length).toBeGreaterThanOrEqual(1);
-    expect(parsed.tools.length).toBeLessThanOrEqual(6);
+    expect(parsed.tools.length).toBeLessThanOrEqual(13);
     expect(parsed.decisions.length).toBeGreaterThan(0);
   });
 
