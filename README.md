@@ -7,7 +7,7 @@
 
 > **A hierarchical Decider 2B routing gate for Amazon Bedrock that cuts tool input tokens by 98% (20,400 to 410 tokens) and cost per correct tool call by 17.9× ($6.61 to $0.37 per 1,000 correct calls) across 240 tools, at the cost of a 20.6% drop in first-pass shortlist recall (57.9% Recall@6 vs. 78.5% baseline selection accuracy).**
 
-* **Live Demo Application:** [TODO: Insert Deployed Vercel URL, e.g. https://polaris-aeh.vercel.app]
+* **Live Demo Application:** [https://agent-nine-brown-69.vercel.app/](https://agent-nine-brown-69.vercel.app/)
 * **60-Second Video Demonstration:** [TODO: Insert Public YouTube/Vimeo Video URL]
 * **Hackathon Tags:** `#strands-decider-2b` · `#tool-selection`
 
