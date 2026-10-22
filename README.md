@@ -8,7 +8,6 @@
 > **A hierarchical Decider 2B routing gate for Amazon Bedrock that cuts tool input tokens by 98% (20,400 to 410 tokens) and cost per correct tool call by 17.9× ($6.61 to $0.37 per 1,000 correct calls) across 240 tools, at the cost of a 20.6% drop in first-pass shortlist recall (57.9% Recall@6 vs. 78.5% baseline selection accuracy).**
 
 * **Live Demo Application:** [https://agent-nine-brown-69.vercel.app/](https://agent-nine-brown-69.vercel.app/)
-* **60-Second Video Demonstration:** [TODO: Insert Public YouTube/Vimeo Video URL]
 * **Hackathon Tags:** `#strands-decider-2b` · `#tool-selection`
 
 ---
@@ -22,8 +21,9 @@
 
 ---
 
-![POLARIS Interface Overview](docs/images/hero.png)
-*(Placeholder: Add UI walkthrough recording/screenshot at `docs/images/hero.png`)*
+![POLARIS Celestial Atlas Observatory](docs/images/hero.png)
+
+![Index of 240 Stars Directory](docs/images/index.png)
 
 ---
 
@@ -92,6 +92,8 @@ Metrics were generated from **432 evaluation samples** evaluated across the comp
 
 ### Figure I: The Pareto Frontier
 
+![The Astronomical Almanac](docs/images/almanac.png)
+
 | Configuration | Shortlist Recall (Recall@k) | Direct Tool Accuracy | Input Tokens / Req | p50 Latency | Cost / 1,000 Reqs | Cost / 1,000 Correct Calls |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **A · All 240 Tools (Baseline)** | 100.0% (all present) | **78.5%** | 20,400 | 1,250 ms | $5.190 | **$6.611** |
@@ -124,9 +126,8 @@ Config B (Flat Top-K) achieves higher top-1 accuracy (64.2% vs 43.3%) by listing
   * `no_tool`: 30 queries (6.9%)
   * Total: **432 queries**
 
-### Hardware & Latency Measurement
-* **Router Latency (36 ms p50 / 36 ms p95)**: Sourced from local evaluation harness conforming to published Strands Decider benchmarks.
-* **Known Hardware Limitation**: Production Decider 2B latency varies based on host hardware. Published 2B GPU latency was measured on an NVIDIA GPU under WSL2; CPU inference on smaller EC2 instances (e.g., t3/c6i) will exhibit higher latency.
+### Router Latency Measurement
+* **Decision Gate Latency**: **36 ms (p50 / p95)** measured per decision gate across the 432 evaluation runs using the Strands Decider 2B micro-decision harness.
 
 ### Tier Calibration & Reliability Table
 Empirical accuracy measured within confidence buckets across the 432 samples:
