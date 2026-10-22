@@ -35,7 +35,14 @@ export const DEFAULT_CONSTELLATION_DESCRIPTORS: Record<string, string> = {
   billing: 'Cost budgets, invoice generation, credit usage, payment cards, usage alerts',
   tickets: 'Issue triage, Jira tickets, SLA tracking, sprint boards, bug escalations',
   analytics: 'User cohort metrics, conversion funnels, event tracking, churn reports',
-  network: 'DNS routing, VPC subnets, ingress firewall, load balancers, CDN purge'
+  network: 'DNS routing, VPC subnets, ingress firewall, load balancers, CDN purge',
+  workflows: 'Automation, triggers, action steps, approvals and scheduled workflows',
+  files: 'Document storage, folders, sharing, archives, metadata and scanning',
+  crm: 'Customer contacts, leads, accounts, deals, pipeline and sales activity',
+  inventory: 'Stock levels, warehouses, purchase orders, catalog products and shipments',
+  hr: 'Employee records, leave, attendance, payroll, benefits and onboarding',
+  identity: 'User accounts, roles, access permissions, API tokens and auth sessions',
+  knowledge: 'Wiki pages, articles, documentation spaces, revisions and search',
 };
 
 /**

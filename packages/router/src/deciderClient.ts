@@ -8,6 +8,30 @@ import {
 } from './schema.js';
 import { combineScores, rankAndTierShortlist, ScoredCandidate } from './tiers.js';
 
+function parseNoulScore(answerObj: any): number {
+  if (!answerObj) return 0.5;
+
+  const rawAns = answerObj.answer;
+  const isNo =
+    rawAns === false ||
+    rawAns === 0 ||
+    String(rawAns).trim().toLowerCase() === 'no' ||
+    String(rawAns).trim().toLowerCase() === 'false' ||
+    String(rawAns).trim().toLowerCase() === '0';
+
+  if (isNo) {
+    if (typeof answerObj.confidence === 'number') {
+      return Math.min(0.05, Math.max(0, 1 - answerObj.confidence));
+    }
+    return 0.05;
+  }
+
+  if (typeof answerObj.confidence === 'number') {
+    return answerObj.confidence;
+  }
+  return 0.95;
+}
+
 export class DeciderClient {
   private deciderUrl: string;
   private timeoutMs: number;
@@ -72,9 +96,7 @@ export class DeciderClient {
 
       const call1Response = await this.callSystemOne(call1Payload);
       const needsToolAnswer = call1Response.answers.needs_tool;
-      const needsToolScore = typeof needsToolAnswer.confidence === 'number' 
-        ? needsToolAnswer.confidence 
-        : (needsToolAnswer.answer ? 0.95 : 0.05);
+      const needsToolScore = parseNoulScore(needsToolAnswer);
 
       // Gate: if clearly no tool is needed, short-circuit immediately
       if (needsToolScore < 0.25) {

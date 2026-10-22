@@ -88,4 +88,59 @@ describe('Catalog Compilation', () => {
     expect(catalog.categoryOptions).toHaveProperty('calendar');
     expect(catalog.categoryOptions).toHaveProperty('storage');
   });
+
+  it('includes workflows with a valid constellation descriptor', () => {
+    const workflowTool: Tool = {
+      id: 'workflows.start_execution',
+      name: 'start_execution',
+      category: 'workflows',
+      descriptor: 'Starts automated pipeline execution',
+      description: 'Executes workflow orchestrator',
+    };
+    const catalog = compileCatalog([workflowTool]);
+    expect(catalog.categoryOptions.workflows).toContain('Automation');
+  });
 });
+
+describe('Thresholds JSON Loading & Fallback Clarification', () => {
+  it('loads thresholds.json and confirms direct/narrow/wide/fallback settings', async () => {
+    const { loadThresholds, ASK_CLARIFICATION_TOOL } = await import('./thresholds.js');
+    const { thresholds, noToolGateThreshold } = loadThresholds();
+
+    expect(noToolGateThreshold).toBe(0.25);
+    expect(thresholds.direct.minScore).toBe(0.85);
+    expect(thresholds.direct.toolCount).toBe(1);
+    expect(thresholds.narrow.toolCount).toBe(3);
+    expect(thresholds.wide.toolCount).toBe(6);
+    expect(thresholds.fallback.toolCount).toBe(12);
+    expect(thresholds.fallback.includeAskClarification).toBe(true);
+    expect(ASK_CLARIFICATION_TOOL.id).toBe('ask_clarification');
+  });
+
+  it('materializes ask_clarification when fallback tier is selected', () => {
+    const sampleTool: Tool = {
+      id: 'calendar.create_event',
+      name: 'create_event',
+      category: 'calendar',
+      descriptor: 'Schedules meeting',
+      description: 'Creates event',
+    };
+    const catalog = compileCatalog([sampleTool]);
+    const scored = [
+      {
+        toolId: 'calendar.create_event',
+        category: 'calendar',
+        categoryScore: 0.20,
+        inCategoryScore: 0.50,
+        combinedScore: 0.10, // < 0.30 => fallback
+      },
+    ];
+
+    const result = rankAndTierShortlist(catalog, scored, 0.90);
+    expect(result.tier).toBe('fallback');
+    const toolIds = result.tools.map((t) => t.id);
+    expect(toolIds).toContain('ask_clarification');
+    expect(result.decisionTrace.shortlistedTools.some((t) => t.id === 'ask_clarification')).toBe(true);
+  });
+});
+

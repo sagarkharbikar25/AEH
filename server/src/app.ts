@@ -9,6 +9,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import {
   requestIdMiddleware,
+  requestTimeoutMiddleware,
   rateLimitMiddleware,
   spendKillSwitchMiddleware,
   errorHandler,
@@ -37,6 +38,7 @@ export function createApp(): Express {
 
   app.use(express.json({ limit: '1mb' }));
   app.use(requestIdMiddleware);
+  app.use(requestTimeoutMiddleware(30000));
   app.use(rateLimitMiddleware);
   app.use(spendKillSwitchMiddleware);
 

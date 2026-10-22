@@ -1,33 +1,36 @@
 /**
  * POLARIS Real-Time Race SSE Stream Manager
  *
- * Manages Server-Sent Events (SSE) connections and dispatches live telemetry events
- * (stage progression, tool selection, token counts, final savings comparison)
- * to connected frontend clients.
+ * Implements strict conformance to @polaris/contracts SSE schema:
+ * Exactly seven event types:
+ * - decision
+ * - shortlist
+ * - lane_start
+ * - lane_tokens
+ * - lane_done
+ * - final
+ * - error
+ *
+ * Every event contains runId, monotonic seq, and ISO ts.
  */
 
 import { Response } from 'express';
 import { EventEmitter } from 'node:events';
-import { LaneResult } from '../agent/types.js';
-import { SavingsComparison } from '../agent/pricing.js';
-
-export interface RaceEvent {
-  type: 'race:init' | 'lane:stage' | 'lane:result' | 'race:complete' | 'race:error';
-  raceId: string;
-  timestamp: string;
-  data: any;
-}
+import {
+  RaceEvent,
+  RaceEventSchema,
+  Run,
+} from '@polaris/contracts';
+import { runsRepository } from '../db/runsRepository.js';
 
 export interface RaceSession {
-  raceId: string;
+  runId: string;
+  requestId: string;
   query: string;
   modelId: string;
-  startTime: number;
-  laneA?: LaneResult;
-  laneB?: LaneResult;
-  savings?: SavingsComparison;
+  createdAt: string;
+  seq: number;
   isComplete: boolean;
-  error?: string;
   events: RaceEvent[];
 }
 
@@ -35,37 +38,44 @@ class RaceStreamManager extends EventEmitter {
   private sessions = new Map<string, RaceSession>();
   private clientConnections = new Map<string, Set<Response>>();
 
-  public createSession(raceId: string, query: string, modelId: string = 'anthropic.claude-3-haiku-20240307-v1:0'): RaceSession {
+  public createSession(
+    runId: string,
+    query: string,
+    requestId: string = 'req_unknown',
+    modelId: string = 'anthropic.claude-3-haiku-20240307-v1:0'
+  ): RaceSession {
     const session: RaceSession = {
-      raceId,
+      runId,
+      requestId,
       query,
       modelId,
-      startTime: Date.now(),
+      createdAt: new Date().toISOString(),
+      seq: 0,
       isComplete: false,
       events: [],
     };
-    this.sessions.set(raceId, session);
-    this.clientConnections.set(raceId, new Set<Response>());
 
-    // Auto cleanup after 15 minutes
+    this.sessions.set(runId, session);
+    this.clientConnections.set(runId, new Set<Response>());
+
+    // Auto cleanup in-memory session after 20 minutes
     setTimeout(() => {
-      this.sessions.delete(raceId);
-      this.clientConnections.delete(raceId);
-    }, 15 * 60 * 1000);
+      this.sessions.delete(runId);
+      this.clientConnections.delete(runId);
+    }, 20 * 60 * 1000);
 
     return session;
   }
 
-  public getSession(raceId: string): RaceSession | undefined {
-    return this.sessions.get(raceId);
+  public getSession(runId: string): RaceSession | undefined {
+    return this.sessions.get(runId);
   }
 
-  public registerClient(raceId: string, res: Response): void {
-    const clients = this.clientConnections.get(raceId) || new Set<Response>();
+  public registerClient(runId: string, res: Response): void {
+    const clients = this.clientConnections.get(runId) || new Set<Response>();
     clients.add(res);
-    this.clientConnections.set(raceId, clients);
+    this.clientConnections.set(runId, clients);
 
-    // Send headers for SSE
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -74,11 +84,11 @@ class RaceStreamManager extends EventEmitter {
     });
     res.flushHeaders?.();
 
-    // Replay historical events for late-joining clients
-    const session = this.sessions.get(raceId);
+    const session = this.sessions.get(runId);
     if (session) {
+      // Replay existing events to newly connected client
       for (const ev of session.events) {
-        res.write(`event: ${ev.type}\ndata: ${JSON.stringify(ev.data)}\n\n`);
+        res.write(`event: ${ev.type}\ndata: ${JSON.stringify(ev)}\n\n`);
       }
       if (session.isComplete) {
         res.end();
@@ -86,53 +96,68 @@ class RaceStreamManager extends EventEmitter {
       }
     }
 
-    // Keepalive heartbeat every 15s
+    // Keepalive heartbeat
     const heartbeat = setInterval(() => {
       res.write(': heartbeat\n\n');
     }, 15000);
 
-    // Handle disconnect
     res.on('close', () => {
       clearInterval(heartbeat);
       clients.delete(res);
     });
   }
 
-  public emitEvent(raceId: string, type: RaceEvent['type'], data: any): void {
-    const session = this.sessions.get(raceId);
-    const event: RaceEvent = {
-      type,
-      raceId,
-      timestamp: new Date().toISOString(),
-      data,
-    };
+  /**
+   * Dispatches a typed RaceEvent to connected SSE clients and appends to run history.
+   */
+  public emitEvent(
+    runId: string,
+    eventPayload: Omit<RaceEvent, 'runId' | 'seq' | 'ts'>
+  ): RaceEvent {
+    const session = this.sessions.get(runId);
+    const seq = session ? session.seq++ : 0;
+    const ts = new Date().toISOString();
+
+    const fullEvent = {
+      ...eventPayload,
+      runId,
+      seq,
+      ts,
+    } as RaceEvent;
+
+    // Validate against contract schema
+    RaceEventSchema.parse(fullEvent);
 
     if (session) {
-      session.events.push(event);
-      if (type === 'lane:result') {
-        if (data.lane === 'laneA') session.laneA = data;
-        if (data.lane === 'laneB') session.laneB = data;
-      }
-      if (type === 'race:complete') {
+      session.events.push(fullEvent);
+
+      if (fullEvent.type === 'final' || fullEvent.type === 'error') {
         session.isComplete = true;
-        session.savings = data.savings;
-      }
-      if (type === 'race:error') {
-        session.isComplete = true;
-        session.error = data.message;
+        const runRecord: Run = {
+          runId: session.runId,
+          requestId: session.requestId,
+          query: session.query,
+          createdAt: session.createdAt,
+          events: session.events,
+        };
+        runsRepository.saveRun(runRecord).catch((err) => {
+          console.warn(`[RaceStream] Could not save run ${runId}:`, err);
+        });
       }
     }
 
-    const clients = this.clientConnections.get(raceId);
+    const clients = this.clientConnections.get(runId);
     if (clients) {
-      const payload = `event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
+      const sseMessage = `event: ${fullEvent.type}\ndata: ${JSON.stringify(fullEvent)}\n\n`;
       for (const client of clients) {
-        client.write(payload);
-        if (type === 'race:complete' || type === 'race:error') {
+        client.write(sseMessage);
+        if (fullEvent.type === 'final' || fullEvent.type === 'error') {
           client.end();
         }
       }
     }
+
+    return fullEvent;
   }
 }
 

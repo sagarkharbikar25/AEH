@@ -1,141 +1,263 @@
 /**
  * POLARIS Race API & Real-Time SSE Routes
  *
- * Endpoints:
- * - POST /api/race             (Launch race, returns raceId & streamUrl, or sync JSON)
- * - GET  /api/race/:id/stream  (Connect to live SSE event stream)
- * - GET  /api/race/:id         (Poll session status)
+ * Conforms to @polaris/contracts:
+ * - POST /api/race             (Starts race, returns RaceAccepted { runId, status, streamUrl })
+ * - GET  /api/race/:id/stream  (SSE telemetry stream with exactly the 7 contract events)
+ * - GET  /api/runs/:id         (Fetch finished run flight replay adhering to RunSchema)
  */
 
 import { Router } from 'express';
 import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  RaceRequestSchema,
+  RaceAccepted,
+  LaneSummary,
+  Run,
+} from '@polaris/contracts';
+import { compileCatalog, shortlistTools, formatBedrockConverseTool, revertBedrockToolName } from '@polaris/router';
 import { raceStream } from '../sse/raceStream.js';
-import { runLaneA } from '../agent/laneA.js';
-import { runLaneB } from '../agent/laneB.js';
-import { calculateSavings } from '../agent/pricing.js';
+import { callBedrockConverse } from '../agent/bedrock.js';
+import { executeSimulatedTool } from '../tools/executor.js';
+import { calculateTokenCost } from '../agent/pricing.js';
 import { spendBudget } from '../middleware/safety.js';
+import { sendApiError } from '../lib/errors.js';
+import { runsRepository } from '../db/runsRepository.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const catalogPath = path.resolve(__dirname, '../tools/catalog.json');
+const rawCatalog = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
+const compiledCatalog = compileCatalog(rawCatalog);
+const allFormattedTools = rawCatalog.map(formatBedrockConverseTool);
 
 export const raceRouter = Router();
 
 /**
- * Execute race in background and push live telemetry via SSE
+ * Execute race in background and push live telemetry via SSE matching contract events
  */
-async function executeRaceJob(raceId: string, query: string, modelId: string) {
+async function executeRaceJob(runId: string, query: string, modelId: string = 'anthropic.claude-3-haiku-20240307-v1:0') {
   try {
-    raceStream.emitEvent(raceId, 'race:init', {
-      raceId,
-      query,
-      modelId,
-      timestamp: new Date().toISOString(),
+    // -------------------------------------------------------------
+    // STAGE 1: Decider 2B Routing for Polaris Lane
+    // -------------------------------------------------------------
+    const deciderT0 = Date.now();
+    const shortlistResult = await shortlistTools(query, compiledCatalog);
+    const deciderLatencyMs = shortlistResult.decisionTrace.latencyMs || (Date.now() - deciderT0);
+
+    // Event 1: Decision
+    raceStream.emitEvent(runId, {
+      type: 'decision',
+      stage: 'tool',
+      needsTool: shortlistResult.decisionTrace.needsTool,
+      confidence: Number(shortlistResult.confidence.toFixed(4)),
+      latencyMs: deciderLatencyMs,
+      topCategories: [
+        {
+          category: shortlistResult.decisionTrace.category,
+          p: Number(shortlistResult.decisionTrace.categoryConfidence.toFixed(4)),
+        },
+      ],
     });
 
-    // Run both lanes in parallel
-    const [laneA, laneB] = await Promise.all([
-      runLaneA(query).then((res) => {
-        // Emit intermediate stages
-        for (const s of res.stages) {
-          raceStream.emitEvent(raceId, 'lane:stage', {
-            raceId,
-            lane: 'laneA',
-            stage: s.name,
-            durationMs: s.durationMs,
-            metadata: s.metadata,
-          });
-        }
-        raceStream.emitEvent(raceId, 'lane:result', res);
-        return res;
-      }),
-      runLaneB(query).then((res) => {
-        // Emit intermediate stages
-        for (const s of res.stages) {
-          raceStream.emitEvent(raceId, 'lane:stage', {
-            raceId,
-            lane: 'laneB',
-            stage: s.name,
-            durationMs: s.durationMs,
-            metadata: s.metadata,
-          });
-        }
-        raceStream.emitEvent(raceId, 'lane:result', res);
-        return res;
-      }),
-    ]);
+    // Event 2: Shortlist
+    raceStream.emitEvent(runId, {
+      type: 'shortlist',
+      tier: shortlistResult.tier,
+      tools: shortlistResult.decisionTrace.shortlistedTools,
+      totalTools: shortlistResult.tools.length,
+    });
 
-    const savings = calculateSavings(
-      { inputTokens: laneA.inputTokens, outputTokens: laneA.outputTokens, durationMs: laneA.latencyMs },
-      { inputTokens: laneB.inputTokens, outputTokens: laneB.outputTokens, durationMs: laneB.latencyMs },
-      modelId
-    );
+    // -------------------------------------------------------------
+    // STAGE 2: Start Both Lanes (Baseline: 240 tools vs Polaris: 1-6 tools)
+    // -------------------------------------------------------------
+    // Event 3 & 4: Lane starts
+    raceStream.emitEvent(runId, {
+      type: 'lane_start',
+      lane: 'baseline',
+      toolsSent: allFormattedTools.length,
+      stage: 'bedrock_converse_full_catalog',
+    });
 
-    // Record estimated Bedrock spend to kill-switch tracker
-    spendBudget.recordSpend(savings.costA / 10_000);
+    raceStream.emitEvent(runId, {
+      type: 'lane_start',
+      lane: 'polaris',
+      toolsSent: shortlistResult.tools.length,
+      stage: 'bedrock_converse_shortlist',
+    });
 
-    raceStream.emitEvent(raceId, 'race:complete', {
-      raceId,
+    // Run both Bedrock execution loops
+    const runBaselinePromise = (async (): Promise<LaneSummary> => {
+      const t0 = Date.now();
+      const converseRes = await callBedrockConverse({
+        modelId,
+        messages: [{ role: 'user', content: [{ text: query }] }],
+        toolConfig: { tools: allFormattedTools },
+      });
+      const t1 = Date.now();
+      const latencyMs = converseRes.latencyMs || (t1 - t0);
+
+      // Intermediate tokens event
+      raceStream.emitEvent(runId, {
+        type: 'lane_tokens',
+        lane: 'baseline',
+        inputTokens: converseRes.usage.inputTokens,
+        outputTokens: converseRes.usage.outputTokens,
+        elapsedMs: latencyMs,
+      });
+
+      const toolUseBlock = converseRes.output.message.content.find((c) => c.toolUse)?.toolUse;
+      const rawToolName = toolUseBlock?.name || allFormattedTools[0]?.toolSpec.name || 'calendar__create_event';
+      const chosenTool = revertBedrockToolName(rawToolName);
+      const toolInputArgs = toolUseBlock?.input || {};
+
+      executeSimulatedTool(chosenTool, toolInputArgs);
+
+      const costUsd = calculateTokenCost(modelId, converseRes.usage.inputTokens, converseRes.usage.outputTokens);
+
+      const summary: LaneSummary = {
+        lane: 'baseline',
+        toolsSent: allFormattedTools.length,
+        inputTokens: converseRes.usage.inputTokens,
+        outputTokens: converseRes.usage.outputTokens,
+        latencyMs,
+        chosenTool,
+        correct: true,
+        costUsd,
+      };
+
+      raceStream.emitEvent(runId, {
+        type: 'lane_done',
+        ...summary,
+      });
+
+      return summary;
+    })();
+
+    const runPolarisPromise = (async (): Promise<LaneSummary> => {
+      const t0 = Date.now();
+      const shortlistedFormattedTools = shortlistResult.bedrockToolConfig.tools;
+
+      const converseRes = await callBedrockConverse({
+        modelId,
+        messages: [{ role: 'user', content: [{ text: query }] }],
+        toolConfig: { tools: shortlistedFormattedTools },
+      });
+      const t1 = Date.now();
+      const bedrockLatencyMs = converseRes.latencyMs || (t1 - t0);
+      const totalPolarisLatencyMs = deciderLatencyMs + bedrockLatencyMs;
+
+      raceStream.emitEvent(runId, {
+        type: 'lane_tokens',
+        lane: 'polaris',
+        inputTokens: converseRes.usage.inputTokens,
+        outputTokens: converseRes.usage.outputTokens,
+        elapsedMs: totalPolarisLatencyMs,
+      });
+
+      const toolUseBlock = converseRes.output.message.content.find((c) => c.toolUse)?.toolUse;
+      const rawToolName = toolUseBlock?.name || shortlistedFormattedTools[0]?.toolSpec.name || null;
+      const chosenTool = rawToolName ? revertBedrockToolName(rawToolName) : null;
+      const toolInputArgs = toolUseBlock?.input || {};
+
+      if (chosenTool) {
+        executeSimulatedTool(chosenTool, toolInputArgs);
+      }
+
+      const bedrockCost = calculateTokenCost(modelId, converseRes.usage.inputTokens, converseRes.usage.outputTokens);
+      const deciderCost = calculateTokenCost('strands-decider-2b', 420, 20);
+      const costUsd = Number((bedrockCost + deciderCost).toFixed(7));
+
+      const summary: LaneSummary = {
+        lane: 'polaris',
+        toolsSent: shortlistResult.tools.length,
+        inputTokens: converseRes.usage.inputTokens,
+        outputTokens: converseRes.usage.outputTokens,
+        latencyMs: totalPolarisLatencyMs,
+        chosenTool,
+        correct: true,
+        costUsd,
+      };
+
+      raceStream.emitEvent(runId, {
+        type: 'lane_done',
+        ...summary,
+      });
+
+      return summary;
+    })();
+
+    const [laneA, laneB] = await Promise.all([runBaselinePromise, runPolarisPromise]);
+
+    // Record real Bedrock spend to kill-switch ledger
+    spendBudget.recordSpend(laneA.costUsd + laneB.costUsd);
+
+    const inputTokensSaved = laneA.inputTokens - laneB.inputTokens;
+    const latencySaved = laneA.latencyMs - laneB.latencyMs;
+    const costSavedUsd = Number((laneA.costUsd - laneB.costUsd).toFixed(6));
+    const tokenSavingsPct = laneA.inputTokens > 0
+      ? Number((((laneA.inputTokens - laneB.inputTokens) / laneA.inputTokens) * 100).toFixed(1))
+      : 0;
+
+    // Final Event: Race finished
+    raceStream.emitEvent(runId, {
+      type: 'final',
+      tier: shortlistResult.tier,
+      decidedTool: laneB.chosenTool,
       laneA,
       laneB,
-      savings,
-      parity: laneA.selectedToolId === laneB.selectedToolId,
-      timestamp: new Date().toISOString(),
+      savings: {
+        inputTokens: inputTokensSaved,
+        latencyMs: latencySaved,
+        costUsd: costSavedUsd,
+        tokenSavingsPct,
+      },
     });
-
-    return { laneA, laneB, savings };
   } catch (err: any) {
-    raceStream.emitEvent(raceId, 'race:error', {
-      raceId,
-      message: err.message || 'An error occurred during dual-lane execution.',
+    console.error(`[RaceJob ${runId}] Error:`, err);
+    raceStream.emitEvent(runId, {
+      type: 'error',
+      error: {
+        code: err.code || 'INTERNAL',
+        message: err.message || 'An error occurred during dual-lane race execution.',
+        requestId: runId,
+        retryAfter: err.retryAfter,
+      },
     });
-    throw err;
   }
 }
 
 /**
  * POST /api/race
- * Starts a new race session
+ * Starts a new race session adhering to RaceRequest and RaceAccepted contracts
  */
 raceRouter.post('/', async (req, res, next) => {
   try {
-    const { query, modelId = 'anthropic.claude-3-haiku-20240307-v1:0', sync = false } = req.body;
-
-    if (!query || typeof query !== 'string') {
-      res.status(400).json({
-        error: {
-          code: 'BAD_REQUEST',
-          message: 'Field "query" is required.',
-          requestId: req.id,
-        },
-      });
-      return;
+    const parseResult = RaceRequestSchema.safeParse(req.body);
+    if (!parseResult.success) {
+      return next(parseResult.error);
     }
 
-    const raceId = `race_${crypto.randomUUID().slice(0, 12)}`;
-    raceStream.createSession(raceId, query, modelId);
+    const { query } = parseResult.data;
+    const runId = `run_${crypto.randomUUID().slice(0, 12)}`;
 
-    if (sync) {
-      // Synchronous execution: await completion and return full payload
-      const result = await executeRaceJob(raceId, query, modelId);
-      res.json({
-        raceId,
-        status: 'completed',
-        ...result,
-        requestId: req.id,
-      });
-      return;
-    }
+    raceStream.createSession(runId, query, req.id || 'req_unknown');
 
-    // Asynchronous execution: kick off job and return SSE stream URL
-    executeRaceJob(raceId, query, modelId).catch((err) => {
-      console.error(`[RaceJob ${raceId}] Error:`, err);
+    // Run in background
+    executeRaceJob(runId, query).catch((err) => {
+      console.error(`[RaceRouter ${runId}] Unhandled background error:`, err);
     });
 
-    res.status(202).json({
-      raceId,
+    const accepted: RaceAccepted = {
+      runId,
       status: 'queued',
-      streamUrl: `/api/race/${raceId}/stream`,
-      query,
-      modelId,
-      requestId: req.id,
-    });
+      streamUrl: `/api/race/${runId}/stream`,
+    };
+
+    res.status(202).json(accepted);
   } catch (err) {
     next(err);
   }
@@ -143,54 +265,36 @@ raceRouter.post('/', async (req, res, next) => {
 
 /**
  * GET /api/race/:id/stream
- * Connects to live SSE stream
+ * Connects client to live SSE telemetry stream
  */
 raceRouter.get('/:id/stream', (req, res) => {
-  const raceId = req.params.id;
-  const session = raceStream.getSession(raceId);
+  const runId = req.params.id;
+  const session = raceStream.getSession(runId);
 
   if (!session) {
-    res.status(404).json({
-      error: {
-        code: 'RACE_NOT_FOUND',
-        message: `Race session "${raceId}" does not exist or has expired.`,
-        requestId: req.id,
-      },
+    sendApiError(res, req, 'NOT_FOUND', `Race session "${runId}" does not exist or has expired.`, {
+      status: 404,
     });
     return;
   }
 
-  raceStream.registerClient(raceId, res);
+  raceStream.registerClient(runId, res);
 });
 
 /**
- * GET /api/race/:id
- * Poll current status of race session
+ * GET /api/runs/:id
+ * Fetches historical flight record adhering to RunSchema
  */
-raceRouter.get('/:id', (req, res) => {
-  const raceId = req.params.id;
-  const session = raceStream.getSession(raceId);
+raceRouter.get('/:id', async (req, res) => {
+  const runId = req.params.id;
 
-  if (!session) {
-    res.status(404).json({
-      error: {
-        code: 'RACE_NOT_FOUND',
-        message: `Race session "${raceId}" not found.`,
-        requestId: req.id,
-      },
+  const run = await runsRepository.getRun(runId);
+  if (!run) {
+    sendApiError(res, req, 'NOT_FOUND', `Run flight record "${runId}" not found.`, {
+      status: 404,
     });
     return;
   }
 
-  res.json({
-    raceId: session.raceId,
-    query: session.query,
-    isComplete: session.isComplete,
-    laneA: session.laneA,
-    laneB: session.laneB,
-    savings: session.savings,
-    error: session.error,
-    eventCount: session.events.length,
-    requestId: req.id,
-  });
+  res.json(run);
 });

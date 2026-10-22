@@ -183,73 +183,116 @@ async function simulateConverse(params: BedrockConverseParams): Promise<BedrockC
   };
 }
 
+import { ApiError } from '../lib/errors.js';
+
+async function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+function isThrottlingError(err: any): boolean {
+  const name = err?.name || '';
+  const message = err?.message || '';
+  return (
+    name.includes('Throttl') ||
+    name.includes('TooManyRequests') ||
+    err?.$metadata?.httpStatusCode === 429 ||
+    message.toLowerCase().includes('rate exceeded') ||
+    message.toLowerCase().includes('throttl')
+  );
+}
+
 /**
- * Dispatches Bedrock Converse command with automatic mock fallback
+ * Dispatches Bedrock Converse command with automatic mock fallback only when unconfigured.
+ * When AWS is configured, retries on throttle and surfaces BEDROCK_THROTTLED or real errors.
  */
 export async function callBedrockConverse(params: BedrockConverseParams): Promise<BedrockConverseResponse> {
   const isMockExplicit = process.env.BEDROCK_MOCK === 'true';
   const hasAwsCreds = Boolean(
     (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) ||
     process.env.AWS_PROFILE ||
-    process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+    process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI ||
+    process.env.AWS_ROLE_ARN
   );
 
   if (isMockExplicit || !hasAwsCreds) {
     return simulateConverse(params);
   }
 
-  try {
-    const sdk = await loadBedrockSdk();
-    if (!sdk) {
-      return simulateConverse(params);
-    }
-    const { BedrockRuntimeClient, ConverseCommand } = sdk;
-    const region = process.env.AWS_REGION || 'us-east-1';
-    const client = new BedrockRuntimeClient({ region });
-    const startTime = Date.now();
-
-    const command = new ConverseCommand({
-      modelId: params.modelId || process.env.BEDROCK_MODEL_ID || DEFAULT_MODEL,
-      messages: params.messages as any,
-      toolConfig: params.toolConfig as any,
-    });
-
-    const response = await client.send(command);
-    const latencyMs = Date.now() - startTime;
-
-    const stopReason = (response.stopReason as any) || 'tool_use';
-    const message = response.output?.message;
-    const content = message?.content?.map((c: any) => {
-      if (c.toolUse) {
-        return {
-          toolUse: {
-            toolUseId: c.toolUse.toolUseId,
-            name: c.toolUse.name,
-            input: c.toolUse.input,
-          },
-        };
-      }
-      return { text: c.text };
-    }) || [];
-
-    return {
-      stopReason,
-      output: {
-        message: {
-          role: 'assistant',
-          content,
-        },
-      },
-      usage: {
-        inputTokens: response.usage?.inputTokens || 0,
-        outputTokens: response.usage?.outputTokens || 0,
-        totalTokens: response.usage?.totalTokens || 0,
-      },
-      latencyMs,
-      isMock: false,
-    };
-  } catch (err: any) {
-    console.warn(`[Bedrock Converse] Real call failed (${err.message}). Falling back to simulation.`);
-    return simulateConverse(params);
+  const sdk = await loadBedrockSdk();
+  if (!sdk) {
+    throw new ApiError('INTERNAL', 'Failed to load AWS Bedrock Runtime SDK while credentials are provided.');
   }
+
+  const { BedrockRuntimeClient, ConverseCommand } = sdk;
+  const region = process.env.AWS_REGION || 'us-east-1';
+  const client = new BedrockRuntimeClient({ region });
+  const modelId = params.modelId || process.env.BEDROCK_MODEL_ID || DEFAULT_MODEL;
+
+  const maxRetries = 3;
+  let lastError: any = null;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const startTime = Date.now();
+      const command = new ConverseCommand({
+        modelId,
+        messages: params.messages as any,
+        toolConfig: params.toolConfig as any,
+      });
+
+      const response = await client.send(command);
+      const latencyMs = Date.now() - startTime;
+
+      const stopReason = (response.stopReason as any) || 'tool_use';
+      const message = response.output?.message;
+      const content = message?.content?.map((c: any) => {
+        if (c.toolUse) {
+          return {
+            toolUse: {
+              toolUseId: c.toolUse.toolUseId,
+              name: c.toolUse.name,
+              input: c.toolUse.input,
+            },
+          };
+        }
+        return { text: c.text };
+      }) || [];
+
+      return {
+        stopReason,
+        output: {
+          message: {
+            role: 'assistant',
+            content,
+          },
+        },
+        usage: {
+          inputTokens: response.usage?.inputTokens || 0,
+          outputTokens: response.usage?.outputTokens || 0,
+          totalTokens: response.usage?.totalTokens || 0,
+        },
+        latencyMs,
+        isMock: false,
+      };
+    } catch (err: any) {
+      lastError = err;
+      if (isThrottlingError(err) && attempt < maxRetries) {
+        const delayMs = Math.pow(2, attempt) * 300 + Math.floor(Math.random() * 150);
+        console.warn(`[Bedrock Converse] Throttled on attempt ${attempt + 1}. Retrying in ${delayMs}ms...`);
+        await sleep(delayMs);
+        continue;
+      }
+      break;
+    }
+  }
+
+  if (isThrottlingError(lastError)) {
+    throw new ApiError('BEDROCK_THROTTLED', 'Amazon Bedrock Converse throttled after multiple retry attempts.', {
+      status: 503,
+      retryAfter: 3,
+    });
+  }
+
+  throw new ApiError('INTERNAL', `Amazon Bedrock Converse failed: ${lastError?.message || 'Unknown error'}`);
 }
+

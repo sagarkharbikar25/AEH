@@ -1,17 +1,29 @@
 /**
  * POLARIS Core API Endpoints
  *
- * Exposes:
- * - GET  /api/health
- * - GET  /api/catalog
- * - POST /api/route
+ * Implements strict conformance to @polaris/contracts:
+ * - GET  /api/health       -> HealthSchema ({ api, decider, bedrock, version, uptimeSeconds })
+ * - GET  /api/catalog      -> CatalogResponseSchema ({ tools, constellations })
+ * - POST /api/route        -> RouteResponseSchema ({ needsTool, tier, tools, decisions, latencyMs })
+ * - GET  /api/bench/latest -> BenchResultsSchema
  */
 
 import { Router } from 'express';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  Health,
+  HealthSchema,
+  CatalogResponse,
+  CatalogResponseSchema,
+  RouteRequestSchema,
+  RouteResponse,
+  RouteResponseSchema,
+  Constellation,
+} from '@polaris/contracts';
 import { compileCatalog, shortlistTools } from '@polaris/router';
+import { sendApiError } from '../lib/errors.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,89 +34,144 @@ const compiledCatalog = compileCatalog(rawCatalog);
 export const apiRouter = Router();
 
 /**
- * Health check & readiness probe
+ * Probes Strands Decider 2B service endpoint status
  */
-apiRouter.get('/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    uptimeSeconds: Math.floor(process.uptime()),
-    timestamp: new Date().toISOString(),
+async function probeDecider(deciderUrl: string = process.env.DECIDER_URL || 'http://localhost:8000'): Promise<'loading' | 'ready' | 'down'> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 800);
+  try {
+    const res = await fetch(`${deciderUrl}/health`, { signal: controller.signal });
+    if (res.ok) return 'ready';
+    return 'loading';
+  } catch {
+    return 'down';
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
+ * Probes Amazon Bedrock service configuration status
+ */
+function probeBedrock(): 'connected' | 'simulated' | 'down' {
+  if (process.env.BEDROCK_MOCK === 'true') {
+    return 'simulated';
+  }
+  const hasAwsCreds = Boolean(
+    (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) ||
+    process.env.AWS_PROFILE ||
+    process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI ||
+    process.env.AWS_ROLE_ARN
+  );
+  return hasAwsCreds ? 'connected' : 'simulated';
+}
+
+/**
+ * GET /api/health
+ * Probe API, Decider 2B local router, and Amazon Bedrock connectivity
+ */
+apiRouter.get('/health', async (req, res) => {
+  const deciderStatus = await probeDecider();
+  const bedrockStatus = probeBedrock();
+
+  const healthPayload: Health = {
+    api: deciderStatus === 'down' ? 'degraded' : 'up',
+    decider: deciderStatus,
+    bedrock: bedrockStatus,
     version: '1.0.0',
-    services: {
-      router: 'ready',
-      catalog: 'ready',
-      bedrock: process.env.BEDROCK_MOCK === 'true' ? 'simulated' : 'connected',
-    },
-    toolsCount: rawCatalog.length,
-    requestId: req.id,
-  });
+    uptimeSeconds: Math.floor(process.uptime()),
+  };
+
+  HealthSchema.parse(healthPayload);
+  res.json(healthPayload);
 });
 
 /**
- * Full 240-tool catalog & constellation metadata
+ * GET /api/catalog
+ * Full 240-tool celestial catalog & constellation metadata
  */
 apiRouter.get('/catalog', (req, res) => {
-  // Aggregate constellation summary
-  const constellationsMap = new Map<string, { id: string; name: string; count: number; tools: any[] }>();
+  const constellationsMap = new Map<string, Constellation>();
 
   for (const tool of rawCatalog) {
     if (!constellationsMap.has(tool.category)) {
       constellationsMap.set(tool.category, {
         id: tool.category,
         name: tool.category.charAt(0).toUpperCase() + tool.category.slice(1),
-        count: 0,
-        tools: [],
+        descriptor: compiledCatalog.categoryOptions[tool.category] || `${tool.category} tools`,
+        toolsCount: 0,
       });
     }
     const constell = constellationsMap.get(tool.category)!;
-    constell.count++;
-    constell.tools.push(tool);
+    constell.toolsCount = (constell.toolsCount || 0) + 1;
   }
 
-  res.json({
-    totalTools: rawCatalog.length,
-    constellations: Array.from(constellationsMap.values()),
+  const catalogResponse: CatalogResponse = {
     tools: rawCatalog,
-    requestId: req.id,
-  });
+    constellations: Array.from(constellationsMap.values()),
+  };
+
+  CatalogResponseSchema.parse(catalogResponse);
+  res.json(catalogResponse);
 });
 
 /**
+ * POST /api/route
  * Direct tool routing endpoint via Strands Decider 2B
  */
 apiRouter.post('/route', async (req, res, next) => {
   try {
-    const { query, options } = req.body;
-    if (!query || typeof query !== 'string') {
-      res.status(400).json({
-        error: {
-          code: 'BAD_REQUEST',
-          message: 'Field "query" is required and must be a string.',
-          requestId: req.id,
-        },
-      });
-      return;
+    const parseResult = RouteRequestSchema.safeParse(req.body);
+    if (!parseResult.success) {
+      return next(parseResult.error);
     }
 
-    const result = await shortlistTools(query, compiledCatalog, options);
+    const { query } = parseResult.data;
+    const result = await shortlistTools(query, compiledCatalog);
 
-    res.json({
-      success: true,
-      query,
+    const decisions = [
+      {
+        stage: 'needs_tool' as const,
+        questionId: 'needs_tool',
+        answer: result.decisionTrace.needsTool,
+        confidence: result.decisionTrace.needsToolScore,
+        latencyMs: Math.round(result.decisionTrace.latencyMs / 2),
+      },
+      {
+        stage: 'category' as const,
+        questionId: 'category',
+        answer: result.decisionTrace.category,
+        confidence: result.decisionTrace.categoryConfidence,
+        optionsCount: Object.keys(compiledCatalog.categoryOptions).length,
+        latencyMs: Math.round(result.decisionTrace.latencyMs / 2),
+      },
+      {
+        stage: 'tool' as const,
+        questionId: 'in_category_tool',
+        answer: result.tools[0]?.name || 'none',
+        confidence: result.confidence,
+        optionsCount: result.tools.length,
+        latencyMs: result.decisionTrace.latencyMs,
+      },
+    ];
+
+    const responsePayload: RouteResponse = {
+      needsTool: result.decisionTrace.needsTool,
       tier: result.tier,
-      confidence: result.confidence,
-      candidateCount: result.tools.length,
       tools: result.tools,
-      decisionTrace: result.decisionTrace,
-      bedrockToolConfig: result.bedrockToolConfig,
-      requestId: req.id,
-    });
+      decisions,
+      latencyMs: result.decisionTrace.latencyMs,
+    };
+
+    RouteResponseSchema.parse(responsePayload);
+    res.json(responsePayload);
   } catch (err) {
     next(err);
   }
 });
 
 /**
+ * GET /api/bench/latest
  * Latest benchmark evaluation metrics for the Almanac dashboard
  */
 apiRouter.get('/bench/latest', (req, res) => {
@@ -112,26 +179,17 @@ apiRouter.get('/bench/latest', (req, res) => {
     const resultsPath = path.resolve(__dirname, '../../../bench/results.json');
     if (fs.existsSync(resultsPath)) {
       const data = JSON.parse(fs.readFileSync(resultsPath, 'utf-8'));
-      res.json({
-        ...data,
-        requestId: req.id,
-      });
+      res.json(data);
     } else {
-      res.status(404).json({
-        error: {
-          code: 'BENCHMARK_NOT_FOUND',
-          message: 'Benchmark results not yet generated. Run "npm run bench" to generate results.',
-          requestId: req.id,
-        },
-      });
+      sendApiError(
+        res,
+        req,
+        'NOT_FOUND',
+        'Benchmark results not yet generated. Run "npm run bench" to generate results.',
+        { status: 404 }
+      );
     }
   } catch (err: any) {
-    res.status(500).json({
-      error: {
-        code: 'INTERNAL_ERROR',
-        message: err.message,
-        requestId: req.id,
-      },
-    });
+    sendApiError(res, req, 'INTERNAL', err.message, { status: 500 });
   }
 });
