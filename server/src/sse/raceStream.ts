@@ -23,6 +23,9 @@ import {
 } from '@polaris/contracts';
 import { runsRepository } from '../db/runsRepository.js';
 
+type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
+export type RaceEventPayload = DistributiveOmit<RaceEvent, 'runId' | 'seq' | 'ts'>;
+
 export interface RaceSession {
   runId: string;
   requestId: string;
@@ -112,7 +115,7 @@ class RaceStreamManager extends EventEmitter {
    */
   public emitEvent(
     runId: string,
-    eventPayload: Omit<RaceEvent, 'runId' | 'seq' | 'ts'>
+    eventPayload: RaceEventPayload
   ): RaceEvent {
     const session = this.sessions.get(runId);
     const seq = session ? session.seq++ : 0;
