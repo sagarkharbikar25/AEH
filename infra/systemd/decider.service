@@ -1,0 +1,17 @@
+[Unit]
+Description=Strands Decider 2B SystemOne Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt
+ExecStart=/opt/strands-venv/bin/strands-decider serve strands-decider-2b --port 8000
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

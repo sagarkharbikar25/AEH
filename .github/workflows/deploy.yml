@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build_and_archive:
+    name: Build & Package Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build contracts
+        run: npm run build --workspace @polaris/contracts
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Archive production build
+        uses: actions/upload-artifact@v4
+        with:
+          name: polaris-dist
+          path: |
+            packages/contracts/dist
+            packages/router/dist
+            server/dist
+            web/dist
+          retention-days: 7
