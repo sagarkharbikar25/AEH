@@ -1,0 +1,162 @@
+[
+  {
+    "id": "q001",
+    "query": "Schedule a team sync meeting with platform engineering tomorrow at 2pm",
+    "expectedCategory": "calendar",
+    "expectedToolId": "calendar.create_event",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q002",
+    "query": "Check if Alice and Bob have overlapping free slots this Thursday afternoon",
+    "expectedCategory": "calendar",
+    "expectedToolId": "calendar.find_free_slots",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q003",
+    "query": "Provision and boot an EC2 m6i.2xlarge compute instance in us-east-1",
+    "expectedCategory": "compute",
+    "expectedToolId": "compute.launch_instance",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q004",
+    "query": "Fetch current CPU utilization and load average across cluster nodes",
+    "expectedCategory": "compute",
+    "expectedToolId": "compute.get_cpu_utilization",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q005",
+    "query": "Upload monthly metrics export parquet file to S3 analytics lake",
+    "expectedCategory": "storage",
+    "expectedToolId": "storage.upload_object",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q006",
+    "query": "Generate a 1-hour presigned download URL for customer export archive",
+    "expectedCategory": "storage",
+    "expectedToolId": "storage.generate_presigned_url",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q007",
+    "query": "Execute readonly SQL query to inspect active customer subscription records",
+    "expectedCategory": "database",
+    "expectedToolId": "database.execute_sql",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q008",
+    "query": "Take immediate point-in-time snapshot backup of production RDS database",
+    "expectedCategory": "database",
+    "expectedToolId": "database.create_snapshot",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q009",
+    "query": "Post deployment alert notification to #engineering Slack channel",
+    "expectedCategory": "messaging",
+    "expectedToolId": "messaging.send_channel_message",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q010",
+    "query": "Audit IAM role permissions to check for overly permissive wildcard policies",
+    "expectedCategory": "security",
+    "expectedToolId": "security.evaluate_iam_policy",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q011",
+    "query": "Trigger CI build pipeline for feature branch after PR approval",
+    "expectedCategory": "devops",
+    "expectedToolId": "devops.trigger_ci_build",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q012",
+    "query": "Calculate projected monthly AWS spend and check for budget overruns",
+    "expectedCategory": "billing",
+    "expectedToolId": "billing.get_projected_spend",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q013",
+    "query": "Create critical P1 incident ticket for checkout service 504 gateway timeout",
+    "expectedCategory": "tickets",
+    "expectedToolId": "tickets.create_incident_ticket",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q014",
+    "query": "Start asynchronous Step Function execution for multi-region failover",
+    "expectedCategory": "workflows",
+    "expectedToolId": "workflows.start_execution",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q015",
+    "query": "Allocate static Elastic IP address and attach to public gateway subnet",
+    "expectedCategory": "network",
+    "expectedToolId": "network.allocate_elastic_ip",
+    "difficulty": "direct",
+    "archetype": "unambiguous_single_intent"
+  },
+  {
+    "id": "q016",
+    "query": "Urgent escalation: PagerDuty triggered high p99 latency spike across payment gateways",
+    "expectedCategory": "telemetry",
+    "expectedToolId": "telemetry.query_metric_series",
+    "difficulty": "ambiguous",
+    "archetype": "multi_system_ambiguous"
+  },
+  {
+    "id": "q017",
+    "query": "Can you explain Amdahl's Law and its implication on parallel tool orchestration?",
+    "expectedCategory": "none",
+    "expectedToolId": "none",
+    "difficulty": "no_tool",
+    "archetype": "negative_general_knowledge"
+  },
+  {
+    "id": "q018",
+    "query": "What is the difference between synchronous RPC and event-driven architecture?",
+    "expectedCategory": "none",
+    "expectedToolId": "none",
+    "difficulty": "no_tool",
+    "archetype": "negative_general_knowledge"
+  },
+  {
+    "id": "q019",
+    "query": "How does Strands Decider 2B perform SystemOne routing without full context loading?",
+    "expectedCategory": "none",
+    "expectedToolId": "none",
+    "difficulty": "no_tool",
+    "archetype": "negative_general_knowledge"
+  },
+  {
+    "id": "q020",
+    "query": "Euclidean distance and cosine similarity comparison for embedding vectors",
+    "expectedCategory": "none",
+    "expectedToolId": "none",
+    "difficulty": "no_tool",
+    "archetype": "negative_general_knowledge"
+  }
+]

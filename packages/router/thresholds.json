@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "model": "strands-decider-2b",
+  "thresholds": {
+    "direct": {
+      "minScore": 0.85,
+      "toolCount": 1,
+      "description": "Single high-confidence tool match sent directly to Bedrock"
+    },
+    "narrow": {
+      "minScore": 0.55,
+      "toolCount": 3,
+      "description": "Narrow shortlist of 3 tools for Bedrock parameter resolution"
+    },
+    "wide": {
+      "minScore": 0.30,
+      "toolCount": 6,
+      "description": "Wide shortlist of 6 tools for ambiguous cross-cutting requests"
+    },
+    "fallback": {
+      "minScore": 0.0,
+      "toolCount": 12,
+      "includeAskClarification": true,
+      "description": "Low-confidence fallback sent with clarification tool"
+    }
+  },
+  "noToolGateThreshold": 0.25
+}

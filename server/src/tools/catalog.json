@@ -1,0 +1,6308 @@
+[
+  {
+    "id": "calendar.create_event",
+    "name": "create_event",
+    "category": "calendar",
+    "descriptor": "Creates a calendar event with a title, date and start time",
+    "description": "Creates a calendar event with a title, date and start time. Creates a new event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the event"
+        },
+        "startsAt": {
+          "type": "string",
+          "description": "ISO start timestamp"
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "description": "Length of the event in minutes"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the invited attendees"
+        }
+      },
+      "required": [
+        "title",
+        "startsAt"
+      ],
+      "additionalProperties": false
+    },
+    "x": 481.56,
+    "y": 88.44
+  },
+  {
+    "id": "calendar.update_event",
+    "name": "update_event",
+    "category": "calendar",
+    "descriptor": "Changes the date, time or details of an existing event",
+    "description": "Changes the date, time or details of an existing event. Applies a partial change to an existing event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the event"
+        }
+      },
+      "required": [
+        "eventId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 443.85,
+    "y": 93.84
+  },
+  {
+    "id": "calendar.cancel_event",
+    "name": "cancel_event",
+    "category": "calendar",
+    "descriptor": "Cancels a scheduled calendar event by its identifier",
+    "description": "Cancels a scheduled calendar event by its identifier. Removes an existing event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 457.36,
+    "y": 58
+  },
+  {
+    "id": "calendar.find_events",
+    "name": "find_events",
+    "category": "calendar",
+    "descriptor": "Lists calendar events in a date range for a user",
+    "description": "Lists calendar events in a date range for a user. Returns a collection of events records. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to list"
+        },
+        "to": {
+          "type": "string",
+          "description": "ISO end of the range to list"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 468.96,
+    "y": 110.42
+  },
+  {
+    "id": "calendar.get_event",
+    "name": "get_event",
+    "category": "calendar",
+    "descriptor": "Returns the full details of one calendar event",
+    "description": "Returns the full details of one calendar event. Returns a single event by identifier. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 443.7,
+    "y": 80.16
+  },
+  {
+    "id": "calendar.reschedule_event",
+    "name": "reschedule_event",
+    "category": "calendar",
+    "descriptor": "Moves an event to a different date and time",
+    "description": "Moves an event to a different date and time. Applies a partial change to an existing event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the event"
+        }
+      },
+      "required": [
+        "eventId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 473.91,
+    "y": 58.53
+  },
+  {
+    "id": "calendar.create_reminder",
+    "name": "create_reminder",
+    "category": "calendar",
+    "descriptor": "Sets a reminder ahead of an event or task",
+    "description": "Sets a reminder ahead of an event or task. Creates a new reminder. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the event"
+        },
+        "startsAt": {
+          "type": "string",
+          "description": "ISO start timestamp"
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "description": "Length of the event in minutes"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the invited attendees"
+        }
+      },
+      "required": [
+        "title",
+        "startsAt"
+      ],
+      "additionalProperties": false
+    },
+    "x": 453.65,
+    "y": 87.85
+  },
+  {
+    "id": "calendar.list_reminders",
+    "name": "list_reminders",
+    "category": "calendar",
+    "descriptor": "Lists the upcoming reminders for a user",
+    "description": "Lists the upcoming reminders for a user. Returns a collection of reminders records. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to list"
+        },
+        "to": {
+          "type": "string",
+          "description": "ISO end of the range to list"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 444.4,
+    "y": 64.76
+  },
+  {
+    "id": "calendar.invite_attendees",
+    "name": "invite_attendees",
+    "category": "calendar",
+    "descriptor": "Sends invitations to attendees for a calendar event",
+    "description": "Sends invitations to attendees for a calendar event. Runs an action against an existing attendees. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the attendees"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 481.96,
+    "y": 103.15
+  },
+  {
+    "id": "calendar.decline_invitation",
+    "name": "decline_invitation",
+    "category": "calendar",
+    "descriptor": "Declines a pending calendar invitation",
+    "description": "Declines a pending calendar invitation. Runs an action against an existing invitation. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the attendees"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 428.57,
+    "y": 101.4
+  },
+  {
+    "id": "calendar.find_free_slots",
+    "name": "find_free_slots",
+    "category": "calendar",
+    "descriptor": "Finds open time slots across participant calendars",
+    "description": "Finds open time slots across participant calendars. Searches free slots records by keyword. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against titles"
+        },
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to search"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 468.04,
+    "y": 70.17
+  },
+  {
+    "id": "calendar.create_recurring_event",
+    "name": "create_recurring_event",
+    "category": "calendar",
+    "descriptor": "Creates an event that repeats on a schedule",
+    "description": "Creates an event that repeats on a schedule. Creates a new recurring event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the event"
+        },
+        "startsAt": {
+          "type": "string",
+          "description": "ISO start timestamp"
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "description": "Length of the event in minutes"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the invited attendees"
+        }
+      },
+      "required": [
+        "title",
+        "startsAt"
+      ],
+      "additionalProperties": false
+    },
+    "x": 454.49,
+    "y": 103.08
+  },
+  {
+    "id": "calendar.list_calendars",
+    "name": "list_calendars",
+    "category": "calendar",
+    "descriptor": "Lists the calendars available to a user",
+    "description": "Lists the calendars available to a user. Returns a collection of calendars records. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to list"
+        },
+        "to": {
+          "type": "string",
+          "description": "ISO end of the range to list"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 429.74,
+    "y": 70.51
+  },
+  {
+    "id": "calendar.share_calendar",
+    "name": "share_calendar",
+    "category": "calendar",
+    "descriptor": "Shares a calendar with another user or group",
+    "description": "Shares a calendar with another user or group. Runs an action against an existing calendar. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the attendees"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 480.94,
+    "y": 72.96
+  },
+  {
+    "id": "calendar.export_event",
+    "name": "export_event",
+    "category": "calendar",
+    "descriptor": "Exports one event to a calendar file format",
+    "description": "Exports one event to a calendar file format. Runs an action against an existing event. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the attendees"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 442.79,
+    "y": 110.08
+  },
+  {
+    "id": "calendar.check_conflict",
+    "name": "check_conflict",
+    "category": "calendar",
+    "descriptor": "Detects overlapping events for a user",
+    "description": "Detects overlapping events for a user. Searches conflict records by keyword. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against titles"
+        },
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to search"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 453.27,
+    "y": 75.41
+  },
+  {
+    "id": "calendar.book_room",
+    "name": "book_room",
+    "category": "calendar",
+    "descriptor": "Books a meeting room for a given time slot",
+    "description": "Books a meeting room for a given time slot. Creates a new room. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the event"
+        },
+        "startsAt": {
+          "type": "string",
+          "description": "ISO start timestamp"
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "description": "Length of the event in minutes"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the invited attendees"
+        }
+      },
+      "required": [
+        "title",
+        "startsAt"
+      ],
+      "additionalProperties": false
+    },
+    "x": 470.44,
+    "y": 97.4
+  },
+  {
+    "id": "calendar.release_room",
+    "name": "release_room",
+    "category": "calendar",
+    "descriptor": "Releases a previously booked meeting room",
+    "description": "Releases a previously booked meeting room. Runs an action against an existing room. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "attendeeIds": {
+          "type": "array",
+          "description": "Identifiers of the attendees"
+        }
+      },
+      "required": [
+        "eventId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 428.77,
+    "y": 87.11
+  },
+  {
+    "id": "calendar.set_working_hours",
+    "name": "set_working_hours",
+    "category": "calendar",
+    "descriptor": "Sets the working hours shown on a user calendar",
+    "description": "Sets the working hours shown on a user calendar. Applies a partial change to an existing working hours. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "Identifier of the event"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the event"
+        }
+      },
+      "required": [
+        "eventId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 469.08,
+    "y": 81.87
+  },
+  {
+    "id": "calendar.count_events",
+    "name": "count_events",
+    "category": "calendar",
+    "descriptor": "Counts events per month for a user or calendar",
+    "description": "Counts events per month for a user or calendar. Returns a collection of events records. Calendar constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "ISO start of the range to list"
+        },
+        "to": {
+          "type": "string",
+          "description": "ISO end of the range to list"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 454.61,
+    "y": 117.11
+  },
+  {
+    "id": "tickets.open_issue",
+    "name": "open_issue",
+    "category": "tickets",
+    "descriptor": "Opens a new support issue or service request",
+    "description": "Opens a new support issue or service request. Creates a new issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the issue"
+        },
+        "body": {
+          "type": "string",
+          "description": "Description of the problem"
+        },
+        "priority": {
+          "type": "string",
+          "description": "Initial priority of the issue"
+        }
+      },
+      "required": [
+        "title",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 666.3,
+    "y": 119.52
+  },
+  {
+    "id": "tickets.close_issue",
+    "name": "close_issue",
+    "category": "tickets",
+    "descriptor": "Closes an issue once it has been resolved",
+    "description": "Closes an issue once it has been resolved. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 616.03,
+    "y": 138.01
+  },
+  {
+    "id": "tickets.update_issue",
+    "name": "update_issue",
+    "category": "tickets",
+    "descriptor": "Changes the status, priority or description of an issue",
+    "description": "Changes the status, priority or description of an issue. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 637.81,
+    "y": 89.48
+  },
+  {
+    "id": "tickets.get_issue",
+    "name": "get_issue",
+    "category": "tickets",
+    "descriptor": "Returns the full detail of a single issue",
+    "description": "Returns the full detail of a single issue. Returns a single issue by identifier. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 659.51,
+    "y": 143.63
+  },
+  {
+    "id": "tickets.list_issues",
+    "name": "list_issues",
+    "category": "tickets",
+    "descriptor": "Lists issues filtered by status, priority or assignee",
+    "description": "Lists issues filtered by status, priority or assignee. Returns a collection of issues records. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "assigneeId": {
+          "type": "string",
+          "description": "Assignee to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 612.95,
+    "y": 107.76
+  },
+  {
+    "id": "tickets.search_issues",
+    "name": "search_issues",
+    "category": "tickets",
+    "descriptor": "Finds issues by keyword across title and description",
+    "description": "Finds issues by keyword across title and description. Searches issues records by keyword. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against issues"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 651.24,
+    "y": 113.19
+  },
+  {
+    "id": "tickets.assign_issue",
+    "name": "assign_issue",
+    "category": "tickets",
+    "descriptor": "Assigns an issue to a team member",
+    "description": "Assigns an issue to a team member. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 639.4,
+    "y": 132.26
+  },
+  {
+    "id": "tickets.add_issue_comment",
+    "name": "add_issue_comment",
+    "category": "tickets",
+    "descriptor": "Adds a comment or note to an issue thread",
+    "description": "Adds a comment or note to an issue thread. Runs an action against an existing issue comment. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment or note to record"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 624.27,
+    "y": 99.26
+  },
+  {
+    "id": "tickets.link_issue",
+    "name": "link_issue",
+    "category": "tickets",
+    "descriptor": "Links two related issues together",
+    "description": "Links two related issues together. Runs an action against an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment or note to record"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 668.39,
+    "y": 132.09
+  },
+  {
+    "id": "tickets.set_issue_priority",
+    "name": "set_issue_priority",
+    "category": "tickets",
+    "descriptor": "Sets the priority level of an issue",
+    "description": "Sets the priority level of an issue. Applies a partial change to an existing issue priority. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 626.09,
+    "y": 129.1
+  },
+  {
+    "id": "tickets.escalate_issue",
+    "name": "escalate_issue",
+    "category": "tickets",
+    "descriptor": "Escalates an issue to a higher support tier",
+    "description": "Escalates an issue to a higher support tier. Runs an action against an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment or note to record"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 651.74,
+    "y": 99
+  },
+  {
+    "id": "tickets.reopen_issue",
+    "name": "reopen_issue",
+    "category": "tickets",
+    "descriptor": "Reopens a previously closed issue",
+    "description": "Reopens a previously closed issue. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 645.23,
+    "y": 141.32
+  },
+  {
+    "id": "tickets.create_tag",
+    "name": "create_tag",
+    "category": "tickets",
+    "descriptor": "Creates a label that can be attached to issues",
+    "description": "Creates a label that can be attached to issues. Creates a new tag. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title of the issue"
+        },
+        "body": {
+          "type": "string",
+          "description": "Description of the problem"
+        },
+        "priority": {
+          "type": "string",
+          "description": "Initial priority of the issue"
+        }
+      },
+      "required": [
+        "title",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 626.72,
+    "y": 113.11
+  },
+  {
+    "id": "tickets.list_tags",
+    "name": "list_tags",
+    "category": "tickets",
+    "descriptor": "Lists every label used on issues",
+    "description": "Lists every label used on issues. Returns a collection of tags records. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "assigneeId": {
+          "type": "string",
+          "description": "Assignee to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 640.27,
+    "y": 116.59
+  },
+  {
+    "id": "tickets.attach_tag",
+    "name": "attach_tag",
+    "category": "tickets",
+    "descriptor": "Attaches an existing label to an issue",
+    "description": "Attaches an existing label to an issue. Runs an action against an existing tag. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment or note to record"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 630.24,
+    "y": 142.01
+  },
+  {
+    "id": "tickets.list_sprints",
+    "name": "list_sprints",
+    "category": "tickets",
+    "descriptor": "Lists the sprints in a project board",
+    "description": "Lists the sprints in a project board. Returns a collection of sprints records. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "assigneeId": {
+          "type": "string",
+          "description": "Assignee to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 637.89,
+    "y": 106.97
+  },
+  {
+    "id": "tickets.move_issue",
+    "name": "move_issue",
+    "category": "tickets",
+    "descriptor": "Moves an issue to another board or sprint",
+    "description": "Moves an issue to another board or sprint. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 654.48,
+    "y": 128.63
+  },
+  {
+    "id": "tickets.duplicate_issue",
+    "name": "duplicate_issue",
+    "category": "tickets",
+    "descriptor": "Marks one issue as a duplicate of another",
+    "description": "Marks one issue as a duplicate of another. Applies a partial change to an existing issue. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the issue"
+        }
+      },
+      "required": [
+        "issueId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 612.55,
+    "y": 123.81
+  },
+  {
+    "id": "tickets.sla_report",
+    "name": "sla_report",
+    "category": "tickets",
+    "descriptor": "Reports which issues are close to breaching their SLA",
+    "description": "Reports which issues are close to breaching their SLA. Returns a collection of sla report records. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "assigneeId": {
+          "type": "string",
+          "description": "Assignee to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 664.42,
+    "y": 103.17
+  },
+  {
+    "id": "tickets.merge_issues",
+    "name": "merge_issues",
+    "category": "tickets",
+    "descriptor": "Merges duplicate issues into a single primary record",
+    "description": "Merges duplicate issues into a single primary record. Runs an action against an existing issues. Tickets constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "Identifier of the issue"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment or note to record"
+        }
+      },
+      "required": [
+        "issueId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 639.44,
+    "y": 154.56
+  },
+  {
+    "id": "messaging.send_email",
+    "name": "send_email",
+    "category": "messaging",
+    "descriptor": "Sends an email message to one or more recipients",
+    "description": "Sends an email message to one or more recipients. Creates a new email. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 777.1,
+    "y": 215.41
+  },
+  {
+    "id": "messaging.send_bulk_email",
+    "name": "send_bulk_email",
+    "category": "messaging",
+    "descriptor": "Sends the same email to a large recipient list",
+    "description": "Sends the same email to a large recipient list. Creates a new bulk email. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 751.97,
+    "y": 233.71
+  },
+  {
+    "id": "messaging.draft_email",
+    "name": "draft_email",
+    "category": "messaging",
+    "descriptor": "Saves an email as a draft without sending it",
+    "description": "Saves an email as a draft without sending it. Creates a new email. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 774.4,
+    "y": 203.12
+  },
+  {
+    "id": "messaging.read_email",
+    "name": "read_email",
+    "category": "messaging",
+    "descriptor": "Returns the contents of a received email",
+    "description": "Returns the contents of a received email. Returns a single email by identifier. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 790.95,
+    "y": 238.9
+  },
+  {
+    "id": "messaging.list_inbox",
+    "name": "list_inbox",
+    "category": "messaging",
+    "descriptor": "Lists the emails in a user inbox",
+    "description": "Lists the emails in a user inbox. Returns a collection of inbox records. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "folder": {
+          "type": "string",
+          "description": "Folder to list"
+        },
+        "unreadOnly": {
+          "type": "boolean",
+          "description": "Return only unread messages"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 766.02,
+    "y": 209.75
+  },
+  {
+    "id": "messaging.search_messages",
+    "name": "search_messages",
+    "category": "messaging",
+    "descriptor": "Searches conversations by keyword",
+    "description": "Searches conversations by keyword. Searches messages records by keyword. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against messages"
+        },
+        "channelId": {
+          "type": "string",
+          "description": "Channel to search in"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 800.07,
+    "y": 198.54
+  },
+  {
+    "id": "messaging.reply_message",
+    "name": "reply_message",
+    "category": "messaging",
+    "descriptor": "Sends a reply to an existing message thread",
+    "description": "Sends a reply to an existing message thread. Creates a new message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 765.69,
+    "y": 240.89
+  },
+  {
+    "id": "messaging.forward_message",
+    "name": "forward_message",
+    "category": "messaging",
+    "descriptor": "Forwards a received message to someone else",
+    "description": "Forwards a received message to someone else. Creates a new message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 760.19,
+    "y": 197.17
+  },
+  {
+    "id": "messaging.send_chat_message",
+    "name": "send_chat_message",
+    "category": "messaging",
+    "descriptor": "Posts a message to a team chat channel",
+    "description": "Posts a message to a team chat channel. Creates a new chat message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 790.5,
+    "y": 222.68
+  },
+  {
+    "id": "messaging.create_channel",
+    "name": "create_channel",
+    "category": "messaging",
+    "descriptor": "Creates a new team chat channel",
+    "description": "Creates a new team chat channel. Creates a new channel. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 741.93,
+    "y": 221.18
+  },
+  {
+    "id": "messaging.list_channels",
+    "name": "list_channels",
+    "category": "messaging",
+    "descriptor": "Lists the chat channels a user belongs to",
+    "description": "Lists the chat channels a user belongs to. Returns a collection of channels records. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "folder": {
+          "type": "string",
+          "description": "Folder to list"
+        },
+        "unreadOnly": {
+          "type": "boolean",
+          "description": "Return only unread messages"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 787.07,
+    "y": 192.6
+  },
+  {
+    "id": "messaging.send_notification",
+    "name": "send_notification",
+    "category": "messaging",
+    "descriptor": "Sends a push notification to a user device",
+    "description": "Sends a push notification to a user device. Creates a new notification. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 778.54,
+    "y": 234.67
+  },
+  {
+    "id": "messaging.schedule_message",
+    "name": "schedule_message",
+    "category": "messaging",
+    "descriptor": "Schedules a message to be sent at a later time",
+    "description": "Schedules a message to be sent at a later time. Creates a new message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "array",
+          "description": "Recipient identifiers"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body"
+        }
+      },
+      "required": [
+        "to",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 748.53,
+    "y": 205.99
+  },
+  {
+    "id": "messaging.cancel_scheduled_message",
+    "name": "cancel_scheduled_message",
+    "category": "messaging",
+    "descriptor": "Cancels a message that was scheduled to send",
+    "description": "Cancels a message that was scheduled to send. Runs an action against an existing scheduled message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 801.84,
+    "y": 215.1
+  },
+  {
+    "id": "messaging.add_reaction",
+    "name": "add_reaction",
+    "category": "messaging",
+    "descriptor": "Adds an emoji reaction to a message",
+    "description": "Adds an emoji reaction to a message. Runs an action against an existing reaction. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 765.09,
+    "y": 226.81
+  },
+  {
+    "id": "messaging.pin_message",
+    "name": "pin_message",
+    "category": "messaging",
+    "descriptor": "Pins a message to the top of a channel",
+    "description": "Pins a message to the top of a channel. Runs an action against an existing message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 771.64,
+    "y": 186.39
+  },
+  {
+    "id": "messaging.mute_channel",
+    "name": "mute_channel",
+    "category": "messaging",
+    "descriptor": "Mutes notifications for one chat channel",
+    "description": "Mutes notifications for one chat channel. Applies a partial change to an existing channel. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the message"
+        }
+      },
+      "required": [
+        "messageId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 803.13,
+    "y": 228.79
+  },
+  {
+    "id": "messaging.delete_message",
+    "name": "delete_message",
+    "category": "messaging",
+    "descriptor": "Deletes a message from a conversation",
+    "description": "Deletes a message from a conversation. Removes an existing message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 754.96,
+    "y": 220.85
+  },
+  {
+    "id": "messaging.report_message",
+    "name": "report_message",
+    "category": "messaging",
+    "descriptor": "Reports a message as spam or inappropriate",
+    "description": "Reports a message as spam or inappropriate. Runs an action against an existing message. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Identifier of the message"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 786.71,
+    "y": 209.12
+  },
+  {
+    "id": "messaging.unread_count",
+    "name": "unread_count",
+    "category": "messaging",
+    "descriptor": "Counts unread messages per conversation",
+    "description": "Counts unread messages per conversation. Returns a collection of unread count records. Messaging constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "folder": {
+          "type": "string",
+          "description": "Folder to list"
+        },
+        "unreadOnly": {
+          "type": "boolean",
+          "description": "Return only unread messages"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 778.82,
+    "y": 247.54
+  },
+  {
+    "id": "files.upload_file",
+    "name": "upload_file",
+    "category": "files",
+    "descriptor": "Uploads a file to a storage location",
+    "description": "Uploads a file to a storage location. Creates a new file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "File name"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Destination folder"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 850.16,
+    "y": 343.42
+  },
+  {
+    "id": "files.download_file",
+    "name": "download_file",
+    "category": "files",
+    "descriptor": "Downloads a stored file by its identifier",
+    "description": "Downloads a stored file by its identifier. Returns a single file by identifier. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 801.09,
+    "y": 370.59
+  },
+  {
+    "id": "files.delete_file",
+    "name": "delete_file",
+    "category": "files",
+    "descriptor": "Removes a stored file permanently",
+    "description": "Removes a stored file permanently. Removes an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 818.64,
+    "y": 321.32
+  },
+  {
+    "id": "files.share_file",
+    "name": "share_file",
+    "category": "files",
+    "descriptor": "Creates a shareable link for a file",
+    "description": "Creates a shareable link for a file. Runs an action against an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 841.76,
+    "y": 366.09
+  },
+  {
+    "id": "files.list_folder",
+    "name": "list_folder",
+    "category": "files",
+    "descriptor": "Lists the files inside a storage folder",
+    "description": "Lists the files inside a storage folder. Returns a collection of folder records. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "folderId": {
+          "type": "string",
+          "description": "Folder to list"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of entries"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 796.76,
+    "y": 339.66
+  },
+  {
+    "id": "files.create_folder",
+    "name": "create_folder",
+    "category": "files",
+    "descriptor": "Creates a new folder in the file store",
+    "description": "Creates a new folder in the file store. Creates a new folder. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "File name"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Destination folder"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 847.97,
+    "y": 328.72
+  },
+  {
+    "id": "files.move_file",
+    "name": "move_file",
+    "category": "files",
+    "descriptor": "Moves a file into a different folder",
+    "description": "Moves a file into a different folder. Applies a partial change to an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the file"
+        }
+      },
+      "required": [
+        "fileId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 817.61,
+    "y": 375.14
+  },
+  {
+    "id": "files.rename_file",
+    "name": "rename_file",
+    "category": "files",
+    "descriptor": "Renames a file in place",
+    "description": "Renames a file in place. Applies a partial change to an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the file"
+        }
+      },
+      "required": [
+        "fileId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 814.01,
+    "y": 335.66
+  },
+  {
+    "id": "files.search_files",
+    "name": "search_files",
+    "category": "files",
+    "descriptor": "Finds files by name or content",
+    "description": "Finds files by name or content. Searches files records by keyword. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against file names"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Folder to search in"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 838.45,
+    "y": 353.09
+  },
+  {
+    "id": "files.preview_file",
+    "name": "preview_file",
+    "category": "files",
+    "descriptor": "Renders a short preview of the file contents",
+    "description": "Renders a short preview of the file contents. Returns a single file by identifier. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 797.54,
+    "y": 356.01
+  },
+  {
+    "id": "files.copy_file",
+    "name": "copy_file",
+    "category": "files",
+    "descriptor": "Copies a file to a new location",
+    "description": "Copies a file to a new location. Creates a new file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "File name"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Destination folder"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 833.73,
+    "y": 322.58
+  },
+  {
+    "id": "files.restore_file",
+    "name": "restore_file",
+    "category": "files",
+    "descriptor": "Restores a deleted file from the trash",
+    "description": "Restores a deleted file from the trash. Runs an action against an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 830.75,
+    "y": 378.17
+  },
+  {
+    "id": "files.file_metadata",
+    "name": "file_metadata",
+    "category": "files",
+    "descriptor": "Returns size, type and dates for a file",
+    "description": "Returns size, type and dates for a file. Returns a single file metadata by identifier. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 803.63,
+    "y": 325.9
+  },
+  {
+    "id": "files.convert_document",
+    "name": "convert_document",
+    "category": "files",
+    "descriptor": "Converts a document between supported file formats",
+    "description": "Converts a document between supported file formats. Runs an action against an existing document. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 822.39,
+    "y": 349.13
+  },
+  {
+    "id": "files.compress_archive",
+    "name": "compress_archive",
+    "category": "files",
+    "descriptor": "Compresses files into a single archive",
+    "description": "Compresses files into a single archive. Runs an action against an existing archive. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 826.12,
+    "y": 361.67
+  },
+  {
+    "id": "files.extract_archive",
+    "name": "extract_archive",
+    "category": "files",
+    "descriptor": "Extracts the contents of an archive file",
+    "description": "Extracts the contents of an archive file. Runs an action against an existing archive. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 824.32,
+    "y": 333.04
+  },
+  {
+    "id": "files.lock_file",
+    "name": "lock_file",
+    "category": "files",
+    "descriptor": "Locks a file against edits by other users",
+    "description": "Locks a file against edits by other users. Applies a partial change to an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the file"
+        }
+      },
+      "required": [
+        "fileId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 852.12,
+    "y": 358.91
+  },
+  {
+    "id": "files.tag_file",
+    "name": "tag_file",
+    "category": "files",
+    "descriptor": "Adds a tag to a file for easier searching",
+    "description": "Adds a tag to a file for easier searching. Runs an action against an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 810.54,
+    "y": 349.77
+  },
+  {
+    "id": "files.storage_usage",
+    "name": "storage_usage",
+    "category": "files",
+    "descriptor": "Reports how much storage space is used",
+    "description": "Reports how much storage space is used. Returns a collection of storage usage records. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "folderId": {
+          "type": "string",
+          "description": "Folder to list"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of entries"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 839.33,
+    "y": 338.04
+  },
+  {
+    "id": "files.scan_file",
+    "name": "scan_file",
+    "category": "files",
+    "descriptor": "Scans an uploaded file for malware",
+    "description": "Scans an uploaded file for malware. Runs an action against an existing file. Files constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of the file"
+        },
+        "shareWith": {
+          "type": "string",
+          "description": "Identifier to share with"
+        }
+      },
+      "required": [
+        "fileId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 812.88,
+    "y": 359.23
+  },
+  {
+    "id": "crm.create_contact",
+    "name": "create_contact",
+    "category": "crm",
+    "descriptor": "Creates a contact record for a person",
+    "description": "Creates a contact record for a person. Creates a new contact. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person or organisation"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation the person belongs to"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 792.37,
+    "y": 479.05
+  },
+  {
+    "id": "crm.update_contact",
+    "name": "update_contact",
+    "category": "crm",
+    "descriptor": "Changes fields on an existing contact",
+    "description": "Changes fields on an existing contact. Applies a partial change to an existing contact. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the record"
+        }
+      },
+      "required": [
+        "recordId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 769.25,
+    "y": 492.65
+  },
+  {
+    "id": "crm.find_contacts",
+    "name": "find_contacts",
+    "category": "crm",
+    "descriptor": "Searches contacts by name, email or company",
+    "description": "Searches contacts by name, email or company. Searches contacts records by keyword. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against records"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation to filter by"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 773.71,
+    "y": 459.09
+  },
+  {
+    "id": "crm.get_contact",
+    "name": "get_contact",
+    "category": "crm",
+    "descriptor": "Returns the full record for one contact",
+    "description": "Returns the full record for one contact. Returns a single contact by identifier. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 773.27,
+    "y": 481.89
+  },
+  {
+    "id": "crm.delete_contact",
+    "name": "delete_contact",
+    "category": "crm",
+    "descriptor": "Removes a contact record",
+    "description": "Removes a contact record. Removes an existing contact. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 765.31,
+    "y": 472.32
+  },
+  {
+    "id": "crm.create_lead",
+    "name": "create_lead",
+    "category": "crm",
+    "descriptor": "Adds a new sales lead to the pipeline",
+    "description": "Adds a new sales lead to the pipeline. Creates a new lead. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person or organisation"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation the person belongs to"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 795.61,
+    "y": 465.15
+  },
+  {
+    "id": "crm.qualify_lead",
+    "name": "qualify_lead",
+    "category": "crm",
+    "descriptor": "Marks a lead as qualified for sales outreach",
+    "description": "Marks a lead as qualified for sales outreach. Applies a partial change to an existing lead. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the record"
+        }
+      },
+      "required": [
+        "recordId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 761.88,
+    "y": 508.01
+  },
+  {
+    "id": "crm.convert_lead",
+    "name": "convert_lead",
+    "category": "crm",
+    "descriptor": "Converts a qualified lead into an account",
+    "description": "Converts a qualified lead into an account. Runs an action against an existing lead. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 757.79,
+    "y": 456.1
+  },
+  {
+    "id": "crm.create_account",
+    "name": "create_account",
+    "category": "crm",
+    "descriptor": "Creates a company or organisation account",
+    "description": "Creates a company or organisation account. Creates a new account. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person or organisation"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation the person belongs to"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 799.24,
+    "y": 490.22
+  },
+  {
+    "id": "crm.list_accounts",
+    "name": "list_accounts",
+    "category": "crm",
+    "descriptor": "Lists accounts filtered by owner or tier",
+    "description": "Lists accounts filtered by owner or tier. Returns a collection of accounts records. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "Owner to filter by"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Account tier to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 760.69,
+    "y": 481.97
+  },
+  {
+    "id": "crm.create_deal",
+    "name": "create_deal",
+    "category": "crm",
+    "descriptor": "Opens a new deal for a potential sale",
+    "description": "Opens a new deal for a potential sale. Creates a new deal. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person or organisation"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation the person belongs to"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 785.58,
+    "y": 453.34
+  },
+  {
+    "id": "crm.update_deal_stage",
+    "name": "update_deal_stage",
+    "category": "crm",
+    "descriptor": "Moves a deal to another pipeline stage",
+    "description": "Moves a deal to another pipeline stage. Applies a partial change to an existing deal stage. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the record"
+        }
+      },
+      "required": [
+        "recordId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 792.06,
+    "y": 504.33
+  },
+  {
+    "id": "crm.list_deals",
+    "name": "list_deals",
+    "category": "crm",
+    "descriptor": "Lists open deals with their values and stages",
+    "description": "Lists open deals with their values and stages. Returns a collection of deals records. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "Owner to filter by"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Account tier to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 751.76,
+    "y": 469.41
+  },
+  {
+    "id": "crm.deal_forecast",
+    "name": "deal_forecast",
+    "category": "crm",
+    "descriptor": "Forecasts revenue from the current deal pipeline",
+    "description": "Forecasts revenue from the current deal pipeline. Returns a collection of deal forecast records. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "Owner to filter by"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Account tier to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 804.99,
+    "y": 476.48
+  },
+  {
+    "id": "crm.add_record_note",
+    "name": "add_record_note",
+    "category": "crm",
+    "descriptor": "Attaches a note to a contact, account or deal",
+    "description": "Attaches a note to a contact, account or deal. Runs an action against an existing record note. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 753.22,
+    "y": 496.64
+  },
+  {
+    "id": "crm.log_activity",
+    "name": "log_activity",
+    "category": "crm",
+    "descriptor": "Records a call or meeting against an account",
+    "description": "Records a call or meeting against an account. Runs an action against an existing activity. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 771.15,
+    "y": 446.31
+  },
+  {
+    "id": "crm.assign_owner",
+    "name": "assign_owner",
+    "category": "crm",
+    "descriptor": "Assigns a record to a sales representative",
+    "description": "Assigns a record to a sales representative. Applies a partial change to an existing owner. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the record"
+        }
+      },
+      "required": [
+        "recordId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 783.32,
+    "y": 493.36
+  },
+  {
+    "id": "crm.merge_contacts",
+    "name": "merge_contacts",
+    "category": "crm",
+    "descriptor": "Merges duplicate contact records into one",
+    "description": "Merges duplicate contact records into one. Runs an action against an existing contacts. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 743.75,
+    "y": 482.97
+  },
+  {
+    "id": "crm.import_contacts",
+    "name": "import_contacts",
+    "category": "crm",
+    "descriptor": "Imports a list of contacts from a file",
+    "description": "Imports a list of contacts from a file. Creates a new contacts. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person or organisation"
+        },
+        "company": {
+          "type": "string",
+          "description": "Organisation the person belongs to"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the person"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 781.74,
+    "y": 467.67
+  },
+  {
+    "id": "crm.export_contacts",
+    "name": "export_contacts",
+    "category": "crm",
+    "descriptor": "Exports contacts to a spreadsheet file",
+    "description": "Exports contacts to a spreadsheet file. Runs an action against an existing contacts. CRM constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "description": "Identifier of the record"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "recordId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 778.42,
+    "y": 506.09
+  },
+  {
+    "id": "billing.create_invoice",
+    "name": "create_invoice",
+    "category": "billing",
+    "descriptor": "Creates an invoice for a customer",
+    "description": "Creates an invoice for a customer. Creates a new invoice. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string",
+          "description": "Customer the invoice belongs to"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Total amount in the currency"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO currency code"
+        }
+      },
+      "required": [
+        "customerId",
+        "amount"
+      ],
+      "additionalProperties": false
+    },
+    "x": 671.65,
+    "y": 572.8
+  },
+  {
+    "id": "billing.send_invoice",
+    "name": "send_invoice",
+    "category": "billing",
+    "descriptor": "Sends a drafted invoice to the customer",
+    "description": "Sends a drafted invoice to the customer. Runs an action against an existing invoice. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount used for the action"
+        }
+      },
+      "required": [
+        "invoiceId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 628.88,
+    "y": 583.68
+  },
+  {
+    "id": "billing.get_invoice",
+    "name": "get_invoice",
+    "category": "billing",
+    "descriptor": "Returns one invoice with its line items",
+    "description": "Returns one invoice with its line items. Returns a single invoice by identifier. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        }
+      },
+      "required": [
+        "invoiceId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 639.06,
+    "y": 555.29
+  },
+  {
+    "id": "billing.list_invoices",
+    "name": "list_invoices",
+    "category": "billing",
+    "descriptor": "Lists invoices by status, customer or date",
+    "description": "Lists invoices by status, customer or date. Returns a collection of invoices records. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Customer to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 650.94,
+    "y": 603.2
+  },
+  {
+    "id": "billing.mark_invoice_paid",
+    "name": "mark_invoice_paid",
+    "category": "billing",
+    "descriptor": "Records an invoice as paid",
+    "description": "Records an invoice as paid. Applies a partial change to an existing invoice paid. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 619.61,
+    "y": 572.98
+  },
+  {
+    "id": "billing.void_invoice",
+    "name": "void_invoice",
+    "category": "billing",
+    "descriptor": "Cancels an issued invoice",
+    "description": "Cancels an issued invoice. Applies a partial change to an existing invoice. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 664.07,
+    "y": 559.67
+  },
+  {
+    "id": "billing.create_payment",
+    "name": "create_payment",
+    "category": "billing",
+    "descriptor": "Records a payment against an invoice",
+    "description": "Records a payment against an invoice. Creates a new payment. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string",
+          "description": "Customer the invoice belongs to"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Total amount in the currency"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO currency code"
+        }
+      },
+      "required": [
+        "customerId",
+        "amount"
+      ],
+      "additionalProperties": false
+    },
+    "x": 638.22,
+    "y": 592.83
+  },
+  {
+    "id": "billing.refund_payment",
+    "name": "refund_payment",
+    "category": "billing",
+    "descriptor": "Refunds a previous customer payment",
+    "description": "Refunds a previous customer payment. Runs an action against an existing payment. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount used for the action"
+        }
+      },
+      "required": [
+        "invoiceId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 623.5,
+    "y": 556.88
+  },
+  {
+    "id": "billing.create_subscription",
+    "name": "create_subscription",
+    "category": "billing",
+    "descriptor": "Starts a recurring subscription plan",
+    "description": "Starts a recurring subscription plan. Creates a new subscription. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string",
+          "description": "Customer the invoice belongs to"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Total amount in the currency"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO currency code"
+        }
+      },
+      "required": [
+        "customerId",
+        "amount"
+      ],
+      "additionalProperties": false
+    },
+    "x": 644.25,
+    "y": 576.47
+  },
+  {
+    "id": "billing.update_subscription",
+    "name": "update_subscription",
+    "category": "billing",
+    "descriptor": "Changes the plan or quantity on a subscription",
+    "description": "Changes the plan or quantity on a subscription. Applies a partial change to an existing subscription. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 614.07,
+    "y": 584.63
+  },
+  {
+    "id": "billing.cancel_subscription",
+    "name": "cancel_subscription",
+    "category": "billing",
+    "descriptor": "Ends a subscription at the current period",
+    "description": "Ends a subscription at the current period. Applies a partial change to an existing subscription. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 647.53,
+    "y": 563.99
+  },
+  {
+    "id": "billing.list_subscriptions",
+    "name": "list_subscriptions",
+    "category": "billing",
+    "descriptor": "Lists active and cancelled subscriptions",
+    "description": "Lists active and cancelled subscriptions. Returns a collection of subscriptions records. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Customer to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 654.29,
+    "y": 587.59
+  },
+  {
+    "id": "billing.usage_report",
+    "name": "usage_report",
+    "category": "billing",
+    "descriptor": "Reports metered usage for a subscription",
+    "description": "Reports metered usage for a subscription. Returns a collection of usage report records. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Customer to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 635.52,
+    "y": 567.15
+  },
+  {
+    "id": "billing.apply_credit",
+    "name": "apply_credit",
+    "category": "billing",
+    "descriptor": "Applies account credit to an invoice",
+    "description": "Applies account credit to an invoice. Applies a partial change to an existing credit. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 656.51,
+    "y": 575.98
+  },
+  {
+    "id": "billing.create_coupon",
+    "name": "create_coupon",
+    "category": "billing",
+    "descriptor": "Creates a discount coupon for a promotion",
+    "description": "Creates a discount coupon for a promotion. Creates a new coupon. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string",
+          "description": "Customer the invoice belongs to"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Total amount in the currency"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO currency code"
+        }
+      },
+      "required": [
+        "customerId",
+        "amount"
+      ],
+      "additionalProperties": false
+    },
+    "x": 624.11,
+    "y": 596.18
+  },
+  {
+    "id": "billing.tax_estimate",
+    "name": "tax_estimate",
+    "category": "billing",
+    "descriptor": "Estimates the tax due on an invoice",
+    "description": "Estimates the tax due on an invoice. Runs an action against an existing tax estimate. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount used for the action"
+        }
+      },
+      "required": [
+        "invoiceId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 628.76,
+    "y": 543.43
+  },
+  {
+    "id": "billing.dunning_notice",
+    "name": "dunning_notice",
+    "category": "billing",
+    "descriptor": "Sends a payment reminder for an overdue invoice",
+    "description": "Sends a payment reminder for an overdue invoice. Runs an action against an existing dunning notice. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount used for the action"
+        }
+      },
+      "required": [
+        "invoiceId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 666.46,
+    "y": 587.77
+  },
+  {
+    "id": "billing.revenue_report",
+    "name": "revenue_report",
+    "category": "billing",
+    "descriptor": "Summarises revenue over a period",
+    "description": "Summarises revenue over a period. Returns a collection of revenue report records. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Customer to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 609.6,
+    "y": 563.95
+  },
+  {
+    "id": "billing.aging_report",
+    "name": "aging_report",
+    "category": "billing",
+    "descriptor": "Reports outstanding balances by invoice age",
+    "description": "Reports outstanding balances by invoice age. Returns a collection of aging report records. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status to filter by"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Customer to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 652.16,
+    "y": 548.8
+  },
+  {
+    "id": "billing.update_payment_method",
+    "name": "update_payment_method",
+    "category": "billing",
+    "descriptor": "Changes the card or method on an account",
+    "description": "Changes the card or method on an account. Applies a partial change to an existing payment method. Billing constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Identifier of the invoice"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the invoice"
+        }
+      },
+      "required": [
+        "invoiceId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 635.76,
+    "y": 605.51
+  },
+  {
+    "id": "inventory.list_stock",
+    "name": "list_stock",
+    "category": "inventory",
+    "descriptor": "Lists stock levels for items in a warehouse",
+    "description": "Lists stock levels for items in a warehouse. Returns a collection of stock records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 488.14,
+    "y": 615
+  },
+  {
+    "id": "inventory.adjust_stock",
+    "name": "adjust_stock",
+    "category": "inventory",
+    "descriptor": "Changes the recorded quantity of an item",
+    "description": "Changes the recorded quantity of an item. Applies a partial change to an existing stock. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the item"
+        }
+      },
+      "required": [
+        "itemId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 445.46,
+    "y": 619.26
+  },
+  {
+    "id": "inventory.transfer_stock",
+    "name": "transfer_stock",
+    "category": "inventory",
+    "descriptor": "Moves stock between warehouses",
+    "description": "Moves stock between warehouses. Runs an action against an existing stock. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity used for the action"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 461.07,
+    "y": 591.13
+  },
+  {
+    "id": "inventory.create_item",
+    "name": "create_item",
+    "category": "inventory",
+    "descriptor": "Adds a new product or part to the catalogue",
+    "description": "Adds a new product or part to the catalogue. Creates a new item. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Initial quantity in stock"
+        }
+      },
+      "required": [
+        "sku",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 460.05,
+    "y": 617.12
+  },
+  {
+    "id": "inventory.update_item",
+    "name": "update_item",
+    "category": "inventory",
+    "descriptor": "Edits the details of an inventory item",
+    "description": "Edits the details of an inventory item. Applies a partial change to an existing item. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the item"
+        }
+      },
+      "required": [
+        "itemId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 439.34,
+    "y": 604.85
+  },
+  {
+    "id": "inventory.get_item",
+    "name": "get_item",
+    "category": "inventory",
+    "descriptor": "Returns one inventory item with its quantities",
+    "description": "Returns one inventory item with its quantities. Returns a single item by identifier. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 482.18,
+    "y": 599.95
+  },
+  {
+    "id": "inventory.low_stock_report",
+    "name": "low_stock_report",
+    "category": "inventory",
+    "descriptor": "Lists items below their reorder threshold",
+    "description": "Lists items below their reorder threshold. Returns a collection of low stock report records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 451.68,
+    "y": 629.92
+  },
+  {
+    "id": "inventory.create_purchase_order",
+    "name": "create_purchase_order",
+    "category": "inventory",
+    "descriptor": "Raises an order to replenish stock",
+    "description": "Raises an order to replenish stock. Creates a new purchase order. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Initial quantity in stock"
+        }
+      },
+      "required": [
+        "sku",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 445.11,
+    "y": 592.86
+  },
+  {
+    "id": "inventory.receive_purchase_order",
+    "name": "receive_purchase_order",
+    "category": "inventory",
+    "descriptor": "Books goods received against a purchase order",
+    "description": "Books goods received against a purchase order. Runs an action against an existing purchase order. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity used for the action"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 480.55,
+    "y": 628.17
+  },
+  {
+    "id": "inventory.cancel_purchase_order",
+    "name": "cancel_purchase_order",
+    "category": "inventory",
+    "descriptor": "Cancels a purchase order before it ships",
+    "description": "Cancels a purchase order before it ships. Applies a partial change to an existing purchase order. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the item"
+        }
+      },
+      "required": [
+        "itemId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 431.02,
+    "y": 619.94
+  },
+  {
+    "id": "inventory.list_suppliers",
+    "name": "list_suppliers",
+    "category": "inventory",
+    "descriptor": "Lists the suppliers linked to catalogue items",
+    "description": "Lists the suppliers linked to catalogue items. Returns a collection of suppliers records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 453.01,
+    "y": 601.89
+  },
+  {
+    "id": "inventory.create_shipment",
+    "name": "create_shipment",
+    "category": "inventory",
+    "descriptor": "Creates a shipment for an order",
+    "description": "Creates a shipment for an order. Creates a new shipment. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Initial quantity in stock"
+        }
+      },
+      "required": [
+        "sku",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 467.19,
+    "y": 625.44
+  },
+  {
+    "id": "inventory.track_shipment",
+    "name": "track_shipment",
+    "category": "inventory",
+    "descriptor": "Returns the latest tracking status of a shipment",
+    "description": "Returns the latest tracking status of a shipment. Returns a single shipment by identifier. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 431.86,
+    "y": 592.22
+  },
+  {
+    "id": "inventory.cancel_shipment",
+    "name": "cancel_shipment",
+    "category": "inventory",
+    "descriptor": "Cancels a shipment that has not yet left",
+    "description": "Cancels a shipment that has not yet left. Runs an action against an existing shipment. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity used for the action"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 466.49,
+    "y": 601.64
+  },
+  {
+    "id": "inventory.print_label",
+    "name": "print_label",
+    "category": "inventory",
+    "descriptor": "Generates a shipping label for a shipment",
+    "description": "Generates a shipping label for a shipment. Runs an action against an existing label. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity used for the action"
+        }
+      },
+      "required": [
+        "itemId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 438.99,
+    "y": 632.23
+  },
+  {
+    "id": "inventory.set_reorder_point",
+    "name": "set_reorder_point",
+    "category": "inventory",
+    "descriptor": "Sets the quantity that triggers a reorder",
+    "description": "Sets the quantity that triggers a reorder. Applies a partial change to an existing reorder point. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "Identifier of the item"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the item"
+        }
+      },
+      "required": [
+        "itemId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 451.24,
+    "y": 577.35
+  },
+  {
+    "id": "inventory.stock_valuation",
+    "name": "stock_valuation",
+    "category": "inventory",
+    "descriptor": "Reports the monetary value of current stock",
+    "description": "Reports the monetary value of current stock. Returns a collection of stock valuation records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 473.11,
+    "y": 615.46
+  },
+  {
+    "id": "inventory.warehouse_capacity",
+    "name": "warehouse_capacity",
+    "category": "inventory",
+    "descriptor": "Reports free space and capacity per warehouse",
+    "description": "Reports free space and capacity per warehouse. Returns a collection of warehouse capacity records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 424.82,
+    "y": 605.52
+  },
+  {
+    "id": "inventory.cycle_count",
+    "name": "cycle_count",
+    "category": "inventory",
+    "descriptor": "Records a physical stock count for verification",
+    "description": "Records a physical stock count for verification. Creates a new count. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Initial quantity in stock"
+        }
+      },
+      "required": [
+        "sku",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 474.02,
+    "y": 588.03
+  },
+  {
+    "id": "inventory.expiry_report",
+    "name": "expiry_report",
+    "category": "inventory",
+    "descriptor": "Lists stock items approaching their expiry date",
+    "description": "Lists stock items approaching their expiry date. Returns a collection of expiry report records. Inventory constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "warehouseId": {
+          "type": "string",
+          "description": "Warehouse to list"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 464.76,
+    "y": 642
+  },
+  {
+    "id": "hr.list_employees",
+    "name": "list_employees",
+    "category": "hr",
+    "descriptor": "Lists employees in the directory",
+    "description": "Lists employees in the directory. Returns a collection of employees records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 304.6,
+    "y": 570.3
+  },
+  {
+    "id": "hr.get_employee",
+    "name": "get_employee",
+    "category": "hr",
+    "descriptor": "Returns the profile of one employee",
+    "description": "Returns the profile of one employee. Returns a single employee by identifier. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 268.67,
+    "y": 576.14
+  },
+  {
+    "id": "hr.create_employee",
+    "name": "create_employee",
+    "category": "hr",
+    "descriptor": "Adds a new employee to the directory",
+    "description": "Adds a new employee to the directory. Creates a new employee. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Work email address"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department the employee joins"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "x": 272.69,
+    "y": 545
+  },
+  {
+    "id": "hr.update_employee",
+    "name": "update_employee",
+    "category": "hr",
+    "descriptor": "Edits the fields of an employee profile",
+    "description": "Edits the fields of an employee profile. Applies a partial change to an existing employee. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the profile"
+        }
+      },
+      "required": [
+        "employeeId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 280.89,
+    "y": 584.49
+  },
+  {
+    "id": "hr.terminate_employee",
+    "name": "terminate_employee",
+    "category": "hr",
+    "descriptor": "Records an employee leaving the organisation",
+    "description": "Records an employee leaving the organisation. Applies a partial change to an existing employee. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the profile"
+        }
+      },
+      "required": [
+        "employeeId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 257.74,
+    "y": 567.14
+  },
+  {
+    "id": "hr.request_leave",
+    "name": "request_leave",
+    "category": "hr",
+    "descriptor": "Submits a leave request for an employee",
+    "description": "Submits a leave request for an employee. Creates a new leave. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Work email address"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department the employee joins"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "x": 296.48,
+    "y": 557.26
+  },
+  {
+    "id": "hr.approve_leave",
+    "name": "approve_leave",
+    "category": "hr",
+    "descriptor": "Approves a pending leave request",
+    "description": "Approves a pending leave request. Runs an action against an existing leave. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 268.75,
+    "y": 591.81
+  },
+  {
+    "id": "hr.decline_leave",
+    "name": "decline_leave",
+    "category": "hr",
+    "descriptor": "Declines a pending leave request",
+    "description": "Declines a pending leave request. Runs an action against an existing leave. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 257.79,
+    "y": 551.43
+  },
+  {
+    "id": "hr.leave_balance",
+    "name": "leave_balance",
+    "category": "hr",
+    "descriptor": "Reports remaining leave days for an employee",
+    "description": "Reports remaining leave days for an employee. Returns a collection of leave balance records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 297.08,
+    "y": 581.99
+  },
+  {
+    "id": "hr.record_attendance",
+    "name": "record_attendance",
+    "category": "hr",
+    "descriptor": "Records clock in or clock out times",
+    "description": "Records clock in or clock out times. Creates a new attendance. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Work email address"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department the employee joins"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "x": 252.92,
+    "y": 582.71
+  },
+  {
+    "id": "hr.timesheet_report",
+    "name": "timesheet_report",
+    "category": "hr",
+    "descriptor": "Summarises hours worked per employee",
+    "description": "Summarises hours worked per employee. Returns a collection of timesheet report records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 275.84,
+    "y": 571.48
+  },
+  {
+    "id": "hr.payroll_run",
+    "name": "payroll_run",
+    "category": "hr",
+    "descriptor": "Calculates payroll for a set of employees",
+    "description": "Calculates payroll for a set of employees. Runs an action against an existing payroll run. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 278.41,
+    "y": 599.63
+  },
+  {
+    "id": "hr.list_payslips",
+    "name": "list_payslips",
+    "category": "hr",
+    "descriptor": "Lists payslips issued to an employee",
+    "description": "Lists payslips issued to an employee. Returns a collection of payslips records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 245.57,
+    "y": 558.71
+  },
+  {
+    "id": "hr.generate_payslip",
+    "name": "generate_payslip",
+    "category": "hr",
+    "descriptor": "Generates a payslip document for one employee",
+    "description": "Generates a payslip document for one employee. Runs an action against an existing payslip. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 291.54,
+    "y": 570.75
+  },
+  {
+    "id": "hr.create_job_posting",
+    "name": "create_job_posting",
+    "category": "hr",
+    "descriptor": "Publishes a job opening to careers pages",
+    "description": "Publishes a job opening to careers pages. Creates a new job posting. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Work email address"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department the employee joins"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "x": 253.49,
+    "y": 596.27
+  },
+  {
+    "id": "hr.list_applications",
+    "name": "list_applications",
+    "category": "hr",
+    "descriptor": "Lists applications received for a job posting",
+    "description": "Lists applications received for a job posting. Returns a collection of applications records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 268.02,
+    "y": 561.57
+  },
+  {
+    "id": "hr.review_application",
+    "name": "review_application",
+    "category": "hr",
+    "descriptor": "Records a review decision on an application",
+    "description": "Records a review decision on an application. Applies a partial change to an existing application. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the profile"
+        }
+      },
+      "required": [
+        "employeeId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 293.22,
+    "y": 596.72
+  },
+  {
+    "id": "hr.submit_expense_claim",
+    "name": "submit_expense_claim",
+    "category": "hr",
+    "descriptor": "Submits an expense claim for reimbursement",
+    "description": "Submits an expense claim for reimbursement. Creates a new expense claim. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Work email address"
+        },
+        "department": {
+          "type": "string",
+          "description": "Department the employee joins"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "x": 242.18,
+    "y": 574.35
+  },
+  {
+    "id": "hr.approve_expense",
+    "name": "approve_expense",
+    "category": "hr",
+    "descriptor": "Approves an expense claim for payment",
+    "description": "Approves an expense claim for payment. Runs an action against an existing expense. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "description": "Identifier of the employee"
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to attach"
+        }
+      },
+      "required": [
+        "employeeId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 283.38,
+    "y": 555.81
+  },
+  {
+    "id": "hr.org_chart",
+    "name": "org_chart",
+    "category": "hr",
+    "descriptor": "Returns the reporting structure of the organisation",
+    "description": "Returns the reporting structure of the organisation. Returns a collection of org chart records. HR constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Department to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Employment status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 266.02,
+    "y": 605.21
+  },
+  {
+    "id": "analytics.build_report",
+    "name": "build_report",
+    "category": "analytics",
+    "descriptor": "Builds a saved report over a dataset",
+    "description": "Builds a saved report over a dataset. Creates a new report. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the report or dashboard"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset the artefact reads from"
+        }
+      },
+      "required": [
+        "name",
+        "dataset"
+      ],
+      "additionalProperties": false
+    },
+    "x": 162.6,
+    "y": 473.58
+  },
+  {
+    "id": "analytics.run_report",
+    "name": "run_report",
+    "category": "analytics",
+    "descriptor": "Executes a saved report to produce its rows",
+    "description": "Executes a saved report to produce its rows. Runs an action against an existing report. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 115.32,
+    "y": 499.02
+  },
+  {
+    "id": "analytics.list_reports",
+    "name": "list_reports",
+    "category": "analytics",
+    "descriptor": "Lists the saved reports available to a user",
+    "description": "Lists the saved reports available to a user. Returns a collection of reports records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 134.81,
+    "y": 464.99
+  },
+  {
+    "id": "analytics.schedule_report",
+    "name": "schedule_report",
+    "category": "analytics",
+    "descriptor": "Schedules a report to run on a recurring basis",
+    "description": "Schedules a report to run on a recurring basis. Creates a new report. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the report or dashboard"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset the artefact reads from"
+        }
+      },
+      "required": [
+        "name",
+        "dataset"
+      ],
+      "additionalProperties": false
+    },
+    "x": 150.85,
+    "y": 494.8
+  },
+  {
+    "id": "analytics.create_dashboard",
+    "name": "create_dashboard",
+    "category": "analytics",
+    "descriptor": "Creates a dashboard with a set of widgets",
+    "description": "Creates a dashboard with a set of widgets. Creates a new dashboard. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the report or dashboard"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset the artefact reads from"
+        }
+      },
+      "required": [
+        "name",
+        "dataset"
+      ],
+      "additionalProperties": false
+    },
+    "x": 109.48,
+    "y": 468.88
+  },
+  {
+    "id": "analytics.list_dashboards",
+    "name": "list_dashboards",
+    "category": "analytics",
+    "descriptor": "Lists dashboards shared with the user",
+    "description": "Lists dashboards shared with the user. Returns a collection of dashboards records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 161.15,
+    "y": 457.9
+  },
+  {
+    "id": "analytics.metric_value",
+    "name": "metric_value",
+    "category": "analytics",
+    "descriptor": "Returns the current value of one metric",
+    "description": "Returns the current value of one metric. Returns a single metric value by identifier. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 139.32,
+    "y": 492.55
+  },
+  {
+    "id": "analytics.metric_history",
+    "name": "metric_history",
+    "category": "analytics",
+    "descriptor": "Returns the historical values of a metric over time",
+    "description": "Returns the historical values of a metric over time. Returns a single metric history by identifier. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 119.51,
+    "y": 459.47
+  },
+  {
+    "id": "analytics.create_alert",
+    "name": "create_alert",
+    "category": "analytics",
+    "descriptor": "Creates an alert that fires on a metric threshold",
+    "description": "Creates an alert that fires on a metric threshold. Creates a new alert. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the report or dashboard"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset the artefact reads from"
+        }
+      },
+      "required": [
+        "name",
+        "dataset"
+      ],
+      "additionalProperties": false
+    },
+    "x": 165.51,
+    "y": 487.9
+  },
+  {
+    "id": "analytics.list_alerts",
+    "name": "list_alerts",
+    "category": "analytics",
+    "descriptor": "Lists active metric alerts",
+    "description": "Lists active metric alerts. Returns a collection of alerts records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 111.93,
+    "y": 484.52
+  },
+  {
+    "id": "analytics.segment_users",
+    "name": "segment_users",
+    "category": "analytics",
+    "descriptor": "Groups users into a segment by behaviour",
+    "description": "Groups users into a segment by behaviour. Runs an action against an existing users. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 145.47,
+    "y": 452.37
+  },
+  {
+    "id": "analytics.funnel_report",
+    "name": "funnel_report",
+    "category": "analytics",
+    "descriptor": "Reports conversion through a product funnel",
+    "description": "Reports conversion through a product funnel. Returns a collection of funnel report records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 144.6,
+    "y": 506.42
+  },
+  {
+    "id": "analytics.retention_report",
+    "name": "retention_report",
+    "category": "analytics",
+    "descriptor": "Reports user retention over a cohort window",
+    "description": "Reports user retention over a cohort window. Returns a collection of retention report records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 123,
+    "y": 472.65
+  },
+  {
+    "id": "analytics.cohort_compare",
+    "name": "cohort_compare",
+    "category": "analytics",
+    "descriptor": "Compares two cohorts across key metrics",
+    "description": "Compares two cohorts across key metrics. Returns a collection of cohort compare records. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "Dataset to filter by"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range such as last_30_days"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 149.91,
+    "y": 479.15
+  },
+  {
+    "id": "analytics.export_metrics",
+    "name": "export_metrics",
+    "category": "analytics",
+    "descriptor": "Exports metric values to a spreadsheet",
+    "description": "Exports metric values to a spreadsheet. Runs an action against an existing metrics. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 124.03,
+    "y": 489.55
+  },
+  {
+    "id": "analytics.share_dashboard",
+    "name": "share_dashboard",
+    "category": "analytics",
+    "descriptor": "Shares a dashboard with a team",
+    "description": "Shares a dashboard with a team. Runs an action against an existing dashboard. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 131.79,
+    "y": 448.22
+  },
+  {
+    "id": "analytics.anomaly_scan",
+    "name": "anomaly_scan",
+    "category": "analytics",
+    "descriptor": "Scans metrics for unusual spikes or drops",
+    "description": "Scans metrics for unusual spikes or drops. Runs an action against an existing anomaly scan. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 160.41,
+    "y": 503.66
+  },
+  {
+    "id": "analytics.track_event",
+    "name": "track_event",
+    "category": "analytics",
+    "descriptor": "Records a tracked product event",
+    "description": "Records a tracked product event. Creates a new event. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the report or dashboard"
+        },
+        "dataset": {
+          "type": "string",
+          "description": "Dataset the artefact reads from"
+        }
+      },
+      "required": [
+        "name",
+        "dataset"
+      ],
+      "additionalProperties": false
+    },
+    "x": 137.86,
+    "y": 476.06
+  },
+  {
+    "id": "analytics.query_dataset",
+    "name": "query_dataset",
+    "category": "analytics",
+    "descriptor": "Runs a read query against a stored dataset",
+    "description": "Runs a read query against a stored dataset. Runs an action against an existing query dataset. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 148,
+    "y": 468.64
+  },
+  {
+    "id": "analytics.refresh_cache",
+    "name": "refresh_cache",
+    "category": "analytics",
+    "descriptor": "Rebuilds the cached aggregate tables",
+    "description": "Rebuilds the cached aggregate tables. Runs an action against an existing cache. Analytics constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artefactId": {
+          "type": "string",
+          "description": "Identifier of the artefact"
+        },
+        "range": {
+          "type": "string",
+          "description": "Reporting range to run for"
+        }
+      },
+      "required": [
+        "artefactId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 129.55,
+    "y": 502.72
+  },
+  {
+    "id": "identity.create_user",
+    "name": "create_user",
+    "category": "identity",
+    "descriptor": "Creates a user account with a password",
+    "description": "Creates a user account with a password. Creates a new user. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the account"
+        },
+        "roleIds": {
+          "type": "array",
+          "description": "Roles to grant on creation"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 119.02,
+    "y": 352.89
+  },
+  {
+    "id": "identity.disable_user",
+    "name": "disable_user",
+    "category": "identity",
+    "descriptor": "Disables a user account without deleting it",
+    "description": "Disables a user account without deleting it. Applies a partial change to an existing user. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the account"
+        }
+      },
+      "required": [
+        "userId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 63.95,
+    "y": 360.18
+  },
+  {
+    "id": "identity.enable_user",
+    "name": "enable_user",
+    "category": "identity",
+    "descriptor": "Re-enables a previously disabled user account",
+    "description": "Re-enables a previously disabled user account. Applies a partial change to an existing user. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the account"
+        }
+      },
+      "required": [
+        "userId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 92.76,
+    "y": 328.57
+  },
+  {
+    "id": "identity.list_users",
+    "name": "list_users",
+    "category": "identity",
+    "descriptor": "Lists the accounts in the directory",
+    "description": "Lists the accounts in the directory. Returns a collection of users records. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Role to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Account status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 93.97,
+    "y": 364.14
+  },
+  {
+    "id": "identity.get_user",
+    "name": "get_user",
+    "category": "identity",
+    "descriptor": "Returns the profile of one user account",
+    "description": "Returns the profile of one user account. Returns a single user by identifier. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 58,
+    "y": 344.65
+  },
+  {
+    "id": "identity.reset_password",
+    "name": "reset_password",
+    "category": "identity",
+    "descriptor": "Sends a password reset link to a user",
+    "description": "Sends a password reset link to a user. Runs an action against an existing password. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 98.53,
+    "y": 338.81
+  },
+  {
+    "id": "identity.change_password",
+    "name": "change_password",
+    "category": "identity",
+    "descriptor": "Changes the password for a user account",
+    "description": "Changes the password for a user account. Runs an action against an existing password. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 69.66,
+    "y": 373.28
+  },
+  {
+    "id": "identity.create_role",
+    "name": "create_role",
+    "category": "identity",
+    "descriptor": "Defines a new role with a set of permissions",
+    "description": "Defines a new role with a set of permissions. Creates a new role. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the account"
+        },
+        "roleIds": {
+          "type": "array",
+          "description": "Roles to grant on creation"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 69,
+    "y": 333.38
+  },
+  {
+    "id": "identity.list_roles",
+    "name": "list_roles",
+    "category": "identity",
+    "descriptor": "Lists the roles available in the system",
+    "description": "Lists the roles available in the system. Returns a collection of roles records. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Role to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Account status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 106.16,
+    "y": 352.39
+  },
+  {
+    "id": "identity.assign_role",
+    "name": "assign_role",
+    "category": "identity",
+    "descriptor": "Grants a role to a user account",
+    "description": "Grants a role to a user account. Runs an action against an existing role. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 86.93,
+    "y": 350.61
+  },
+  {
+    "id": "identity.revoke_role",
+    "name": "revoke_role",
+    "category": "identity",
+    "descriptor": "Removes a role from a user account",
+    "description": "Removes a role from a user account. Runs an action against an existing role. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 93.32,
+    "y": 315.55
+  },
+  {
+    "id": "identity.list_permissions",
+    "name": "list_permissions",
+    "category": "identity",
+    "descriptor": "Lists every permission defined in the system",
+    "description": "Lists every permission defined in the system. Returns a collection of permissions records. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Role to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Account status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 99.86,
+    "y": 376.88
+  },
+  {
+    "id": "identity.create_api_key",
+    "name": "create_api_key",
+    "category": "identity",
+    "descriptor": "Issues a new API key for a service account",
+    "description": "Issues a new API key for a service account. Creates a new api key. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the account"
+        },
+        "roleIds": {
+          "type": "array",
+          "description": "Roles to grant on creation"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 81.47,
+    "y": 339.43
+  },
+  {
+    "id": "identity.revoke_api_key",
+    "name": "revoke_api_key",
+    "category": "identity",
+    "descriptor": "Revokes an issued API key",
+    "description": "Revokes an issued API key. Runs an action against an existing api key. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 112.61,
+    "y": 339.65
+  },
+  {
+    "id": "identity.list_sessions",
+    "name": "list_sessions",
+    "category": "identity",
+    "descriptor": "Lists active sessions for a user",
+    "description": "Lists active sessions for a user. Returns a collection of sessions records. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Role to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Account status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 80.47,
+    "y": 360.11
+  },
+  {
+    "id": "identity.revoke_session",
+    "name": "revoke_session",
+    "category": "identity",
+    "descriptor": "Forces sign out of one active session",
+    "description": "Forces sign out of one active session. Runs an action against an existing session. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 78.01,
+    "y": 321.88
+  },
+  {
+    "id": "identity.enable_mfa",
+    "name": "enable_mfa",
+    "category": "identity",
+    "descriptor": "Turns on multi-factor authentication for a user",
+    "description": "Turns on multi-factor authentication for a user. Applies a partial change to an existing mfa. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the account"
+        }
+      },
+      "required": [
+        "userId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 110.17,
+    "y": 364.87
+  },
+  {
+    "id": "identity.verify_mfa_code",
+    "name": "verify_mfa_code",
+    "category": "identity",
+    "descriptor": "Verifies a one-time multi-factor code",
+    "description": "Verifies a one-time multi-factor code. Runs an action against an existing mfa code. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Identifier of the account"
+        },
+        "roleId": {
+          "type": "string",
+          "description": "Role used for the action"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 74.69,
+    "y": 347.7
+  },
+  {
+    "id": "identity.list_teams",
+    "name": "list_teams",
+    "category": "identity",
+    "descriptor": "Lists the teams defined in the organisation",
+    "description": "Lists the teams defined in the organisation. Returns a collection of teams records. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "Role to filter by"
+        },
+        "status": {
+          "type": "string",
+          "description": "Account status to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 105.67,
+    "y": 325.8
+  },
+  {
+    "id": "identity.create_team",
+    "name": "create_team",
+    "category": "identity",
+    "descriptor": "Creates a new team with a name and purpose",
+    "description": "Creates a new team with a name and purpose. Creates a new team. Identity constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the account"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the account"
+        },
+        "roleIds": {
+          "type": "array",
+          "description": "Roles to grant on creation"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "x": 86.19,
+    "y": 375.34
+  },
+  {
+    "id": "knowledge.create_page",
+    "name": "create_page",
+    "category": "knowledge",
+    "descriptor": "Creates a new wiki page",
+    "description": "Creates a new wiki page. Creates a new page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the page"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space the page belongs to"
+        },
+        "body": {
+          "type": "string",
+          "description": "Markdown body of the page"
+        }
+      },
+      "required": [
+        "title",
+        "spaceId",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 137.51,
+    "y": 219.1
+  },
+  {
+    "id": "knowledge.update_page",
+    "name": "update_page",
+    "category": "knowledge",
+    "descriptor": "Edits the content of a wiki page",
+    "description": "Edits the content of a wiki page. Applies a partial change to an existing page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the page"
+        }
+      },
+      "required": [
+        "pageId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 111.3,
+    "y": 226.9
+  },
+  {
+    "id": "knowledge.delete_page",
+    "name": "delete_page",
+    "category": "knowledge",
+    "descriptor": "Removes a wiki page from the space",
+    "description": "Removes a wiki page from the space. Removes an existing page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 144.27,
+    "y": 200
+  },
+  {
+    "id": "knowledge.get_page",
+    "name": "get_page",
+    "category": "knowledge",
+    "descriptor": "Returns a wiki page and its content",
+    "description": "Returns a wiki page and its content. Returns a single page by identifier. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 148.09,
+    "y": 226.71
+  },
+  {
+    "id": "knowledge.search_pages",
+    "name": "search_pages",
+    "category": "knowledge",
+    "descriptor": "Searches wiki pages by keyword",
+    "description": "Searches wiki pages by keyword. Searches pages records by keyword. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against page bodies"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space to search in"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 108.53,
+    "y": 211.79
+  },
+  {
+    "id": "knowledge.list_spaces",
+    "name": "list_spaces",
+    "category": "knowledge",
+    "descriptor": "Lists the knowledge spaces available",
+    "description": "Lists the knowledge spaces available. Returns a collection of spaces records. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "spaceId": {
+          "type": "string",
+          "description": "Space to list"
+        },
+        "updatedAfter": {
+          "type": "string",
+          "description": "ISO timestamp to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 152.63,
+    "y": 212.71
+  },
+  {
+    "id": "knowledge.create_space",
+    "name": "create_space",
+    "category": "knowledge",
+    "descriptor": "Creates a new knowledge space",
+    "description": "Creates a new knowledge space. Creates a new space. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the page"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space the page belongs to"
+        },
+        "body": {
+          "type": "string",
+          "description": "Markdown body of the page"
+        }
+      },
+      "required": [
+        "title",
+        "spaceId",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 133.34,
+    "y": 248.99
+  },
+  {
+    "id": "knowledge.move_page",
+    "name": "move_page",
+    "category": "knowledge",
+    "descriptor": "Moves a page into a different space",
+    "description": "Moves a page into a different space. Applies a partial change to an existing page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the page"
+        }
+      },
+      "required": [
+        "pageId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 129.32,
+    "y": 205.05
+  },
+  {
+    "id": "knowledge.page_history",
+    "name": "page_history",
+    "category": "knowledge",
+    "descriptor": "Returns the revision history of a page",
+    "description": "Returns the revision history of a page. Returns a single page history by identifier. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 163.14,
+    "y": 221.02
+  },
+  {
+    "id": "knowledge.restore_version",
+    "name": "restore_version",
+    "category": "knowledge",
+    "descriptor": "Restores a page to an earlier revision",
+    "description": "Restores a page to an earlier revision. Runs an action against an existing version. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 128.44,
+    "y": 226.76
+  },
+  {
+    "id": "knowledge.publish_page",
+    "name": "publish_page",
+    "category": "knowledge",
+    "descriptor": "Marks a page as published and visible",
+    "description": "Marks a page as published and visible. Applies a partial change to an existing page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the page"
+        }
+      },
+      "required": [
+        "pageId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 145.65,
+    "y": 187.34
+  },
+  {
+    "id": "knowledge.unpublish_page",
+    "name": "unpublish_page",
+    "category": "knowledge",
+    "descriptor": "Moves a published page back to draft",
+    "description": "Moves a published page back to draft. Applies a partial change to an existing page. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the page"
+        }
+      },
+      "required": [
+        "pageId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 149.31,
+    "y": 242.83
+  },
+  {
+    "id": "knowledge.add_page_comment",
+    "name": "add_page_comment",
+    "category": "knowledge",
+    "descriptor": "Adds a comment to a wiki page",
+    "description": "Adds a comment to a wiki page. Runs an action against an existing page comment. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 117.76,
+    "y": 199.1
+  },
+  {
+    "id": "knowledge.attach_page_file",
+    "name": "attach_page_file",
+    "category": "knowledge",
+    "descriptor": "Attaches a file to a wiki page",
+    "description": "Attaches a file to a wiki page. Runs an action against an existing page file. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 167.05,
+    "y": 209.05
+  },
+  {
+    "id": "knowledge.suggest_correction",
+    "name": "suggest_correction",
+    "category": "knowledge",
+    "descriptor": "Submits a correction suggestion for a page",
+    "description": "Submits a correction suggestion for a page. Creates a new correction. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the page"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space the page belongs to"
+        },
+        "body": {
+          "type": "string",
+          "description": "Markdown body of the page"
+        }
+      },
+      "required": [
+        "title",
+        "spaceId",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 121.73,
+    "y": 239.51
+  },
+  {
+    "id": "knowledge.page_views",
+    "name": "page_views",
+    "category": "knowledge",
+    "descriptor": "Reports how often a page has been viewed",
+    "description": "Reports how often a page has been viewed. Returns a collection of page views records. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "spaceId": {
+          "type": "string",
+          "description": "Space to list"
+        },
+        "updatedAfter": {
+          "type": "string",
+          "description": "ISO timestamp to filter by"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 130.6,
+    "y": 191.06
+  },
+  {
+    "id": "knowledge.page_from_template",
+    "name": "page_from_template",
+    "category": "knowledge",
+    "descriptor": "Creates a page from a stored template",
+    "description": "Creates a page from a stored template. Creates a new page template. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the page"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space the page belongs to"
+        },
+        "body": {
+          "type": "string",
+          "description": "Markdown body of the page"
+        }
+      },
+      "required": [
+        "title",
+        "spaceId",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 161.66,
+    "y": 237.29
+  },
+  {
+    "id": "knowledge.export_space",
+    "name": "export_space",
+    "category": "knowledge",
+    "descriptor": "Exports an entire knowledge space as files",
+    "description": "Exports an entire knowledge space as files. Runs an action against an existing space. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "description": "Identifier of the page"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body used for the action"
+        }
+      },
+      "required": [
+        "pageId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 122.62,
+    "y": 213.38
+  },
+  {
+    "id": "knowledge.related_pages",
+    "name": "related_pages",
+    "category": "knowledge",
+    "descriptor": "Suggests pages related to a given page",
+    "description": "Suggests pages related to a given page. Searches related pages records by keyword. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text to match against page bodies"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space to search in"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "x": 156.21,
+    "y": 197.76
+  },
+  {
+    "id": "knowledge.add_glossary_term",
+    "name": "add_glossary_term",
+    "category": "knowledge",
+    "descriptor": "Adds a term to the shared glossary",
+    "description": "Adds a term to the shared glossary. Creates a new glossary term. Knowledge constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the page"
+        },
+        "spaceId": {
+          "type": "string",
+          "description": "Space the page belongs to"
+        },
+        "body": {
+          "type": "string",
+          "description": "Markdown body of the page"
+        }
+      },
+      "required": [
+        "title",
+        "spaceId",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "x": 135.93,
+    "y": 232.87
+  },
+  {
+    "id": "workflows.create_workflow",
+    "name": "create_workflow",
+    "category": "workflows",
+    "descriptor": "Creates an automated workflow with ordered steps",
+    "description": "Creates an automated workflow with ordered steps. Creates a new workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow"
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered list of action steps"
+        }
+      },
+      "required": [
+        "name",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "x": 299.93,
+    "y": 117.11
+  },
+  {
+    "id": "workflows.update_workflow",
+    "name": "update_workflow",
+    "category": "workflows",
+    "descriptor": "Edits the steps of an existing workflow",
+    "description": "Edits the steps of an existing workflow. Applies a partial change to an existing workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the workflow"
+        }
+      },
+      "required": [
+        "workflowId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 256.36,
+    "y": 130.15
+  },
+  {
+    "id": "workflows.delete_workflow",
+    "name": "delete_workflow",
+    "category": "workflows",
+    "descriptor": "Removes a workflow definition",
+    "description": "Removes a workflow definition. Removes an existing workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 272.06,
+    "y": 108.19
+  },
+  {
+    "id": "workflows.list_workflows",
+    "name": "list_workflows",
+    "category": "workflows",
+    "descriptor": "Lists the workflows in the workspace",
+    "description": "Lists the workflows in the workspace. Returns a collection of workflows records. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Return only active workflows"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 281.25,
+    "y": 135.41
+  },
+  {
+    "id": "workflows.activate_workflow",
+    "name": "activate_workflow",
+    "category": "workflows",
+    "descriptor": "Turns a workflow on so it runs on trigger",
+    "description": "Turns a workflow on so it runs on trigger. Applies a partial change to an existing workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the workflow"
+        }
+      },
+      "required": [
+        "workflowId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 259.06,
+    "y": 115.2
+  },
+  {
+    "id": "workflows.deactivate_workflow",
+    "name": "deactivate_workflow",
+    "category": "workflows",
+    "descriptor": "Turns a workflow off",
+    "description": "Turns a workflow off. Applies a partial change to an existing workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the workflow"
+        }
+      },
+      "required": [
+        "workflowId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 298.07,
+    "y": 102.22
+  },
+  {
+    "id": "workflows.run_workflow",
+    "name": "run_workflow",
+    "category": "workflows",
+    "descriptor": "Runs a workflow immediately with given inputs",
+    "description": "Runs a workflow immediately with given inputs. Runs an action against an existing workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "inputs": {
+          "type": "object",
+          "description": "Inputs for the run"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 260.09,
+    "y": 146.07
+  },
+  {
+    "id": "workflows.workflow_runs",
+    "name": "workflow_runs",
+    "category": "workflows",
+    "descriptor": "Lists the execution history of a workflow",
+    "description": "Lists the execution history of a workflow. Returns a collection of workflow runs records. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Return only active workflows"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 257.21,
+    "y": 101.94
+  },
+  {
+    "id": "workflows.workflow_log",
+    "name": "workflow_log",
+    "category": "workflows",
+    "descriptor": "Returns the detailed log of one workflow run",
+    "description": "Returns the detailed log of one workflow run. Returns a single workflow log by identifier. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 298.8,
+    "y": 133.43
+  },
+  {
+    "id": "workflows.retry_workflow_run",
+    "name": "retry_workflow_run",
+    "category": "workflows",
+    "descriptor": "Re-runs a failed workflow execution",
+    "description": "Re-runs a failed workflow execution. Runs an action against an existing workflow run. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "inputs": {
+          "type": "object",
+          "description": "Inputs for the run"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 246.64,
+    "y": 138.36
+  },
+  {
+    "id": "workflows.create_trigger",
+    "name": "create_trigger",
+    "category": "workflows",
+    "descriptor": "Adds a trigger that starts a workflow",
+    "description": "Adds a trigger that starts a workflow. Creates a new trigger. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow"
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered list of action steps"
+        }
+      },
+      "required": [
+        "name",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "x": 282.25,
+    "y": 95.71
+  },
+  {
+    "id": "workflows.list_triggers",
+    "name": "list_triggers",
+    "category": "workflows",
+    "descriptor": "Lists the triggers attached to a workflow",
+    "description": "Lists the triggers attached to a workflow. Returns a collection of triggers records. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Return only active workflows"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 270.66,
+    "y": 136.81
+  },
+  {
+    "id": "workflows.create_action",
+    "name": "create_action",
+    "category": "workflows",
+    "descriptor": "Adds an action step to a workflow",
+    "description": "Adds an action step to a workflow. Creates a new action. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow"
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered list of action steps"
+        }
+      },
+      "required": [
+        "name",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "x": 246.1,
+    "y": 107.88
+  },
+  {
+    "id": "workflows.update_action",
+    "name": "update_action",
+    "category": "workflows",
+    "descriptor": "Edits the configuration of a workflow action",
+    "description": "Edits the configuration of a workflow action. Applies a partial change to an existing action. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "changes": {
+          "type": "object",
+          "description": "Fields to change on the workflow"
+        }
+      },
+      "required": [
+        "workflowId",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "x": 286.3,
+    "y": 121.73
+  },
+  {
+    "id": "workflows.remove_action",
+    "name": "remove_action",
+    "category": "workflows",
+    "descriptor": "Removes an action step from a workflow",
+    "description": "Removes an action step from a workflow. Removes an existing action. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 274.44,
+    "y": 121.01
+  },
+  {
+    "id": "workflows.approve_request",
+    "name": "approve_request",
+    "category": "workflows",
+    "descriptor": "Approves a pending workflow approval",
+    "description": "Approves a pending workflow approval. Runs an action against an existing request. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "inputs": {
+          "type": "object",
+          "description": "Inputs for the run"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 269.5,
+    "y": 91.17
+  },
+  {
+    "id": "workflows.reject_request",
+    "name": "reject_request",
+    "category": "workflows",
+    "descriptor": "Rejects a pending workflow approval",
+    "description": "Rejects a pending workflow approval. Runs an action against an existing request. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string",
+          "description": "Identifier of the workflow"
+        },
+        "inputs": {
+          "type": "object",
+          "description": "Inputs for the run"
+        }
+      },
+      "required": [
+        "workflowId"
+      ],
+      "additionalProperties": false
+    },
+    "x": 290.37,
+    "y": 146.29
+  },
+  {
+    "id": "workflows.pending_approvals",
+    "name": "pending_approvals",
+    "category": "workflows",
+    "descriptor": "Lists approvals waiting on a reviewer",
+    "description": "Lists approvals waiting on a reviewer. Returns a collection of pending approvals records. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Return only active workflows"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "x": 246.18,
+    "y": 123.52
+  },
+  {
+    "id": "workflows.schedule_workflow",
+    "name": "schedule_workflow",
+    "category": "workflows",
+    "descriptor": "Runs a workflow on a recurring schedule",
+    "description": "Runs a workflow on a recurring schedule. Creates a new workflow. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow"
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered list of action steps"
+        }
+      },
+      "required": [
+        "name",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "x": 285.07,
+    "y": 112.13
+  },
+  {
+    "id": "workflows.register_webhook",
+    "name": "register_webhook",
+    "category": "workflows",
+    "descriptor": "Registers an inbound webhook that starts a workflow",
+    "description": "Registers an inbound webhook that starts a workflow. Creates a new webhook. Workflows constellation.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the workflow"
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered list of action steps"
+        }
+      },
+      "required": [
+        "name",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "x": 274.94,
+    "y": 149.1
+  }
+]

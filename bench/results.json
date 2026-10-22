@@ -1,0 +1,278 @@
+{
+  "generatedAt": "2026-10-22T05:46:08.449Z",
+  "simulated": true,
+  "configs": [
+    {
+      "id": "all_tools",
+      "label": "All Tools (Baseline)",
+      "accuracy": 78.5,
+      "avgInputTokens": 20400,
+      "avgLatencyMs": 1250,
+      "costPer1k": 5.19
+    },
+    {
+      "id": "flat",
+      "label": "Flat Top-K (Single-Choice)",
+      "accuracy": 64.2,
+      "avgInputTokens": 1850,
+      "avgLatencyMs": 380,
+      "costPer1k": 0.552
+    },
+    {
+      "id": "hierarchical",
+      "label": "Hierarchical Adaptive (POLARIS)",
+      "accuracy": 57.9,
+      "avgInputTokens": 410,
+      "avgLatencyMs": 226,
+      "costPer1k": 0.213
+    }
+  ],
+  "decider": {
+    "samples": 432,
+    "recallAt1": 43.3,
+    "recallAt3": 54.2,
+    "recallAt6": 57.9,
+    "p50LatencyMs": 36,
+    "p95LatencyMs": 36,
+    "tierDistribution": {
+      "direct": 2,
+      "narrow": 59,
+      "wide": 299,
+      "fallback": 42,
+      "no_tool": 30
+    },
+    "directShare": 0.5
+  },
+  "reliability": [
+    {
+      "bucket": "0.90–1.00",
+      "confidenceMin": 0.9,
+      "confidenceMax": 1,
+      "samples": 2,
+      "accuracy": 100
+    },
+    {
+      "bucket": "0.70–0.89",
+      "confidenceMin": 0.7,
+      "confidenceMax": 0.8999,
+      "samples": 18,
+      "accuracy": 100
+    },
+    {
+      "bucket": "0.50–0.69",
+      "confidenceMin": 0.5,
+      "confidenceMax": 0.6999,
+      "samples": 82,
+      "accuracy": 89
+    },
+    {
+      "bucket": "< 0.50",
+      "confidenceMin": 0,
+      "confidenceMax": 0.4999,
+      "samples": 330,
+      "accuracy": 28.5
+    }
+  ],
+  "failures": [
+    {
+      "query": "can you create the page",
+      "expected": "knowledge.create_page",
+      "chosen": "files.create_folder",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"knowledge.create_page\", but shortlist top-1 was \"files.create_folder\""
+    },
+    {
+      "query": "please close the issue",
+      "expected": "tickets.close_issue",
+      "chosen": "tickets.sla_report",
+      "tier": "wide",
+      "confidence": 0.4455,
+      "reason": "Expected tool \"tickets.close_issue\", but shortlist top-1 was \"tickets.sla_report\""
+    },
+    {
+      "query": "i need you to move the file",
+      "expected": "files.move_file",
+      "chosen": "files.delete_file",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"files.move_file\", but shortlist top-1 was \"files.delete_file\""
+    },
+    {
+      "query": "i need you to qualify the lead",
+      "expected": "crm.qualify_lead",
+      "chosen": "crm.create_lead",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"crm.qualify_lead\", but shortlist top-1 was \"crm.create_lead\""
+    },
+    {
+      "query": "would you mind and group users into a segment by behaviour",
+      "expected": "analytics.segment_users",
+      "chosen": "files.move_file",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"analytics.segment_users\", but shortlist top-1 was \"files.move_file\""
+    },
+    {
+      "query": "can you list issues",
+      "expected": "tickets.list_issues",
+      "chosen": "files.list_folder",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"tickets.list_issues\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "what causes hiccups",
+      "expected": null,
+      "chosen": "calendar.create_event",
+      "tier": "fallback",
+      "confidence": 0.005,
+      "reason": "Expected no_tool gate, but tier decided as \"fallback\""
+    },
+    {
+      "query": "i need you to cycle the count",
+      "expected": "inventory.cycle_count",
+      "chosen": "identity.list_users",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"inventory.cycle_count\", but shortlist top-1 was \"identity.list_users\""
+    },
+    {
+      "query": "can you help me with the workflow runs?",
+      "expected": "workflows.workflow_runs",
+      "chosen": "workflows.run_workflow",
+      "tier": "wide",
+      "confidence": 0.4455,
+      "reason": "Expected tool \"workflows.workflow_runs\", but shortlist top-1 was \"workflows.run_workflow\""
+    },
+    {
+      "query": "would you mind and list the teams defined in the organisation",
+      "expected": "identity.list_teams",
+      "chosen": "crm.list_deals",
+      "tier": "wide",
+      "confidence": 0.5115,
+      "reason": "Expected tool \"identity.list_teams\", but shortlist top-1 was \"crm.list_deals\""
+    },
+    {
+      "query": "what does idempotent mean",
+      "expected": null,
+      "chosen": "calendar.create_event",
+      "tier": "fallback",
+      "confidence": 0.005,
+      "reason": "Expected no_tool gate, but tier decided as \"fallback\""
+    },
+    {
+      "query": "i need you to start a recurring subscription plan",
+      "expected": "billing.create_subscription",
+      "chosen": "calendar.create_event",
+      "tier": "fallback",
+      "confidence": 0.057,
+      "reason": "Expected tool \"billing.create_subscription\", but shortlist top-1 was \"calendar.create_event\""
+    },
+    {
+      "query": "can you help me with listing the suppliers?",
+      "expected": "inventory.list_suppliers",
+      "chosen": "files.list_folder",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"inventory.list_suppliers\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "could you move the page",
+      "expected": "knowledge.move_page",
+      "chosen": "knowledge.delete_page",
+      "tier": "wide",
+      "confidence": 0.4455,
+      "reason": "Expected tool \"knowledge.move_page\", but shortlist top-1 was \"knowledge.delete_page\""
+    },
+    {
+      "query": "can you list payslips",
+      "expected": "hr.list_payslips",
+      "chosen": "files.list_folder",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"hr.list_payslips\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "can you help me with listing the sessions?",
+      "expected": "identity.list_sessions",
+      "chosen": "files.list_folder",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"identity.list_sessions\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "please record the attendance",
+      "expected": "hr.record_attendance",
+      "chosen": "hr.list_employees",
+      "tier": "wide",
+      "confidence": 0.483,
+      "reason": "Expected tool \"hr.record_attendance\", but shortlist top-1 was \"hr.list_employees\""
+    },
+    {
+      "query": "can you help me with declining the invitation?",
+      "expected": "calendar.decline_invitation",
+      "chosen": "files.list_folder",
+      "tier": "wide",
+      "confidence": 0.3135,
+      "reason": "Expected tool \"calendar.decline_invitation\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "i need you to delete the workflow",
+      "expected": "workflows.delete_workflow",
+      "chosen": "workflows.update_workflow",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"workflows.delete_workflow\", but shortlist top-1 was \"workflows.update_workflow\""
+    },
+    {
+      "query": "can you help me with sharing the file?",
+      "expected": "files.share_file",
+      "chosen": "files.list_folder",
+      "tier": "narrow",
+      "confidence": 0.5865,
+      "reason": "Expected tool \"files.share_file\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "can you help me with creating the shipment?",
+      "expected": "inventory.create_shipment",
+      "chosen": "inventory.track_shipment",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"inventory.create_shipment\", but shortlist top-1 was \"inventory.track_shipment\""
+    },
+    {
+      "query": "can you help me with the file metadata?",
+      "expected": "files.file_metadata",
+      "chosen": "files.list_folder",
+      "tier": "narrow",
+      "confidence": 0.5865,
+      "reason": "Expected tool \"files.file_metadata\", but shortlist top-1 was \"files.list_folder\""
+    },
+    {
+      "query": "name three famous museums",
+      "expected": null,
+      "chosen": "calendar.create_event",
+      "tier": "fallback",
+      "confidence": 0.005,
+      "reason": "Expected no_tool gate, but tier decided as \"fallback\""
+    },
+    {
+      "query": "can you help me with updating the workflow?",
+      "expected": "workflows.update_workflow",
+      "chosen": "workflows.create_workflow",
+      "tier": "wide",
+      "confidence": 0.3795,
+      "reason": "Expected tool \"workflows.update_workflow\", but shortlist top-1 was \"workflows.create_workflow\""
+    },
+    {
+      "query": "can you help me with enabling the user?",
+      "expected": "identity.enable_user",
+      "chosen": "analytics.list_dashboards",
+      "tier": "wide",
+      "confidence": 0.4455,
+      "reason": "Expected tool \"identity.enable_user\", but shortlist top-1 was \"analytics.list_dashboards\""
+    }
+  ]
+}
