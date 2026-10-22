@@ -12,7 +12,8 @@
     "packages/*",
     "server",
     "bench",
-    "web"
+    "web",
+    "catalog"
   ],
   "scripts": {
     "build": "npm run build --workspace @polaris/contracts && npm run build --workspaces --if-present",

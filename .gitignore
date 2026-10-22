@@ -44,6 +44,8 @@ venv/
 # Vite / Temporary
 .turbo
 .cache
+.vite
 
 # Local data
 .data/
+

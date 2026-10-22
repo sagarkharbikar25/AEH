@@ -34,6 +34,13 @@ export const ConstellationSchema = z.object({
   name: z.string(),
   descriptor: z.string(),
   toolsCount: z.number().int().nonnegative().optional(),
+  /** Centre of the constellation on the star chart. */
+  hubCoordinates: z
+    .object({
+      x: z.number(),
+      y: z.number(),
+    })
+    .optional(),
 });
 export type Constellation = z.infer<typeof ConstellationSchema>;
 

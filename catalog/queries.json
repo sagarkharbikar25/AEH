@@ -1,0 +1,6062 @@
+{
+  "version": "1.0.0",
+  "counts": {
+    "total": 863,
+    "byKind": {
+      "direct": 240,
+      "ambiguous": 240,
+      "paraphrase": 240,
+      "human": 40,
+      "no_tool": 103
+    },
+    "bySplit": {
+      "dev": 431,
+      "test": 432
+    },
+    "labelled": 760,
+    "unlabelled": 103
+  },
+  "queries": [
+    {
+      "id": "0054e20e-a68d-4e20-ab-0054e20ea68d61",
+      "query": "could you log the activity",
+      "labelTool": "crm.log_activity",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "008cd7f8-d023-4d7f-a2-008cd7f8d023f8",
+      "query": "can you help me with finding the events?",
+      "labelTool": "calendar.find_events",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "00aae0fd-3e33-4e0f-a7-00aae0fd3e3320",
+      "query": "please return the full record for one contact",
+      "labelTool": "crm.get_contact",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "00b494cf-4535-494c-a4-00b494cf4535a4",
+      "query": "i need you to create the space",
+      "labelTool": "knowledge.create_space",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "00c0ecff-e219-4ecf-a2-00c0ecffe219ba",
+      "query": "can you help me with listing the applications?",
+      "labelTool": "hr.list_applications",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "00e06e1a-0c9f-46e1-ae-00e06e1a0c9fa2",
+      "query": "please edit the fields of an employee profile",
+      "labelTool": "hr.update_employee",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "00edd341-651c-4d34-ab-00edd341651c87",
+      "query": "can you list the inbox",
+      "labelTool": "messaging.list_inbox",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0111dcea-6005-4dce-af-0111dcea600529",
+      "query": "can you help me with creating the trigger?",
+      "labelTool": "workflows.create_trigger",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "016f9178-6731-4917-a5-016f91786731f1",
+      "query": "can you help me with listing the inbox?",
+      "labelTool": "messaging.list_inbox",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "01c22c96-9bfa-42c9-ad-01c22c969bfa39",
+      "query": "please list stock items approaching their expiry date",
+      "labelTool": "inventory.expiry_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "02025c4c-514c-45c4-a9-02025c4c514ce1",
+      "query": "the singapore warehouse is low on packing tape",
+      "labelTool": "inventory.low_stock_report",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "0229827a-c76b-4827-ae-0229827ac76b08",
+      "query": "can you help me with pinning the message?",
+      "labelTool": "messaging.pin_message",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0238ac4e-a660-4ac4-ae-0238ac4ea66053",
+      "query": "what did i leave in the shared drive last month",
+      "labelTool": "files.search_files",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "0287f411-ec74-4f41-ae-0287f411ec74da",
+      "query": "can you help me with the page views?",
+      "labelTool": "knowledge.page_views",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "031b9bf4-c6d9-49bf-a1-031b9bf4c6d996",
+      "query": "can you help me with creating the role?",
+      "labelTool": "identity.create_role",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "034ef45f-7154-4f45-a9-034ef45f7154c2",
+      "query": "could you list sprints",
+      "labelTool": "tickets.list_sprints",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "044910df-2204-410d-a5-044910df2204ac",
+      "query": "can you help me with cycling the count?",
+      "labelTool": "inventory.cycle_count",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0458de60-ae2d-4de6-ab-0458de60ae2d37",
+      "query": "please schedule a report to run on a recurring basis",
+      "labelTool": "analytics.schedule_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "047a1a04-4aba-41a0-ac-047a1a044abac6",
+      "query": "can you turn a workflow off",
+      "labelTool": "workflows.deactivate_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "04f47ef2-6d04-47ef-ae-04f47ef26d047c",
+      "query": "can you help me with getting the contact?",
+      "labelTool": "crm.get_contact",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "05028e60-1d95-48e6-a7-05028e601d9505",
+      "query": "how do I start composting at home",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "0526a488-441f-4a48-ad-0526a488441f6a",
+      "query": "would you mind and suggest pages related to a given page",
+      "labelTool": "knowledge.related_pages",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "057e22b7-59f4-422b-a1-057e22b759f4e0",
+      "query": "how do I politely decline an invitation",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "05a012d4-559c-412d-a7-05a012d4559c7b",
+      "query": "can you change the plan or quantity on a subscription",
+      "labelTool": "billing.update_subscription",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "05f0ef7b-4acc-4ef7-a9-05f0ef7b4accbb",
+      "query": "would you mind and remove an action step from a workflow",
+      "labelTool": "workflows.remove_action",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "065bc7a6-3993-4c7a-ad-065bc7a6399361",
+      "query": "please update the contact",
+      "labelTool": "crm.update_contact",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "065e218e-fdc8-4218-aa-065e218efdc8e2",
+      "query": "i need you to find free slots",
+      "labelTool": "calendar.find_free_slots",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "06e643b3-1336-443b-aa-06e643b3133625",
+      "query": "please list calendar events in a date range for a user",
+      "labelTool": "calendar.find_events",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0766fc26-705b-4fc2-a3-0766fc26705b7d",
+      "query": "please update the subscription",
+      "labelTool": "billing.update_subscription",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "086bd8d0-007d-4d8d-a4-086bd8d0007d81",
+      "query": "can you help me with creating the employee?",
+      "labelTool": "hr.create_employee",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0884c76f-919b-4c76-af-0884c76f919bd6",
+      "query": "can you help me with listing the triggers?",
+      "labelTool": "workflows.list_triggers",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0897cd4d-99a2-4cd4-af-0897cd4d99a2c8",
+      "query": "can you help me with setting the working hours?",
+      "labelTool": "calendar.set_working_hours",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "08b521c7-c240-421c-af-08b521c7c24021",
+      "query": "please return the full detail of a single issue",
+      "labelTool": "tickets.get_issue",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "08f205c0-4539-405c-a1-08f205c0453951",
+      "query": "can you help me with opening the issue?",
+      "labelTool": "tickets.open_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "093e16cb-2753-416c-aa-093e16cb2753fd",
+      "query": "please reset the password",
+      "labelTool": "identity.reset_password",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "09a24cbb-bead-44cb-a3-09a24cbbbead70",
+      "query": "can you review the application",
+      "labelTool": "hr.review_application",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0a1dc5a6-4539-4c5a-ac-0a1dc5a6453900",
+      "query": "please list the upcoming reminders for a user",
+      "labelTool": "calendar.list_reminders",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0a63c569-d06c-4c56-a4-0a63c569d06c81",
+      "query": "please change the card or method on an account",
+      "labelTool": "billing.update_payment_method",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0a8863f6-b622-463f-ad-0a8863f6b62255",
+      "query": "please tag the file",
+      "labelTool": "files.tag_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0ab48d93-7999-48d9-a6-0ab48d93799910",
+      "query": "i need you to return size, type and dates for a file",
+      "labelTool": "files.file_metadata",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0ad5dadc-6051-4dad-a8-0ad5dadc60512c",
+      "query": "would you mind and report outstanding balances by invoice age",
+      "labelTool": "billing.aging_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0af8fc92-1b8f-4fc9-a6-0af8fc921b8ff2",
+      "query": "what is the Pythagorean theorem",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "0b2d92f7-95c3-492f-ac-0b2d92f795c3b5",
+      "query": "would you mind and end a subscription at the current period",
+      "labelTool": "billing.cancel_subscription",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0b4953a3-5dba-453a-aa-0b4953a35dbaaf",
+      "query": "why does the sky look red at sunset",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "0b502c03-abd2-42c0-a0-0b502c03abd286",
+      "query": "please create the lead",
+      "labelTool": "crm.create_lead",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0bb648c6-51de-448c-a3-0bb648c651de03",
+      "query": "i need you to set working hours",
+      "labelTool": "calendar.set_working_hours",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0c1de26e-968f-4e26-a8-0c1de26e968f0c",
+      "query": "can you help me with applying the credit?",
+      "labelTool": "billing.apply_credit",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0c3eed1b-e99c-4ed1-a2-0c3eed1be99cb5",
+      "query": "can you help me with compressing the archive?",
+      "labelTool": "files.compress_archive",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0c503ca0-950f-43ca-a8-0c503ca0950fd6",
+      "query": "write a short bedtime story about a lost star",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "0c819d13-5f53-49d1-a6-0c819d135f53eb",
+      "query": "can you help me with submitting the expense claim?",
+      "labelTool": "hr.submit_expense_claim",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0ca1f3dd-3714-4f3d-a0-0ca1f3dd3714c6",
+      "query": "send marcus a link to the deck",
+      "labelTool": "files.share_file",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "0d17f205-fe03-4f20-aa-0d17f205fe0330",
+      "query": "can you help me with adjusting the stock?",
+      "labelTool": "inventory.adjust_stock",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0e0e076f-4fad-4076-ae-0e0e076f4fadda",
+      "query": "can you help me with listing the deals?",
+      "labelTool": "crm.list_deals",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "0e32b520-ed07-4b52-ac-0e32b520ed078e",
+      "query": "i need you to list issues filtered by status, priority or assignee",
+      "labelTool": "tickets.list_issues",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "0e66beca-1b39-4bec-aa-0e66beca1b39af",
+      "query": "i need you to reply to the message",
+      "labelTool": "messaging.reply_message",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0f36e33a-2ed5-4e33-a5-0f36e33a2ed542",
+      "query": "please preview the file",
+      "labelTool": "files.preview_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "0ff0b6aa-af98-4b6a-a2-0ff0b6aaaf988f",
+      "query": "could you share the dashboard",
+      "labelTool": "analytics.share_dashboard",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "101214ed-0181-414e-a6-101214ed0181f0",
+      "query": "can you get the usage report",
+      "labelTool": "billing.usage_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "101b12ad-1923-412a-ad-101b12ad1923ba",
+      "query": "can you help me with updating the contact?",
+      "labelTool": "crm.update_contact",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "103748c1-6a0a-448c-a8-103748c16a0ad2",
+      "query": "can you help me with scheduling the report?",
+      "labelTool": "analytics.schedule_report",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "10c83562-05b8-4356-a5-10c8356205b8c7",
+      "query": "i need you to create an automated workflow with ordered steps",
+      "labelTool": "workflows.create_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "11bd60d9-59c4-460d-a8-11bd60d959c47f",
+      "query": "can you help me with duplicating the issue?",
+      "labelTool": "tickets.duplicate_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1214df08-3b05-4df0-a0-1214df083b0536",
+      "query": "please convert the document",
+      "labelTool": "files.convert_document",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "123b08b9-3f15-408b-a9-123b08b93f15f8",
+      "query": "could you create the recurring event",
+      "labelTool": "calendar.create_recurring_event",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "124ff6d7-be31-4f6d-a6-124ff6d7be313d",
+      "query": "i need you to search wiki pages by keyword",
+      "labelTool": "knowledge.search_pages",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "12c700c8-7ab4-400c-aa-12c700c87ab4ca",
+      "query": "would you mind and change the status, priority or description of an issue",
+      "labelTool": "tickets.update_issue",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "12ca2552-8dd3-4255-a7-12ca25528dd3a7",
+      "query": "could you schedule the report",
+      "labelTool": "analytics.schedule_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "136eb0ab-383b-4b0a-a7-136eb0ab383bcd",
+      "query": "can you help me with printing the label?",
+      "labelTool": "inventory.print_label",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1373f0cb-dc58-4f0c-a7-1373f0cbdc5815",
+      "query": "i need you to post a message to a team chat channel",
+      "labelTool": "messaging.send_chat_message",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "13d71361-c06e-4136-a9-13d71361c06e10",
+      "query": "can you help me with sending the notification?",
+      "labelTool": "messaging.send_notification",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "13df3059-05b4-4305-af-13df305905b435",
+      "query": "what is the difference between a virus and a bacterium",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "13e3e1db-81e3-4e1d-a1-13e3e1db81e312",
+      "query": "write a short dialogue between two astronauts",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "148a53ba-a285-453b-aa-148a53baa2857a",
+      "query": "can you help me with the payroll run?",
+      "labelTool": "hr.payroll_run",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "14b4da8a-c057-4da8-a2-14b4da8ac05720",
+      "query": "i need you to list suppliers",
+      "labelTool": "inventory.list_suppliers",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "15034df0-1259-44df-ad-15034df0125965",
+      "query": "please list spaces",
+      "labelTool": "knowledge.list_spaces",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "15706784-8199-4678-a4-15706784819929",
+      "query": "can you help me with the anomaly scan?",
+      "labelTool": "analytics.anomaly_scan",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "171c59e8-3fd3-459e-ae-171c59e83fd363",
+      "query": "would you mind and assign an issue to a team member",
+      "labelTool": "tickets.assign_issue",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1732fcfa-7b10-4fcf-a2-1732fcfa7b10f4",
+      "query": "could you refund the payment",
+      "labelTool": "billing.refund_payment",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "176b1ee5-f2df-41ee-af-176b1ee5f2df9e",
+      "query": "can you help me with downloading the file?",
+      "labelTool": "files.download_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "17e4ce86-bf1b-4ce8-aa-17e4ce86bf1b0b",
+      "query": "can you help me with inviting the attendees?",
+      "labelTool": "calendar.invite_attendees",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1811e94e-7ac5-4e94-a4-1811e94e7ac5fe",
+      "query": "i need you to get the aging report",
+      "labelTool": "billing.aging_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "186029c6-8f58-429c-aa-186029c68f5860",
+      "query": "can you get the workflow log",
+      "labelTool": "workflows.workflow_log",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "196b5572-c194-4557-a4-196b5572c19497",
+      "query": "could you send the notification",
+      "labelTool": "messaging.send_notification",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "19bab0d5-135f-4b0d-ab-19bab0d5135f90",
+      "query": "please update the page",
+      "labelTool": "knowledge.update_page",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "19ed9e28-82b3-49e2-a2-19ed9e2882b37e",
+      "query": "can you help me with requesting the leave?",
+      "labelTool": "hr.request_leave",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1a3cb231-b822-4b23-aa-1a3cb231b82220",
+      "query": "please request the leave",
+      "labelTool": "hr.request_leave",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1a50573b-4e74-4573-a8-1a50573b4e74b3",
+      "query": "can you send the email",
+      "labelTool": "messaging.send_email",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1a64c8b9-74b2-4c8b-af-1a64c8b974b29e",
+      "query": "i need two days off in march, put in the request",
+      "labelTool": "hr.request_leave",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "1a8e8fc4-999f-48fc-a6-1a8e8fc4999f5b",
+      "query": "i need you to create the payment",
+      "labelTool": "billing.create_payment",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1ab4f33b-dea1-4f33-ae-1ab4f33bdea102",
+      "query": "can you help me with converting the document?",
+      "labelTool": "files.convert_document",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1acfa1f4-a953-4a1f-a4-1acfa1f4a953b6",
+      "query": "please add a comment or note to an issue thread",
+      "labelTool": "tickets.add_issue_comment",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1b00f657-d419-4f65-a9-1b00f657d41951",
+      "query": "can you help me with listing the reminders?",
+      "labelTool": "calendar.list_reminders",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1b1bee4a-42b8-4ee4-ab-1b1bee4a42b8a4",
+      "query": "can you attach a file to a wiki page",
+      "labelTool": "knowledge.attach_page_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1b51e7df-4b89-4e7d-aa-1b51e7df4b89ad",
+      "query": "what does the acronym API stand for",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "1b5f7c6b-089e-47c6-a5-1b5f7c6b089e0f",
+      "query": "can you invite attendees",
+      "labelTool": "calendar.invite_attendees",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1b981793-167e-4179-a6-1b981793167e46",
+      "query": "i need you to issue a new API key for a service account",
+      "labelTool": "identity.create_api_key",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1c2606cd-9242-406c-a3-1c2606cd92426a",
+      "query": "what is the smallest country in the world",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "1c465dc1-0fff-45dc-af-1c465dc10fff0b",
+      "query": "write an email asking for a deadline extension",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "1cf6854b-27d5-4854-af-1cf6854b27d5c2",
+      "query": "can you get the event",
+      "labelTool": "calendar.get_event",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1d2a7827-ae16-4782-a0-1d2a7827ae1638",
+      "query": "can you help me with the expiry report?",
+      "labelTool": "inventory.expiry_report",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1deb8345-5d5a-4834-a5-1deb83455d5aae",
+      "query": "please cancel the shipment",
+      "labelTool": "inventory.cancel_shipment",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1e19b74a-6dfa-4b74-a8-1e19b74a6dfaa7",
+      "query": "please get the revenue report",
+      "labelTool": "billing.revenue_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1ed087be-a5f3-487b-aa-1ed087bea5f340",
+      "query": "please list applications received for a job posting",
+      "labelTool": "hr.list_applications",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1ed107c6-e878-407c-ad-1ed107c6e8785e",
+      "query": "can you help me with adding the page comment?",
+      "labelTool": "knowledge.add_page_comment",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1ef02030-5c7a-4203-ae-1ef020305c7a32",
+      "query": "can you help me with listing the permissions?",
+      "labelTool": "identity.list_permissions",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "1f08797e-bdfa-4797-a3-1f08797ebdfa3f",
+      "query": "please track the event",
+      "labelTool": "analytics.track_event",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1f36c3e4-3e4d-4c3e-ae-1f36c3e43e4dee",
+      "query": "can you create the account",
+      "labelTool": "crm.create_account",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1fc457df-94c8-457d-ac-1fc457df94c8ab",
+      "query": "would you mind and search contacts by name, email or company",
+      "labelTool": "crm.find_contacts",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "1fe16e3c-2c77-46e3-ad-1fe16e3c2c7734",
+      "query": "can you create the user",
+      "labelTool": "identity.create_user",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "1fe17d97-2630-47d9-a4-1fe17d97263049",
+      "query": "please list the accounts in the directory",
+      "labelTool": "identity.list_users",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "201e88cf-01a0-488c-aa-201e88cf01a063",
+      "query": "i need you to report metered usage for a subscription",
+      "labelTool": "billing.usage_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "20403ede-a92f-43ed-ac-20403edea92f42",
+      "query": "name three Nobel Prize categories",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "20b0399a-ec23-4399-a6-20b0399aec233d",
+      "query": "i need you to update the issue",
+      "labelTool": "tickets.update_issue",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "20c5953a-4449-4953-a6-20c5953a4449b6",
+      "query": "please update the event",
+      "labelTool": "calendar.update_event",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "21021fa6-8142-41fa-a8-21021fa6814224",
+      "query": "please decline a pending leave request",
+      "labelTool": "hr.decline_leave",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "21b76bd9-3e9c-46bd-a5-21b76bd93e9c71",
+      "query": "can you help me with previewing the file?",
+      "labelTool": "files.preview_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "21e3e3ce-4d27-4e3c-a8-21e3e3ce4d278d",
+      "query": "can you receive the purchase order",
+      "labelTool": "inventory.receive_purchase_order",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "229b800f-6979-4800-a1-229b800f6979eb",
+      "query": "could you create the shipment",
+      "labelTool": "inventory.create_shipment",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "23181800-53d8-4180-ac-2318180053d8a9",
+      "query": "write a riddle about a candle",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "231eee36-2dac-4ee3-a4-231eee362dac7b",
+      "query": "what is the difference between RAM and disk storage",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "2384f019-1a0e-4f01-a8-2384f0191a0e66",
+      "query": "can you release a previously booked meeting room",
+      "labelTool": "calendar.release_room",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "238f8bd0-d342-48bd-a4-238f8bd0d34253",
+      "query": "i need you to get the storage usage",
+      "labelTool": "files.storage_usage",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "23bcd3cc-d75c-4d3c-a5-23bcd3ccd75c31",
+      "query": "can you help me with updating the item?",
+      "labelTool": "inventory.update_item",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "23eaef33-05ca-4ef3-a5-23eaef3305ca33",
+      "query": "i need you to reject a pending workflow approval",
+      "labelTool": "workflows.reject_request",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "241316c1-52af-416c-a6-241316c152af2f",
+      "query": "could you find events",
+      "labelTool": "calendar.find_events",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "24713e46-17f7-43e4-a7-24713e4617f76e",
+      "query": "can you help me with releasing the room?",
+      "labelTool": "calendar.release_room",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "24c242b4-2af5-442b-ac-24c242b42af54f",
+      "query": "can you help me with getting the issue?",
+      "labelTool": "tickets.get_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "24fd3362-f5f6-4336-a4-24fd3362f5f6e3",
+      "query": "can you help me with creating the job posting?",
+      "labelTool": "hr.create_job_posting",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "252f66f0-2e0b-466f-a4-252f66f02e0ba0",
+      "query": "can you help me with removing the action?",
+      "labelTool": "workflows.remove_action",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "25721559-ecf6-4155-ae-25721559ecf666",
+      "query": "can you help me with assigning the issue?",
+      "labelTool": "tickets.assign_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "25bd8a74-28dc-48a7-ae-25bd8a7428dc7e",
+      "query": "i need you to return the detailed log of one workflow run",
+      "labelTool": "workflows.workflow_log",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "264c019a-0661-4019-a4-264c019a066149",
+      "query": "can you help me with importing the contacts?",
+      "labelTool": "crm.import_contacts",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "2672eddc-bbd1-4edd-a8-2672eddcbbd1a1",
+      "query": "could you list reminders",
+      "labelTool": "calendar.list_reminders",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2690d7b7-dc1d-4d7b-ae-2690d7b7dc1de8",
+      "query": "could you add the glossary term",
+      "labelTool": "knowledge.add_glossary_term",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2694344f-a032-4344-a7-2694344fa032dd",
+      "query": "please list the workflows in the workspace",
+      "labelTool": "workflows.list_workflows",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "26fd2a5a-acc8-42a5-a8-26fd2a5aacc8ba",
+      "query": "write a product description for a reusable water bottle",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "2722d165-f6b1-4d16-ac-2722d165f6b164",
+      "query": "i need you to delete the file",
+      "labelTool": "files.delete_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2772298d-59e4-4298-ab-2772298d59e43e",
+      "query": "i need you to add the reaction",
+      "labelTool": "messaging.add_reaction",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2818910f-8ed6-4910-a2-2818910f8ed641",
+      "query": "can you search files",
+      "labelTool": "files.search_files",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "283ba185-763c-4a18-af-283ba185763c6e",
+      "query": "could you create the role",
+      "labelTool": "identity.create_role",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "28de1a0c-6b6f-41a0-ac-28de1a0c6b6fe8",
+      "query": "can you help me with closing the issue?",
+      "labelTool": "tickets.close_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "29046239-39f1-4623-a6-2904623939f1fd",
+      "query": "name five countries in Europe",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "291f699d-b3da-4699-aa-291f699db3da66",
+      "query": "would you mind and run a workflow immediately with given inputs",
+      "labelTool": "workflows.run_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "29b37721-f4d0-4772-a8-29b37721f4d007",
+      "query": "would you mind and remove a wiki page from the space",
+      "labelTool": "knowledge.delete_page",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "29d24031-9e6e-4403-a4-29d240319e6e03",
+      "query": "can you add a new sales lead to the pipeline",
+      "labelTool": "crm.create_lead",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2a04500e-714c-4500-a6-2a04500e714cab",
+      "query": "please list the execution history of a workflow",
+      "labelTool": "workflows.workflow_runs",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2a073e06-6308-43e0-a0-2a073e06630861",
+      "query": "can you help me with counting the events?",
+      "labelTool": "calendar.count_events",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "2a241a03-9ebc-41a0-a4-2a241a039ebcf5",
+      "query": "please forward a received message to someone else",
+      "labelTool": "messaging.forward_message",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2ab74dba-84c3-44db-a9-2ab74dba84c35f",
+      "query": "i need you to transfer the stock",
+      "labelTool": "inventory.transfer_stock",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2ae55cda-9a29-45cd-ab-2ae55cda9a29ee",
+      "query": "please move a published page back to draft",
+      "labelTool": "knowledge.unpublish_page",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2b41966c-f5bf-4966-a7-2b41966cf5bf44",
+      "query": "what is the Beaufort scale",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "2bb3ec46-530d-4ec4-a0-2bb3ec46530d9f",
+      "query": "please search issues",
+      "labelTool": "tickets.search_issues",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2bf61654-95cd-4165-a1-2bf6165495cd24",
+      "query": "can you change fields on an existing contact",
+      "labelTool": "crm.update_contact",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2bfc0296-5c85-4029-a2-2bfc02965c85dd",
+      "query": "can you move the issue",
+      "labelTool": "tickets.move_issue",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2c551ef8-f28f-41ef-a2-2c551ef8f28f2a",
+      "query": "would you mind and create a discount coupon for a promotion",
+      "labelTool": "billing.create_coupon",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2c59897c-582a-4897-ac-2c59897c582a25",
+      "query": "how long should bread dough rise",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "2cb7be6f-9de9-4be6-a1-2cb7be6f9de916",
+      "query": "can you cancel an issued invoice",
+      "labelTool": "billing.void_invoice",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2d3e3d24-1d53-43d2-aa-2d3e3d241d53c1",
+      "query": "please return a wiki page and its content",
+      "labelTool": "knowledge.get_page",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2d7d3999-758e-4399-aa-2d7d3999758edf",
+      "query": "could you set the reorder point",
+      "labelTool": "inventory.set_reorder_point",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "2d9a4aa5-f404-44aa-a3-2d9a4aa5f404b9",
+      "query": "name two famous bridges",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "2dc46a6b-a6a2-46a6-ac-2dc46a6ba6a291",
+      "query": "would you mind and submit a correction suggestion for a page",
+      "labelTool": "knowledge.suggest_correction",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2e28c954-7572-4c95-a3-2e28c9547572f3",
+      "query": "can you help me with deleting the file?",
+      "labelTool": "files.delete_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "2e3d49fb-afb6-449f-ac-2e3d49fbafb678",
+      "query": "i need you to create a page from a stored template",
+      "labelTool": "knowledge.page_from_template",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "2f1b8fe1-7d7b-48fe-aa-2f1b8fe17d7be2",
+      "query": "can you help me with sending the bulk email?",
+      "labelTool": "messaging.send_bulk_email",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "2fda8735-ceaa-4873-a0-2fda8735ceaa27",
+      "query": "could you list users",
+      "labelTool": "identity.list_users",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3032ed51-d8d3-4ed5-ac-3032ed51d8d352",
+      "query": "would you mind and open a new deal for a potential sale",
+      "labelTool": "crm.create_deal",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "304186c2-8453-486c-a8-304186c2845340",
+      "query": "would you mind and generate a shipping label for a shipment",
+      "labelTool": "inventory.print_label",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "30577600-da9e-4760-a9-30577600da9ebc",
+      "query": "can you send the same email to a large recipient list",
+      "labelTool": "messaging.send_bulk_email",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "30787554-4615-4755-a2-307875544615ea",
+      "query": "can you help me with recording the attendance?",
+      "labelTool": "hr.record_attendance",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "30cf4413-e5fd-4441-a2-30cf4413e5fdba",
+      "query": "what is a monad in programming",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "30d1343e-36f6-4343-ad-30d1343e36f6ed",
+      "query": "i need you to return the revision history of a page",
+      "labelTool": "knowledge.page_history",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "319ef3a2-1cce-4f3a-ac-319ef3a21ccefe",
+      "query": "i need you to report the monetary value of current stock",
+      "labelTool": "inventory.stock_valuation",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "31a6630c-3259-4630-a3-31a6630c325984",
+      "query": "please update the action",
+      "labelTool": "workflows.update_action",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "320e791e-052f-4791-aa-320e791e052f71",
+      "query": "would you mind and record a physical stock count for verification",
+      "labelTool": "inventory.cycle_count",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "3216875a-730f-4875-a9-3216875a730f88",
+      "query": "i need you to get related pages",
+      "labelTool": "knowledge.related_pages",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "324ad147-c4c5-4d14-af-324ad147c4c5d7",
+      "query": "list the planets in order from the sun",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "326ad4d0-07c8-4d4d-ab-326ad4d007c879",
+      "query": "could you rename the file",
+      "labelTool": "files.rename_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "326f38e6-a857-438e-a5-326f38e6a857c8",
+      "query": "can you help me with creating the reminder?",
+      "labelTool": "calendar.create_reminder",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "32b5002d-af32-4002-a4-32b5002daf32ad",
+      "query": "can you create the contact",
+      "labelTool": "crm.create_contact",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "32c55b0d-df6d-45b0-a9-32c55b0ddf6dff",
+      "query": "please estimate the tax due on an invoice",
+      "labelTool": "billing.tax_estimate",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "32db7f5c-e27b-47f5-a4-32db7f5ce27b01",
+      "query": "can you help me with publishing the page?",
+      "labelTool": "knowledge.publish_page",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "32feda07-39ee-4da0-ac-32feda0739eef7",
+      "query": "how do I make cold brew coffee",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "3340fbd5-637f-4fbd-ab-3340fbd5637f97",
+      "query": "can you lock the file",
+      "labelTool": "files.lock_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "334ac75d-cd6c-4c75-a7-334ac75dcd6c2a",
+      "query": "can you help me with retrying the workflow run?",
+      "labelTool": "workflows.retry_workflow_run",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "335941ce-65e3-441c-a8-335941ce65e302",
+      "query": "can you help me with the funnel report?",
+      "labelTool": "analytics.funnel_report",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "33a886d2-4661-486d-a6-33a886d246619a",
+      "query": "can you list active metric alerts",
+      "labelTool": "analytics.list_alerts",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "33c15762-b97f-4576-aa-33c15762b97f54",
+      "query": "can you help me with extracting the archive?",
+      "labelTool": "files.extract_archive",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "33c5243e-6b81-4243-a5-33c5243e6b8118",
+      "query": "can you help me with creating the subscription?",
+      "labelTool": "billing.create_subscription",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "33cb092e-5124-4092-ad-33cb092e512463",
+      "query": "what is the difference between a mortgage and a loan",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "345fe6e7-9531-4e6e-a0-345fe6e795312b",
+      "query": "would you mind and remove a stored file permanently",
+      "labelTool": "files.delete_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "346e5975-9a03-4597-a0-346e59759a0334",
+      "query": "please calculate payroll for a set of employees",
+      "labelTool": "hr.payroll_run",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "350b4d91-6d1d-44d9-a7-350b4d916d1d5b",
+      "query": "can you help me with cancelling the scheduled message?",
+      "labelTool": "messaging.cancel_scheduled_message",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "35243035-a901-4303-a9-35243035a90189",
+      "query": "can you help me with reopening the issue?",
+      "labelTool": "tickets.reopen_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "353a2249-e63a-4224-ac-353a2249e63a06",
+      "query": "please force sign out of one active session",
+      "labelTool": "identity.revoke_session",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "3644b178-cd82-4b17-a4-3644b178cd8208",
+      "query": "i need you to print the label",
+      "labelTool": "inventory.print_label",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "364c3c69-f95f-43c6-a2-364c3c69f95ff1",
+      "query": "please delete the message",
+      "labelTool": "messaging.delete_message",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "36ff4faf-e66e-44fa-a4-36ff4fafe66e9e",
+      "query": "can you help me with creating the account?",
+      "labelTool": "crm.create_account",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "3703b787-d054-4b78-a9-3703b787d0549f",
+      "query": "can you help me with restoring the file?",
+      "labelTool": "files.restore_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "3714c0d9-3654-4c0d-a9-3714c0d936548c",
+      "query": "i need you to list stock levels for items in a warehouse",
+      "labelTool": "inventory.list_stock",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "372cad23-8a70-4ad2-a1-372cad238a70bd",
+      "query": "could you get the funnel report",
+      "labelTool": "analytics.funnel_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3754288b-407e-4288-a7-3754288b407eb0",
+      "query": "can you assign the owner",
+      "labelTool": "crm.assign_owner",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "37c996c2-af39-496c-ad-37c996c2af3999",
+      "query": "please list invoices by status, customer or date",
+      "labelTool": "billing.list_invoices",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "38b07857-b0c6-4785-a8-38b07857b0c64e",
+      "query": "can you help me with refreshing the cache?",
+      "labelTool": "analytics.refresh_cache",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "38d7bbc5-dab3-4bbc-a0-38d7bbc5dab37a",
+      "query": "please scan an uploaded file for malware",
+      "labelTool": "files.scan_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "3955556d-7c73-4556-ae-3955556d7c730f",
+      "query": "write a short thank-you note to a teacher",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "39840c32-597e-40c3-a7-39840c32597e61",
+      "query": "i need you to get the metric value",
+      "labelTool": "analytics.metric_value",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "39d2a4d8-b8c3-4a4d-aa-39d2a4d8b8c337",
+      "query": "what is the capital of France",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "3bbfc7ab-6b57-4c7a-a5-3bbfc7ab6b5703",
+      "query": "can you add the page comment",
+      "labelTool": "knowledge.add_page_comment",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3c3f29f7-429d-429f-ad-3c3f29f7429db4",
+      "query": "can you list accounts filtered by owner or tier",
+      "labelTool": "crm.list_accounts",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "3ccda010-de4b-4a01-ae-3ccda010de4be3",
+      "query": "please report how often a page has been viewed",
+      "labelTool": "knowledge.page_views",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "3cfc0972-c7b0-4097-a9-3cfc0972c7b024",
+      "query": "please share the calendar",
+      "labelTool": "calendar.share_calendar",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3d3cbf39-f778-4bf3-a8-3d3cbf39f778fe",
+      "query": "add the new clinic as an account and put sarah on it",
+      "labelTool": "crm.create_account",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "3d85398a-8b06-4398-af-3d85398a8b0660",
+      "query": "i need you to list sessions",
+      "labelTool": "identity.list_sessions",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3e63b0ac-9fbf-4b0a-a9-3e63b0ac9fbf6a",
+      "query": "could you get the expiry report",
+      "labelTool": "inventory.expiry_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "3eddfc65-a12e-4fc6-aa-3eddfc65a12e5d",
+      "query": "can you help me with finding the free slots?",
+      "labelTool": "calendar.find_free_slots",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "3f45db2c-d90a-4db2-ab-3f45db2cd90a1d",
+      "query": "can you help me with adding the reaction?",
+      "labelTool": "messaging.add_reaction",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "3f7b79ad-211f-479a-a5-3f7b79ad211f21",
+      "query": "grant priya the admin role",
+      "labelTool": "identity.assign_role",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "402c1df5-05fc-41df-a9-402c1df505fc9d",
+      "query": "i need you to mute notifications for one chat channel",
+      "labelTool": "messaging.mute_channel",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "40a68026-5ad9-4802-a9-40a680265ad9fa",
+      "query": "please add a new product or part to the catalogue",
+      "labelTool": "inventory.create_item",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "40f948c7-c9ff-448c-a7-40f948c7c9ff36",
+      "query": "i need you to list teams",
+      "labelTool": "identity.list_teams",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "410ea17b-a713-4a17-af-410ea17ba7139a",
+      "query": "what is the largest internal organ in the human body",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "412d5a4e-e407-45a4-a2-412d5a4ee40713",
+      "query": "would you mind and list the saved reports available to a user",
+      "labelTool": "analytics.list_reports",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "41938490-07a0-4849-a7-4193849007a090",
+      "query": "can you cancel a message that was scheduled to send",
+      "labelTool": "messaging.cancel_scheduled_message",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "41b3f459-2202-4f45-a9-41b3f45922029a",
+      "query": "i need you to send invitations to attendees for a calendar event",
+      "labelTool": "calendar.invite_attendees",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "41bebc5c-5264-4bc5-a6-41bebc5c526443",
+      "query": "what is the longest river in the world",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "41f8a310-5e59-4a31-aa-41f8a3105e591c",
+      "query": "could you update the employee",
+      "labelTool": "hr.update_employee",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "426724a2-3b9f-424a-ac-426724a23b9f1a",
+      "query": "i need you to get the sla report",
+      "labelTool": "tickets.sla_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "42c52ab8-9925-42ab-ab-42c52ab8992502",
+      "query": "what is the speed of light",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "437a1750-f3dd-4175-a7-437a1750f3dd9f",
+      "query": "can you help me with updating the deal stage?",
+      "labelTool": "crm.update_deal_stage",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "43b5e1c0-728a-4e1c-aa-43b5e1c0728a9d",
+      "query": "can you help me with booking the room?",
+      "labelTool": "calendar.book_room",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "43c60586-7bae-4058-a4-43c605867bae01",
+      "query": "i need you to create a label that can be attached to issues",
+      "labelTool": "tickets.create_tag",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "43f4a899-a6bc-4a89-aa-43f4a899a6bca4",
+      "query": "write a two line poem about a bicycle",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "446be052-59a1-4e05-af-446be05259a165",
+      "query": "can you help me with the cohort compare?",
+      "labelTool": "analytics.cohort_compare",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "44e45544-014f-4554-aa-44e45544014f13",
+      "query": "how many tickets are close to breaching sla",
+      "labelTool": "tickets.sla_report",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "450ef6be-0beb-4f6b-a7-450ef6be0bebbd",
+      "query": "please export contacts to a spreadsheet file",
+      "labelTool": "crm.export_contacts",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4515c28d-2c10-4c28-ad-4515c28d2c10b0",
+      "query": "can you help me with verifying the mfa code?",
+      "labelTool": "identity.verify_mfa_code",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "45383af3-9639-43af-a8-45383af396391e",
+      "query": "i need you to attach the tag",
+      "labelTool": "tickets.attach_tag",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "454668ee-a697-468e-a8-454668eea697c8",
+      "query": "i need you to get the low stock report",
+      "labelTool": "inventory.low_stock_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4563aeea-e813-4aee-ac-4563aeeae81391",
+      "query": "how do I sharpen a kitchen knife",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "45a9bff3-6942-4bff-a6-45a9bff369427b",
+      "query": "can you edit the steps of an existing workflow",
+      "labelTool": "workflows.update_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "45af4537-2aa2-4453-a5-45af45372aa22d",
+      "query": "please raise an order to replenish stock",
+      "labelTool": "inventory.create_purchase_order",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "45cb2062-709e-4206-a5-45cb2062709e40",
+      "query": "how do I train for a 10k run",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "45e979c5-7762-479c-a6-45e979c5776236",
+      "query": "i need you to upload a file to a storage location",
+      "labelTool": "files.upload_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "469c8d96-63a8-48d9-a3-469c8d9663a8a1",
+      "query": "what is the significance of the Rosetta Stone",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "46b07900-1292-4790-a8-46b07900129201",
+      "query": "can you help me with creating the recurring event?",
+      "labelTool": "calendar.create_recurring_event",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4732dca7-f93f-4dca-a6-4732dca7f93fe0",
+      "query": "can you help me with the pending approvals?",
+      "labelTool": "workflows.pending_approvals",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4753c4d0-8b4c-4c4d-a5-4753c4d08b4c63",
+      "query": "what is the largest planet in the solar system",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "4789cd87-c7d8-4cd8-a5-4789cd87c7d8a1",
+      "query": "could you pin the message",
+      "labelTool": "messaging.pin_message",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "480ecc1b-75e1-4cc1-a0-480ecc1b75e148",
+      "query": "could you update the payment method",
+      "labelTool": "billing.update_payment_method",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "481d9516-8b7c-4951-a6-481d95168b7ca5",
+      "query": "could you get the page",
+      "labelTool": "knowledge.get_page",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "48e6c2c4-5021-4c2c-a6-48e6c2c45021d2",
+      "query": "what is the difference between an email and a letter",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "493ddd76-3ce8-4dd7-ac-493ddd763ce8bb",
+      "query": "can you execute a saved report to produce its rows",
+      "labelTool": "analytics.run_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "494c9a57-dbed-49a5-ab-494c9a57dbed59",
+      "query": "can you help me with terminating the employee?",
+      "labelTool": "hr.terminate_employee",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "49d685fc-7f6a-485f-ae-49d685fc7f6a43",
+      "query": "could you list subscriptions",
+      "labelTool": "billing.list_subscriptions",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "49e89530-234b-4953-a3-49e89530234b3b",
+      "query": "please submit the expense claim",
+      "labelTool": "hr.submit_expense_claim",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4a65a7dc-abf4-4a7d-a4-4a65a7dcabf40e",
+      "query": "could you decline the leave",
+      "labelTool": "hr.decline_leave",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4a71f70e-476c-4f70-ac-4a71f70e476cf4",
+      "query": "i need you to list open deals with their values and stages",
+      "labelTool": "crm.list_deals",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4a9c0a41-87f8-40a4-a1-4a9c0a4187f831",
+      "query": "can you reject the request",
+      "labelTool": "workflows.reject_request",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4ab2be73-1284-4be7-ae-4ab2be73128408",
+      "query": "can you help me with adding the record note?",
+      "labelTool": "crm.add_record_note",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4b1bc839-3cf9-4c83-a3-4b1bc8393cf912",
+      "query": "i need you to return the full details of one calendar event",
+      "labelTool": "calendar.get_event",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4b877372-06c7-4737-a8-4b87737206c7ee",
+      "query": "can you help me with moving the file?",
+      "labelTool": "files.move_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4bbb0096-4727-4009-a0-4bbb00964727f5",
+      "query": "can you help me with getting the employee?",
+      "labelTool": "hr.get_employee",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4be1797b-e4ef-4797-a0-4be1797be4ef1c",
+      "query": "write the onboarding page for the engineering wiki",
+      "labelTool": "knowledge.create_page",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "4be7f9b0-9e40-4f9b-a7-4be7f9b09e40b8",
+      "query": "please get the warehouse capacity",
+      "labelTool": "inventory.warehouse_capacity",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4bfb7e81-b660-47e8-ad-4bfb7e81b660b1",
+      "query": "can you help me with listing the issues?",
+      "labelTool": "tickets.list_issues",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4c264332-0b49-4433-a4-4c2643320b4979",
+      "query": "i need you to change the password",
+      "labelTool": "identity.change_password",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4c2930a1-d89b-430a-a2-4c2930a1d89b8e",
+      "query": "can you get the file metadata",
+      "labelTool": "files.file_metadata",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "4cb650c8-9949-450c-a5-4cb650c89949c8",
+      "query": "what is the history of the marathon",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "4cf306db-f95f-406d-a2-4cf306dbf95f4b",
+      "query": "would you mind and add a new employee to the directory",
+      "labelTool": "hr.create_employee",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4db2a540-eb55-4a54-ab-4db2a540eb5526",
+      "query": "would you mind and return the current value of one metric",
+      "labelTool": "analytics.metric_value",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4de97ad9-e270-47ad-a7-4de97ad9e270c8",
+      "query": "please count events per month for a user or calendar",
+      "labelTool": "calendar.count_events",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4e1b3f63-2320-43f6-ad-4e1b3f63232066",
+      "query": "i need you to build a saved report over a dataset",
+      "labelTool": "analytics.build_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "4e4bc358-d6df-4c35-af-4e4bc358d6dfab",
+      "query": "can you help me with creating the api key?",
+      "labelTool": "identity.create_api_key",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4efcc3d3-e0cd-4c3d-a6-4efcc3d3e0cd1e",
+      "query": "can you help me with listing the spaces?",
+      "labelTool": "knowledge.list_spaces",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "4f9e5f2e-ccb2-45f2-af-4f9e5f2eccb268",
+      "query": "can you enable the mfa",
+      "labelTool": "identity.enable_mfa",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "50323e0a-3595-43e0-a8-50323e0a35953b",
+      "query": "what is 17 times 23",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "510acfa2-cb13-4cfa-a5-510acfa2cb1353",
+      "query": "can you forecast revenue from the current deal pipeline",
+      "labelTool": "crm.deal_forecast",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "511e2dbb-013c-42db-a8-511e2dbb013c13",
+      "query": "i need you to enable the user",
+      "labelTool": "identity.enable_user",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5260ac75-44d6-4ac7-a2-5260ac7544d6e4",
+      "query": "can you search pages",
+      "labelTool": "knowledge.search_pages",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "52d61a93-b60b-41a9-a8-52d61a93b60b51",
+      "query": "can you create the subscription",
+      "labelTool": "billing.create_subscription",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5321d670-225e-4d67-af-5321d670225ed6",
+      "query": "can you help me with creating the action?",
+      "labelTool": "workflows.create_action",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "53881aa1-e7c7-41aa-a2-53881aa1e7c707",
+      "query": "can you create the api key",
+      "labelTool": "identity.create_api_key",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "540e5194-92c2-4519-a0-540e519492c2e1",
+      "query": "i need you to report remaining leave days for an employee",
+      "labelTool": "hr.leave_balance",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "54d84023-5607-4402-a8-54d840235607c6",
+      "query": "i need you to create the deal",
+      "labelTool": "crm.create_deal",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "54faae74-c921-4ae7-a3-54faae74c921bf",
+      "query": "could you export contacts",
+      "labelTool": "crm.export_contacts",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "556c1a83-a5e3-41a8-ad-556c1a83a5e3bb",
+      "query": "i need you to create a dashboard with a set of widgets",
+      "labelTool": "analytics.create_dashboard",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "558592be-7381-492b-a7-558592be738138",
+      "query": "can you help me with deleting the page?",
+      "labelTool": "knowledge.delete_page",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "56904826-26cf-4482-ad-5690482626cfcf",
+      "query": "can you help me with assigning the owner?",
+      "labelTool": "crm.assign_owner",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "569b1668-b77b-4166-a6-569b1668b77bac",
+      "query": "close out the ticket about the broken export",
+      "labelTool": "tickets.close_issue",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "56d1ef33-5a65-4ef3-ac-56d1ef335a65c9",
+      "query": "can you help me with creating the folder?",
+      "labelTool": "files.create_folder",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "57f88095-124f-4809-a8-57f88095124f66",
+      "query": "i need you to cancel the subscription",
+      "labelTool": "billing.cancel_subscription",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "57fdecdc-5a77-4ecd-ab-57fdecdc5a7780",
+      "query": "please generate the payslip",
+      "labelTool": "hr.generate_payslip",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "58e436f2-dab7-436f-a0-58e436f2dab7ad",
+      "query": "please list dashboards",
+      "labelTool": "analytics.list_dashboards",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "58fe2d22-936c-42d2-a7-58fe2d22936cf0",
+      "query": "can you help me with listing the sprints?",
+      "labelTool": "tickets.list_sprints",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "594680fb-30b5-480f-a8-594680fb30b5ff",
+      "query": "could you revoke the session",
+      "labelTool": "identity.revoke_session",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "59956de8-6e91-46de-a7-59956de86e915c",
+      "query": "can you help me with forwarding the message?",
+      "labelTool": "messaging.forward_message",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "59df35c7-b10c-435c-ac-59df35c7b10cb0",
+      "query": "could you register the webhook",
+      "labelTool": "workflows.register_webhook",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "59e41a58-e686-41a5-a3-59e41a58e686fb",
+      "query": "please assign the role",
+      "labelTool": "identity.assign_role",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5a2a2262-c0e1-4226-a4-5a2a2262c0e190",
+      "query": "can you help me with deleting the workflow?",
+      "labelTool": "workflows.delete_workflow",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "5a6e6687-7ff4-4668-a5-5a6e66877ff4b5",
+      "query": "please revoke the api key",
+      "labelTool": "identity.revoke_api_key",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5b40eaa9-3c89-4eaa-a1-5b40eaa93c89c8",
+      "query": "could you list permissions",
+      "labelTool": "identity.list_permissions",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5b7e44ed-0828-444e-a1-5b7e44ed082888",
+      "query": "add a new contact for the dentist office",
+      "labelTool": "crm.create_contact",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "5bfd6490-c1e7-4649-ac-5bfd6490c1e7da",
+      "query": "can you disable a user account without deleting it",
+      "labelTool": "identity.disable_user",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5c1abd33-b5ca-4bd3-a2-5c1abd33b5cad9",
+      "query": "i need you to cancel the event",
+      "labelTool": "calendar.cancel_event",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5c34ce2c-80e3-4ce2-a9-5c34ce2c80e351",
+      "query": "i need you to segment users",
+      "labelTool": "analytics.segment_users",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5cb41a80-ab6b-41a8-aa-5cb41a80ab6b0c",
+      "query": "how do I care for a monstera plant",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "5cb4e593-0c24-4e59-aa-5cb4e5930c2442",
+      "query": "what is the difference between a podcast and an audiobook",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "5cba2e3f-deee-42e3-a3-5cba2e3fdeeebe",
+      "query": "build me a weekly signups dashboard",
+      "labelTool": "analytics.create_dashboard",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "5d02f59c-9575-4f59-aa-5d02f59c957561",
+      "query": "can you download a stored file by its identifier",
+      "labelTool": "files.download_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5d19b4a6-8811-4b4a-af-5d19b4a688111b",
+      "query": "can you generate a payslip document for one employee",
+      "labelTool": "hr.generate_payslip",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5e0c24b8-5804-424b-a2-5e0c24b858042d",
+      "query": "why do leaves change colour",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "5e0ebf8c-d934-4bf8-a8-5e0ebf8cd93405",
+      "query": "please run the report",
+      "labelTool": "analytics.run_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5e170439-e1ac-4043-ab-5e170439e1acb6",
+      "query": "would you mind and set a reminder ahead of an event or task",
+      "labelTool": "calendar.create_reminder",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5e3ff3d6-b03f-4f3d-a1-5e3ff3d6b03f7b",
+      "query": "explain recursion to a beginner",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "5e6bc178-9c13-4c17-a9-5e6bc1789c1399",
+      "query": "could you list invoices",
+      "labelTool": "billing.list_invoices",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "5e717b6a-82aa-47b6-a4-5e717b6a82aa6e",
+      "query": "would you mind and approve an expense claim for payment",
+      "labelTool": "hr.approve_expense",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5e997237-f879-4723-af-5e997237f8799e",
+      "query": "i need you to lock a file against edits by other users",
+      "labelTool": "files.lock_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5ea31ea3-a179-41ea-a2-5ea31ea3a1797d",
+      "query": "can you help me with approving the expense?",
+      "labelTool": "hr.approve_expense",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "5ee377a4-f27f-477a-ac-5ee377a4f27f98",
+      "query": "can you help me with searching the pages?",
+      "labelTool": "knowledge.search_pages",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "5f18f42d-978c-4f42-a2-5f18f42d978cbd",
+      "query": "can you help me with updating the subscription?",
+      "labelTool": "billing.update_subscription",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "5f6b8214-59c3-4821-ab-5f6b821459c36f",
+      "query": "what is the difference between a lake and a pond",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "5f7de0a0-3bc3-4e0a-a3-5f7de0a03bc3e8",
+      "query": "i need you to list employees in the directory",
+      "labelTool": "hr.list_employees",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5f8d5f28-1775-45f2-ac-5f8d5f281775ab",
+      "query": "please convert a qualified lead into an account",
+      "labelTool": "crm.convert_lead",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5f97ee9c-8615-4ee9-af-5f97ee9c86156c",
+      "query": "please record a call or meeting against an account",
+      "labelTool": "crm.log_activity",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "5ff73bfa-374e-43bf-ae-5ff73bfa374e07",
+      "query": "invoice the hollis group for the second batch of work",
+      "labelTool": "billing.create_invoice",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "606df92e-515f-4f92-a9-606df92e515f11",
+      "query": "can you help me with creating the lead?",
+      "labelTool": "crm.create_lead",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "60964fdf-205d-44fd-a5-60964fdf205dfc",
+      "query": "can you export an entire knowledge space as files",
+      "labelTool": "knowledge.export_space",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "60c8f44d-a951-4f44-ad-60c8f44da9519d",
+      "query": "please list the sprints in a project board",
+      "labelTool": "tickets.list_sprints",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "616d0289-63d8-4028-ac-616d028963d823",
+      "query": "i need you to send an email message to one or more recipients",
+      "labelTool": "messaging.send_email",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "61aa30bb-267c-430b-a5-61aa30bb267cef",
+      "query": "please list every permission defined in the system",
+      "labelTool": "identity.list_permissions",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "61fa737b-ad98-4737-a6-61fa737bad98e1",
+      "query": "can you delete a message from a conversation",
+      "labelTool": "messaging.delete_message",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "620a21ff-5a82-421f-aa-620a21ff5a82b6",
+      "query": "can you help me with exporting the contacts?",
+      "labelTool": "crm.export_contacts",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "62a749c1-da33-449c-a0-62a749c1da33da",
+      "query": "can you get the dunning notice",
+      "labelTool": "billing.dunning_notice",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "62e4031d-5e4a-4031-a1-62e4031d5e4afb",
+      "query": "please export the space",
+      "labelTool": "knowledge.export_space",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "62e45cf2-e1c4-45cf-ac-62e45cf2e1c4a9",
+      "query": "i need you to list the files inside a storage folder",
+      "labelTool": "files.list_folder",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "62e77f69-8a3f-47f6-a9-62e77f698a3fe6",
+      "query": "i need you to report user retention over a cohort window",
+      "labelTool": "analytics.retention_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "63524e60-d2c4-44e6-a3-63524e60d2c459",
+      "query": "can you help me with setting the reorder point?",
+      "labelTool": "inventory.set_reorder_point",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6359877c-83cd-4877-ac-6359877c83cdce",
+      "query": "would you mind and list items below their reorder threshold",
+      "labelTool": "inventory.low_stock_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "63a979e6-19da-479e-ac-63a979e619da88",
+      "query": "can you get the leave balance",
+      "labelTool": "hr.leave_balance",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "63b5fb5e-294f-4fb5-a9-63b5fb5e294f3b",
+      "query": "can you help me with cancelling the event?",
+      "labelTool": "calendar.cancel_event",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "640ec3d5-c6b0-4c3d-ad-640ec3d5c6b0bf",
+      "query": "would you mind and import a list of contacts from a file",
+      "labelTool": "crm.import_contacts",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6441f9d0-3681-4f9d-ae-6441f9d0368133",
+      "query": "can you help me with listing the tags?",
+      "labelTool": "tickets.list_tags",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "64599fcc-4897-49fc-a2-64599fcc489738",
+      "query": "can you help me with rescheduling the event?",
+      "labelTool": "calendar.reschedule_event",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "647a765d-5504-4765-aa-647a765d5504c7",
+      "query": "how do I negotiate a rent increase",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "64a7a804-47c6-4a80-a0-64a7a80447c6c7",
+      "query": "i need you to export metrics",
+      "labelTool": "analytics.export_metrics",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "64c40844-456e-4084-a5-64c40844456ecb",
+      "query": "can you help me with cancelling the subscription?",
+      "labelTool": "billing.cancel_subscription",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "65160566-1fcf-4056-a7-651605661fcfca",
+      "query": "can you help me with resetting the password?",
+      "labelTool": "identity.reset_password",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6517cf61-5b08-4cf6-a0-6517cf615b08c6",
+      "query": "can you help me with sharing the calendar?",
+      "labelTool": "calendar.share_calendar",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "656b59dc-ea37-459d-a0-656b59dcea370e",
+      "query": "can you terminate the employee",
+      "labelTool": "hr.terminate_employee",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "65da254f-ecdf-4254-af-65da254fecdf04",
+      "query": "how do I improve my posture",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "664f3d18-f015-43d1-ac-664f3d18f015f0",
+      "query": "can you summarise revenue over a period",
+      "labelTool": "billing.revenue_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6861e4e6-ca9b-4e4e-ab-6861e4e6ca9bca",
+      "query": "can you help me with getting the event?",
+      "labelTool": "calendar.get_event",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "697f348d-12c3-4348-af-697f348d12c311",
+      "query": "would you mind and remove a workflow definition",
+      "labelTool": "workflows.delete_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6991506f-3f91-4506-a7-6991506f3f9102",
+      "query": "please move a page into a different space",
+      "labelTool": "knowledge.move_page",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "69c39340-5e11-4934-a9-69c393405e112a",
+      "query": "explain what a hash function does",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "69e3a712-a052-4a71-aa-69e3a712a05297",
+      "query": "can you help me with creating the space?",
+      "labelTool": "knowledge.create_space",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6a77c287-df71-4c28-ab-6a77c287df716e",
+      "query": "i need you to get the query dataset",
+      "labelTool": "analytics.query_dataset",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "6ab5fef1-50c8-4fef-a4-6ab5fef150c8aa",
+      "query": "what is the capital of Canada",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "6ad2d868-3ce5-4d86-ac-6ad2d8683ce583",
+      "query": "i need you to compress the archive",
+      "labelTool": "files.compress_archive",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "6b4aa6b3-bfd4-4a6b-a4-6b4aa6b3bfd400",
+      "query": "i need you to send a payment reminder for an overdue invoice",
+      "labelTool": "billing.dunning_notice",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6b8d36ea-c9ea-436e-ad-6b8d36eac9ea4a",
+      "query": "can you help me with scanning the file?",
+      "labelTool": "files.scan_file",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6c3318b9-8064-418b-a2-6c3318b9806423",
+      "query": "can you help me with updating the issue?",
+      "labelTool": "tickets.update_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6c6cfd5c-d19e-4fd5-ac-6c6cfd5cd19e3c",
+      "query": "i need you to book goods received against a purchase order",
+      "labelTool": "inventory.receive_purchase_order",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6cb6aae9-a8b5-4aae-a8-6cb6aae9a8b55e",
+      "query": "can you get the page from template",
+      "labelTool": "knowledge.page_from_template",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "6d4694eb-6f9c-494e-ac-6d4694eb6f9cbf",
+      "query": "i need you to book a meeting room for a given time slot",
+      "labelTool": "calendar.book_room",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6dead5f9-d8c0-4d5f-a2-6dead5f9d8c0ff",
+      "query": "i need you to record an invoice as paid",
+      "labelTool": "billing.mark_invoice_paid",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6e1a3635-bf67-4363-a9-6e1a3635bf6778",
+      "query": "can you revoke an issued API key",
+      "labelTool": "identity.revoke_api_key",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "6e2581aa-c14b-481a-a1-6e2581aac14bbd",
+      "query": "how do I tie a Windsor knot",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "6e97e122-85f8-4e12-aa-6e97e12285f802",
+      "query": "could you get page views",
+      "labelTool": "knowledge.page_views",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "6ef6fc99-ab74-4fc9-ac-6ef6fc99ab7449",
+      "query": "can you help me with refunding the payment?",
+      "labelTool": "billing.refund_payment",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "6f62e328-67f2-4e32-a2-6f62e32867f293",
+      "query": "please list alerts",
+      "labelTool": "analytics.list_alerts",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "6fc18b1d-160a-48b1-a8-6fc18b1d160af4",
+      "query": "i need you to find contacts",
+      "labelTool": "crm.find_contacts",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "7001d0c8-a543-4d0c-ad-7001d0c8a5439e",
+      "query": "can you help me with building the report?",
+      "labelTool": "analytics.build_report",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "700b38dd-7e6f-438d-a5-700b38dd7e6ff8",
+      "query": "please create a shipment for an order",
+      "labelTool": "inventory.create_shipment",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "70440e8a-b894-40e8-a4-70440e8ab8943d",
+      "query": "can you help me with creating the invoice?",
+      "labelTool": "billing.create_invoice",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "704d5a7f-f429-45a7-a3-704d5a7ff4299b",
+      "query": "reset the password for the new intern",
+      "labelTool": "identity.reset_password",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "706e7478-decd-4747-a6-706e7478decd91",
+      "query": "how do I read a nutrition label",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "7094fa38-7a41-4fa3-a4-7094fa387a4115",
+      "query": "please create the channel",
+      "labelTool": "messaging.create_channel",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "70bcdbcf-0f94-4dbc-a5-70bcdbcf0f9454",
+      "query": "can you close an issue once it has been resolved",
+      "labelTool": "tickets.close_issue",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "70d5ba2d-c560-4ba2-ac-70d5ba2dc560f1",
+      "query": "email the whole team the quarterly numbers",
+      "labelTool": "messaging.send_bulk_email",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "71ca1663-8fac-4166-ac-71ca16638fac4f",
+      "query": "would you mind and summarise hours worked per employee",
+      "labelTool": "hr.timesheet_report",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "729d3019-617b-4301-ab-729d3019617b15",
+      "query": "what is the tallest tree species",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "736948b7-00e8-448b-a0-736948b700e8b2",
+      "query": "please return the contents of a received email",
+      "labelTool": "messaging.read_email",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "740017e8-0c4c-417e-ad-740017e80c4c19",
+      "query": "would you mind and move stock between warehouses",
+      "labelTool": "inventory.transfer_stock",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "74f90a2d-b76b-40a2-af-74f90a2db76b69",
+      "query": "can you help me with drafting the email?",
+      "labelTool": "messaging.draft_email",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "75186ad7-8e75-46ad-aa-75186ad78e7504",
+      "query": "can you create the invoice",
+      "labelTool": "billing.create_invoice",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "753e96f7-e100-496f-a1-753e96f7e10061",
+      "query": "what causes the northern lights",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "7562b4d4-4349-4b4d-a0-7562b4d4434935",
+      "query": "would you mind and save an email as a draft without sending it",
+      "labelTool": "messaging.draft_email",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "75ac1737-6d3a-4173-ae-75ac17376d3a82",
+      "query": "i need you to scan metrics for unusual spikes or drops",
+      "labelTool": "analytics.anomaly_scan",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "772b7457-5f81-4745-a8-772b74575f8116",
+      "query": "can you help me with declining the leave?",
+      "labelTool": "hr.decline_leave",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "77513554-bcb8-4355-af-77513554bcb8b3",
+      "query": "name four types of clouds",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "786ae61b-c8c4-4e61-a5-786ae61bc8c4c2",
+      "query": "can you get the retention report",
+      "labelTool": "analytics.retention_report",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "78ea6743-dc03-4674-ae-78ea6743dc03c7",
+      "query": "can you submit a leave request for an employee",
+      "labelTool": "hr.request_leave",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "792af4f4-701a-4f4f-a4-792af4f4701a0f",
+      "query": "can you find issues by keyword across title and description",
+      "labelTool": "tickets.search_issues",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "79743270-ca79-4327-a8-79743270ca79ba",
+      "query": "can you help me with the page from template?",
+      "labelTool": "knowledge.page_from_template",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7a19f412-55ef-4f41-a8-7a19f41255efcb",
+      "query": "can you help me with running the workflow?",
+      "labelTool": "workflows.run_workflow",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7a1dc0db-7c97-4c0d-a9-7a1dc0db7c9770",
+      "query": "can you help me with listing the alerts?",
+      "labelTool": "analytics.list_alerts",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7aa0882c-b57a-4882-aa-7aa0882cb57a43",
+      "query": "can you help me with moving the page?",
+      "labelTool": "knowledge.move_page",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7aaaa9c1-d6fd-4a9c-ae-7aaaa9c1d6fda3",
+      "query": "can you help me with qualifying the lead?",
+      "labelTool": "crm.qualify_lead",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7ade8db0-a39c-48db-ac-7ade8db0a39c1a",
+      "query": "can you help me with the metric history?",
+      "labelTool": "analytics.metric_history",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7b0e65c3-0671-465c-af-7b0e65c306718d",
+      "query": "please create a shareable link for a file",
+      "labelTool": "files.share_file",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "7b143ca8-9139-43ca-ad-7b143ca89139a2",
+      "query": "i need you to return the profile of one user account",
+      "labelTool": "identity.get_user",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "7b45cd07-51bc-4cd0-a0-7b45cd0751bcb2",
+      "query": "i need you to turn a workflow on so it runs on trigger",
+      "labelTool": "workflows.activate_workflow",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "7b51160f-016c-4160-ad-7b51160f016c59",
+      "query": "please get the cohort compare",
+      "labelTool": "analytics.cohort_compare",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "7c025e07-5502-45e0-a6-7c025e07550272",
+      "query": "can you help me with updating the action?",
+      "labelTool": "workflows.update_action",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7c04721f-55dc-4721-a5-7c04721f55dc5b",
+      "query": "i need you to copy the file",
+      "labelTool": "files.copy_file",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "7c0cf200-48d5-4f20-a4-7c0cf20048d5e8",
+      "query": "can you list dashboards shared with the user",
+      "labelTool": "analytics.list_dashboards",
+      "kind": "paraphrase",
+      "split": "dev"
+    },
+    {
+      "id": "7c4fbb68-7640-4bb6-a9-7c4fbb6876406d",
+      "query": "can you help me with creating the dashboard?",
+      "labelTool": "analytics.create_dashboard",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7ca2ae1a-233c-4ae1-a3-7ca2ae1a233cbf",
+      "query": "would you mind and attach a note to a contact, account or deal",
+      "labelTool": "crm.add_record_note",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "7d1f2eb4-3b3f-42eb-a3-7d1f2eb43b3fee",
+      "query": "explain what a neural network is",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "7d5282ad-8e02-482a-a6-7d5282ad8e0261",
+      "query": "can you update the item",
+      "labelTool": "inventory.update_item",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "7d8abcba-d861-4bcb-ae-7d8abcbad861ff",
+      "query": "can you help me with registering the webhook?",
+      "labelTool": "workflows.register_webhook",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7d9118da-92e1-418d-af-7d9118da92e149",
+      "query": "please rename a file in place",
+      "labelTool": "files.rename_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "7dd2a006-33ce-4a00-ab-7dd2a00633cee4",
+      "query": "can you help me with listing the stock?",
+      "labelTool": "inventory.list_stock",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7ddd3e4e-f4c1-43e4-a2-7ddd3e4ef4c1b3",
+      "query": "i need you to create a company or organisation account",
+      "labelTool": "crm.create_account",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "7e0cd501-dc7b-4d50-a8-7e0cd501dc7b0f",
+      "query": "can you help me with listing the employees?",
+      "labelTool": "hr.list_employees",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7ecd005c-0951-4005-a5-7ecd005c09519d",
+      "query": "could you create the item",
+      "labelTool": "inventory.create_item",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "7f53747f-a574-4747-af-7f53747fa5743b",
+      "query": "suggest a gift for a new colleague",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "dev"
+    },
+    {
+      "id": "7f57f1f0-491a-4f1f-a1-7f57f1f0491ae1",
+      "query": "can you help me with escalating the issue?",
+      "labelTool": "tickets.escalate_issue",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7f774dba-0de7-44db-a6-7f774dba0de78c",
+      "query": "can you help me with listing the teams?",
+      "labelTool": "identity.list_teams",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7fa39234-8307-4923-a3-7fa3923483077e",
+      "query": "can you help me with approving the request?",
+      "labelTool": "workflows.approve_request",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "7fa80d8b-c1fe-40d8-a2-7fa80d8bc1fe2f",
+      "query": "make a workflow that fires when a ticket is created",
+      "labelTool": "workflows.create_trigger",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "7ff9fdc8-25f2-4fdc-ad-7ff9fdc825f2f3",
+      "query": "can you help me with the timesheet report?",
+      "labelTool": "hr.timesheet_report",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "8013a475-4817-4a47-a0-8013a475481797",
+      "query": "please register an inbound webhook that starts a workflow",
+      "labelTool": "workflows.register_webhook",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "804fad85-1c24-4ad8-ac-804fad851c24d2",
+      "query": "can you activate the workflow",
+      "labelTool": "workflows.activate_workflow",
+      "kind": "direct",
+      "split": "dev"
+    },
+    {
+      "id": "808859dd-ad97-459d-a6-808859ddad970e",
+      "query": "i need you to find files by name or content",
+      "labelTool": "files.search_files",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "80998e93-d3a0-48e9-a1-80998e93d3a046",
+      "query": "can you help me with the warehouse capacity?",
+      "labelTool": "inventory.warehouse_capacity",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "814716a4-8eae-416a-aa-814716a48eaecc",
+      "query": "can you create the page",
+      "labelTool": "knowledge.create_page",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "8155d62f-c0db-4d62-a3-8155d62fc0db88",
+      "query": "could you get the contact",
+      "labelTool": "crm.get_contact",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "81eecbe9-b5e3-4cbe-a5-81eecbe9b5e377",
+      "query": "can you help me with getting the item?",
+      "labelTool": "inventory.get_item",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "822137ed-a369-437e-a1-822137eda36998",
+      "query": "please close the issue",
+      "labelTool": "tickets.close_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "827528e5-7a78-428e-a7-827528e57a783c",
+      "query": "i need you to create an alert that fires on a metric threshold",
+      "labelTool": "analytics.create_alert",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "82e4d7c0-4773-4d7c-a8-82e4d7c047739a",
+      "query": "what is a solar eclipse",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "84017a21-e7d9-47a2-af-84017a21e7d9a2",
+      "query": "can you help me with the metric value?",
+      "labelTool": "analytics.metric_value",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "842163af-66b0-463a-a9-842163af66b04e",
+      "query": "i need you to move the file",
+      "labelTool": "files.move_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "8466a852-414e-4a85-ae-8466a852414e9d",
+      "query": "i need you to qualify the lead",
+      "labelTool": "crm.qualify_lead",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "84c61243-833a-4124-af-84c61243833ab7",
+      "query": "what is the history of the bicycle",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "84d075a5-bccc-475a-a4-84d075a5bccc69",
+      "query": "can you help me with receiving the purchase order?",
+      "labelTool": "inventory.receive_purchase_order",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "84e7a216-9137-4a21-ad-84e7a2169137b6",
+      "query": "would you mind and group users into a segment by behaviour",
+      "labelTool": "analytics.segment_users",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "85a100da-79fd-400d-a5-85a100da79fdfe",
+      "query": "can you create a new folder in the file store",
+      "labelTool": "files.create_folder",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "85ff6b1b-54e3-46b1-a8-85ff6b1b54e35f",
+      "query": "explain the offside rule in football",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "867795a4-326f-495a-ab-867795a4326ffa",
+      "query": "track my parcel that shipped yesterday",
+      "labelTool": "inventory.track_shipment",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "86988112-6494-4811-a8-8698811264949a",
+      "query": "can you list issues",
+      "labelTool": "tickets.list_issues",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "86dd198a-04c1-4198-a5-86dd198a04c13f",
+      "query": "what causes hiccups",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "86fb3cd4-fee6-43cd-a6-86fb3cd4fee66e",
+      "query": "i need you to cycle the count",
+      "labelTool": "inventory.cycle_count",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "871060ab-bc84-460a-aa-871060abbc84a2",
+      "query": "can you help me with listing the invoices?",
+      "labelTool": "billing.list_invoices",
+      "kind": "ambiguous",
+      "split": "dev"
+    },
+    {
+      "id": "874dea6f-18c9-4ea6-af-874dea6f18c9e8",
+      "query": "can you help me with the workflow runs?",
+      "labelTool": "workflows.workflow_runs",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "877bc779-53f1-4c77-a9-877bc77953f18d",
+      "query": "can you open the issue",
+      "labelTool": "tickets.open_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "877be775-8148-4e77-ab-877be7758148c8",
+      "query": "would you mind and list the teams defined in the organisation",
+      "labelTool": "identity.list_teams",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "87ac7046-8845-4704-a8-87ac704688456c",
+      "query": "what does idempotent mean",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "87c583a1-6807-483a-ac-87c583a1680780",
+      "query": "i need you to start a recurring subscription plan",
+      "labelTool": "billing.create_subscription",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "87d11969-93c7-4196-a2-87d1196993c77d",
+      "query": "can you help me with listing the suppliers?",
+      "labelTool": "inventory.list_suppliers",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "887e7cfa-852e-47cf-a1-887e7cfa852ed7",
+      "query": "can you list the knowledge spaces available",
+      "labelTool": "knowledge.list_spaces",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "88e9108d-7dda-4108-a3-88e9108d7dda73",
+      "query": "could you move the page",
+      "labelTool": "knowledge.move_page",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "88fa651a-d262-4651-ab-88fa651ad26203",
+      "query": "can you list payslips",
+      "labelTool": "hr.list_payslips",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "8949ee69-dba0-4ee6-a7-8949ee69dba0a0",
+      "query": "can you help me with listing the sessions?",
+      "labelTool": "identity.list_sessions",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "897e94a4-b6e2-494a-a2-897e94a4b6e24f",
+      "query": "could you list triggers",
+      "labelTool": "workflows.list_triggers",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "899a5565-e55d-4556-a6-899a5565e55d15",
+      "query": "please record the attendance",
+      "labelTool": "hr.record_attendance",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "89ac1c15-cefb-41c1-ab-89ac1c15cefb84",
+      "query": "who is assigned to the most urgent open tickets",
+      "labelTool": "tickets.list_issues",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "8ae1c109-53eb-4c10-ac-8ae1c10953eb89",
+      "query": "would you mind and Re-enable a previously disabled user account",
+      "labelTool": "identity.enable_user",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "8b02f987-75cb-4f98-a4-8b02f98775cb57",
+      "query": "can you help me with declining the invitation?",
+      "labelTool": "calendar.decline_invitation",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "8b24b59f-f8c2-4b59-ab-8b24b59ff8c28a",
+      "query": "i need you to delete the workflow",
+      "labelTool": "workflows.delete_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "8b52b5a8-7c69-4b5a-a9-8b52b5a87c69d1",
+      "query": "can you help me with sharing the file?",
+      "labelTool": "files.share_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "8b56ee52-03f5-4ee5-ae-8b56ee5203f5bd",
+      "query": "can you help me with creating the shipment?",
+      "labelTool": "inventory.create_shipment",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "8bdf3558-0c08-4355-a3-8bdf35580c088c",
+      "query": "can you help me with the file metadata?",
+      "labelTool": "files.file_metadata",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "8c5cb5c9-6965-4b5c-a9-8c5cb5c96965d0",
+      "query": "please list tags",
+      "labelTool": "tickets.list_tags",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "8d49061c-33ad-4061-ac-8d49061c33ad0b",
+      "query": "name three famous museums",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "8da4e43b-5406-4e43-a4-8da4e43b54069d",
+      "query": "what is the difference between a loan and an overdraft",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "8e12d438-1675-4d43-a5-8e12d438167564",
+      "query": "can you help me with updating the workflow?",
+      "labelTool": "workflows.update_workflow",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "8e8b99da-9dc4-499d-a0-8e8b99da9dc4c5",
+      "query": "explain what a stack trace is",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "90b98e2c-d448-48e2-af-90b98e2cd44877",
+      "query": "please get pending approvals",
+      "labelTool": "workflows.pending_approvals",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "90cd4ad6-ea7d-44ad-a0-90cd4ad6ea7d9d",
+      "query": "can you help me with enabling the user?",
+      "labelTool": "identity.enable_user",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "910d790e-c433-4790-a6-910d790ec433a3",
+      "query": "please download the file",
+      "labelTool": "files.download_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9145c8b1-175d-4c8b-ab-9145c8b1175d6c",
+      "query": "could you share the file",
+      "labelTool": "files.share_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "91a43468-2e2b-4346-a5-91a434682e2b98",
+      "query": "can you mark one issue as a duplicate of another",
+      "labelTool": "tickets.duplicate_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "920e9ca7-4fec-49ca-a0-920e9ca74fec4b",
+      "query": "can you help me with segmenting the users?",
+      "labelTool": "analytics.segment_users",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9242f787-46e4-4f78-a0-9242f78746e47b",
+      "query": "can you help me with running the report?",
+      "labelTool": "analytics.run_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "92cd65e0-46ac-465e-aa-92cd65e046acc6",
+      "query": "publish the runbook we finished last week",
+      "labelTool": "knowledge.publish_page",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "92e0638f-4c2f-4638-a1-92e0638f4c2fec",
+      "query": "can you move an event to a different date and time",
+      "labelTool": "calendar.reschedule_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9362370e-baae-4370-a6-9362370ebaae4d",
+      "query": "please list the triggers attached to a workflow",
+      "labelTool": "workflows.list_triggers",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "93686a55-2823-46a5-ac-93686a552823a4",
+      "query": "could you read the email",
+      "labelTool": "messaging.read_email",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "93aa38f1-1837-438f-a6-93aa38f1183722",
+      "query": "what is the difference between weather and climate",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "941f14cc-6704-414c-a3-941f14cc670463",
+      "query": "my laptop will not boot after the update, log a ticket for it",
+      "labelTool": "tickets.open_issue",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "947975fe-a916-475f-a4-947975fea91622",
+      "query": "what is the Fermi paradox",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "95b88832-6be8-4883-ae-95b888326be87c",
+      "query": "i need you to report the message",
+      "labelTool": "messaging.report_message",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "96bc9fa0-6327-49fa-ad-96bc9fa0632722",
+      "query": "can you set the priority level of an issue",
+      "labelTool": "tickets.set_issue_priority",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "970ae30b-dae3-4e30-ad-970ae30bdae301",
+      "query": "can you help me with assigning the role?",
+      "labelTool": "identity.assign_role",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "97471433-f604-4143-a1-97471433f604ef",
+      "query": "can you help me with the storage usage?",
+      "labelTool": "files.storage_usage",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9753e1d7-05b3-4e1d-ae-9753e1d705b32a",
+      "query": "can you help me with creating the item?",
+      "labelTool": "inventory.create_item",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "97552f74-1824-42f7-a6-97552f741824c5",
+      "query": "could you list applications",
+      "labelTool": "hr.list_applications",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9758893c-7c90-4893-a8-9758893c7c9082",
+      "query": "can you change the recorded quantity of an item",
+      "labelTool": "inventory.adjust_stock",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "97cb9bc0-f958-49bc-a0-97cb9bc0f95842",
+      "query": "i need you to approve the expense",
+      "labelTool": "hr.approve_expense",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "97fa9160-44ad-4916-a2-97fa916044ad15",
+      "query": "would you mind and mark a lead as qualified for sales outreach",
+      "labelTool": "crm.qualify_lead",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "98079543-3ddc-4954-a1-980795433ddca6",
+      "query": "can you send a drafted invoice to the customer",
+      "labelTool": "billing.send_invoice",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "988b5768-bcd7-4576-aa-988b5768bcd789",
+      "query": "can you change the date, time or details of an existing event",
+      "labelTool": "calendar.update_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "98981385-e100-4138-ae-98981385e1001a",
+      "query": "can you help me with enabling the mfa?",
+      "labelTool": "identity.enable_mfa",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "98a90dc5-3bce-40dc-a1-98a90dc53bcec0",
+      "query": "would you mind and add a trigger that starts a workflow",
+      "labelTool": "workflows.create_trigger",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9942d8d0-e8c4-4d8d-a7-9942d8d0e8c442",
+      "query": "could you unpublish the page",
+      "labelTool": "knowledge.unpublish_page",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "99654847-dfa3-4484-a8-99654847dfa305",
+      "query": "please approve a pending workflow approval",
+      "labelTool": "workflows.approve_request",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "996ab969-5806-4b96-a5-996ab96958065b",
+      "query": "i need you to escalate the issue",
+      "labelTool": "tickets.escalate_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9990ee78-a280-4ee7-a6-9990ee78a28015",
+      "query": "please share a dashboard with a team",
+      "labelTool": "analytics.share_dashboard",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9998a669-c364-4a66-ae-9998a669c364ea",
+      "query": "how do I plan a seven day trip",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "9a00913b-bf01-4913-ac-9a00913bbf014a",
+      "query": "please return the historical values of a metric over time",
+      "labelTool": "analytics.metric_history",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9a01c67d-f787-4c67-ad-9a01c67df787c1",
+      "query": "would you mind and move a file into a different folder",
+      "labelTool": "files.move_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9a453c98-5ad9-43c9-ae-9a453c985ad9e5",
+      "query": "would you mind and send a reply to an existing message thread",
+      "labelTool": "messaging.reply_message",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9aaaf1b9-3726-4f1b-ae-9aaaf1b93726f9",
+      "query": "can you send a password reset link to a user",
+      "labelTool": "identity.reset_password",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9b4350d5-166d-450d-aa-9b4350d5166d72",
+      "query": "can you get the anomaly scan",
+      "labelTool": "analytics.anomaly_scan",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9b4799e1-0c65-499e-a4-9b4799e10c651b",
+      "query": "can you create the event",
+      "labelTool": "calendar.create_event",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9ba4ab68-6141-4ab6-ae-9ba4ab686141c4",
+      "query": "how many active users did we have last week",
+      "labelTool": "analytics.metric_value",
+      "kind": "human",
+      "split": "dev"
+    },
+    {
+      "id": "9bcb858c-92ed-4858-a1-9bcb858c92ed4a",
+      "query": "please decline the invitation",
+      "labelTool": "calendar.decline_invitation",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9be72529-525a-4252-a2-9be72529525aa1",
+      "query": "could you check the conflict",
+      "labelTool": "calendar.check_conflict",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "9c282464-aef7-4246-a5-9c282464aef782",
+      "query": "can you Re-run a failed workflow execution",
+      "labelTool": "workflows.retry_workflow_run",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9c5d5235-1898-4523-af-9c5d52351898fe",
+      "query": "would you mind and run a read query against a stored dataset",
+      "labelTool": "analytics.query_dataset",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9d3413a5-9509-413a-a9-9d3413a59509ea",
+      "query": "i need you to schedule a message to be sent at a later time",
+      "labelTool": "messaging.schedule_message",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9d528084-6644-4808-a6-9d52808466440b",
+      "query": "can you help me with locking the file?",
+      "labelTool": "files.lock_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9d5f1ff4-f3c4-41ff-a1-9d5f1ff4f3c433",
+      "query": "can you help me with activating the workflow?",
+      "labelTool": "workflows.activate_workflow",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9dcb7107-c3e8-4710-aa-9dcb7107c3e81c",
+      "query": "what causes inflation in an economy",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "9e00de19-c7b6-4de1-ae-9e00de19c7b672",
+      "query": "can you help me with getting the user?",
+      "labelTool": "identity.get_user",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9ebe929d-5d6a-4929-a0-9ebe929d5d6ac5",
+      "query": "can you help me with moving the issue?",
+      "labelTool": "tickets.move_issue",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9ed36812-c8fa-4681-a0-9ed36812c8fa50",
+      "query": "would you mind and compress files into a single archive",
+      "labelTool": "files.compress_archive",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9f28dd6f-b98c-4dd6-a1-9f28dd6fb98c86",
+      "query": "can you help me with creating the page?",
+      "labelTool": "knowledge.create_page",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9f450d35-931f-40d3-a9-9f450d35931fa2",
+      "query": "please pin a message to the top of a channel",
+      "labelTool": "messaging.pin_message",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "9f7ed24a-5f07-4d24-a4-9f7ed24a5f0744",
+      "query": "can you help me with revoking the role?",
+      "labelTool": "identity.revoke_role",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "9fa5a333-160e-4a33-a5-9fa5a333160e7e",
+      "query": "can you help me with unpublishing the page?",
+      "labelTool": "knowledge.unpublish_page",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a13a4329-eb81-4432-a8-a13a4329eb814f",
+      "query": "could you get the metric history",
+      "labelTool": "analytics.metric_history",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a1733a91-2d4e-43a9-a6-a1733a912d4e92",
+      "query": "can you help me with the sla report?",
+      "labelTool": "tickets.sla_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a1e60927-d91b-4092-a9-a1e60927d91be8",
+      "query": "i need you to import contacts",
+      "labelTool": "crm.import_contacts",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a215ce21-b3d5-4ce2-a6-a215ce21b3d5a5",
+      "query": "can you help me with reporting the message?",
+      "labelTool": "messaging.report_message",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a2236004-3c8a-4600-ac-a22360043c8a51",
+      "query": "can you help me with reading the email?",
+      "labelTool": "messaging.read_email",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a23bf421-7887-4f42-a1-a23bf4217887a4",
+      "query": "cancel the meeting scheduled for friday",
+      "labelTool": "calendar.cancel_event",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "a24e9e4f-4162-49e4-af-a24e9e4f416283",
+      "query": "what is a black hole",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "a2fd0107-9462-4010-a3-a2fd01079462cd",
+      "query": "please define a new role with a set of permissions",
+      "labelTool": "identity.create_role",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a319933b-66e7-4933-a6-a319933b66e7d3",
+      "query": "please detect overlapping events for a user",
+      "labelTool": "calendar.check_conflict",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a348d009-d798-4d00-a7-a348d009d7989c",
+      "query": "i need you to record a review decision on an application",
+      "labelTool": "hr.review_application",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a3672c58-69ff-42c5-a8-a3672c5869ff6a",
+      "query": "can you get the stock valuation",
+      "labelTool": "inventory.stock_valuation",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a380ee71-335a-4ee7-a9-a380ee71335a67",
+      "query": "can you create the dashboard",
+      "labelTool": "analytics.create_dashboard",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a3a4329d-6646-4329-a8-a3a4329d664614",
+      "query": "would you mind and create a new knowledge space",
+      "labelTool": "knowledge.create_space",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a3b533bc-aef3-433b-a7-a3b533bcaef3f0",
+      "query": "can you help me with finding the contacts?",
+      "labelTool": "crm.find_contacts",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a3c89ac7-8f88-49ac-ac-a3c89ac78f88fa",
+      "query": "could you get the payroll run",
+      "labelTool": "hr.payroll_run",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a44e901e-826b-4901-aa-a44e901e826b3b",
+      "query": "can you help me with attaching the tag?",
+      "labelTool": "tickets.attach_tag",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a4557c9b-4ea0-47c9-a8-a4557c9b4ea068",
+      "query": "what is the history of the Silk Road",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "a4679e5f-363d-49e5-a8-a4679e5f363d39",
+      "query": "the northwind deal moved to negotiation, update it",
+      "labelTool": "crm.update_deal_stage",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "a4ac1d76-8dc0-41d7-a5-a4ac1d768dc063",
+      "query": "please restore a deleted file from the trash",
+      "labelTool": "files.restore_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a4e2317a-671c-4317-a9-a4e2317a671c48",
+      "query": "can you get the user",
+      "labelTool": "identity.get_user",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a63933cd-5ba8-433c-ab-a63933cd5ba885",
+      "query": "can you help me with searching the issues?",
+      "labelTool": "tickets.search_issues",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a63e927c-f5af-4927-ab-a63e927cf5af58",
+      "query": "please merge contacts",
+      "labelTool": "crm.merge_contacts",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a66b3e84-875c-43e8-a0-a66b3e84875c5a",
+      "query": "explain photosynthesis in simple terms",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "a682c199-c44c-4c19-a4-a682c199c44c39",
+      "query": "can you help me with converting the lead?",
+      "labelTool": "crm.convert_lead",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a69a8385-f98f-4838-a6-a69a8385f98f99",
+      "query": "can you help me with creating the team?",
+      "labelTool": "identity.create_team",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a6f69509-1fda-4950-a5-a6f695091fda78",
+      "query": "can you help me with sharing the dashboard?",
+      "labelTool": "analytics.share_dashboard",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a72bd217-7991-4d21-ad-a72bd217799118",
+      "query": "what is the chemical symbol for gold",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "a7616cfb-a5ca-46cf-ab-a7616cfba5ca44",
+      "query": "i need you to link two related issues together",
+      "labelTool": "tickets.link_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a7b2e140-e461-4e14-a2-a7b2e140e46177",
+      "query": "would you mind and report a message as spam or inappropriate",
+      "labelTool": "messaging.report_message",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a85671a5-fb5f-471a-ae-a85671a5fb5ffd",
+      "query": "would you mind and return one invoice with its line items",
+      "labelTool": "billing.get_invoice",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a8c46389-64a9-4638-af-a8c4638964a9b0",
+      "query": "can you help me with tracking the shipment?",
+      "labelTool": "inventory.track_shipment",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a8dc5da2-829c-45da-a8-a8dc5da2829c0c",
+      "query": "please disable the user",
+      "labelTool": "identity.disable_user",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a8ff56ff-0edb-456f-ae-a8ff56ff0edbe1",
+      "query": "would you mind and mark a page as published and visible",
+      "labelTool": "knowledge.publish_page",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "a90ffc84-e66c-4fc8-a0-a90ffc84e66c44",
+      "query": "can you help me with the org chart?",
+      "labelTool": "hr.org_chart",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a97fbeb7-3902-4beb-a2-a97fbeb7390287",
+      "query": "can you help me with creating the tag?",
+      "labelTool": "tickets.create_tag",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "a9ca043d-f65d-4043-aa-a9ca043df65d6f",
+      "query": "i need you to publish the page",
+      "labelTool": "knowledge.publish_page",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "a9ce1f59-62d5-41f5-a3-a9ce1f5962d532",
+      "query": "can you help me with transferring the stock?",
+      "labelTool": "inventory.transfer_stock",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "aa1adf2a-43a4-4df2-ae-aa1adf2a43a4aa",
+      "query": "i need you to create the coupon",
+      "labelTool": "billing.create_coupon",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "aa76749a-ae0c-4749-a9-aa76749aae0cfd",
+      "query": "post in the general channel that the release is out",
+      "labelTool": "messaging.send_chat_message",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "ab0b37e4-1226-437e-a0-ab0b37e4122623",
+      "query": "can you delete the contact",
+      "labelTool": "crm.delete_contact",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ab861879-60cd-4187-ab-ab86187960cd34",
+      "query": "i need you to assign a record to a sales representative",
+      "labelTool": "crm.assign_owner",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "aba8f33a-49bd-4f33-a7-aba8f33a49bde8",
+      "query": "can you submit an expense claim for reimbursement",
+      "labelTool": "hr.submit_expense_claim",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "abc30031-6f16-4003-ad-abc300316f1648",
+      "query": "please send the invoice",
+      "labelTool": "billing.send_invoice",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "abdda458-28de-4a45-a6-abdda45828de70",
+      "query": "would you mind and list the suppliers linked to catalogue items",
+      "labelTool": "inventory.list_suppliers",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ac28999a-ec18-4999-ad-ac28999aec18e9",
+      "query": "what is the difference between a bug and a feature",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "ac6f6c80-9875-46c8-ad-ac6f6c80987580",
+      "query": "can you share a calendar with another user or group",
+      "labelTool": "calendar.share_calendar",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "acafb84d-a153-4b84-a4-acafb84da153a4",
+      "query": "can you help me with the workflow log?",
+      "labelTool": "workflows.workflow_log",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "acf86216-787f-4621-a3-acf86216787fa5",
+      "query": "can you list approvals waiting on a reviewer",
+      "labelTool": "workflows.pending_approvals",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ad92f869-1f7b-4f86-a5-ad92f8691f7b8f",
+      "query": "i need you to remove the action",
+      "labelTool": "workflows.remove_action",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ae8f2797-4072-4279-a4-ae8f27974072d7",
+      "query": "i need you to revoke the role",
+      "labelTool": "identity.revoke_role",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ae9516e9-0925-416e-a2-ae9516e90925b2",
+      "query": "can you create the action",
+      "labelTool": "workflows.create_action",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "aea1f289-81d1-4f28-ad-aea1f28981d175",
+      "query": "can you help me with creating the coupon?",
+      "labelTool": "billing.create_coupon",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "aec55d0b-2c2a-45d0-a6-aec55d0b2c2ad5",
+      "query": "can you help me with the deal forecast?",
+      "labelTool": "crm.deal_forecast",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "aee1f2cd-e284-4f2c-a7-aee1f2cde28411",
+      "query": "can you help me with adding the issue comment?",
+      "labelTool": "tickets.add_issue_comment",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "aee9b1e5-a212-4b1e-a5-aee9b1e5a2122a",
+      "query": "explain what a compiler does",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b0867311-703c-4731-a6-b0867311703c79",
+      "query": "could you get the unread count",
+      "labelTool": "messaging.unread_count",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b20d45bc-52b1-445b-a3-b20d45bc52b131",
+      "query": "i need you to turn on multi-factor authentication for a user",
+      "labelTool": "identity.enable_mfa",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b26aa001-e9c9-4a00-a2-b26aa001e9c960",
+      "query": "please update the workflow",
+      "labelTool": "workflows.update_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b27e0997-08eb-4099-aa-b27e099708eb3b",
+      "query": "i need you to get the invoice",
+      "labelTool": "billing.get_invoice",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b2bd6ede-2ae3-46ed-a8-b2bd6ede2ae369",
+      "query": "give me three tips for better sleep",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b2e23f25-1e68-43f2-ae-b2e23f251e686b",
+      "query": "how do vaccines work",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b2f4349f-0b2d-4349-a9-b2f4349f0b2d2b",
+      "query": "could you extract the archive",
+      "labelTool": "files.extract_archive",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b2fb5e7f-a66a-45e7-ad-b2fb5e7fa66ad5",
+      "query": "can you help me with the page history?",
+      "labelTool": "knowledge.page_history",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b37e4584-5dbe-4458-a5-b37e45845dbe20",
+      "query": "how do I make a good cup of tea",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b3ba1e4a-929a-41e4-ad-b3ba1e4a929adb",
+      "query": "can you help me with scheduling the message?",
+      "labelTool": "messaging.schedule_message",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b3c2f78d-2e4f-4f78-a3-b3c2f78d2e4f07",
+      "query": "would you mind and publish a job opening to careers pages",
+      "labelTool": "hr.create_job_posting",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b3dbfafd-de4d-4faf-a5-b3dbfafdde4df8",
+      "query": "i need you to approve the leave",
+      "labelTool": "hr.approve_leave",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b4126b8f-ebef-46b8-a1-b4126b8febef32",
+      "query": "i need you to export the event",
+      "labelTool": "calendar.export_event",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b4465c06-3dc5-45c0-af-b4465c063dc539",
+      "query": "please verify the mfa code",
+      "labelTool": "identity.verify_mfa_code",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b4838f7b-3def-48f7-a7-b4838f7b3defcc",
+      "query": "can you help me with listing the folder?",
+      "labelTool": "files.list_folder",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b52be20a-6623-4e20-a5-b52be20a6623f4",
+      "query": "please get the item",
+      "labelTool": "inventory.get_item",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b5d77cf6-d5d9-47cf-a8-b5d77cf6d5d94d",
+      "query": "please deactivate the workflow",
+      "labelTool": "workflows.deactivate_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b629dd6e-0f54-4dd6-ae-b629dd6e0f5417",
+      "query": "i need you to list the calendars available to a user",
+      "labelTool": "calendar.list_calendars",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b658ec71-ab07-4ec7-a4-b658ec71ab07d8",
+      "query": "can you apply account credit to an invoice",
+      "labelTool": "billing.apply_credit",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b6605175-eb03-4517-a8-b6605175eb03e3",
+      "query": "what is the population of the world roughly",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b662489f-1f34-4489-af-b662489f1f3451",
+      "query": "i need you to create the job posting",
+      "labelTool": "hr.create_job_posting",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b678150f-da28-4150-a8-b678150fda28ed",
+      "query": "i need you to create a contact record for a person",
+      "labelTool": "crm.create_contact",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b678cc69-0059-4cc6-ac-b678cc69005994",
+      "query": "what is machine translation",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b6f5d90c-e13f-4d90-a2-b6f5d90ce13f9d",
+      "query": "can you help me with the usage report?",
+      "labelTool": "billing.usage_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b70ff2c9-a6e2-4f2c-ae-b70ff2c9a6e22a",
+      "query": "i need you to create the employee",
+      "labelTool": "hr.create_employee",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b7394daa-4731-44da-aa-b7394daa473136",
+      "query": "write a haiku about autumn rain",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b7800e0b-1ef5-40e0-ae-b7800e0b1ef58f",
+      "query": "can you mark the invoice paid",
+      "labelTool": "billing.mark_invoice_paid",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b783dbe2-6ddd-4dbe-ac-b783dbe26dddae",
+      "query": "can you help me with copying the file?",
+      "labelTool": "files.copy_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b7adfcb6-5847-4fcb-ab-b7adfcb658477d",
+      "query": "could you merge issues",
+      "labelTool": "tickets.merge_issues",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b7b0d90e-c9e0-4d90-ae-b7b0d90ec9e093",
+      "query": "i need you to create a new wiki page",
+      "labelTool": "knowledge.create_page",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b834536e-bd01-4536-a4-b834536ebd01ad",
+      "query": "would you mind and export metric values to a spreadsheet",
+      "labelTool": "analytics.export_metrics",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b8438568-3542-4856-a9-b843856835429c",
+      "query": "can you render a short preview of the file contents",
+      "labelTool": "files.preview_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "b8751e49-f9c4-41e4-a4-b8751e49f9c452",
+      "query": "could you update the deal stage",
+      "labelTool": "crm.update_deal_stage",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "b8d07828-11ee-4782-a3-b8d0782811ee15",
+      "query": "can you help me with sending the invoice?",
+      "labelTool": "billing.send_invoice",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "b971c38a-ac78-4c38-a7-b971c38aac7809",
+      "query": "who wrote the play Hamlet",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "b9afaf2e-5925-4af2-a2-b9afaf2e592572",
+      "query": "could you create the team",
+      "labelTool": "identity.create_team",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ba686448-483d-4644-af-ba686448483d54",
+      "query": "i need you to list payslips issued to an employee",
+      "labelTool": "hr.list_payslips",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ba9fbf06-62d5-4bf0-a1-ba9fbf0662d50c",
+      "query": "i need you to create a user account with a password",
+      "labelTool": "identity.create_user",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "baa12a51-5d24-42a5-a5-baa12a515d2469",
+      "query": "please report conversion through a product funnel",
+      "labelTool": "analytics.funnel_report",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "bac3d613-b0b2-4d61-a4-bac3d613b0b211",
+      "query": "i need you to delete the page",
+      "labelTool": "knowledge.delete_page",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bb44fe23-04bb-4fe2-aa-bb44fe2304bb09",
+      "query": "please count unread messages per conversation",
+      "labelTool": "messaging.unread_count",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "bb637e26-2af3-47e2-ac-bb637e262af3e8",
+      "query": "i need you to draft the email",
+      "labelTool": "messaging.draft_email",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bb73d2a6-af08-4d2a-ae-bb73d2a6af0843",
+      "query": "what is the significance of the Rosetta Stone in modern linguistics",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "bb8d3998-8abe-4399-a7-bb8d39988abedf",
+      "query": "can you help me with creating the event?",
+      "labelTool": "calendar.create_event",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "bba3c945-7598-4c94-a2-bba3c945759860",
+      "query": "can you help me with the low stock report?",
+      "labelTool": "inventory.low_stock_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "bbac13f4-eb56-413f-a9-bbac13f4eb5641",
+      "query": "can you get the page history",
+      "labelTool": "knowledge.page_history",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bc397737-e5d6-4773-af-bc397737e5d6dd",
+      "query": "can you edit the content of a wiki page",
+      "labelTool": "knowledge.update_page",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "bd1c8e20-9e8e-48e2-a2-bd1c8e209e8ea2",
+      "query": "can you help me with sending the chat message?",
+      "labelTool": "messaging.send_chat_message",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "bd3fc245-e72e-4c24-ab-bd3fc245e72e0b",
+      "query": "could you get the issue",
+      "labelTool": "tickets.get_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bdb7c946-e8c7-4c94-a0-bdb7c946e8c75d",
+      "query": "could you add the issue comment",
+      "labelTool": "tickets.add_issue_comment",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "be2f497a-86d7-4497-ae-be2f497a86d78b",
+      "query": "can you help me with the query dataset?",
+      "labelTool": "analytics.query_dataset",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "be40c392-0662-4c39-a9-be40c3920662ca",
+      "query": "please set the issue priority",
+      "labelTool": "tickets.set_issue_priority",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bed12f1a-bf32-42f1-ac-bed12f1abf32b5",
+      "query": "can you help me with cancelling the purchase order?",
+      "labelTool": "inventory.cancel_purchase_order",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "bf5480eb-23d6-480e-a5-bf5480eb23d649",
+      "query": "can you list the stock",
+      "labelTool": "inventory.list_stock",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "bf91526e-e97b-4526-a7-bf91526ee97ba2",
+      "query": "how do I set up a budget spreadsheet",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "bfa16370-6bed-4637-a3-bfa163706bed8a",
+      "query": "can you help me with linking the issue?",
+      "labelTool": "tickets.link_issue",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "bfb42f9e-1cda-42f9-a6-bfb42f9e1cda6f",
+      "query": "put the signed contract into the legal folder",
+      "labelTool": "files.upload_file",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "bfe395bc-23f7-495b-a6-bfe395bc23f726",
+      "query": "please create a new team with a name and purpose",
+      "labelTool": "identity.create_team",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c0450a46-ccfe-40a4-af-c0450a46ccfe52",
+      "query": "can you merge duplicate contact records into one",
+      "labelTool": "crm.merge_contacts",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c10c82e1-c072-482e-a9-c10c82e1c0728e",
+      "query": "i need you to list channels",
+      "labelTool": "messaging.list_channels",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c11fb950-ac54-4b95-a2-c11fb950ac5425",
+      "query": "how do I write a good bug report",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "c18c38f6-59d0-438f-a7-c18c38f659d095",
+      "query": "can you edit the configuration of a workflow action",
+      "labelTool": "workflows.update_action",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c1a7db2b-15ee-4db2-a4-c1a7db2b15eee2",
+      "query": "please release the room",
+      "labelTool": "calendar.release_room",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c2b303ed-b215-403e-a2-c2b303edb2150e",
+      "query": "generate a payslip for october",
+      "labelTool": "hr.generate_payslip",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "c30404cf-a834-404c-a5-c30404cfa83438",
+      "query": "can you search conversations by keyword",
+      "labelTool": "messaging.search_messages",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c315fe73-744f-4fe7-a8-c315fe73744fcd",
+      "query": "can you help me with updating the employee?",
+      "labelTool": "hr.update_employee",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c3249225-b6e3-4922-a4-c3249225b6e320",
+      "query": "can you help me with the aging report?",
+      "labelTool": "billing.aging_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c32e3f7d-381b-43f7-ab-c32e3f7d381b2c",
+      "query": "can you help me with deactivating the workflow?",
+      "labelTool": "workflows.deactivate_workflow",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c3837c5e-b67f-47c5-a1-c3837c5eb67f90",
+      "query": "how do I make a simple vinaigrette",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "c3877880-fc4a-4788-a8-c3877880fc4a9a",
+      "query": "please send a push notification to a user device",
+      "labelTool": "messaging.send_notification",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c3db6fa5-5c0c-46fa-a8-c3db6fa55c0c99",
+      "query": "would you mind and remove a role from a user account",
+      "labelTool": "identity.revoke_role",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c45f6a5b-1609-46a5-a8-c45f6a5b1609e8",
+      "query": "please move a deal to another pipeline stage",
+      "labelTool": "crm.update_deal_stage",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c4649e8d-2df9-49e8-ad-c4649e8d2df95a",
+      "query": "please void the invoice",
+      "labelTool": "billing.void_invoice",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c5676ba6-7115-46ba-a5-c5676ba6711578",
+      "query": "please rebuild the cached aggregate tables",
+      "labelTool": "analytics.refresh_cache",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c5b641db-4cf4-441d-af-c5b641db4cf46c",
+      "query": "can you restore a page to an earlier revision",
+      "labelTool": "knowledge.restore_version",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c5c38225-a9d6-4822-aa-c5c38225a9d6f3",
+      "query": "put a dentist appointment in my calendar for tuesday at 4pm",
+      "labelTool": "calendar.create_event",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "c5e504a6-4360-404a-a9-c5e504a64360cf",
+      "query": "can you help me with marking the invoice paid?",
+      "labelTool": "billing.mark_invoice_paid",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c627ee2e-13f7-4ee2-a4-c627ee2e13f7b9",
+      "query": "can you list roles",
+      "labelTool": "identity.list_roles",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c6582ff7-804e-42ff-ac-c6582ff7804e41",
+      "query": "can you help me with listing the subscriptions?",
+      "labelTool": "billing.list_subscriptions",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c6b1033b-6735-4033-ac-c6b1033b6735af",
+      "query": "would you mind and run a workflow on a recurring schedule",
+      "labelTool": "workflows.schedule_workflow",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c6e232de-e02a-432d-a7-c6e232dee02a3e",
+      "query": "could you reopen the issue",
+      "labelTool": "tickets.reopen_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c7a0c8f8-6a6c-4c8f-ae-c7a0c8f86a6c93",
+      "query": "can you help me with the dunning notice?",
+      "labelTool": "billing.dunning_notice",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c7ce7af2-2852-47af-a5-c7ce7af228527b",
+      "query": "please send the bulk email",
+      "labelTool": "messaging.send_bulk_email",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c8179832-6f56-4983-a5-c81798326f5695",
+      "query": "explain what a credit score is",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "c8411da4-e11b-41da-a2-c8411da4e11bed",
+      "query": "could you get workflow runs",
+      "labelTool": "workflows.workflow_runs",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c84b3e17-281d-43e1-a1-c84b3e17281d7f",
+      "query": "give me a simple recipe for lentil soup",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "c84f2499-6d29-4249-a9-c84f24996d29d9",
+      "query": "i need you to add a comment to a wiki page",
+      "labelTool": "knowledge.add_page_comment",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c8632e2e-af99-42e2-aa-c8632e2eaf9960",
+      "query": "would you mind and record a payment against an invoice",
+      "labelTool": "billing.create_payment",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c876014b-d11b-4014-a7-c876014bd11b22",
+      "query": "i need you to create the reminder",
+      "labelTool": "calendar.create_reminder",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c8b65bbc-18be-45bb-a5-c8b65bbc18bea7",
+      "query": "can you help me with exporting the space?",
+      "labelTool": "knowledge.export_space",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "c8e280c5-147e-480c-a4-c8e280c5147e3c",
+      "query": "could you approve the request",
+      "labelTool": "workflows.approve_request",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "c8eb34c3-052b-434c-a9-c8eb34c3052bab",
+      "query": "reply to the invoice email saying it is paid",
+      "labelTool": "messaging.reply_message",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "c96f98c5-e94b-498c-a2-c96f98c5e94b87",
+      "query": "please add a term to the shared glossary",
+      "labelTool": "knowledge.add_glossary_term",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "c9a5598a-28c5-4598-a3-c9a5598a28c5d1",
+      "query": "can you help me with creating the alert?",
+      "labelTool": "analytics.create_alert",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ca16e310-d7b1-4e31-af-ca16e310d7b1f2",
+      "query": "i need you to add the record note",
+      "labelTool": "crm.add_record_note",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ca867544-f053-4754-ae-ca867544f053b5",
+      "query": "can you help me with listing the accounts?",
+      "labelTool": "crm.list_accounts",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "caa1b4bf-e633-4b4b-a9-caa1b4bfe6339b",
+      "query": "would you mind and approve a pending leave request",
+      "labelTool": "hr.approve_leave",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "caeda3e1-67ac-4a3e-a7-caeda3e167acb6",
+      "query": "can you help me with listing the dashboards?",
+      "labelTool": "analytics.list_dashboards",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cb1254a4-ebde-454a-a8-cb1254a4ebdefb",
+      "query": "can you list deals",
+      "labelTool": "crm.list_deals",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cb8fefd5-a552-4efd-a0-cb8fefd5a552c2",
+      "query": "could you get the org chart",
+      "labelTool": "hr.org_chart",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cbcc3cd0-f5d8-43cd-a1-cbcc3cd0f5d8a6",
+      "query": "please create the folder",
+      "labelTool": "files.create_folder",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cbf89204-afcf-4920-aa-cbf89204afcfce",
+      "query": "can you list calendars",
+      "labelTool": "calendar.list_calendars",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cc042edd-fd83-42ed-a1-cc042eddfd834b",
+      "query": "can you compare two cohorts across key metrics",
+      "labelTool": "analytics.cohort_compare",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "cc6ff5f1-0bad-4f5f-a0-cc6ff5f10bad54",
+      "query": "could you forward the message",
+      "labelTool": "messaging.forward_message",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cd129659-a06f-4965-a3-cd129659a06fbe",
+      "query": "can you send the chat message",
+      "labelTool": "messaging.send_chat_message",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cdc3dd88-bf6c-4dd8-a8-cdc3dd88bf6c73",
+      "query": "can you help me with the unread count?",
+      "labelTool": "messaging.unread_count",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cdeff8ea-12bf-4f8e-a4-cdeff8ea12bf55",
+      "query": "what is the greenhouse effect",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "ce4c17e5-f0ab-417e-ae-ce4c17e5f0ab6c",
+      "query": "i need you to create an invoice for a customer",
+      "labelTool": "billing.create_invoice",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ce86ec7d-1546-4ec7-a1-ce86ec7d15466c",
+      "query": "can you help me with tagging the file?",
+      "labelTool": "files.tag_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cf880b03-0285-40b0-af-cf880b030285d7",
+      "query": "what is the etymology of the word salary",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "cf8d4858-709a-4485-a1-cf8d4858709a94",
+      "query": "please get the deal forecast",
+      "labelTool": "crm.deal_forecast",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cf8e9de9-fcda-49de-a7-cf8e9de9fcda60",
+      "query": "can you link the issue",
+      "labelTool": "tickets.link_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "cfdd71e2-56b3-471e-ab-cfdd71e256b3a6",
+      "query": "can you help me with the tax estimate?",
+      "labelTool": "billing.tax_estimate",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cff043af-4a86-443a-a0-cff043af4a8629",
+      "query": "can you help me with listing the reports?",
+      "labelTool": "analytics.list_reports",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cffc9721-ba04-4972-a0-cffc9721ba0443",
+      "query": "can you help me with changing the password?",
+      "labelTool": "identity.change_password",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "cffefc76-2ea5-4fc7-a5-cffefc762ea5f2",
+      "query": "how do I remove a coffee stain from a shirt",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "d0365741-154f-4574-a6-d0365741154fb2",
+      "query": "would you mind and cancel a scheduled calendar event by its identifier",
+      "labelTool": "calendar.cancel_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d1287c98-a21e-47c9-a0-d1287c98a21e40",
+      "query": "can you help me with listing the channels?",
+      "labelTool": "messaging.list_channels",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d1eeae78-cbe7-4ae7-ab-d1eeae78cbe740",
+      "query": "can you help me with rejecting the request?",
+      "labelTool": "workflows.reject_request",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d1fd741f-2fe5-4741-a5-d1fd741f2fe5ae",
+      "query": "could you get the tax estimate",
+      "labelTool": "billing.tax_estimate",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d1fff492-10bc-4f49-af-d1fff49210bc1c",
+      "query": "can you list employees",
+      "labelTool": "hr.list_employees",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d23c61b4-93e6-461b-a3-d23c61b493e64e",
+      "query": "can you verify a one-time multi-factor code",
+      "labelTool": "identity.verify_mfa_code",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d2a5ed91-0c29-4ed9-a3-d2a5ed910c2912",
+      "query": "can you help me with disabling the user?",
+      "labelTool": "identity.disable_user",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d2f04482-f8fa-4448-a8-d2f04482f8fa7f",
+      "query": "can you create a new team chat channel",
+      "labelTool": "messaging.create_channel",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d3507da2-06dd-47da-a3-d3507da206dd2c",
+      "query": "please cancel the scheduled message",
+      "labelTool": "messaging.cancel_scheduled_message",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d353ec88-2e78-4ec8-a4-d353ec882e7841",
+      "query": "what is the unit of electrical resistance",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "d3a9e489-2b2d-4e48-a4-d3a9e4892b2d63",
+      "query": "approve the pending purchase request from the design team",
+      "labelTool": "workflows.approve_request",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "d3c340ea-15cd-440e-ad-d3c340ea15cdcb",
+      "query": "can you help me with uploading the file?",
+      "labelTool": "files.upload_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d3da5bcf-83d9-45bc-a6-d3da5bcf83d973",
+      "query": "i need you to run the workflow",
+      "labelTool": "workflows.run_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d4169974-b592-4997-a7-d4169974b592aa",
+      "query": "would you mind and set the working hours shown on a user calendar",
+      "labelTool": "calendar.set_working_hours",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d4915977-655f-4597-af-d4915977655ffb",
+      "query": "can you help me with merging the contacts?",
+      "labelTool": "crm.merge_contacts",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d4919766-3716-4976-ac-d491976637163e",
+      "query": "what is the largest desert on earth",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "d530f723-77ba-4f72-a3-d530f72377ba99",
+      "query": "schedule the monthly report to go out every first monday",
+      "labelTool": "analytics.schedule_report",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "d55526ac-7327-426a-a7-d55526ac7327d1",
+      "query": "can you record a tracked product event",
+      "labelTool": "analytics.track_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d55d66ad-6131-466a-ad-d55d66ad61318a",
+      "query": "please reschedule the event",
+      "labelTool": "calendar.reschedule_event",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d60252f0-573b-452f-a2-d60252f0573bd4",
+      "query": "can you help me with deleting the message?",
+      "labelTool": "messaging.delete_message",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d65aa23a-1f1e-4a23-a1-d65aa23a1f1ed0",
+      "query": "please duplicate the issue",
+      "labelTool": "tickets.duplicate_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d69c2640-2f95-4264-a8-d69c26402f9507",
+      "query": "can you help me with suggesting the correction?",
+      "labelTool": "knowledge.suggest_correction",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d6a24d3a-ddbc-44d3-a1-d6a24d3addbcdd",
+      "query": "can you help me with muting the channel?",
+      "labelTool": "messaging.mute_channel",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d6e558f9-b8fe-458f-a8-d6e558f9b8feac",
+      "query": "i need you to suggest the correction",
+      "labelTool": "knowledge.suggest_correction",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d6e55c5d-a783-45c5-a5-d6e55c5da783bd",
+      "query": "would you mind and export one event to a calendar file format",
+      "labelTool": "calendar.export_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d6fef02b-d219-4f02-ad-d6fef02bd21975",
+      "query": "please create an event that repeats on a schedule",
+      "labelTool": "calendar.create_recurring_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d7cbaae7-2e0d-4aae-aa-d7cbaae72e0d90",
+      "query": "can you record clock in or clock out times",
+      "labelTool": "hr.record_attendance",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d81d557a-817e-4557-a4-d81d557a817e73",
+      "query": "can you help me with revoking the api key?",
+      "labelTool": "identity.revoke_api_key",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d87c127b-6283-4127-a1-d87c127b62831c",
+      "query": "please get the employee",
+      "labelTool": "hr.get_employee",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "d8974bc9-6245-44bc-a5-d8974bc962454d",
+      "query": "can you return the profile of one employee",
+      "labelTool": "hr.get_employee",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d94ce016-13c7-4e01-a9-d94ce01613c7cd",
+      "query": "can you help me with revoking the session?",
+      "labelTool": "identity.revoke_session",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d98ac3b0-f44f-4c3b-af-d98ac3b0f44fe9",
+      "query": "can you help me with checking the conflict?",
+      "labelTool": "calendar.check_conflict",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d997b355-960a-4b35-a0-d997b355960a84",
+      "query": "can you help me with tracking the event?",
+      "labelTool": "analytics.track_event",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "d9a719fd-3226-419f-a1-d9a719fd3226b7",
+      "query": "name two famous classical composers",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "d9e3a637-073a-4a63-a4-d9e3a637073aa7",
+      "query": "please return the reporting structure of the organisation",
+      "labelTool": "hr.org_chart",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "d9e6aee9-c06b-4aee-a8-d9e6aee9c06bd8",
+      "query": "our subscription plan needs more seats, change it",
+      "labelTool": "billing.update_subscription",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "da81084a-98be-4084-ab-da81084a98be4e",
+      "query": "can you help me with getting the invoice?",
+      "labelTool": "billing.get_invoice",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "da898784-8b35-4878-a8-da8987848b358c",
+      "query": "can you help me with updating the page?",
+      "labelTool": "knowledge.update_page",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "da9675fb-a0cc-475f-a6-da9675fba0cc9c",
+      "query": "i need you to add an action step to a workflow",
+      "labelTool": "workflows.create_action",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "dae2226d-870a-4226-ad-dae2226d870a48",
+      "query": "who invented the printing press",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "db2f5fd6-f62a-45fd-a0-db2f5fd6f62ac5",
+      "query": "can you help me with reviewing the application?",
+      "labelTool": "hr.review_application",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "db457dc9-a56b-47dc-ab-db457dc9a56b1d",
+      "query": "please restore the version",
+      "labelTool": "knowledge.restore_version",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "db907733-7292-4773-ac-db90773372925b",
+      "query": "can you help me with renaming the file?",
+      "labelTool": "files.rename_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "dc0b3f8f-76d0-43f8-aa-dc0b3f8f76d044",
+      "query": "i need you to edit the details of an inventory item",
+      "labelTool": "inventory.update_item",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "dc35ec27-feb2-4ec2-ab-dc35ec27feb2c4",
+      "query": "show me where people drop off in the signup flow",
+      "labelTool": "analytics.funnel_report",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "dc48b5c6-430b-4b5c-a2-dc48b5c6430bec",
+      "query": "please list active and cancelled subscriptions",
+      "labelTool": "billing.list_subscriptions",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "dc86eded-8b9f-4ede-a0-dc86eded8b9f07",
+      "query": "can you help me with the leave balance?",
+      "labelTool": "hr.leave_balance",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "dcd7ed0c-7490-4ed0-ae-dcd7ed0c749088",
+      "query": "can you help me with searching the messages?",
+      "labelTool": "messaging.search_messages",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "dd7d1fe4-4864-41fe-ae-dd7d1fe44864af",
+      "query": "i need you to list reports",
+      "labelTool": "analytics.list_reports",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "dda3c90c-388a-4c90-ab-dda3c90c388a64",
+      "query": "please reopen a previously closed issue",
+      "labelTool": "tickets.reopen_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ddbe390d-63d3-4390-a9-ddbe390d63d32b",
+      "query": "would you mind and copy a file to a new location",
+      "labelTool": "files.copy_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "dde2440b-191a-4440-a7-dde2440b191aff",
+      "query": "what is the purpose of a sitemap",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "ddf602a4-751c-402a-a6-ddf602a4751c0c",
+      "query": "i need you to move an issue to another board or sprint",
+      "labelTool": "tickets.move_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "de3fb043-d4ac-4b04-a3-de3fb043d4ac57",
+      "query": "what is a peninsula",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "de7100d3-db8f-400d-a8-de7100d3db8f62",
+      "query": "i need you to create a calendar event with a title, date and start time",
+      "labelTool": "calendar.create_event",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "de83f356-1bf5-4f35-a0-de83f3561bf547",
+      "query": "can you help me with sending the email?",
+      "labelTool": "messaging.send_email",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "df08f9db-9780-4f9d-ad-df08f9db978000",
+      "query": "can you list every label used on issues",
+      "labelTool": "tickets.list_tags",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "df810376-c0b3-4037-a5-df810376c0b31c",
+      "query": "can you decline a pending calendar invitation",
+      "labelTool": "calendar.decline_invitation",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "dfdde952-1007-4e95-a0-dfdde95210078d",
+      "query": "can you help me with searching the files?",
+      "labelTool": "files.search_files",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "dffb93b0-6c17-493b-a5-dffb93b06c170a",
+      "query": "can you help me with scheduling the workflow?",
+      "labelTool": "workflows.schedule_workflow",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e00ea795-7211-4a79-a9-e00ea795721175",
+      "query": "please list accounts",
+      "labelTool": "crm.list_accounts",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e01d222c-cf12-4222-a3-e01d222ccf125f",
+      "query": "can you help me with voiding the invoice?",
+      "labelTool": "billing.void_invoice",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e0c165bf-c5f4-465b-a9-e0c165bfc5f43f",
+      "query": "how many continents are there",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "e10f78ef-4afc-478e-a2-e10f78ef4afc37",
+      "query": "write a one line summary of the plot of Moby Dick",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "e1127104-d9c9-4710-a1-e1127104d9c980",
+      "query": "can you add a tag to a file for easier searching",
+      "labelTool": "files.tag_file",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e17d09b6-80b1-409b-ad-e17d09b680b1d6",
+      "query": "can you help me with the retention report?",
+      "labelTool": "analytics.retention_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e1db79d3-9dcf-479d-ad-e1db79d39dcffb",
+      "query": "would you mind and list the chat channels a user belongs to",
+      "labelTool": "messaging.list_channels",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e2269d4f-dee6-49d4-a4-e2269d4fdee6e7",
+      "query": "can you help me with exporting the metrics?",
+      "labelTool": "analytics.export_metrics",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e2672e22-0dfb-42e2-ab-e2672e220dfbca",
+      "query": "name five famous Impressionist painters",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "e318ff8c-35fc-4ff8-a1-e318ff8c35fcbc",
+      "query": "could you restore the file",
+      "labelTool": "files.restore_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e36ccab7-d0d0-4cab-ac-e36ccab7d0d052",
+      "query": "could you scan the file",
+      "labelTool": "files.scan_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e3c2af8c-cdad-4af8-a9-e3c2af8ccdad67",
+      "query": "can you help me with listing the workflows?",
+      "labelTool": "workflows.list_workflows",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e3e79529-8a7b-4952-a8-e3e795298a7bac",
+      "query": "i need you to schedule the workflow",
+      "labelTool": "workflows.schedule_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e49bf2c7-a0a3-4f2c-a9-e49bf2c7a0a376",
+      "query": "can you cancel a shipment that has not yet left",
+      "labelTool": "inventory.cancel_shipment",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e4d86cd2-75b2-46cd-a2-e4d86cd275b2f6",
+      "query": "can you help me with exporting the event?",
+      "labelTool": "calendar.export_event",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e557d0ed-4feb-4d0e-a1-e557d0ed4febe5",
+      "query": "please search messages",
+      "labelTool": "messaging.search_messages",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e571d4aa-0690-4d4a-ac-e571d4aa06908f",
+      "query": "record the hours i worked on the migration this week",
+      "labelTool": "hr.timesheet_report",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "e58ed31c-9362-4d31-af-e58ed31c936269",
+      "query": "can you help me with approving the leave?",
+      "labelTool": "hr.approve_leave",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e62d32ab-1cf9-432a-ad-e62d32ab1cf929",
+      "query": "run the nightly reconciliation workflow now",
+      "labelTool": "workflows.run_workflow",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "e658184c-4471-4184-ae-e658184c44717f",
+      "query": "can you help me with creating the contact?",
+      "labelTool": "crm.create_contact",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e6ecfcb7-df8f-4fcb-ad-e6ecfcb7df8fc4",
+      "query": "i need you to create the trigger",
+      "labelTool": "workflows.create_trigger",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e708c3c4-ad0c-4c3c-af-e708c3c4ad0c26",
+      "query": "please merge duplicate issues into a single primary record",
+      "labelTool": "tickets.merge_issues",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e7762bfa-595b-42bf-a8-e7762bfa595b0d",
+      "query": "could you convert the lead",
+      "labelTool": "crm.convert_lead",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "e7954184-4d26-4418-a0-e79541844d2627",
+      "query": "can you help me with creating the purchase order?",
+      "labelTool": "inventory.create_purchase_order",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e820799a-7b67-4799-a3-e820799a7b670e",
+      "query": "summarize the plot of Cinderella",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "e89da3d8-6c6e-4a3d-a9-e89da3d86c6e52",
+      "query": "can you return one inventory item with its quantities",
+      "labelTool": "inventory.get_item",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e906ab57-296b-4ab5-a2-e906ab57296b43",
+      "query": "can you help me with generating the payslip?",
+      "labelTool": "hr.generate_payslip",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "e92d9b90-3c64-49b9-a0-e92d9b903c6448",
+      "query": "would you mind and report which issues are close to breaching their SLA",
+      "labelTool": "tickets.sla_report",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "e965dc01-cb10-4dc0-ac-e965dc01cb10bb",
+      "query": "would you mind and attach an existing label to an issue",
+      "labelTool": "tickets.attach_tag",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ea014c40-a39d-44c4-a8-ea014c40a39daa",
+      "query": "would you mind and change the password for a user account",
+      "labelTool": "identity.change_password",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ea0f3be3-e29c-43be-a1-ea0f3be3e29c4d",
+      "query": "what is the difference between weather forecasting and climate modelling",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "ea4a922a-90f9-4922-ad-ea4a922a90f9ab",
+      "query": "can you track the shipment",
+      "labelTool": "inventory.track_shipment",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ea81db79-3658-4db7-a8-ea81db793658fe",
+      "query": "can you book the room",
+      "labelTool": "calendar.book_room",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "eaf340eb-72ee-440e-ad-eaf340eb72eed7",
+      "query": "i need you to open a new support issue or service request",
+      "labelTool": "tickets.open_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "eb29b00f-3c14-4b00-a8-eb29b00f3c1443",
+      "query": "can you help me with creating the payment?",
+      "labelTool": "billing.create_payment",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "eb30f1a6-b8d9-4f1a-a4-eb30f1a6b8d9ea",
+      "query": "i need you to record an employee leaving the organisation",
+      "labelTool": "hr.terminate_employee",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "eb585739-c90e-4573-a9-eb585739c90ea6",
+      "query": "can you help me with listing the payslips?",
+      "labelTool": "hr.list_payslips",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ebd04833-880d-4483-af-ebd04833880d76",
+      "query": "i need you to list the emails in a user inbox",
+      "labelTool": "messaging.list_inbox",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ed4cb464-17c1-4b46-a5-ed4cb46417c172",
+      "query": "can you help me with listing the users?",
+      "labelTool": "identity.list_users",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ed5a1fba-1971-41fb-ab-ed5a1fba19710c",
+      "query": "can you report free space and capacity per warehouse",
+      "labelTool": "inventory.warehouse_capacity",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "edce33dc-96a4-433d-a1-edce33dc96a49a",
+      "query": "could you refresh the cache",
+      "labelTool": "analytics.refresh_cache",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ee6652ce-9489-452c-a1-ee6652ce948997",
+      "query": "can you help me with creating the deal?",
+      "labelTool": "crm.create_deal",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ee76a304-1119-4a30-a2-ee76a304111962",
+      "query": "who is the manager of the person i sit next to",
+      "labelTool": "hr.org_chart",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "ee864028-7f05-4402-a6-ee8640287f0571",
+      "query": "please refund a previous customer payment",
+      "labelTool": "billing.refund_payment",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ef4c2843-149c-4284-a0-ef4c2843149cdf",
+      "query": "please apply the credit",
+      "labelTool": "billing.apply_credit",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "eff02018-cdd3-4201-a1-eff02018cdd317",
+      "query": "can you create the workflow",
+      "labelTool": "workflows.create_workflow",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f08d01f8-9ec2-401f-a1-f08d01f89ec21e",
+      "query": "i need you to return the latest tracking status of a shipment",
+      "labelTool": "inventory.track_shipment",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f0f0ae6b-fc92-4ae6-a0-f0f0ae6bfc9284",
+      "query": "can you help me with creating the channel?",
+      "labelTool": "messaging.create_channel",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f1708b05-fc45-48b0-a6-f1708b05fc4541",
+      "query": "am i free on thursday afternoon for a coffee with priya",
+      "labelTool": "calendar.find_free_slots",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "f1e4510b-5b43-4510-ae-f1e4510b5b43d3",
+      "query": "please set the quantity that triggers a reorder",
+      "labelTool": "inventory.set_reorder_point",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f207290b-ab57-4290-af-f207290bab57bd",
+      "query": "can you help me with the stock valuation?",
+      "labelTool": "inventory.stock_valuation",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f2341c99-5d88-41c9-a2-f2341c995d8809",
+      "query": "what is the tallest mountain on earth",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f2626bd7-b210-46bd-a3-f2626bd7b2103d",
+      "query": "can you create the alert",
+      "labelTool": "analytics.create_alert",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f287a38d-9a6c-4a38-ad-f287a38d9a6c4d",
+      "query": "please extract the contents of an archive file",
+      "labelTool": "files.extract_archive",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f32d2bcb-abe5-42bc-ae-f32d2bcbabe5b2",
+      "query": "can you help me with creating the workflow?",
+      "labelTool": "workflows.create_workflow",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f3594baf-dc96-44ba-a2-f3594bafdc96d0",
+      "query": "can you help me with deleting the contact?",
+      "labelTool": "crm.delete_contact",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f3974e24-43c5-44e2-a5-f3974e2443c5da",
+      "query": "put my notes from the call with the client somewhere i can find them",
+      "labelTool": "knowledge.create_page",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "f3b2449c-5624-4449-ac-f3b2449c562427",
+      "query": "explain what an API rate limit is",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f3c3c07b-6101-4c07-a9-f3c3c07b61010d",
+      "query": "would you mind and escalate an issue to a higher support tier",
+      "labelTool": "tickets.escalate_issue",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f4536bb6-ccb4-46bb-a3-f4536bb6ccb402",
+      "query": "can you help me with updating the payment method?",
+      "labelTool": "billing.update_payment_method",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f5031c04-5183-41c0-a2-f5031c0451831a",
+      "query": "add a stage to the onboarding workflow",
+      "labelTool": "workflows.create_action",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "f503fe1d-185e-4fe1-ac-f503fe1d185eef",
+      "query": "can you help me with getting the page?",
+      "labelTool": "knowledge.get_page",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f506cdb4-e45e-4cdb-aa-f506cdb4e45e83",
+      "query": "can you help me with cancelling the shipment?",
+      "labelTool": "inventory.cancel_shipment",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f5c1e1e5-e0f8-4e1e-a9-f5c1e1e5e0f842",
+      "query": "can you help me with logging the activity?",
+      "labelTool": "crm.log_activity",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f5c5e92d-e7f8-4e92-a4-f5c5e92de7f8d7",
+      "query": "write a limerick about a lighthouse keeper",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f5d41456-cc15-4145-a1-f5d41456cc15f0",
+      "query": "please retry the workflow run",
+      "labelTool": "workflows.retry_workflow_run",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f610803d-08b7-4803-a5-f610803d08b7b6",
+      "query": "can you help me with merging the issues?",
+      "labelTool": "tickets.merge_issues",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f64c91d0-1992-491d-a4-f64c91d019929f",
+      "query": "can you help me with restoring the version?",
+      "labelTool": "knowledge.restore_version",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f6792b4f-11af-42b4-a7-f6792b4f11af33",
+      "query": "can you help me with listing the calendars?",
+      "labelTool": "calendar.list_calendars",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f67cc1a2-c924-4c1a-a7-f67cc1a2c92443",
+      "query": "can you grant a role to a user account",
+      "labelTool": "identity.assign_role",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f6a7f904-4222-4f90-a5-f6a7f904422241",
+      "query": "write a subject line for a newsletter",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f6d5a61c-861f-4a61-ae-f6d5a61c861f9f",
+      "query": "would you mind and find open time slots across participant calendars",
+      "labelTool": "calendar.find_free_slots",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f6dcac51-f873-4ac5-a8-f6dcac51f8737c",
+      "query": "what is the difference between a simile and a metaphor",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f76fb0a9-9856-4b0a-a7-f76fb0a9985633",
+      "query": "can you help me with replying the message?",
+      "labelTool": "messaging.reply_message",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f79ffe29-a17c-4fe2-a6-f79ffe29a17ca9",
+      "query": "can you help me with the revenue report?",
+      "labelTool": "billing.revenue_report",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f7e33951-5223-4395-a8-f7e3395152235f",
+      "query": "i need you to get the timesheet report",
+      "labelTool": "hr.timesheet_report",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f878b403-d53a-4b40-ab-f878b403d53a8b",
+      "query": "can you help me with attaching the page file?",
+      "labelTool": "knowledge.attach_page_file",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f883d251-a8fd-4d25-a9-f883d251a8fdbb",
+      "query": "can you build the report",
+      "labelTool": "analytics.build_report",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f8aba1a7-caf7-4a1a-a5-f8aba1a7caf785",
+      "query": "please cancel the purchase order",
+      "labelTool": "inventory.cancel_purchase_order",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f8fb91d9-2aa2-491d-a5-f8fb91d92aa2f7",
+      "query": "can you help me with updating the event?",
+      "labelTool": "calendar.update_event",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "f9334318-cf6e-4431-ad-f9334318cf6e28",
+      "query": "explain what a database index is",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "f9b36fba-2265-46fb-aa-f9b36fba22653c",
+      "query": "i need you to assign the issue",
+      "labelTool": "tickets.assign_issue",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "f9d2f96f-5dc3-4f96-af-f9d2f96f5dc3da",
+      "query": "would you mind and add an emoji reaction to a message",
+      "labelTool": "messaging.add_reaction",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "f9e2e979-768b-4e97-a0-f9e2e979768bb8",
+      "query": "can you help me with the related pages?",
+      "labelTool": "knowledge.related_pages",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "fa3405ea-925a-405e-af-fa3405ea925a76",
+      "query": "can you help me with adding the glossary term?",
+      "labelTool": "knowledge.add_glossary_term",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "fad84cbc-b461-44cb-a0-fad84cbcb46151",
+      "query": "can you create the tag",
+      "labelTool": "tickets.create_tag",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "faf19aeb-2989-49ae-a3-faf19aeb2989a6",
+      "query": "could you count events",
+      "labelTool": "calendar.count_events",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fafc086d-7476-4086-a3-fafc086d74760f",
+      "query": "could you list workflows",
+      "labelTool": "workflows.list_workflows",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fb485ef9-1412-45ef-a6-fb485ef91412ee",
+      "query": "find the pages about our deployment process",
+      "labelTool": "knowledge.search_pages",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "fb4f9ed5-330b-49ed-a1-fb4f9ed5330b04",
+      "query": "could you create the purchase order",
+      "labelTool": "inventory.create_purchase_order",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fbe1f885-62af-4f88-a1-fbe1f88562afa3",
+      "query": "can you help me with listing the roles?",
+      "labelTool": "identity.list_roles",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "fc20c9a0-004c-4c9a-a7-fc20c9a0004c39",
+      "query": "please attach the page file",
+      "labelTool": "knowledge.attach_page_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fcb46aae-7e0c-46aa-a4-fcb46aae7e0cc6",
+      "query": "please adjust the stock",
+      "labelTool": "inventory.adjust_stock",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fd14f358-b6d5-4f35-a3-fd14f358b6d582",
+      "query": "would you mind and list active sessions for a user",
+      "labelTool": "identity.list_sessions",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "fd5d2086-87f4-4208-a9-fd5d208687f44b",
+      "query": "summarize the water cycle",
+      "labelTool": null,
+      "kind": "no_tool",
+      "split": "test"
+    },
+    {
+      "id": "fdb56455-4eba-4645-a9-fdb564554eba41",
+      "query": "can you cancel a purchase order before it ships",
+      "labelTool": "inventory.cancel_purchase_order",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "fdbb1747-bdad-4174-a5-fdbb1747bdada5",
+      "query": "can you mute the channel",
+      "labelTool": "messaging.mute_channel",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fdbea8b7-37f2-4a8b-a2-fdbea8b737f254",
+      "query": "can you upload the file",
+      "labelTool": "files.upload_file",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "fe0a3fda-b424-43fd-a8-fe0a3fdab4241d",
+      "query": "would you mind and report how much storage space is used",
+      "labelTool": "files.storage_usage",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "fe990f37-701f-40f3-a3-fe990f37701f54",
+      "query": "can you help me with creating the user?",
+      "labelTool": "identity.create_user",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ff013c42-adc9-43c4-ae-ff013c42adc92b",
+      "query": "raise a purchase order for 200 more of the blue sensor",
+      "labelTool": "inventory.create_purchase_order",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "ff60c4bc-aa93-4c4b-a8-ff60c4bcaa932c",
+      "query": "i need you to list the roles available in the system",
+      "labelTool": "identity.list_roles",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ff77f448-e123-4f44-a8-ff77f448e123c1",
+      "query": "can you list the folder",
+      "labelTool": "files.list_folder",
+      "kind": "direct",
+      "split": "test"
+    },
+    {
+      "id": "ff84f24e-3594-4f24-a4-ff84f24e35940d",
+      "query": "i need you to remove a contact record",
+      "labelTool": "crm.delete_contact",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ffb117b2-c642-417b-a4-ffb117b2c642e8",
+      "query": "can you convert a document between supported file formats",
+      "labelTool": "files.convert_document",
+      "kind": "paraphrase",
+      "split": "test"
+    },
+    {
+      "id": "ffc5fa19-83c0-4fa1-a7-ffc5fa1983c0a0",
+      "query": "which support tickets are still open right now",
+      "labelTool": "tickets.list_issues",
+      "kind": "human",
+      "split": "test"
+    },
+    {
+      "id": "ffc67a01-a769-47a0-a9-ffc67a01a76943",
+      "query": "can you help me with setting the issue priority?",
+      "labelTool": "tickets.set_issue_priority",
+      "kind": "ambiguous",
+      "split": "test"
+    },
+    {
+      "id": "ffe58b97-0db4-48b9-a5-ffe58b970db4d2",
+      "query": "can you schedule the message",
+      "labelTool": "messaging.schedule_message",
+      "kind": "direct",
+      "split": "test"
+    }
+  ]
+}
