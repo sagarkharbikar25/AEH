@@ -13,21 +13,63 @@ POLARIS is an intelligent **hierarchical tool router** placing **Strands Decider
 ---
 
 ## Table of Contents
-1. [The Problem: Enterprise Tool Schema Bloat](#1-the-problem-enterprise-tool-schema-bloat)
-2. [The Solution: The POLARIS Architecture](#2-the-solution-the-polaris-architecture)
-3. [Measured Impact & Empirical Benchmarks](#3-measured-impact--empirical-benchmarks)
-4. [Target Users & Industry Applications](#4-target-users--industry-applications)
-5. [The Reusable Asset: `@polaris/router`](#5-the-reusable-asset-polarisrouter)
-6. [Interactive Astronomical Observatory UI](#6-interactive-astronomical-observatory-ui)
-7. [System Architecture & AWS Topology](#7-system-architecture--aws-topology)
-8. [Enterprise Safety & Built-in Guardrails](#8-enterprise-safety--built-in-guardrails)
-9. [Quick Start & Local Verification](#9-quick-start--local-verification)
-10. [Repository Layout & Git Provenance](#10-repository-layout--git-provenance)
-11. [License & Compliance](#11-license--compliance)
+1. [Technology Stack](#1-technology-stack)
+2. [The Problem: Enterprise Tool Schema Bloat](#2-the-problem-enterprise-tool-schema-bloat)
+3. [The Solution: The POLARIS Architecture](#3-the-solution-the-polaris-architecture)
+4. [Measured Impact & Empirical Benchmarks](#4-measured-impact--empirical-benchmarks)
+5. [Target Users & Industry Applications](#5-target-users--industry-applications)
+6. [The Reusable Asset: `@polaris/router`](#6-the-reusable-asset-polarisrouter)
+7. [Interactive Astronomical Observatory UI](#7-interactive-astronomical-observatory-ui)
+8. [System Architecture & AWS Topology](#8-system-architecture--aws-topology)
+9. [Enterprise Safety & Built-in Guardrails](#9-enterprise-safety--built-in-guardrails)
+10. [Quick Start & Local Verification](#10-quick-start--local-verification)
+11. [Repository Layout & Git Provenance](#11-repository-layout--git-provenance)
+12. [License & Compliance](#12-license--compliance)
 
 ---
 
-## 1. The Problem: Enterprise Tool Schema Bloat
+## 1. Technology Stack
+
+POLARIS is built using a modern, production-grade monorepo stack with end-to-end TypeScript strict typing:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                          POLARIS TECH STACK                            │
+├───────────────────┬────────────────────────────────────────────────────┤
+│ AI & Routing      │ Strands Decider 2B · Amazon Bedrock Converse       │
+│                   │ Claude 3 Haiku · AWS SDK v3 Client Bedrock Runtime │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ Frontend (Web)    │ React 19 · Vite 6 · Tailwind CSS v4 · Framer Motion│
+│                   │ Lucide React SVG · Forest & Leaf Palette (#064734) │
+│                   │ Fonts: Plus Jakarta Sans / Inter / JetBrains Mono  │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ Backend (Server)  │ Node.js 20+ · Express 4 · Server-Sent Events (SSE) │
+│                   │ Zod Contracts & Schemas · TSX Runner · CORS        │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ Quality & Testing │ Vitest (48/48 Passing) · ESLint v9 (0 Warnings)    │
+│                   │ TypeScript 5.4 Strict Typecheck (6 Workspaces)     │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ Database & Infra  │ Supabase (PostgreSQL) · AWS EC2 · Caddy Web Server │
+│                   │ Vercel Edge Hosting · NPM Workspaces Monorepo      │
+└───────────────────┴────────────────────────────────────────────────────┘
+```
+
+| Layer | Technologies & Libraries | Architectural Role |
+| :--- | :--- | :--- |
+| **Micro-Decision Engine** | `strands-decider` (Decider 2B) | Sub-40ms hierarchical intent classification (`needs_tool` + `category` + tool scoring). |
+| **Inference Runtime** | Amazon Bedrock Converse API (`@aws-sdk/client-bedrock-runtime`) | Anthropic Claude 3 Haiku executing shortlisted tool calls with typed JSON arguments. |
+| **Frontend Framework** | React 19, TypeScript, React Router 7 | Interactive "Celestial Atlas" single-page application with deterministic replay modes. |
+| **Styling & Theme** | Tailwind CSS v4, Vanilla CSS Custom Properties | Custom **Forest (`#064734`)** & **Leaf (`#E0FFC2`)** theme, conic rotating border beams, glassmorphism. |
+| **Typography** | Google Fonts (`Plus Jakarta Sans`, `Inter`, `JetBrains Mono`) | Dedicated typographic pairing for headlines, body prose, and numerical telemetry. |
+| **Icons & Visuals** | Lucide React (Pure inline SVG) | 100% SVG icon architecture with zero emoji or unicode glyph fallbacks. |
+| **Backend & Streams** | Express 4, TypeScript, HTTP/2 SSE Streams | Asynchronous dual-lane execution engine comparing Baseline vs. Polaris concurrently. |
+| **Data Contracts** | Zod v3 (`@polaris/contracts`) | Isomorphic schemas ensuring 100% type-safe payloads across client, server, and events. |
+| **Testing Harness** | Vitest, 432-sample benchmark harness | Automated contract tests, tier score tests, and empirical Pareto curve evaluation. |
+| **Cloud Hosting** | Vercel (Edge SPA) + AWS EC2 (Express + Decider) + Caddy | High-availability hybrid deployment with zero-downtime offline flight replay fallbacks. |
+
+---
+
+## 2. The Problem: Enterprise Tool Schema Bloat
 
 Modern AI agents integrated with Model Context Protocol (MCP) servers and enterprise microservices quickly accumulate hundreds of tools: database connectors, cloud infrastructure provisioning, billing APIs, identity access controls, and communication channels.
 
@@ -56,7 +98,7 @@ $$\text{Input Payload} \approx 240 \text{ tools} \times 85 \text{ tokens/tool} =
 
 ---
 
-## 2. The Solution: The POLARIS Architecture
+## 3. The Solution: The POLARIS Architecture
 
 POLARIS introduces a lightweight **Strands Decider 2B** routing gatekeeper in front of Amazon Bedrock. Rather than attempting a naive, flat 240-way choice (which exceeds small-model context limits and drops accuracy), POLARIS uses a **2-Pass Hierarchical Probability Pipeline**:
 
@@ -100,7 +142,7 @@ POLARIS introduces a lightweight **Strands Decider 2B** routing gatekeeper in fr
 
 ---
 
-## 3. Measured Impact & Empirical Benchmarks
+## 4. Measured Impact & Empirical Benchmarks
 
 All metrics reported below were collected across **432 rigorous evaluation runs** tested against our complete standard catalog of **240 tools** using Claude 3 Haiku on Amazon Bedrock.
 
@@ -120,7 +162,7 @@ All metrics reported below were collected across **432 rigorous evaluation runs*
 
 ---
 
-## 4. Target Users & Industry Applications
+## 5. Target Users & Industry Applications
 
 1. **Enterprise MCP Platform Architects**: Organizations deploying multi-agent systems where each agent connects to 10+ MCP servers containing hundreds of database, observability, and infrastructure tools.
 2. **Cloud SRE & DevOps Copilots**: Operational agents tasked with provisioning EC2 instances, cycling Kubernetes pods, modifying IAM policies, and querying CloudWatch logs.
@@ -128,7 +170,7 @@ All metrics reported below were collected across **432 rigorous evaluation runs*
 
 ---
 
-## 5. The Reusable Asset: `@polaris/router`
+## 6. The Reusable Asset: `@polaris/router`
 
 POLARIS is distributed as an open-source, drop-in TypeScript library. Any engineer using `@aws-sdk/client-bedrock-runtime` can add hierarchical tool routing in **5 lines of code**:
 
@@ -155,7 +197,7 @@ const response = await bedrock.send(new ConverseCommand({
 
 ---
 
-## 6. Interactive Astronomical Observatory UI
+## 7. Interactive Astronomical Observatory UI
 
 Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#064734`)** and **Leaf (`#E0FFC2`)** color palette and typography hierarchy (`Plus Jakarta Sans` for headers, `Inter` for prose, `JetBrains Mono` for telemetry):
 
@@ -179,7 +221,7 @@ Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#0647
 
 ---
 
-## 7. System Architecture & AWS Topology
+## 8. System Architecture & AWS Topology
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -217,7 +259,7 @@ Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#0647
 
 ---
 
-## 8. Enterprise Safety & Built-in Guardrails
+## 9. Enterprise Safety & Built-in Guardrails
 
 * **Financial Kill-Switch**: The Express server tracks cumulative Bedrock token spend. If total spending hits **$25.00**, it immediately halts live API calls, transitions into replay mode, and alerts the operator.
 * **Sliding-Window Rate Limiter**: Enforces an in-memory limit of **60 requests per minute** per client.
@@ -226,7 +268,7 @@ Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#0647
 
 ---
 
-## 9. Quick Start & Local Verification
+## 10. Quick Start & Local Verification
 
 ### Prerequisites
 * Node.js $\ge 20.11.0$
@@ -267,7 +309,7 @@ Open your browser to **`http://localhost:5173`**.
 
 ---
 
-## 10. Repository Layout & Git Provenance
+## 11. Repository Layout & Git Provenance
 
 This repository was constructed using four independent, folder-isolated feature branches merged into `main`:
 
@@ -288,7 +330,7 @@ polaris/
 
 ---
 
-## 11. License & Compliance
+## 12. License & Compliance
 
 * **License**: Open source under the [Apache-2.0 License](LICENSE).
 * **Hackathon**: Developed for the **AWS Strands Decider Agent Hackathon**.
