@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@polaris/contracts": "file:../packages/contracts",
     "@tailwindcss/vite": "^4.3.3",
     "framer-motion": "^14.4.0",
     "lucide-react": "^1.16.0",

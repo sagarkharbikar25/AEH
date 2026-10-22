@@ -1,0 +1,128 @@
+{
+  "id": "no_tool",
+  "title": "Flight III · Zero-Tool Gate (No-Tool Tier)",
+  "query": "Explain the difference between Amdahl's Law and Gustafson's Law in parallel computing",
+  "kind": "no_tool",
+  "events": [
+    {
+      "type": "decision",
+      "runId": "replay_flight_03",
+      "seq": 0,
+      "ts": "2026-10-22T10:10:00.000Z",
+      "stage": "needs_tool",
+      "needsTool": false,
+      "confidence": 0.08,
+      "latencyMs": 32,
+      "topCategories": []
+    },
+    {
+      "type": "shortlist",
+      "runId": "replay_flight_03",
+      "seq": 1,
+      "ts": "2026-10-22T10:10:00.034Z",
+      "tier": "no_tool",
+      "tools": [],
+      "totalTools": 0
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_03",
+      "seq": 2,
+      "ts": "2026-10-22T10:10:00.036Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "stage": "bedrock_converse_full_catalog"
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_03",
+      "seq": 3,
+      "ts": "2026-10-22T10:10:00.036Z",
+      "lane": "polaris",
+      "toolsSent": 0,
+      "stage": "bedrock_converse_zero_tools"
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_03",
+      "seq": 4,
+      "ts": "2026-10-22T10:10:00.220Z",
+      "lane": "polaris",
+      "inputTokens": 82,
+      "outputTokens": 140,
+      "elapsedMs": 184
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_03",
+      "seq": 5,
+      "ts": "2026-10-22T10:10:00.228Z",
+      "lane": "polaris",
+      "toolsSent": 0,
+      "inputTokens": 82,
+      "outputTokens": 140,
+      "latencyMs": 192,
+      "chosenTool": null,
+      "correct": true,
+      "costUsd": 0.000196
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_03",
+      "seq": 6,
+      "ts": "2026-10-22T10:10:01.280Z",
+      "lane": "baseline",
+      "inputTokens": 20400,
+      "outputTokens": 140,
+      "elapsedMs": 1240
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_03",
+      "seq": 7,
+      "ts": "2026-10-22T10:10:01.295Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "inputTokens": 20400,
+      "outputTokens": 140,
+      "latencyMs": 1255,
+      "chosenTool": null,
+      "correct": true,
+      "costUsd": 0.005275
+    },
+    {
+      "type": "final",
+      "runId": "replay_flight_03",
+      "seq": 8,
+      "ts": "2026-10-22T10:10:01.305Z",
+      "tier": "no_tool",
+      "decidedTool": null,
+      "laneA": {
+        "lane": "baseline",
+        "toolsSent": 240,
+        "inputTokens": 20400,
+        "outputTokens": 140,
+        "latencyMs": 1255,
+        "chosenTool": null,
+        "correct": true,
+        "costUsd": 0.005275
+      },
+      "laneB": {
+        "lane": "polaris",
+        "toolsSent": 0,
+        "inputTokens": 82,
+        "outputTokens": 140,
+        "latencyMs": 192,
+        "chosenTool": null,
+        "correct": true,
+        "costUsd": 0.000196
+      },
+      "savings": {
+        "inputTokens": 20318,
+        "latencyMs": 1063,
+        "costUsd": 0.005079,
+        "tokenSavingsPct": 99.6
+      }
+    }
+  ]
+}

@@ -81,6 +81,14 @@ const ERROR_CONFIGS: Record<ErrorVariant, VariantConfig> = {
     description: 'An unexpected exception occurred inside the router pipeline. Please copy the diagnostic request ID below.',
     actionText: 'Reload Instrument',
     secondaryAction: 'Return to Atlas'
+  },
+  inline_validation: {
+    icon: AlertCircle,
+    title: 'Malformed Observation',
+    subtitle: 'INVALID REQUEST PARAMETERS (400)',
+    description: 'The query payload failed validation. Please verify that your prompt is non-empty and within allowable character limits.',
+    actionText: 'Revise Query',
+    secondaryAction: 'Return to Atlas'
   }
 };
 

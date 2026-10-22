@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, RotateCcw, Zap, Sparkles, Check, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Play, RotateCcw, Zap, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RaceState } from '../types';
 import { REPLAYS } from '../replays';
@@ -158,8 +158,17 @@ export const RaceCockpitPlate: React.FC<RaceCockpitPlateProps> = ({ raceState })
             The Agent Race
           </h2>
         </div>
-        <div className="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1 rounded-full border border-white/5 whitespace-nowrap self-start sm:self-auto">
-          Full 240 Tools vs Polaris Shortlist
+        <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+          <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full border font-bold ${
+            raceState.source === 'replay'
+              ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+              : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+          }`}>
+            {raceState.source === 'replay' ? '○ Recorded flight' : '● Live flight'}
+          </span>
+          <span className="text-xs font-mono text-slate-400 bg-white/5 px-3 py-1 rounded-full border border-white/5 whitespace-nowrap">
+            Full 240 Tools vs Polaris Shortlist
+          </span>
         </div>
       </div>
 

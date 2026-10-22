@@ -1,14 +1,36 @@
-export interface Tool {
-  id: string;
-  category: string;
-  name: string;
-  descriptor: string;
-  description: string;
-  x: number; // 0 to 1000
-  y: number; // 0 to 700
-}
+import type {
+  Tool,
+  Constellation,
+  Catalog,
+  Tier as RoutingTier,
+  Tier,
+  RaceEvent,
+  RaceEventType,
+  LaneSummary,
+  Run,
+  Replay,
+  BenchResults,
+  ErrorCode,
+  ErrorDetail,
+  ErrorEnvelope,
+} from '@polaris/contracts';
 
-export type RoutingTier = 'direct' | 'narrow' | 'wide' | 'fallback' | 'no_tool';
+export type {
+  Tool,
+  Constellation,
+  Catalog,
+  RoutingTier,
+  Tier,
+  RaceEvent,
+  RaceEventType,
+  LaneSummary,
+  Run,
+  Replay,
+  BenchResults,
+  ErrorCode,
+  ErrorDetail,
+  ErrorEnvelope,
+};
 
 export interface DecisionLog {
   needsToolScore: number;
@@ -56,4 +78,5 @@ export type ErrorVariant =
   | 'offline_backend' 
   | 'signal_lost' 
   | 'no_network' 
-  | 'throttled';
+  | 'throttled'
+  | 'inline_validation';

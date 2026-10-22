@@ -1,69 +1,68 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { StarChart } from '../components/StarChart';
 import { QueryPlate, RaceCockpitPlate, DecisionTracePlate } from '../components/RacePlates';
-import { RaceState, Tool } from '../types';
-import { REPLAYS } from '../replays';
+import { Tool } from '../types';
 import { McpConnectionBus } from '../components/McpConnectionBus';
 import { Activity, Shield, Terminal, Zap } from 'lucide-react';
+import { raceReducer, INITIAL_RACE_STATE } from '../state/raceReducer';
+import { useRaceStream } from '../hooks/useRaceStream';
+import { api } from '../lib/api';
+import { Replay } from '@polaris/contracts';
 
 export const AtlasPage: React.FC = () => {
-  const [raceState, setRaceState] = useState<RaceState>(REPLAYS.easy.state);
+  const [raceState, dispatch] = useReducer(raceReducer, INITIAL_RACE_STATE);
+  const [activeRunId, setActiveRunId] = useState<string | null>(null);
+  const [activeReplay, setActiveReplay] = useState<Replay | null>(null);
 
-  const handleRunQuery = (query: string) => {
-    const lower = query.toLowerCase();
-    let matchedReplay = REPLAYS.easy;
-    if (lower.includes('amdahl') || lower.includes('law') || lower.includes('what is') || lower.includes('explain')) {
-      matchedReplay = REPLAYS.no_tool;
-    } else if (lower.includes('urgent') || lower.includes('escalat') || lower.includes('pager') || lower.includes('latency') || lower.includes('issue')) {
-      matchedReplay = REPLAYS.ambiguous;
+  // Hook handles both live SSE streams and recorded flight playback through raceReducer
+  useRaceStream({
+    runId: activeRunId,
+    replay: activeReplay,
+    dispatch,
+    onComplete: () => {
+      setActiveRunId(null);
+    },
+    onError: () => {
+      setActiveRunId(null);
+    },
+  });
+
+  const handleRunQuery = async (query: string) => {
+    setActiveReplay(null);
+    dispatch({ type: 'START_RACE', query, source: 'live' });
+
+    try {
+      const accepted = await api.postRace(query);
+      setActiveRunId(accepted.runId);
+    } catch (err: any) {
+      console.warn('[AtlasPage] Live API race request failed, loading local flight:', err);
+      // If server unreachable, load local recorded flight
+      handleSelectReplay('easy');
     }
-
-    setRaceState({
-      ...matchedReplay.state,
-      query,
-      source: 'live',
-      replayId: undefined
-    });
   };
 
-  const handleSelectReplay = (replayId: string) => {
-    const replay = REPLAYS[replayId];
-    if (replay) {
-      setRaceState(replay.state);
+  const handleSelectReplay = async (replayId: string) => {
+    setActiveRunId(null);
+    try {
+      const res = await fetch(`/replays/${replayId}.json`);
+      if (res.ok) {
+        const replayData: Replay = await res.json();
+        setActiveReplay(replayData);
+        return;
+      }
+    } catch (err) {
+      console.warn('[AtlasPage] Could not fetch replay JSON, falling back:', err);
     }
   };
 
   const handleReset = () => {
-    setRaceState({
-      status: 'idle',
-      query: '',
-      source: 'live',
-      laneA: {
-        stage: 'idle',
-        toolsSent: 240,
-        inputTokens: 0,
-        outputTokens: 0,
-        latencyMs: 0,
-        chosenTool: null,
-        resultSummary: null
-      },
-      laneB: {
-        stage: 'idle',
-        toolsSent: 0,
-        inputTokens: 0,
-        outputTokens: 0,
-        latencyMs: 0,
-        chosenTool: null,
-        resultSummary: null
-      }
-    });
+    setActiveRunId(null);
+    setActiveReplay(null);
+    dispatch({ type: 'RESET_RACE' });
   };
 
   const handleSelectStar = (star: Tool) => {
-    setRaceState((prev) => ({
-      ...prev,
-      selectedStarId: star.id
-    }));
+    dispatch({ type: 'SET_SELECTED_STAR', starId: star.id });
   };
 
   return (
@@ -98,7 +97,7 @@ export const AtlasPage: React.FC = () => {
             <span>·</span>
             <span>12 Subsystems</span>
             <span>·</span>
-            <span className="text-cyan-400 font-semibold">40ms Decision Gate</span>
+            <span className="text-cyan-400 font-semibold">36ms Decision Gate</span>
           </div>
         </div>
 
@@ -113,11 +112,11 @@ export const AtlasPage: React.FC = () => {
           </div>
           <div className="flex justify-between text-slate-300 text-[11px]">
             <span>Average Baseline:</span>
-            <span className="text-rose-400">38,420 tokens / 3.8s</span>
+            <span className="text-rose-400">20,400 tokens / 1.25s</span>
           </div>
           <div className="flex justify-between text-slate-300 text-[11px]">
             <span>Polaris Harvest:</span>
-            <span className="text-amber-300 font-bold">1,120 tokens / 410ms</span>
+            <span className="text-amber-300 font-bold">410 tokens / 226ms</span>
           </div>
         </div>
       </div>
@@ -162,10 +161,10 @@ export const AtlasPage: React.FC = () => {
       {/* SECTION 2: The Cockpit Arena - Spacious Full-Width Observatory Plates */}
       <div className="relative z-20 space-y-8">
         
-        {/* Plate II: The Agent Race Cockpit (Generous full screen width) */}
+        {/* Plate II: The Agent Race Cockpit */}
         <RaceCockpitPlate raceState={raceState} />
 
-        {/* Plate III: Decider 2B Hierarchical Trace (Generous full screen width) */}
+        {/* Plate III: Decider 2B Hierarchical Trace */}
         <DecisionTracePlate raceState={raceState} />
 
       </div>

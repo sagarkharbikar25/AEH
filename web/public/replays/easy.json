@@ -1,0 +1,133 @@
+{
+  "id": "easy",
+  "title": "Flight I · High Confidence (Direct Tier)",
+  "query": "Schedule team sync on calendar tomorrow at 4 PM for 45 minutes",
+  "kind": "easy",
+  "events": [
+    {
+      "type": "decision",
+      "runId": "replay_flight_01",
+      "seq": 0,
+      "ts": "2026-10-22T10:00:00.000Z",
+      "stage": "tool",
+      "needsTool": true,
+      "confidence": 0.96,
+      "latencyMs": 36,
+      "topCategories": [
+        { "category": "calendar", "p": 0.96 },
+        { "category": "messaging", "p": 0.03 }
+      ]
+    },
+    {
+      "type": "shortlist",
+      "runId": "replay_flight_01",
+      "seq": 1,
+      "ts": "2026-10-22T10:00:00.038Z",
+      "tier": "direct",
+      "tools": [
+        { "id": "calendar.create_event", "name": "create_event", "score": 0.94 }
+      ],
+      "totalTools": 1
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_01",
+      "seq": 2,
+      "ts": "2026-10-22T10:00:00.040Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "stage": "bedrock_converse_full_catalog"
+    },
+    {
+      "type": "lane_start",
+      "runId": "replay_flight_01",
+      "seq": 3,
+      "ts": "2026-10-22T10:00:00.040Z",
+      "lane": "polaris",
+      "toolsSent": 1,
+      "stage": "bedrock_converse_shortlist"
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_01",
+      "seq": 4,
+      "ts": "2026-10-22T10:00:00.260Z",
+      "lane": "polaris",
+      "inputTokens": 412,
+      "outputTokens": 72,
+      "elapsedMs": 220
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_01",
+      "seq": 5,
+      "ts": "2026-10-22T10:00:00.266Z",
+      "lane": "polaris",
+      "toolsSent": 1,
+      "inputTokens": 412,
+      "outputTokens": 72,
+      "latencyMs": 226,
+      "chosenTool": "calendar.create_event",
+      "correct": true,
+      "costUsd": 0.000213
+    },
+    {
+      "type": "lane_tokens",
+      "runId": "replay_flight_01",
+      "seq": 6,
+      "ts": "2026-10-22T10:00:01.280Z",
+      "lane": "baseline",
+      "inputTokens": 20400,
+      "outputTokens": 72,
+      "elapsedMs": 1240
+    },
+    {
+      "type": "lane_done",
+      "runId": "replay_flight_01",
+      "seq": 7,
+      "ts": "2026-10-22T10:00:01.290Z",
+      "lane": "baseline",
+      "toolsSent": 240,
+      "inputTokens": 20400,
+      "outputTokens": 72,
+      "latencyMs": 1250,
+      "chosenTool": "calendar.create_event",
+      "correct": true,
+      "costUsd": 0.005190
+    },
+    {
+      "type": "final",
+      "runId": "replay_flight_01",
+      "seq": 8,
+      "ts": "2026-10-22T10:00:01.300Z",
+      "tier": "direct",
+      "decidedTool": "calendar.create_event",
+      "laneA": {
+        "lane": "baseline",
+        "toolsSent": 240,
+        "inputTokens": 20400,
+        "outputTokens": 72,
+        "latencyMs": 1250,
+        "chosenTool": "calendar.create_event",
+        "correct": true,
+        "costUsd": 0.005190
+      },
+      "laneB": {
+        "lane": "polaris",
+        "toolsSent": 1,
+        "inputTokens": 412,
+        "outputTokens": 72,
+        "latencyMs": 226,
+        "chosenTool": "calendar.create_event",
+        "correct": true,
+        "costUsd": 0.000213
+      },
+      "savings": {
+        "inputTokens": 19988,
+        "latencyMs": 1024,
+        "costUsd": 0.004977,
+        "tokenSavingsPct": 98.0
+      }
+    }
+  ]
+}
