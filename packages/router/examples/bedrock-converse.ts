@@ -6,7 +6,7 @@
  */
 
 import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime';
-import { compileCatalog, shortlistTools, Tool } from '../src/index.js';
+import { compileCatalog, shortlistTools, type Tool } from '../src/index.js';
 
 // Sample tools representing enterprise MCP catalog
 const sampleTools: Tool[] = [
@@ -70,7 +70,7 @@ async function main() {
 
     console.log('[POLARIS] Bedrock Response Status:', response.stopReason);
     console.log('[POLARIS] Input Tokens Ingested:', response.usage?.inputTokens);
-  } catch (err: any) {
+  } catch {
     console.log('[POLARIS] Bedrock invocation simulated (no AWS credentials configured).');
   }
 }

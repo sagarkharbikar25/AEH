@@ -22,7 +22,8 @@ export default tseslint.config(
       },
     },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -31,7 +32,7 @@ export default tseslint.config(
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
       eqeqeq: ['error', 'smart'],
     },
   },
@@ -42,7 +43,13 @@ export default tseslint.config(
     },
   },
   {
-    files: ['bench/**/*.ts', 'scripts/**/*'],
+    files: [
+      'bench/**/*.ts',
+      'scripts/**/*',
+      'server/src/cli/**/*',
+      'server/src/index.ts',
+      'packages/router/examples/**/*',
+    ],
     rules: {
       'no-console': 'off',
     },

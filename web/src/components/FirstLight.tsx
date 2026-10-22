@@ -49,7 +49,7 @@ export const FirstLight: React.FC<FirstLightProps> = ({ onComplete }) => {
       className="fixed inset-0 z-50 bg-[#010206] flex flex-col items-center justify-center cursor-pointer select-none overflow-hidden"
     >
       {/* Background Radial Space Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.15)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,71,52,0.45)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Center Astrolabe Logo */}
       <motion.div 
@@ -58,7 +58,7 @@ export const FirstLight: React.FC<FirstLightProps> = ({ onComplete }) => {
         transition={{ duration: 1 }}
         className="relative mb-6"
       >
-        <div className="w-28 h-28 md:w-36 md:h-36 rounded-full p-1 border-2 border-amber-400/60 bg-[#050A15] shadow-[0_0_50px_rgba(245,208,97,0.35)] flex items-center justify-center overflow-hidden">
+        <div className="w-28 h-28 md:w-36 md:h-36 rounded-full p-1 border-2 border-[#E0FFC2]/60 bg-[#041c14] shadow-[0_0_50px_rgba(224,255,194,0.35)] flex items-center justify-center overflow-hidden">
           <img 
             src="/polaris-logo.png" 
             alt="Polaris Logo" 
@@ -66,18 +66,18 @@ export const FirstLight: React.FC<FirstLightProps> = ({ onComplete }) => {
           />
         </div>
         {/* Pulsing ring */}
-        <div className="absolute -inset-4 rounded-full border border-cyan-400/30 animate-ping opacity-40 pointer-events-none" />
+        <div className="absolute -inset-4 rounded-full border border-[#E0FFC2]/30 animate-ping opacity-40 pointer-events-none" />
       </motion.div>
 
       {/* Typography */}
       <div className={`relative z-10 text-center transition-all duration-700 ${stage >= 2 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`}>
-        <div className="font-mono text-xs tracking-[0.35em] uppercase text-cyan-400 mb-2">
+        <div className="font-mono text-xs tracking-[0.35em] uppercase text-[#E0FFC2] mb-2 font-semibold">
           AWS STRANDS DECIDER 2B · TOOL ROUTER
         </div>
-        <h1 className="font-display text-5xl md:text-7xl font-bold tracking-widest text-slate-100 mb-2">
+        <h1 className="font-display text-5xl md:text-7xl font-bold tracking-widest text-[#F2FDF0] mb-2">
           POLARIS
         </h1>
-        <p className="font-body italic text-lg md:text-xl text-amber-200/90 max-w-md mx-auto">
+        <p className="font-body italic text-lg md:text-xl text-[#C2E2BE] max-w-md mx-auto">
           One decision. 240 tools.
         </p>
       </div>

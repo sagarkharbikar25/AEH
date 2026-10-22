@@ -9,7 +9,7 @@
  * 5. Centralized error handling returning the contract error envelope
  */
 
-import { Request, Response, NextFunction } from 'express';
+import { type Request, type Response, type NextFunction } from 'express';
 import crypto from 'node:crypto';
 import { ZodError } from 'zod';
 import { sendApiError, ApiError } from '../lib/errors.js';

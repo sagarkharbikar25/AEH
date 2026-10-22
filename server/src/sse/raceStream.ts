@@ -14,12 +14,12 @@
  * Every event contains runId, monotonic seq, and ISO ts.
  */
 
-import { Response } from 'express';
+import { type Response } from 'express';
 import { EventEmitter } from 'node:events';
 import {
-  RaceEvent,
+  type RaceEvent,
   RaceEventSchema,
-  Run,
+  type Run,
 } from '@polaris/contracts';
 import { runsRepository } from '../db/runsRepository.js';
 

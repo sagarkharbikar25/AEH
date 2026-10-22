@@ -12,12 +12,11 @@ import { fileURLToPath } from 'node:url';
 import {
   compileCatalog,
   shortlistTools,
-  formatBedrockConverseTool,
   revertBedrockToolName,
 } from '@polaris/router';
 import { callBedrockConverse } from './bedrock.js';
 import { executeSimulatedTool } from '../tools/executor.js';
-import { LaneResult, StageTiming } from './types.js';
+import { type LaneResult, type StageTiming } from './types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

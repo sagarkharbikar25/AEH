@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TOOLS, CONSTELLATIONS } from '../catalog';
-import { Tool, RaceState } from '../types';
-import { Radio, Cpu } from 'lucide-react';
+import { type Tool, type RaceState } from '../types';
+import { Radio, Cpu, Star, Award } from 'lucide-react';
 
 interface StarChartProps {
   raceState: RaceState;
@@ -405,25 +405,27 @@ export const StarChart: React.FC<StarChartProps> = ({ raceState, onSelectStar })
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 8 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-5 left-6 right-6 md:right-auto md:w-[420px] p-4 rounded-xl border border-amber-400/50 bg-[#050A15]/95 shadow-[0_0_30px_rgba(0,0,0,0.9)] backdrop-blur-md z-30"
+            className="absolute bottom-5 left-6 right-6 md:right-auto md:w-[420px] p-4 rounded-xl border border-[#E0FFC2]/50 bg-[#041c14]/95 shadow-[0_0_30px_rgba(0,0,0,0.9)] backdrop-blur-md z-30"
           >
-            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-amber-300 mb-1.5">
+            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-[#E0FFC2] mb-1.5">
               <span>{hoveredStar.category} · {hoveredStar.id}</span>
               {shortlistedIds.has(hoveredStar.id) && (
-                <span className="text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40">
-                  ★ SHORTLISTED
+                <span className="text-emerald-300 font-bold px-2 py-0.5 rounded bg-[#064734] border border-[#E0FFC2]/40 flex items-center gap-1">
+                  <Star className="w-3 h-3 fill-current text-emerald-300" />
+                  <span>SHORTLISTED</span>
                 </span>
               )}
               {chosenStarId === hoveredStar.id && (
-                <span className="text-amber-300 font-bold px-2 py-0.5 rounded bg-amber-950/80 border border-amber-400/50">
-                  ✪ POLARIS WINNER
+                <span className="text-[#E0FFC2] font-bold px-2 py-0.5 rounded bg-[#064734] border border-[#E0FFC2]/60 shadow-[0_0_10px_rgba(224,255,194,0.2)] flex items-center gap-1">
+                  <Award className="w-3.5 h-3.5 text-[#E0FFC2]" />
+                  <span>POLARIS WINNER</span>
                 </span>
               )}
             </div>
-            <div className="font-display font-bold text-lg text-slate-100 mb-1">
+            <div className="font-display font-bold text-lg text-[#F2FDF0] mb-1">
               {hoveredStar.name.replace(/_/g, ' ')}
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed font-body">
+            <p className="text-xs text-[#C2E2BE] leading-relaxed font-body">
               {hoveredStar.descriptor}
             </p>
           </motion.div>
@@ -431,23 +433,23 @@ export const StarChart: React.FC<StarChartProps> = ({ raceState, onSelectStar })
       </AnimatePresence>
 
       {/* Footer Legend */}
-      <div className="border-t border-white/10 bg-[#030610]/95 px-6 py-3 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400">
+      <div className="border-t border-[#E0FFC2]/12 bg-[#02120e]/95 px-6 py-3 flex flex-wrap items-center justify-between text-xs font-mono text-[#82A98B]">
         <div className="flex items-center gap-5">
           <span className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_#FDE047]" />
-            <span className="text-amber-300 font-bold">Center: Decider 2B MCP Hub</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E0FFC2] shadow-[0_0_8px_#E0FFC2]" />
+            <span className="text-[#E0FFC2] font-bold">Center: Decider 2B MCP Hub</span>
           </span>
           <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#38BDF8]" />
-            <span className="text-cyan-300">Surrounding 12 Subsystems</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34D399]" />
+            <span className="text-emerald-300">Surrounding 12 Subsystems</span>
           </span>
           <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-400 opacity-60" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#82A98B] opacity-60" />
             <span>240 Tools in Orbit</span>
           </span>
         </div>
-        <div className="hidden sm:flex items-center gap-2 text-[11px] text-cyan-400">
-          <Radio className="w-3.5 h-3.5 animate-pulse" />
+        <div className="hidden sm:flex items-center gap-2 text-[11px] text-[#E0FFC2]">
+          <Radio className="w-3.5 h-3.5 animate-pulse text-[#E0FFC2]" />
           <span>RADIAL GEODESIC TOPOLOGY ACTIVE</span>
         </div>
       </div>

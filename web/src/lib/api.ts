@@ -11,19 +11,19 @@
  */
 
 import {
-  Health,
+  type Health,
   HealthSchema,
-  CatalogResponse,
+  type CatalogResponse,
   CatalogResponseSchema,
-  RouteResponse,
+  type RouteResponse,
   RouteResponseSchema,
-  RaceAccepted,
+  type RaceAccepted,
   RaceAcceptedSchema,
-  BenchResults,
+  type BenchResults,
   BenchResultsSchema,
-  Run,
+  type Run,
   RunSchema,
-  ErrorEnvelope,
+  type ErrorEnvelope,
   ErrorEnvelopeSchema,
 } from '@polaris/contracts';
 

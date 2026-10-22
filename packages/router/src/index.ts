@@ -1,5 +1,5 @@
-import { CompiledCatalog } from './compileCatalog.js';
-import { ShortlistResult, RouterOptions } from './schema.js';
+import { type CompiledCatalog } from './compileCatalog.js';
+import { type ShortlistResult, type RouterOptions } from './schema.js';
 import { DeciderClient } from './deciderClient.js';
 
 export * from './schema.js';

@@ -5,8 +5,8 @@
  * error variants.
  */
 
-import { ErrorEnvelope, ErrorCode } from '@polaris/contracts';
-import { ErrorVariant } from '../types.js';
+import { type ErrorEnvelope, type ErrorCode } from '@polaris/contracts';
+import { type ErrorVariant } from '../types.js';
 
 export function mapErrorToVariant(
   error: ErrorEnvelope | ErrorCode | { code?: string } | Error | null | undefined

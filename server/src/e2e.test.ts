@@ -11,7 +11,7 @@
  */
 
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import http from 'node:http';
+import type http from 'node:http';
 import {
   HealthSchema,
   CatalogResponseSchema,

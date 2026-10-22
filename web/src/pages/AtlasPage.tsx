@@ -1,13 +1,13 @@
 import React, { useReducer, useState } from 'react';
 import { StarChart } from '../components/StarChart';
 import { QueryPlate, RaceCockpitPlate, DecisionTracePlate } from '../components/RacePlates';
-import { Tool } from '../types';
+import { type Tool } from '../types';
 import { McpConnectionBus } from '../components/McpConnectionBus';
 import { Activity, Shield, Terminal, Zap } from 'lucide-react';
 import { raceReducer, INITIAL_RACE_STATE } from '../state/raceReducer';
 import { useRaceStream } from '../hooks/useRaceStream';
 import { api } from '../lib/api';
-import { Replay } from '@polaris/contracts';
+import { type Replay } from '@polaris/contracts';
 
 export const AtlasPage: React.FC = () => {
   const [raceState, dispatch] = useReducer(raceReducer, INITIAL_RACE_STATE);
@@ -76,12 +76,12 @@ export const AtlasPage: React.FC = () => {
         <div>
           {/* Hardware Telemetry Tags */}
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-400 font-bold px-2.5 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
-              <Activity className="w-3 h-3 animate-pulse" />
+            <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--leaf)] font-bold px-2.5 py-0.5 rounded bg-[var(--forest)]/60 border border-[var(--leaf)]/40 flex items-center gap-1.5 shadow-[0_0_12px_rgba(224,255,194,0.15)]">
+              <Activity className="w-3 h-3 animate-pulse text-[var(--leaf)]" />
               <span>MCP BUS INTERCONNECT // LIVE</span>
             </span>
-            <span className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold px-2.5 py-0.5 rounded bg-amber-950/70 border border-amber-400/40 flex items-center gap-1.5 shadow-[0_0_10px_rgba(245,208,97,0.15)]">
-              <Shield className="w-3 h-3" />
+            <span className="text-[10px] font-mono tracking-widest uppercase text-emerald-200 font-bold px-2.5 py-0.5 rounded bg-[var(--forest-dark)]/90 border border-emerald-500/30 flex items-center gap-1.5 shadow-[0_0_10px_rgba(6,71,52,0.3)]">
+              <Shield className="w-3 h-3 text-[var(--leaf)]" />
               <span>DECIDER 2B ROUTER</span>
             </span>
             <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 px-2 py-0.5 rounded bg-white/5 border border-white/10 hidden sm:inline">
@@ -97,18 +97,18 @@ export const AtlasPage: React.FC = () => {
             <span>·</span>
             <span>12 Subsystems</span>
             <span>·</span>
-            <span className="text-cyan-400 font-semibold">36ms Decision Gate</span>
+            <span className="text-[var(--leaf)] font-semibold">36ms Decision Gate</span>
           </div>
         </div>
 
         {/* Console Telemetry Stream */}
-        <div className="p-3.5 rounded-xl border border-white/10 bg-[#050A15]/90 backdrop-blur text-xs font-mono max-w-sm w-full space-y-1.5 shadow-lg">
+        <div className="p-3.5 rounded-xl border border-[var(--forest)]/40 bg-[#02120e]/90 backdrop-blur text-xs font-mono max-w-sm w-full space-y-1.5 shadow-lg">
           <div className="flex items-center justify-between text-[11px] text-slate-400 border-b border-white/5 pb-1">
             <span className="flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-amber-400" />
+              <Terminal className="w-3.5 h-3.5 text-[var(--leaf)]" />
               <span>TELEMETRY STREAM</span>
             </span>
-            <span className="text-emerald-400 font-bold">OPTIMAL</span>
+            <span className="text-[var(--leaf)] font-bold">OPTIMAL</span>
           </div>
           <div className="flex justify-between text-slate-300 text-[11px]">
             <span>Average Baseline:</span>
@@ -116,7 +116,7 @@ export const AtlasPage: React.FC = () => {
           </div>
           <div className="flex justify-between text-slate-300 text-[11px]">
             <span>Polaris Harvest:</span>
-            <span className="text-amber-300 font-bold">410 tokens / 226ms</span>
+            <span className="text-[var(--leaf)] font-bold">410 tokens / 226ms</span>
           </div>
         </div>
       </div>
@@ -142,13 +142,13 @@ export const AtlasPage: React.FC = () => {
           />
 
           {/* Quick Instrument Overview Card */}
-          <div className="p-5 rounded-xl border border-white/10 bg-[#040814]/80 text-xs font-mono space-y-3">
+          <div className="p-5 rounded-xl border border-[var(--forest)]/40 bg-[#02120e]/80 text-xs font-mono space-y-3">
             <div className="flex items-center justify-between border-b border-white/5 pb-2 text-slate-400 uppercase text-[10px] tracking-wider font-bold">
-              <span className="flex items-center gap-1.5 text-cyan-400">
+              <span className="flex items-center gap-1.5 text-[var(--leaf)]">
                 <Zap className="w-3.5 h-3.5" />
                 <span>TOPOLOGICAL ROUTING STATUS</span>
               </span>
-              <span className="text-amber-400">ACTIVE</span>
+              <span className="text-[var(--leaf)] font-semibold">ACTIVE</span>
             </div>
             <p className="text-slate-300 leading-relaxed font-body text-xs">
               Requests pass through Decider 2B in two typed calls (needs_tool + category), evaluating the probability matrix and dynamically calibrating the shortlist sent to Amazon Bedrock.

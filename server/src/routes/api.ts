@@ -13,14 +13,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  Health,
+  type Health,
   HealthSchema,
-  CatalogResponse,
+  type CatalogResponse,
   CatalogResponseSchema,
   RouteRequestSchema,
-  RouteResponse,
+  type RouteResponse,
   RouteResponseSchema,
-  Constellation,
+  type Constellation,
 } from '@polaris/contracts';
 import { compileCatalog, shortlistTools } from '@polaris/router';
 import { sendApiError } from '../lib/errors.js';

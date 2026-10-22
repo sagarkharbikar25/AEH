@@ -1,5 +1,5 @@
-import { Tier, Tool, ShortlistResult, DecisionTrace } from './schema.js';
-import { CompiledCatalog, formatBedrockConverseTool } from './compileCatalog.js';
+import { type Tier, type Tool, type ShortlistResult, type DecisionTrace } from './schema.js';
+import { type CompiledCatalog, formatBedrockConverseTool } from './compileCatalog.js';
 import {
   ThresholdConfig,
   DEFAULT_THRESHOLDS,

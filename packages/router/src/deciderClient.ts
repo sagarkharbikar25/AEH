@@ -1,12 +1,12 @@
-import { CompiledCatalog } from './compileCatalog.js';
+import { type CompiledCatalog } from './compileCatalog.js';
 import { 
-  DeciderSystemOneRequest, 
-  DeciderSystemOneResponse,
+  type DeciderSystemOneRequest, 
+  type DeciderSystemOneResponse,
   DeciderSystemOneResponseSchema,
-  ShortlistResult, 
-  RouterOptions 
+  type ShortlistResult, 
+  type RouterOptions 
 } from './schema.js';
-import { combineScores, rankAndTierShortlist, ScoredCandidate } from './tiers.js';
+import { combineScores, rankAndTierShortlist, type ScoredCandidate } from './tiers.js';
 
 function parseNoulScore(answerObj: any): number {
   if (!answerObj) return 0.5;
@@ -128,7 +128,7 @@ export class DeciderClient {
         }
       }
 
-      let scoredCandidates: ScoredCandidate[] = [];
+      const scoredCandidates: ScoredCandidate[] = [];
 
       if (Object.keys(call2Questions).length > 0) {
         const call2Payload: DeciderSystemOneRequest = {

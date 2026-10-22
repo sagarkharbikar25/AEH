@@ -1,33 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --ink-950: #010206;
-  --ink-900: #02040A;
-  --ink-850: #050A15;
-  --ink-800: #0A1124;
-  --ink-700: #101B38;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-bright: rgba(255, 255, 255, 0.2);
-  --line-gold: rgba(245, 208, 97, 0.3);
+  /* User Theme: FOREST (#064734) & LEAF (#E0FFC2) */
+  --forest: #064734;
+  --forest-light: #0a5e45;
+  --forest-deep: #032b1f;
+  --leaf: #E0FFC2;
+  --leaf-glow: rgba(224, 255, 194, 0.45);
+  --leaf-dim: #c7f29e;
 
-  --silver-100: #F8FAFC;
-  --silver-200: #E2E8F0;
-  --silver-300: #CBD5E1;
-  --silver-muted: #94A3B8;
+  /* Deep Forest Obsidian Background Neutrals */
+  --ink-950: #02120e;
+  --ink-900: #041c14;
+  --ink-850: #06261b;
+  --ink-800: #083224;
+  --ink-700: #0d4633;
 
-  --brass: #F5D061;
-  --brass-bright: #FDE047;
-  --brass-dim: #9E7D28;
+  /* Borders & Dividers */
+  --line: rgba(224, 255, 194, 0.12);
+  --line-bright: rgba(224, 255, 194, 0.30);
+  --line-leaf: #E0FFC2;
+  --line-forest: #064734;
+
+  /* Text Hierarchy */
+  --silver-100: #F2FDF0;
+  --silver-200: #E0F5DD;
+  --silver-300: #C2E2BE;
+  --silver-muted: #82A98B;
+
+  /* Status Accents */
+  --brass: #E0FFC2;
+  --brass-bright: #F0FFE5;
+  --brass-dim: #9BC778;
   
-  --cyan-mcp: #38BDF8;
-  --cyan-glow: rgba(56, 189, 248, 0.35);
+  --cyan-mcp: #5EEAD4;
+  --cyan-glow: rgba(94, 234, 212, 0.35);
 
-  --lichen: #34D399;
+  --lichen: #E0FFC2;
   --ember: #F87171;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Newsreader', Georgia, serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  /* High-Performance Modern Typography */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 *, *::before, *::after {
@@ -45,13 +60,13 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Cosmic Background with Radial Nebula Gloss & Starlight Dust */
+/* Deep Obsidian Forest Background with Glowing Leaf Nebula */
 body {
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% -15%, rgba(56, 189, 248, 0.12) 0%, transparent 65%),
-    radial-gradient(circle 700px at 85% 15%, rgba(245, 208, 97, 0.06) 0%, transparent 70%),
-    radial-gradient(circle 500px at 15% 45%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
-    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    radial-gradient(ellipse 90% 60% at 50% -15%, rgba(6, 71, 52, 0.70) 0%, transparent 65%),
+    radial-gradient(circle 800px at 85% 15%, rgba(224, 255, 194, 0.08) 0%, transparent 70%),
+    radial-gradient(circle 600px at 15% 45%, rgba(10, 94, 69, 0.35) 0%, transparent 60%),
+    radial-gradient(rgba(224, 255, 194, 0.06) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px;
   background-attachment: fixed;
 }
@@ -60,16 +75,17 @@ body {
 .plate {
   position: relative;
   border: 1px solid var(--line);
-  background: rgba(5, 10, 21, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(4, 28, 20, 0.85);
+  backdrop-filter: blur(14px);
   padding: 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .plate:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(224, 255, 194, 0.25);
+  box-shadow: 0 10px 36px 0 rgba(6, 71, 52, 0.35);
 }
 
 .plate-header {
@@ -86,7 +102,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--leaf);
 }
 
 .plate-title {
@@ -97,14 +113,14 @@ body {
   color: var(--silver-100);
 }
 
-/* Continuous Moving Line in Border (Border Beam Effect) */
+/* Continuous Moving Line in Border (Border Beam Effect with Forest & Leaf Glow) */
 .border-beam-container {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(5, 10, 21, 0.82);
-  backdrop-filter: blur(14px);
+  border-radius: 12px;
+  border: 1px solid rgba(224, 255, 194, 0.12);
+  background: rgba(4, 28, 20, 0.85);
+  backdrop-filter: blur(16px);
 }
 
 .border-beam-container::before {
@@ -114,9 +130,10 @@ body {
   background: conic-gradient(
     from var(--beam-angle, 0deg) at 50% 50%,
     transparent 0deg,
-    transparent 280deg,
-    var(--cyan-mcp) 320deg,
-    var(--brass-bright) 350deg,
+    transparent 260deg,
+    var(--forest) 290deg,
+    #10B981 320deg,
+    var(--leaf) 350deg,
     transparent 360deg
   );
   border-radius: inherit;
@@ -128,8 +145,8 @@ body {
 .border-beam-container > .border-beam-content {
   position: relative;
   z-index: 1;
-  background: rgba(3, 6, 14, 0.94);
-  border-radius: 7px;
+  background: rgba(3, 20, 14, 0.94);
+  border-radius: 11px;
   margin: 1px;
 }
 
@@ -182,7 +199,7 @@ body {
 
 /* Text Shimmer Effect */
 .silver-shimmer {
-  background: linear-gradient(120deg, #F8FAFC 0%, #CBD5E1 50%, #FDE047 100%);
+  background: linear-gradient(120deg, #F2FDF0 0%, #C2E2BE 50%, #E0FFC2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

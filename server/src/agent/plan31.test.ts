@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { callBedrockConverse } from './bedrock.js';
-import { calculateTokenCost, calculateSavings, PRICING_REGISTRY } from './pricing.js';
+import { calculateTokenCost, calculateSavings } from './pricing.js';
 
 describe('Plan 3.1: Bedrock Client & Cost Estimator', () => {
   it('calculates token costs correctly for Claude 3 Haiku and Nova Micro', () => {

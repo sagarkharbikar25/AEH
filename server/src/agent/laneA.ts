@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { formatBedrockConverseTool, revertBedrockToolName } from '@polaris/router';
 import { callBedrockConverse } from './bedrock.js';
 import { executeSimulatedTool } from '../tools/executor.js';
-import { LaneResult, StageTiming } from './types.js';
+import { type LaneResult, type StageTiming } from './types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,7 +19,7 @@ const catalogPath = path.resolve(__dirname, '../tools/catalog.json');
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
 
 export async function runLaneA(query: string): Promise<LaneResult> {
-  const startTime = Date.now();
+  const _startTime = Date.now();
   const stages: StageTiming[] = [];
 
   // Stage 1: Schema compilation of all 240 tools

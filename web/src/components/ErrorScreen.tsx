@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertCircle, Copy, Check, Compass, Radio, PowerOff, ShieldAlert, WifiOff } from 'lucide-react';
-import { ErrorVariant } from '../types';
+import { type ErrorVariant } from '../types';
 import { BorderBeamFrame } from './BorderBeamFrame';
 
 interface ErrorScreenProps {
@@ -148,15 +148,15 @@ export const ErrorScreen: React.FC<ErrorScreenProps> = ({
             </p>
 
             {/* Request ID Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-white/10 bg-[#02040A] text-xs font-mono text-slate-400 mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-[#E0FFC2]/20 bg-[#02120e] text-xs font-mono text-[#82A98B] mb-6">
               <span>DIAGNOSTIC ID:</span>
-              <span className="text-slate-100 font-bold">{requestId}</span>
+              <span className="text-[#F2FDF0] font-bold">{requestId}</span>
               <button 
                 onClick={handleCopyId} 
-                className="hover:text-amber-300 transition-colors ml-1"
+                className="hover:text-[#E0FFC2] transition-colors ml-1"
                 title="Copy ID"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#E0FFC2]" />}
               </button>
             </div>
 
@@ -164,7 +164,7 @@ export const ErrorScreen: React.FC<ErrorScreenProps> = ({
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={handlePrimary}
-                className="px-6 py-2.5 rounded-lg border border-amber-400/80 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_15px_rgba(245,208,97,0.15)]"
+                className="px-6 py-2.5 rounded-lg border border-[#E0FFC2] bg-gradient-to-r from-[#064734] to-[#0a5e45] hover:from-[#0a5e45] hover:to-[#064734] text-[#E0FFC2] font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_18px_rgba(224,255,194,0.2)]"
               >
                 {cfg.actionText}
               </button>
@@ -172,7 +172,7 @@ export const ErrorScreen: React.FC<ErrorScreenProps> = ({
               {cfg.secondaryAction && (
                 <button
                   onClick={() => navigate('/')}
-                  className="px-5 py-2.5 rounded-lg border border-white/10 hover:border-white/30 text-slate-300 font-mono text-xs uppercase tracking-wider transition-all"
+                  className="px-5 py-2.5 rounded-lg border border-[#E0FFC2]/20 hover:border-[#E0FFC2]/50 text-[#C2E2BE] hover:text-[#F2FDF0] font-mono text-xs uppercase tracking-wider transition-all bg-[#064734]/20"
                 >
                   {cfg.secondaryAction}
                 </button>

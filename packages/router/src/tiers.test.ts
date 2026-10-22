@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { determineTier, combineScores, rankAndTierShortlist } from './tiers.js';
 import { compileCatalog, formatBedrockConverseTool, revertBedrockToolName } from './compileCatalog.js';
-import { Tool } from './schema.js';
+import { type Tool } from './schema.js';
 
 describe('Confidence-Adaptive Tier Determination', () => {
   it('assigns direct tier for top score >= 0.85', () => {

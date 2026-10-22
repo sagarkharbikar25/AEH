@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ErrorScreen } from '../components/ErrorScreen';
-import { ErrorVariant } from '../types';
+import { type ErrorVariant } from '../types';
 
 export const DevErrorsPage: React.FC = () => {
   const [selectedVariant, setSelectedVariant] = useState<ErrorVariant>('offline_backend');
@@ -22,8 +22,8 @@ export const DevErrorsPage: React.FC = () => {
       {/* Dev Switcher Header */}
       <div className="plate p-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <span className="plate-tag text-[var(--ember)]">DIAGNOSTIC SANDBOX</span>
-          <h2 className="font-display text-xl font-bold text-[var(--parchment)]">
+          <span className="plate-tag text-[var(--leaf)]">DIAGNOSTIC SANDBOX</span>
+          <h2 className="font-display text-xl font-bold text-slate-100">
             Celestial Error Screen Tester
           </h2>
         </div>
@@ -35,8 +35,8 @@ export const DevErrorsPage: React.FC = () => {
               onClick={() => setSelectedVariant(v.id)}
               className={`px-2.5 py-1 rounded transition-colors ${
                 selectedVariant === v.id
-                  ? 'bg-[var(--ember)] text-[var(--ink-900)] font-bold'
-                  : 'border border-[var(--line)] text-[var(--parchment-dim)] hover:text-[var(--parchment)]'
+                  ? 'bg-[var(--leaf)] text-[#02120e] font-bold shadow-[0_0_10px_rgba(224,255,194,0.3)]'
+                  : 'border border-[var(--forest)]/50 text-slate-300 hover:text-[var(--leaf)] hover:border-[var(--leaf)]/40'
               }`}
             >
               {v.label}

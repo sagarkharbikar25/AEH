@@ -1,4 +1,4 @@
-import { ToolExecutionResult } from '../tools/executor.js';
+import { type ToolExecutionResult } from '../tools/executor.js';
 
 export interface StageTiming {
   name: string;

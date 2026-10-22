@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
-import { Tier, Tool } from './schema.js';
+import { type Tier, type Tool } from './schema.js';
 
 export interface ThresholdConfig {
   minScore: number;

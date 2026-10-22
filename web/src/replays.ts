@@ -1,4 +1,4 @@
-import { RaceState } from './types';
+import { type RaceState } from './types';
 
 export interface ReplayItem {
   id: string;

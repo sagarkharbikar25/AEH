@@ -15,11 +15,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  BenchResults,
+  type BenchResults,
   BenchResultsSchema,
-  ReliabilityRow,
-  FailureRow,
-  Tier,
+  type ReliabilityRow,
+  type FailureRow,
+  type Tier,
 } from '@polaris/contracts';
 import { compileCatalog, shortlistTools } from '@polaris/router';
 

@@ -12,8 +12,8 @@
  * - error
  */
 
-import { RaceEvent } from '@polaris/contracts';
-import { RaceState, LaneMetrics } from '../types.js';
+import { type RaceEvent } from '@polaris/contracts';
+import { type RaceState, type LaneMetrics } from '../types.js';
 
 export const INITIAL_LANE_METRICS: LaneMetrics = {
   stage: 'idle',

@@ -1,4 +1,4 @@
-import { Tool } from './types';
+import { type Tool } from './types';
 
 export interface ConstellationInfo {
   id: string;

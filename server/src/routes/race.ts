@@ -14,9 +14,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   RaceRequestSchema,
-  RaceAccepted,
-  LaneSummary,
-  Run,
+  type RaceAccepted,
+  type LaneSummary,
 } from '@polaris/contracts';
 import { compileCatalog, shortlistTools, formatBedrockConverseTool, revertBedrockToolName } from '@polaris/router';
 import { raceStream } from '../sse/raceStream.js';

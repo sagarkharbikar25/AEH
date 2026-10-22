@@ -14,7 +14,6 @@ async function loadBedrockSdk() {
     return { BedrockRuntimeClient: BedrockRuntimeClientClass, ConverseCommand: ConverseCommandClass };
   }
   try {
-    // @ts-ignore
     const sdk = await import('@aws-sdk/client-bedrock-runtime');
     BedrockRuntimeClientClass = sdk.BedrockRuntimeClient;
     ConverseCommandClass = sdk.ConverseCommand;
@@ -99,7 +98,7 @@ async function simulateConverse(params: BedrockConverseParams): Promise<BedrockC
 
   for (const t of tools) {
     const name = t.toolSpec.name.toLowerCase();
-    const desc = t.toolSpec.description.toLowerCase();
+    const _desc = t.toolSpec.description.toLowerCase();
     const cleanName = name.replace(/__/g, '.');
 
     if (

@@ -1,4 +1,4 @@
-import { Tool, ToolSchema } from './schema.js';
+import { type Tool, ToolSchema } from './schema.js';
 
 export interface CompiledCatalog {
   /** Map of tool ID -> full Tool record */

@@ -8,7 +8,7 @@
 import { useEffect, useRef } from 'react';
 import { RaceEventSchema, type Replay } from '@polaris/contracts';
 import { api } from '../lib/api.js';
-import { RaceAction } from '../state/raceReducer.js';
+import { type RaceAction } from '../state/raceReducer.js';
 
 interface UseRaceStreamOptions {
   runId?: string | null;

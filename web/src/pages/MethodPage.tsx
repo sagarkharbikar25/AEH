@@ -34,14 +34,14 @@ const response = await bedrock.send(new ConverseCommand({
     <div className="max-w-7xl mx-auto px-6 py-8 space-y-10">
       
       {/* Title */}
-      <div className="border-b border-white/10 pb-6">
-        <div className="text-[10px] font-mono tracking-widest uppercase text-amber-300 font-bold mb-1">
+      <div className="border-b border-[#E0FFC2]/15 pb-6">
+        <div className="text-[10px] font-mono tracking-widest uppercase text-[#E0FFC2] font-bold mb-1">
           ARCHITECTURAL PATTERN & REUSABILITY
         </div>
-        <h1 className="font-display text-4xl lg:text-5xl font-bold text-slate-100 tracking-wide">
+        <h1 className="font-display text-4xl lg:text-5xl font-bold text-[#F2FDF0] tracking-wide">
           The Polaris Method
         </h1>
-        <p className="text-sm font-body text-slate-300 max-w-2xl mt-2 leading-relaxed">
+        <p className="text-sm font-body text-[#C2E2BE] max-w-2xl mt-2 leading-relaxed">
           How to eliminate tool schema bloat in LLM agents using hierarchical Decider 2B routing in front of Amazon Bedrock.
         </p>
       </div>
@@ -50,39 +50,39 @@ const response = await bedrock.send(new ConverseCommand({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         
         <BorderBeamFrame activeBeam={false}>
-          <div className="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-widest mb-1.5">
+          <div className="text-[10px] font-mono text-[#E0FFC2] uppercase font-bold tracking-widest mb-1.5">
             STEP 1 · GATE
           </div>
-          <h3 className="font-display text-xl font-bold text-slate-100 mb-2">
+          <h3 className="font-display text-xl font-bold text-[#F2FDF0] mb-2">
             Needs Tool & Category
           </h3>
-          <p className="text-xs text-slate-300 leading-relaxed font-body">
+          <p className="text-xs text-[#C2E2BE] leading-relaxed font-body">
             A single POST to Decider 2B (<code>/v1/systemone</code>) evaluates two questions simultaneously:
             a <code>noul</code> question (is an external tool needed?) and a <code>choice</code> question selecting the top category.
           </p>
         </BorderBeamFrame>
 
         <BorderBeamFrame activeBeam={false}>
-          <div className="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-widest mb-1.5">
+          <div className="text-[10px] font-mono text-[#E0FFC2] uppercase font-bold tracking-widest mb-1.5">
             STEP 2 · SHORTLIST
           </div>
-          <h3 className="font-display text-xl font-bold text-slate-100 mb-2">
+          <h3 className="font-display text-xl font-bold text-[#F2FDF0] mb-2">
             In-Category Scoring
           </h3>
-          <p className="text-xs text-slate-300 leading-relaxed font-body">
+          <p className="text-xs text-[#C2E2BE] leading-relaxed font-body">
             Decider scores tools only inside the top-2 categories. Final scores are computed via 
             <code>P(category) × P(tool | category)</code>, keeping option context well within 4,096 tokens.
           </p>
         </BorderBeamFrame>
 
         <BorderBeamFrame activeBeam={false}>
-          <div className="text-[10px] font-mono text-amber-300 uppercase font-bold tracking-widest mb-1.5">
+          <div className="text-[10px] font-mono text-[#E0FFC2] uppercase font-bold tracking-widest mb-1.5">
             STEP 3 · ADAPT
           </div>
-          <h3 className="font-display text-xl font-bold text-slate-100 mb-2">
+          <h3 className="font-display text-xl font-bold text-[#F2FDF0] mb-2">
             Confidence Tiering
           </h3>
-          <p className="text-xs text-slate-300 leading-relaxed font-body">
+          <p className="text-xs text-[#C2E2BE] leading-relaxed font-body">
             High confidence (≥0.85) sends exactly 1 tool. Lower confidence widens the shortlist to 3 or 6 tools, allowing Amazon Bedrock to make the final determination safely.
           </p>
         </BorderBeamFrame>
@@ -91,23 +91,23 @@ const response = await bedrock.send(new ConverseCommand({
 
       {/* Code Snippet Plate with Border Beam */}
       <BorderBeamFrame activeBeam={true}>
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+        <div className="flex items-center justify-between border-b border-[#E0FFC2]/15 pb-3 mb-4">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-amber-400" />
-            <h2 className="font-display text-xl font-bold text-slate-100">
+            <Terminal className="w-4 h-4 text-[#E0FFC2]" />
+            <h2 className="font-display text-xl font-bold text-[#F2FDF0]">
               5-Line Bedrock Integration Snippet
             </h2>
           </div>
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-amber-400/50 bg-amber-950/30 text-xs font-mono text-amber-300 hover:bg-amber-950/60 transition-all shadow-[0_0_12px_rgba(245,208,97,0.15)]"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#E0FFC2]/50 bg-[#064734]/50 text-xs font-mono text-[#E0FFC2] hover:bg-[#064734]/80 transition-all shadow-[0_0_12px_rgba(224,255,194,0.18)]"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#E0FFC2]" />}
             <span>{copied ? 'Copied' : 'Copy Snippet'}</span>
           </button>
         </div>
 
-        <pre className="p-4 rounded-lg bg-[#02040A] border border-white/10 overflow-x-auto text-xs font-mono text-slate-200 leading-relaxed">
+        <pre className="p-4 rounded-lg bg-[#02120e] border border-[#E0FFC2]/15 overflow-x-auto text-xs font-mono text-[#E0F5DD] leading-relaxed">
           <code>{codeSnippet}</code>
         </pre>
       </BorderBeamFrame>

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsx run.ts",
     "bench": "tsx run.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@polaris/contracts": "file:../packages/contracts",
