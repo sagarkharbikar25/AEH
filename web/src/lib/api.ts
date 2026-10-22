@@ -27,7 +27,7 @@ import {
   ErrorEnvelopeSchema,
 } from '@polaris/contracts';
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || '';
 
 export class PolarisApiClientError extends Error {
   public envelope?: ErrorEnvelope;

@@ -9,7 +9,7 @@ import React from 'react';
 export const McpConnectionBus: React.FC = () => {
   return (
     <div className="hidden lg:block absolute inset-0 pointer-events-none z-10 overflow-hidden">
-      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-full h-full" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           {/* Glowing linear gradient for the MCP bus line */}
           <linearGradient id="mcpBusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -30,7 +30,7 @@ export const McpConnectionBus: React.FC = () => {
 
         {/* Trace 1: Star Chart Right Edge -> Plate I (Query) */}
         <path
-          d="M 58% 280 L 60% 280 L 61% 210 L 63% 210"
+          d="M 580 280 L 600 280 L 610 210 L 630 210"
           fill="none"
           stroke="rgba(224, 255, 194, 0.3)"
           strokeWidth="1.5"
@@ -39,7 +39,7 @@ export const McpConnectionBus: React.FC = () => {
 
         {/* Trace 2: Plate I -> Plate II (The Race) */}
         <path
-          d="M 63% 410 L 61% 410 L 61% 490 L 63% 490"
+          d="M 630 410 L 610 410 L 610 490 L 630 490"
           fill="none"
           stroke="rgba(224, 255, 194, 0.4)"
           strokeWidth="1.5"
@@ -48,7 +48,7 @@ export const McpConnectionBus: React.FC = () => {
 
         {/* Trace 3: Star Chart Lower -> Plate III (Trace) */}
         <path
-          d="M 58% 620 L 61% 620 L 61% 760 L 63% 760"
+          d="M 580 620 L 610 620 L 610 760 L 630 760"
           fill="none"
           stroke="rgba(224, 255, 194, 0.3)"
           strokeWidth="1.5"
@@ -58,7 +58,7 @@ export const McpConnectionBus: React.FC = () => {
         {/* Animated Traveling Photons (Light Pulses along the Bus) */}
         <circle r="3.5" fill="#E0FFC2" filter="url(#photonGlow)">
           <animateMotion
-            path="M 63% 210 L 61% 210 L 60% 280 L 58% 280"
+            path="M 630 210 L 610 210 L 600 280 L 580 280"
             dur="2.8s"
             repeatCount="indefinite"
           />
@@ -66,7 +66,7 @@ export const McpConnectionBus: React.FC = () => {
 
         <circle r="3.5" fill="#E0FFC2" filter="url(#photonGlow)">
           <animateMotion
-            path="M 58% 280 L 60% 280 L 61% 490 L 63% 490"
+            path="M 580 280 L 600 280 L 610 490 L 630 490"
             dur="3.4s"
             begin="0.8s"
             repeatCount="indefinite"
@@ -75,7 +75,7 @@ export const McpConnectionBus: React.FC = () => {
 
         <circle r="3.5" fill="#5EEAD4" filter="url(#photonGlow)">
           <animateMotion
-            path="M 63% 490 L 61% 490 L 61% 760 L 63% 760"
+            path="M 630 490 L 610 490 L 610 760 L 630 760"
             dur="2.5s"
             begin="1.4s"
             repeatCount="indefinite"
@@ -84,12 +84,12 @@ export const McpConnectionBus: React.FC = () => {
 
         {/* Junction Nodes (Circuit Terminals) */}
         <g fill="#041c14" stroke="#E0FFC2" strokeWidth="1.5">
-          <circle cx="58%" cy="280" r="4.5" />
-          <circle cx="63%" cy="210" r="4.5" />
-          <circle cx="63%" cy="410" r="4.5" stroke="#E0FFC2" />
-          <circle cx="63%" cy="490" r="4.5" stroke="#E0FFC2" />
-          <circle cx="58%" cy="620" r="4.5" />
-          <circle cx="63%" cy="760" r="4.5" stroke="#5EEAD4" />
+          <circle cx="580" cy="280" r="4.5" />
+          <circle cx="630" cy="210" r="4.5" />
+          <circle cx="630" cy="410" r="4.5" stroke="#E0FFC2" />
+          <circle cx="630" cy="490" r="4.5" stroke="#E0FFC2" />
+          <circle cx="580" cy="620" r="4.5" />
+          <circle cx="630" cy="760" r="4.5" stroke="#5EEAD4" />
         </g>
       </svg>
     </div>
