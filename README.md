@@ -1,227 +1,206 @@
 # POLARIS: The Celestial Tool Router
-### One Decision. 240 Tools. 98% Token Reduction.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CI](https://github.com/sagarkharbikar25/AEH/actions/workflows/ci.yml/badge.svg)](https://github.com/sagarkharbikar25/AEH/actions/workflows/ci.yml)
 [![Hackathon](https://img.shields.io/badge/AWS_Hackathon-Strands_Decider_Agent-orange.svg)](https://builder.aws.com)
-[![Tags](https://img.shields.io/badge/Tags-%23strands--decider--2b_%7C_%23tool--selection-green.svg)](#)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4_Strict-3178C6.svg)](#)
-[![Tests](https://img.shields.io/badge/Tests-48%2F48_Passing-emerald.svg)](#)
-[![Theme](https://img.shields.io/badge/Palette-Forest_%23064734_%7C_Leaf_%23E0FFC2-064734.svg)](#)
 
-POLARIS is an intelligent **hierarchical tool router** placing **Strands Decider 2B** in front of **Amazon Bedrock Converse**. In a single 36-millisecond local decision gate, POLARIS dynamically narrows a massive **240-tool catalog** down to a calibrated shortlist of **1 to 6 tools**. Amazon Bedrock only receives the shortlisted tools, eliminating prompt bloat while preserving execution accuracy.
+> **A hierarchical Decider 2B routing gate for Amazon Bedrock that cuts tool input tokens by 98% (20,400 to 410 tokens) and cost per correct tool call by 17.9× ($6.61 to $0.37 per 1,000 correct calls) across 240 tools, at the cost of a 20.6% drop in first-pass shortlist recall (57.9% Recall@6 vs. 78.5% baseline selection accuracy).**
 
----
-
-## Table of Contents
-1. [Technology Stack](#1-technology-stack)
-2. [The Problem: Enterprise Tool Schema Bloat](#2-the-problem-enterprise-tool-schema-bloat)
-3. [The Solution: The POLARIS Architecture](#3-the-solution-the-polaris-architecture)
-4. [Measured Impact & Empirical Benchmarks](#4-measured-impact--empirical-benchmarks)
-5. [Target Users & Industry Applications](#5-target-users--industry-applications)
-6. [The Reusable Asset: `@polaris/router`](#6-the-reusable-asset-polarisrouter)
-7. [Interactive Astronomical Observatory UI](#7-interactive-astronomical-observatory-ui)
-8. [System Architecture & AWS Topology](#8-system-architecture--aws-topology)
-9. [Enterprise Safety & Built-in Guardrails](#9-enterprise-safety--built-in-guardrails)
-10. [Quick Start & Local Verification](#10-quick-start--local-verification)
-11. [Repository Layout & Git Provenance](#11-repository-layout--git-provenance)
-12. [License & Compliance](#12-license--compliance)
+* **Live Demo Application:** [TODO: Insert Deployed Vercel URL, e.g. https://polaris-aeh.vercel.app]
+* **60-Second Video Demonstration:** [TODO: Insert Public YouTube/Vimeo Video URL]
+* **Hackathon Tags:** `#strands-decider-2b` · `#tool-selection`
 
 ---
 
-## 1. Technology Stack
+## What Judges Should Click (4-Minute Evaluation)
 
-POLARIS is built using a modern, production-grade monorepo stack with end-to-end TypeScript strict typing:
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                          POLARIS TECH STACK                            │
-├───────────────────┬────────────────────────────────────────────────────┤
-│ AI & Routing      │ Strands Decider 2B · Amazon Bedrock Converse       │
-│                   │ Claude 3 Haiku · AWS SDK v3 Client Bedrock Runtime │
-├───────────────────┼────────────────────────────────────────────────────┤
-│ Frontend (Web)    │ React 19 · Vite 6 · Tailwind CSS v4 · Framer Motion│
-│                   │ Lucide React SVG · Forest & Leaf Palette (#064734) │
-│                   │ Fonts: Plus Jakarta Sans / Inter / JetBrains Mono  │
-├───────────────────┼────────────────────────────────────────────────────┤
-│ Backend (Server)  │ Node.js 20+ · Express 4 · Server-Sent Events (SSE) │
-│                   │ Zod Contracts & Schemas · TSX Runner · CORS        │
-├───────────────────┼────────────────────────────────────────────────────┤
-│ Quality & Testing │ Vitest (48/48 Passing) · ESLint v9 (0 Warnings)    │
-│                   │ TypeScript 5.4 Strict Typecheck (6 Workspaces)     │
-├───────────────────┼────────────────────────────────────────────────────┤
-│ Database & Infra  │ Supabase (PostgreSQL) · AWS EC2 · Caddy Web Server │
-│                   │ Vercel Edge Hosting · NPM Workspaces Monorepo      │
-└───────────────────┴────────────────────────────────────────────────────┘
-```
-
-| Layer | Technologies & Libraries | Architectural Role |
-| :--- | :--- | :--- |
-| **Micro-Decision Engine** | `strands-decider` (Decider 2B) | Sub-40ms hierarchical intent classification (`needs_tool` + `category` + tool scoring). |
-| **Inference Runtime** | Amazon Bedrock Converse API (`@aws-sdk/client-bedrock-runtime`) | Anthropic Claude 3 Haiku executing shortlisted tool calls with typed JSON arguments. |
-| **Frontend Framework** | React 19, TypeScript, React Router 7 | Interactive "Celestial Atlas" single-page application with deterministic replay modes. |
-| **Styling & Theme** | Tailwind CSS v4, Vanilla CSS Custom Properties | Custom **Forest (`#064734`)** & **Leaf (`#E0FFC2`)** theme, conic rotating border beams, glassmorphism. |
-| **Typography** | Google Fonts (`Plus Jakarta Sans`, `Inter`, `JetBrains Mono`) | Dedicated typographic pairing for headlines, body prose, and numerical telemetry. |
-| **Icons & Visuals** | Lucide React (Pure inline SVG) | 100% SVG icon architecture with zero emoji or unicode glyph fallbacks. |
-| **Backend & Streams** | Express 4, TypeScript, HTTP/2 SSE Streams | Asynchronous dual-lane execution engine comparing Baseline vs. Polaris concurrently. |
-| **Data Contracts** | Zod v3 (`@polaris/contracts`) | Isomorphic schemas ensuring 100% type-safe payloads across client, server, and events. |
-| **Testing Harness** | Vitest, 432-sample benchmark harness | Automated contract tests, tier score tests, and empirical Pareto curve evaluation. |
-| **Cloud Hosting** | Vercel (Edge SPA) + AWS EC2 (Express + Decider) + Caddy | High-availability hybrid deployment with zero-downtime offline flight replay fallbacks. |
+1. **The Celestial Atlas (`/`)**: Under **Preset Flight Scenarios** on the right, click **`Load →`** next to **`EASY`** (*"Schedule team sync on calendar tomorrow at 4 PM for 45 minutes"*). Click **`Initiate Race Stream`** to watch Lane A (240 tools, 20,400 tokens) race Lane B (Decider 2B shortlist, 410 tokens) side-by-side.
+2. **The Astronomical Almanac (`/almanac`)**: Review **Figure I (The Pareto Frontier)** and **Table II (Failure Mode Audit)**, which logs real queries misclassified by the 2B model and how the Fallback tier handles them.
+3. **240 Tools Directory (`/index`)**: Filter by constellation (e.g., `Cassiopeia` for Security, `Orion` for Compute) and click **`INSPECT`** on any card to view the compiled Amazon Bedrock JSON Schema and 12-word Decider descriptor.
+4. **Diagnostic Sandbox (`/dev/errors`)**: Click **`Lamp Out of Oil (Budget Kill-Switch)`** to verify the $25.00 spend guardrail, and **`Observatory Offline (503)`** to test deterministic local replay fallbacks.
 
 ---
 
-## 2. The Problem: Enterprise Tool Schema Bloat
-
-Modern AI agents integrated with Model Context Protocol (MCP) servers and enterprise microservices quickly accumulate hundreds of tools: database connectors, cloud infrastructure provisioning, billing APIs, identity access controls, and communication channels.
-
-### The Naive Architecture (What Teams Do Today)
-On every incoming user message, the agent framework serializes and injects the full JSON Schema of **all 240 tools** directly into the LLM system prompt:
-
-$$\text{Input Payload} \approx 240 \text{ tools} \times 85 \text{ tokens/tool} = \mathbf{20,400\text{ tokens per request}}$$
-
-```
-[ User Query: "Rotate KMS key" ]
-               │
-               ▼
-┌────────────────────────────────────────────────────────┐
-│  Claude 3 Haiku / Bedrock Converse Prompt              │
-│  - System instructions                                 │
-│  - 240 Full Tool Definitions (~20,400 input tokens)    │  <-- Costly & Slow!
-└──────────────────────────────┬─────────────────────────┘
-                               ▼
-            1.25s – 3.0s Latency · High Token Cost
-```
-
-### The Three Penalties
-1. **Financial Tax**: At 20,400 input tokens per call, a production agent handling 10,000 queries daily burns **$1,100/day ($33,000/month)** purely defining tools the user never asked for.
-2. **Latency Penalty**: Parsing 20,000+ tokens of JSON schema forces **1,250ms to 3,000ms** of time-to-first-token delay.
-3. **Context Degradation & Hallucinations**: Overwhelming LLMs with 240 candidate functions degrades parameter-filling precision and induces tool hallucinations.
+![POLARIS Interface Overview](docs/images/hero.png)
+*(Placeholder: Add UI walkthrough recording/screenshot at `docs/images/hero.png`)*
 
 ---
 
-## 3. The Solution: The POLARIS Architecture
+## 1. The Problem: Tool Schema Bloat in Agent Loops
 
-POLARIS introduces a lightweight **Strands Decider 2B** routing gatekeeper in front of Amazon Bedrock. Rather than attempting a naive, flat 240-way choice (which exceeds small-model context limits and drops accuracy), POLARIS uses a **2-Pass Hierarchical Probability Pipeline**:
+When AI agents connect to Model Context Protocol (MCP) servers and microservice environments, tool counts expand rapidly. Standard agent loops serialize every tool definition into the foundation model prompt on every request:
+
+$$\text{Input Payload} \approx 240 \text{ tools} \times 85 \text{ tokens/schema} = \mathbf{20,400\text{ input tokens per call}}$$
+
+### Measured Costs at Production Scale
+Using Claude 3 Haiku pricing on Amazon Bedrock ($0.25 / million input tokens, $1.25 / million output tokens, ~72 output tokens/query):
+* **Baseline Cost**: **$5.190 per 1,000 requests**.
+* **At 10,000 queries/day**: **$51.90 / day** ($1,557 / month).
+* **At 1,000,000 queries/day (Enterprise Scale)**: **$5,190 / day** ($155,700 / month) spent predominantly transmitting tool definitions the user did not invoke.
+* **Latency Overhead**: Bedrock takes **1,250 ms (p50)** simply ingesting the 20,400-token prompt before output generation begins.
+* **Selection Risk**: While Claude 3 Haiku achieves 78.5% direct selection accuracy on our 240-tool catalog, passing hundreds of schemas increases the likelihood of parameter hallucination and schema validation failures in complex multi-step workflows.
+
+---
+
+## 2. The Solution: Hierarchical Decider 2B Gate
+
+POLARIS deploys **Strands Decider 2B** as a fast pre-filter in front of Amazon Bedrock Converse:
 
 ```
 [ User Query ] ──> "Rotate the KMS master key for payments-prod"
                           │
                           ▼
         ┌───────────────────────────────────┐
-        │       POLARIS DECIDER 2B          │  <-- Takes ~36ms on GPU / EC2
+        │       STRANDS DECIDER 2B          │  <-- ~36ms routing gate
         │  Pass 1: needs_tool? + category   │
         │  Pass 2: in-category tool scores  │
         └─────────────────┬─────────────────┘
                           │
-     Selects calibrated shortlist of 1–6 tools (e.g. KMS, Secrets)
-     Payload reduced from 20,400 to 410 tokens (-98.0%)
+     Shortlist: 1–6 candidate tools (410 input tokens vs 20,400)
                           │
                           ▼
         ┌───────────────────────────────────┐
-        │      AMAZON BEDROCK CONVERSE      │  <-- Receives only 1-6 tools!
-        │         (Claude 3 Haiku)          │
+        │      AMAZON BEDROCK CONVERSE      │  <-- Claude 3 Haiku receives
+        │         (Claude 3 Haiku)          │      only the shortlisted tools
         └─────────────────┬─────────────────┘
                           ▼
-          Executes Tool & Returns Response in 226ms
+          Tool Selection & Parameter Execution in 226ms
 ```
 
-### The 3-Step Decision Pipeline
-1. **Step 1 · The Gate (`/v1/systemone`)**: Evaluates two questions in a single 36ms request:
-   - `needs_tool` (`noul` type): Determines if an external tool is required or if the query can be answered from general knowledge.
-   - `category` (`choice` type): Selects the top 2 candidate subsystems from 12 precomputed clusters.
-2. **Step 2 · In-Category Scoring**: Decider scores individual tool candidates *only inside the top-2 categories*. Each category holds $\le 20$ tools with calibrated $\le 12$-word descriptors, staying comfortably inside Decider's 4,096-token context window.
-   $$S(t) = P(\text{category}) \times P(t \mid \text{category})$$
-3. **Step 3 · Confidence-Calibrated Shortlisting**: Dynamically sets shortlist size based on top-1 confidence:
+### The 2-Pass Routing Algorithm
+1. **Pass 1 · Domain Gating (`/v1/systemone`)**: Evaluates two questions simultaneously in one HTTP request:
+   - `needs_tool` (`noul` type): Evaluates if external tool invocation is required.
+   - `category` (`choice` type): Selects the top 2 candidate subsystems out of 12 predefined clusters.
+2. **Pass 2 · In-Category Scoring**: Decider scores individual tool candidates *only inside the top-2 categories*. With $\le 20$ tools per category and $\le 12$ words per descriptor, each prompt uses $\le 420$ tokens, remaining well within Decider's 4,096-token context limit.
+   $$\text{Score}(t) = P(\text{category}) \times P(t \mid \text{category})$$
+3. **Pass 3 · Dynamic Confidence Tiering**: Slices the shortlist based on top-1 confidence score:
 
-| Confidence Tier | Top-1 Probability | Tools Sent to Bedrock | Architectural Intent |
+| Confidence Tier | Top-1 Score Threshold | Tools Sent to Bedrock | Strategy |
 | :--- | :---: | :---: | :--- |
-| **`Direct`** | $\ge 0.85$ | **1 tool** | Unambiguous match. Maximum token compression. |
-| **`Narrow`** | $0.55 - 0.849$ | **3 tools** | Moderate certainty. Gives Bedrock choice between close siblings. |
-| **`Wide`** | $0.30 - 0.549$ | **6 tools** | Ambiguous cross-domain query. Forgiving recall net. |
-| **`Fallback`** | $< 0.30$ | **12 tools + clarify** | Low certainty. Includes `ask_clarification` tool to resolve intent. |
-| **`No Tool`** | `needs_tool < 0.20` | **0 tools** | Knowledge query. Zero tool tokens sent to Bedrock. |
+| **`direct`** | $\ge 0.85$ | **1 tool** | High certainty; sends single tool. |
+| **`narrow`** | $0.55 - 0.849$ | **3 tools** | Moderate certainty; provides Bedrock sibling alternatives. |
+| **`wide`** | $0.30 - 0.549$ | **6 tools** | Ambiguous query; widens recall net. |
+| **`fallback`** | $< 0.30$ | **12 tools + `ask_clarification`** | Low certainty; fails open to prevent unrecoverable stalls. |
+| **`no_tool`** | `needs_tool < 0.20` | **0 tools** | General knowledge query; zero tool tokens sent. |
 
 ---
 
-## 4. Measured Impact & Empirical Benchmarks
+## 3. Empirical Evaluation & The Pareto Frontier
 
-All metrics reported below were collected across **432 rigorous evaluation runs** tested against our complete standard catalog of **240 tools** using Claude 3 Haiku on Amazon Bedrock.
+Metrics were generated from **432 evaluation samples** evaluated across the complete **240-tool catalog**.
 
 ### Figure I: The Pareto Frontier
 
-| Configuration | Recall / Accuracy | Input Tokens / Req | p50 Latency | Cost / 1,000 Reqs |
-| :--- | :---: | :---: | :---: | :---: |
-| **A · All 240 Tools (Baseline)** | 78.5% | 20,400 | 1,250 ms | $5.190 |
-| **B · Flat Top-K (Single-Choice)** | 64.2% | 1,850 | 380 ms | $0.552 |
-| **C · Hierarchical POLARIS (Ours)** | **57.9%** | **410** | **226 ms** | **$0.213** |
+| Configuration | Shortlist Recall (Recall@k) | Direct Tool Accuracy | Input Tokens / Req | p50 Latency | Cost / 1,000 Reqs | Cost / 1,000 Correct Calls |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **A · All 240 Tools (Baseline)** | 100.0% (all present) | **78.5%** | 20,400 | 1,250 ms | $5.190 | **$6.611** |
+| **B · Flat Top-K (Single-Choice)**| 64.2% (top-1) | 64.2% | 1,850 | 380 ms | $0.552 | **$0.860** |
+| **C · Hierarchical POLARIS (Ours)**| **57.9% (Recall@6)** | 43.3% (top-1) | **410** | **226 ms** | **$0.213** | **$0.368** |
 
-### Verified Improvements
-* **Token Reduction**: **-98.0%** (from 20,400 down to 410 tokens).
-* **Latency Speedup**: **5.5× faster** (from 1,250ms down to 226ms).
-* **Cost Efficiency**: **96.0% savings** on Bedrock Converse invocation costs.
-* **Budget Multiplier**: An AWS $25 hackathon budget lasts for **117,000 queries** with Polaris, compared to only **4,800 queries** with the baseline.
+### Critical Trade-Off Analysis
+* **Efficiency (Headline Metric)**: POLARIS achieves **$0.368 per 1,000 correct calls** compared to **$6.611** for baseline Claude 3 Haiku — an **17.9× gain in cost efficiency per successful tool resolution**.
+* **Token Reduction**: Drops Bedrock input payload from **20,400 tokens to 410 tokens (-98.0%)**.
+* **Latency Reduction**: Cuts p50 turnaround from **1,250 ms to 226 ms (5.5× faster)**.
+* **Accuracy Trade-Off**: Baseline Claude 3 Haiku directly identifies the correct tool 78.5% of the time when given all 240 definitions. POLARIS achieves **57.9% Recall@6** (43.3% Recall@1, 54.2% Recall@3). Routing introduces an absolute **20.6% drop in shortlist coverage** in exchange for its token and latency savings.
 
----
-
-## 5. Target Users & Industry Applications
-
-1. **Enterprise MCP Platform Architects**: Organizations deploying multi-agent systems where each agent connects to 10+ MCP servers containing hundreds of database, observability, and infrastructure tools.
-2. **Cloud SRE & DevOps Copilots**: Operational agents tasked with provisioning EC2 instances, cycling Kubernetes pods, modifying IAM policies, and querying CloudWatch logs.
-3. **High-Throughput Customer Support Agents**: Voice and chat agents requiring sub-300ms response times and strict token cost controls.
+### Why Hierarchical Over Flat Top-K (Config B)?
+Config B (Flat Top-K) achieves higher top-1 accuracy (64.2% vs 43.3%) by listing all 240 tool names in a single prompt (~1,850 tokens). However, Config B is **architecturally unscalable**:
+1. At 500+ tools or in conversational sessions with multi-turn history, Flat single-choice exceeds Decider 2B's 4,096-token context window.
+2. Hierarchical routing bounds prompt size to $\le 420$ tokens regardless of catalog growth, enabling horizontal scaling across thousands of tools.
 
 ---
 
-## 6. The Reusable Asset: `@polaris/router`
+## 4. Methodology
 
-POLARIS is distributed as an open-source, drop-in TypeScript library. Any engineer using `@aws-sdk/client-bedrock-runtime` can add hierarchical tool routing in **5 lines of code**:
+### Dataset Construction
+* **Source**: Synthetic evaluation set of 432 queries generated in `catalog/` and evaluated in `bench/run.ts`.
+* **Ground Truth Labeling**: Labeled by construction; queries are generated from functional object-action pairs mapped 1:1 to catalog tools, with 30 negative `no_tool` samples (general knowledge questions).
+* **Tier Distribution Across Test Split**:
+  * `direct` ($\ge 0.85$): 2 queries (0.5%)
+  * `narrow` ($0.55 - 0.85$): 59 queries (13.7%)
+  * `wide` ($0.30 - 0.55$): 299 queries (69.2%)
+  * `fallback` ($< 0.30$): 42 queries (9.7%)
+  * `no_tool`: 30 queries (6.9%)
+  * Total: **432 queries**
+
+### Hardware & Latency Measurement
+* **Router Latency (36 ms p50 / 36 ms p95)**: Sourced from local evaluation harness conforming to published Strands Decider benchmarks.
+* **Known Hardware Limitation**: Production Decider 2B latency varies based on host hardware. Published 2B GPU latency was measured on an NVIDIA GPU under WSL2; CPU inference on smaller EC2 instances (e.g., t3/c6i) will exhibit higher latency.
+
+### Tier Calibration & Reliability Table
+Empirical accuracy measured within confidence buckets across the 432 samples:
+
+| Confidence Bucket | Samples | Empirical Accuracy |
+| :--- | :---: | :---: |
+| **0.90 – 1.00** | 2 | **100.0%** |
+| **0.70 – 0.89** | 18 | **100.0%** |
+| **0.50 – 0.69** | 82 | **89.0%** |
+| **< 0.50** | 330 | **28.5%** |
+
+---
+
+## 5. Limitations & Failure Modes
+
+An audit of 25 logged benchmark failures (`bench/results.json`) revealed two predominant failure modes:
+1. **Short Query Vocabulary Mismatches**: Terse queries lacking domain nouns (e.g., *"can you create the page"*) caused Decider to select `files.create_folder` instead of `knowledge.create_page`.
+2. **Inter-Service Functional Overlap**: Ambiguous boundaries between sibling subsystems (e.g., classifying a ticket query into `crm` instead of `tickets`).
+
+### Mitigation Strategy
+When top-1 confidence falls below 0.30, POLARIS transitions into the **`fallback` tier**: it sends 12 tools and injects an `ask_clarification` tool, allowing Amazon Bedrock to query the user rather than executing an erroneous function call.
+
+---
+
+## 6. Target Users & Enterprise Applicability
+
+1. **Enterprise MCP Platform Developers**: Teams integrating 10+ MCP servers whose aggregate tool definitions exceed standard LLM context limits or budget ceilings.
+2. **Cloud Infrastructure & DevOps Copilots**: Operational agents managing high-dimensional tool namespaces (Kubernetes, AWS IAM, Terraform, VPC networking).
+3. **High-Throughput Production Agents**: Systems handling $>100,000$ daily invocations where token reduction directly impacts unit economics.
+
+---
+
+## 7. The Reusable Asset: `@polaris/router`
+
+POLARIS is packaged as an isolated TypeScript library (`packages/router`) compatible with the standard `@aws-sdk/client-bedrock-runtime`:
 
 ```typescript
 import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime";
 import { compileCatalog, shortlistTools } from "@polaris/router";
 
-// 1. Compile your 240 tools once at startup (attaches 12-word descriptors)
+// 1. Compile 240 tools once (attaches 12-word descriptors)
 const catalog = compileCatalog(rawTools);
 
-// 2. Intercept the user query: Decider 2B returns 1-6 shortlisted tools in 36ms
+// 2. Intercept query: Decider 2B returns 1-6 shortlisted tools in ~36ms
 const { tools: shortlisted, tier } = await shortlistTools(userPrompt, catalog, {
   deciderUrl: "http://localhost:8000"
 });
 
-// 3. Send ONLY the shortlisted tools to Amazon Bedrock Converse
+// 3. Send shortlisted tools to Amazon Bedrock Converse
 const bedrock = new BedrockRuntimeClient({ region: "us-east-1" });
 const response = await bedrock.send(new ConverseCommand({
   modelId: "anthropic.claude-3-haiku-20240307-v1:0",
   messages: [{ role: "user", content: [{ text: userPrompt }] }],
-  toolConfig: { tools: shortlisted } // 98% fewer tokens!
+  toolConfig: { tools: shortlisted }
 }));
 ```
 
 ---
 
-## 7. Interactive Astronomical Observatory UI
+## 8. Technology Stack
 
-Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#064734`)** and **Leaf (`#E0FFC2`)** color palette and typography hierarchy (`Plus Jakarta Sans` for headers, `Inter` for prose, `JetBrains Mono` for telemetry):
-
-1. **The Celestial Atlas (`/`)**:
-   - **Plate 0 (Radial MCP Star Atlas)**: Live topological orbital map of 240 instruments across 12 constellations.
-   - **Plate I (Flight Console)**: Interactive query runner with calibrated test presets (`EASY`, `AMBIGUOUS`, `NO_TOOL`).
-   - **Plate II (Agent Cockpit)**: Real-time dual-lane split comparison (Lane A Baseline vs. Lane B Polaris).
-   - **Plate III (Hierarchical Trace)**: Transparent inspector displaying Decider 2B probabilities and category gates.
-2. **The Astronomical Almanac (`/almanac`)**:
-   - Interactive Pareto Frontier evaluation curves.
-   - 4-Tier confidence calibration matrices.
-   - Transparent **Table II Failure Mode Audit** logging real query misclassifications and fallback recoveries.
-3. **Index of 240 Stars (`/index`)**:
-   - Searchable, filterable directory of all 240 tools with 1-click JSON schema modal inspectors.
-4. **The Polaris Method (`/method`)**:
-   - Technical specifications, mathematical formulations, and copyable integration snippets.
-5. **Diagnostic Sandbox (`/dev/errors`)**:
-   - Interactive test harness for all 8 failure modes: Bedrock 503 throttles, 429 rate limits, and the $25 budget kill-switch.
-6. **Offline Replay System**:
-   - Bundles 4 pre-recorded flight runs (`easy`, `medium`, `hard`, `corner`). If the backend EC2 server is stopped, judges can still explore the full interactive experience.
+| Layer | Technologies | Role |
+| :--- | :--- | :--- |
+| **Decision Engine** | Strands Decider 2B (`strands-decider`, `/v1/systemone`) | Hierarchical intent classification (`needs_tool`, `category`, tool scoring). |
+| **Foundation Model** | Amazon Bedrock Converse API (`@aws-sdk/client-bedrock-runtime`) | Anthropic Claude 3 Haiku executing shortlisted tool calls. |
+| **Backend Server** | Node.js 20+, Express 4, TypeScript | Dual-lane execution engine with Server-Sent Events (SSE) over HTTP/1.1 chunked streaming. |
+| **Data Contracts** | Zod v3 (`@polaris/contracts`) | Isomorphic runtime schema validation across client, server, and events. |
+| **Frontend UI** | React 19, Vite, Tailwind CSS v4, Framer Motion, Lucide React (SVG) | Single-page observatory application with real-time telemetry and Star Chart. |
+| **Testing Harness** | Vitest, TypeScript 5.4 | 48 automated test suites verifying contracts, score combination, and pricing logic. |
+| **Deployment** | Vercel Edge (`vercel.json`), AWS EC2 (Ubuntu 22.04 LTS, Caddy TLS), Supabase | Production hosting topology with zero-downtime offline flight replay fallbacks. |
 
 ---
 
-## 8. System Architecture & AWS Topology
+## 9. System Architecture & AWS Infrastructure
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -259,79 +238,87 @@ Built with React 19, Tailwind CSS v4, and Vite, themed with the **Forest (`#0647
 
 ---
 
-## 9. Enterprise Safety & Built-in Guardrails
+## 10. Safety Guardrails & Compliance
 
-* **Financial Kill-Switch**: The Express server tracks cumulative Bedrock token spend. If total spending hits **$25.00**, it immediately halts live API calls, transitions into replay mode, and alerts the operator.
-* **Sliding-Window Rate Limiter**: Enforces an in-memory limit of **60 requests per minute** per client.
-* **Zero Third-Party Trademarks**: All 240 tools use generic enterprise identifiers (`compute.launch_instance`, `security.rotate_key`) conforming strictly to AWS hackathon submission guidelines.
-* **Graceful Degradation**: If Decider 2B is unreachable, the router automatically fails open to the wide fallback shortlist without crashing.
+* **$25.00 Budget Kill-Switch**: The Express backend tracks cumulative Bedrock token expenditures. If cumulative spend reaches **$25.00**, the kill-switch halts live API requests and shifts into offline replay mode.
+* **Sliding-Window Rate Limiter**: Enforces an in-memory limit of **60 requests per minute** per client IP.
+* **Tool Catalog Trademark Compliance**: All 240 tool definitions use generic functional nomenclature (e.g., `compute.launch_instance`, `security.rotate_key`) with zero third-party commercial brand names.
+* **Fail-Open Router Safety**: If Decider 2B becomes unresponsive, the router falls open to the fallback shortlist to prevent complete agent execution failure.
 
 ---
 
-## 10. Quick Start & Local Verification
+## 11. Quick Start & Reproduction
 
 ### Prerequisites
-* Node.js $\ge 20.11.0$
-* npm $\ge 10.0.0$
+* Node.js $\ge 20.11.0$, npm $\ge 10.0.0$
+* Python $\ge 3.10$ (for local Strands Decider server)
+* AWS Account with Amazon Bedrock model access enabled for `anthropic.claude-3-haiku-20240307-v1:0`
 
-### 1. Installation
+### 1. Clone & Install
 ```bash
 git clone https://github.com/sagarkharbikar25/AEH.git
 cd AEH
 npm install
 ```
 
-### 2. Run Verification Commands
+### 2. Start Strands Decider Server (Port 8000)
 ```bash
-# Typecheck across all 6 monorepo workspaces (0 errors)
-npm run typecheck
+pip install strands-decider
+strands-decider serve <model-checkpoint> --port 8000
+```
+*(If evaluating without a local GPU, the system automatically runs with simulated router fallbacks).*
 
-# Lint with zero warnings allowed
-npm run lint
-
-# Execute Vitest automated test suites (48/48 passed)
-npm test
-
-# Verify production Vite build
-npm run build
+### 3. Configure Environment
+```bash
+cp .env.example .env
+# Configure AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY (or use IAM role)
 ```
 
-### 3. Start Local Development
+### 4. Run Verification & Reproduce Benchmarks
 ```bash
-# Terminal 1: Start Polaris Backend Server (:3000)
+# Verify TypeScript strict compilation across all 6 workspaces
+npm run typecheck
+
+# Verify ESLint with zero warnings allowed
+npm run lint
+
+# Run all 48 automated test suites
+npm test
+
+# Reproduce the 432-sample benchmark metrics (outputs to bench/results.json)
+npm run bench
+```
+
+### 5. Start Application (Local Development)
+```bash
+# Terminal 1: Start Polaris Express Backend (:3000)
 npm run dev:server
 
 # Terminal 2: Start Observatory Web UI (:5173)
-npm run dev
+npm run dev:web
 ```
-
-Open your browser to **`http://localhost:5173`**.
+Access the application at **`http://localhost:5173`**.
 
 ---
 
-## 11. Repository Layout & Git Provenance
-
-This repository was constructed using four independent, folder-isolated feature branches merged into `main`:
+## 12. Repository Layout
 
 ```
-polaris/
+AEH/
 ├── packages/
 │   ├── contracts/        # Shared Zod schemas (SSE events, error envelopes, catalog)
 │   └── router/           # Drop-in router library (@polaris/router)
 ├── server/               # Express backend, dual-lane agent loop, Bedrock Converse
 ├── bench/                # 432-sample benchmark harness and Pareto analysis
 ├── web/                  # React + Vite "Celestial Atlas" frontend application
-├── catalog/              # 240-tool standard catalog generator
-├── supabase/             # PostgreSQL database migrations and seed scripts
-├── infra/                # EC2 deployment scripts, systemd unit files, Caddy config
-├── plan/                 # Complete hackathon phase execution plans
+├── catalog/              # 240-tool standard catalog and query generator
+├── supabase/             # PostgreSQL database migrations and schema definitions
+├── infra/                # EC2 deployment scripts, systemd unit files, Caddy configuration
 └── docs/                 # Architectural Decision Records (ADRs) and API documentation
 ```
 
 ---
 
-## 12. License & Compliance
+## 13. License
 
-* **License**: Open source under the [Apache-2.0 License](LICENSE).
-* **Hackathon**: Developed for the **AWS Strands Decider Agent Hackathon**.
-* **Tags**: `#strands-decider-2b` · `#tool-selection`
+Open source under the [Apache-2.0 License](LICENSE).
